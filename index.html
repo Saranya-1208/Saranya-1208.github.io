@@ -4,16 +4,16 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Saranya Anand | Data Visualisation</title>
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+<script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
+<script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
 
   <style>
     body {
-      font-family: "Helvetica Neue", Arial, sans-serif;
+      font-family: "calibri", Arial, sans-serif;
       margin: 0;
       padding: 0;
-      color: #222;
-      background-color: #fff;
-      line-height: 1.6;
+      line-height: 1.5;
     }
 
     header {
@@ -43,7 +43,6 @@
     h2 {
       font-weight: 500;
       font-size: 1.4rem;
-      color: #111;
       margin-bottom: 20px;
     }
 
@@ -64,11 +63,9 @@
       text-align: center;
       padding: 50px 20px;
       font-size: 0.9rem;
-      color: #888;
     }
 
     a {
-      color: #555;
       text-decoration: none;
     }
     a:hover {
@@ -88,15 +85,15 @@
     <div class="chart-container">
       <canvas id="chart1"></canvas>
       <canvas id="chart2"></canvas>
+      <canvas id="chart3"></canvas>canvas>
     </div>
   </section>
 
   <section id="about">
     <h2>About</h2>
     <p>
-      I'm a Master of Public Administration student at the London School of Economics,
-      passionate about how data can inform and transform social policy.
-      This website documents my journey into automated data visualisation.
+      I'm a Master of Public Administration student at the London School of Economics.
+      This website documents my journey into Data Visualisation.
     </p>
   </section>
 
@@ -127,6 +124,18 @@
       }]
     };
     new Chart(document.getElementById('chart2'), { type: 'bar', data: data2 });
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": "Unemployment Rate (aged over 16)",
+  "data": {
+    "url": "https://raw.githubusercontent.com/Saranya-1208/Saranya-1208.github.io/refs/heads/main/series-051125.csv"
+  },
+  "mark": "line",
+  "encoding": {
+    "x": {"field": "Year", "type": "temporal"},
+    "y": {"field": "Value", "type": "quantitative"}
+  },
+  "config": {}
+}
   </script>
 </body>
 </html>
