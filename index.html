@@ -131,6 +131,36 @@
         "y": {"field": "Value", "type": "quantitative", "title": "Unemployment Rate (%)"}
       }
     });
+    vegaEmbed('#chart2', {
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": "Export of Trade Goods in India",
+  "width": 500,
+  "height": 300,
+  "data": {
+    "url": "https://raw.githubusercontent.com/Saranya-1208/Saranya-1208.github.io/refs/heads/main/data.csv"
+  },
+  "mark": "bar",
+  "encoding": {
+    "x": {
+      "field": "Region",
+      "type": "nominal",
+      "title": "Region",
+      "axis": {
+        "labelAngle": -45
+      }
+    },
+    "y": {
+      "field": "Value",
+      "type": "quantitative",
+      "title": "Distribution (%)"
+    },
+    "color": {
+      "field": "Name",
+      "type": "nominal",
+      "title": "Business Sector"
+    }
+  }
+});
   </script>
 </body>
 </html>
