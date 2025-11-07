@@ -102,13 +102,11 @@
     <div id="chart2"></div>
   </div>
   <div class="chart-section">
-    <h3>Chart 3: GDP and Life Expectancy</h3>
-    <p>This chart shows that there is a well-established relationship showing that higher GDP per capita is correlated with increased life expectancy at a national level.</p>
+    <h3>Chart 3: UK Gross Capital Formation (% Change)</h3>
+    <p>This chart shows quarterly percentage changes in UK gross capital formation from 2005 to 2016, indicating periods of investment growth and decline in the UK economy.</p>
     <div id="chart3"></div>
   </div>
   </section>
-
-  <section>
   <section id="about">
     <h2>About</h2>
     <p>
@@ -116,7 +114,6 @@
       This website documents my journey into Data Visualisation.
     </p>
   </section>
-  
   <script>
     vegaEmbed('#chart1', {
       "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
@@ -132,123 +129,65 @@
         "y": {"field": "Value", "type": "quantitative", "title": "Unemployment Rate (%)"}
       }
     });
+    
     vegaEmbed('#chart2', {
-  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "title": "Export of Trade Goods in India",
-  "width": 500,
-  "height": 300,
-  "data": {
-    "url": "https://raw.githubusercontent.com/Saranya-1208/Saranya-1208.github.io/refs/heads/main/data.csv"
-  },
-  "mark": "bar",
-  "encoding": {
-    "x": {
-      "field": "Region",
-      "type": "nominal",
-      "title": "Region",
-      "axis": {
-        "labelAngle": -45
-      }
-    },
-    "y": {
-      "field": "Value",
-      "type": "quantitative",
-      "title": "Distribution (%)"
-    },
-    "color": {
-      "field": "Name",
-      "type": "nominal",
-      "title": "Business Sector"
-    }
-  }
-});
-      vegaEmbed('#chart3', {
-  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "config": {"view": {"strokeOpacity": 0}},
-  "title": {
-    "text": "GDP and Life Expectancy",
-    "subtitle": [
-      "Life expectancy: in years. Source: UN Population Prospects 2022",
-      "GDP: per capita PPP (international $). Source: World Bank",
-      ""
-    ],
-    "subtitleFontStyle": "normal",
-    "subtitleFontSize": 12,
-    "anchor": "start",
-    "fontSize": 16
-  },
-  "data": {
-    "url": "https://raw.githubusercontent.com/EconomicsObservatory/courses/main/datasets/simple/UN_living_standards.csv"
-  },
-  "mark": {"type": "circle", "size": 150, "opacity": 0.8},
-  "height": 300,
-  "width": 400,
-  "encoding": {
-    "x": {
-      "field": "GDP per capita (PPP)",
-      "type": "quantitative",
-      "title": "GDP (log scale)",
-      "scale": {"type": "log", "domain": [1000, 140000]},
-      "axis": {
-        "values": [1000, 2000, 5000, 10000, 20000, 40000, 100000],
-        "format": "$,",
-        "gridOpacity": 0.3,
-        "tickSize": 3,
-        "labelFontSize": 11,
-        "ticks": false,
-        "labelPadding": 5,
-        "titleFontWeight": "bold",
-        "titlePadding": 6
-      }
-    },
-    "y": {
-      "field": "Life Expectancy",
-      "type": "quantitative",
-      "title": "Life Expectancy",
-      "scale": {"domain": [50, 87]},
-      "axis": {
-        "values": [55, 60, 65, 70, 75, 80, 85],
-        "ticks": false,
-        "labelFontSize": 11,
-        "labelPadding": 5,
-        "titleFontWeight": "bold",
-        "gridOpacity": 0.3,
-        "titlePadding": 6
-      }
-    },
-    "color": {
-      "field": "Continent",
-      "type": "nominal",
-      "title": null,
-      "legend": {
-        "orient": "none",
-        "direction": "horizontal",
-        "legendX": 5,
-        "legendY": 0,
-        "title": null,
-        "offset": 10,
-        "labelFontSize": 11
-      }
-    },
-    "size": {
-      "field": "Population",
-      "type": "quantitative",
-      "scale": {"range": [12, 600]},
-      "legend": null
-    },
-    "tooltip": [
-      {"field": "Country"},
-      {"field": "Population", "format": ",d"},
-      {
-        "field": "GDP per capita (PPP)",
-        "title": "GDP per capita",
-        "format": "$,d"
+      "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+      "title": "Export of Trade Goods in India",
+      "width": 500,
+      "height": 300,
+      "data": {
+        "url": "https://raw.githubusercontent.com/Saranya-1208/Saranya-1208.github.io/refs/heads/main/data.csv"
       },
-      {"field": "Life Expectancy", "format": "d"}
-    ]
-  },
-  "autosize": {"type": "pad", "contains": "padding", "resize": true}
-}
+      "mark": "bar",
+      "encoding": {
+        "x": {
+          "field": "Region",
+          "type": "nominal",
+          "title": "Region",
+          "axis": {"labelAngle": -45}
+        },
+        "y": {
+          "field": "Value",
+          "type": "quantitative",
+          "title": "Distribution (%)"
+        },
+        "color": {
+          "field": "Name",
+          "type": "nominal",
+          "title": "Business Sector"
+        }
+      }
+    });
+    
+    vegaEmbed('#chart3', {
+      "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+      "title": "UK Gross Capital Formation (% Change)",
+      "width": 500,
+      "height": 300,
+      "data": {
+        "url": "https://raw.githubusercontent.com/Saranya-1208/Saranya-1208.github.io/refs/heads/main/Gross%20Capital%20Formation.csv"
+      },
+      "mark": {"type": "line", "point": true, "strokeWidth": 2},
+      "encoding": {
+        "x": {
+          "field": "Date",
+          "type": "temporal",
+          "title": "Year",
+          "axis": {"labelAngle": -45, "format": "%Y"}
+        },
+        "y": {
+          "field": "Value",
+          "type": "quantitative",
+          "title": "% Change",
+          "scale": {"zero": false}
+        },
+        "color": {"value": "#e74c3c"},
+        "tooltip": [
+          {"field": "Date", "type": "temporal", "title": "Date", "format": "%Y-%m"},
+          {"field": "Value", "type": "quantitative", "title": "% Change", "format": ".2f"}
+        ]
+      }
+    });
   </script>
 </body>
 </html>
