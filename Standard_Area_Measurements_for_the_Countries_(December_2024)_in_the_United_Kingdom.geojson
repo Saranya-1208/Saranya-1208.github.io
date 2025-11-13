@@ -1,0 +1,11 @@
+{
+"type": "FeatureCollection",
+"name": "Standard_Area_Measurements_for_the_Countries_(December_2024)_in_the_United_Kingdom",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{ "type": "Feature", "properties": { "CTRY24CD": "E92000001", "CTRY24NM": "England", "CTRY24NMW": "Lloegr", "AREAEHECT": 13292535.1, "AREACHECT": 13046443.71, "AREAIHECT": 15188.39, "AREALHECT": 13031255.32, "ObjectId": 1 }, "geometry": null },
+{ "type": "Feature", "properties": { "CTRY24CD": "N92000002", "CTRY24NM": "Northern Ireland", "CTRY24NMW": "Gogledd Iwerddon", "AREAEHECT": 1432976.51, "AREACHECT": 1432976.51, "AREAIHECT": 53681.35, "AREALHECT": 1379295.16, "ObjectId": 2 }, "geometry": null },
+{ "type": "Feature", "properties": { "CTRY24CD": "S92000003", "CTRY24NM": "Scotland", "CTRY24NMW": "Yr Alban", "AREAEHECT": 8022687.13, "AREACHECT": 7880057.49, "AREAIHECT": 90027.99, "AREALHECT": 7790029.5, "ObjectId": 3 }, "geometry": null },
+{ "type": "Feature", "properties": { "CTRY24CD": "W92000004", "CTRY24NM": "Wales", "CTRY24NMW": "Cymru", "AREAEHECT": 2121704.64, "AREACHECT": 2078283.02, "AREAIHECT": 4608.54, "AREALHECT": 2073674.48, "ObjectId": 4 }, "geometry": null }
+]
+}
