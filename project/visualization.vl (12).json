@@ -1,0 +1,41 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.2.json",
+  "title": {"text": "India's Digital Catch-Up", "fontSize": 24},
+  "width": 800,
+  "height": 450,
+  "data": {
+    "url": "https://raw.githubusercontent.com/Saranya-1208/Saranya-1208.github.io/refs/heads/main/project/net%20users%20%25%20global%202010%20-%202020.csv"
+  },
+  "mark": {"type": "line", "point": true, "strokeWidth": 4},
+  "encoding": {
+    "x": {"field": "Year", "type": "quantitative"},
+    "y": {
+      "field": "Net Internet Users",
+      "type": "quantitative",
+      "scale": {"domain": [0, 100]}
+    },
+    "color": {
+      "field": "Country Name",
+      "type": "nominal",
+      "scale": {
+        "domain": [
+          "India",
+          "World",
+          "UAE",
+          "United States",
+          "Australia",
+          "Canada",
+          "China",
+          "United Kingdom"
+        ],
+        "range": ["#FF9933", "#666666", "#DE2910", "#3C3B6E"]
+      }
+    },
+    "tooltip": [
+      {"field": "Country Name"},
+      {"field": "Year", "format": "d"},
+      {"field": "Net Internet Users", "format": ".1f"}
+    ]
+  },
+  "config": {}
+}
