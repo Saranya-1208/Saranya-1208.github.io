@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Digital India: The Untold Story | Saranya Anand</title>
+  
+  <!-- Vega-Lite -->
+  <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+  
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      color: #333;
+    }
+    
+    /* Hero Section */
+    #hero {
+      min-height: 100vh;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+    }
+    
+    #hero h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+    
+    #hero p {
+      font-size: 1.3rem;
+      margin-bottom: 2rem;
+      opacity: 0.9;
+    }
+    
+    /* Navigation */
+    nav {
+      position: sticky;
+      top: 0;
+      background: white;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      z-index: 1000;
+      padding: 1rem 0;
+    }
+    
+    nav ul {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+    
+    nav a {
+      text-decoration: none;
+      color: #667eea;
+      font-weight: 600;
+      transition: color 0.3s;
+    }
+    
+    nav a:hover {
+      color: #764ba2;
+    }
+    
+    /* Sections */
+    section {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 4rem 2rem;
+    }
+    
+    section h2 {
+      font-size: 2.5rem;
+      color: #667eea;
+      margin-bottom: 1rem;
+      border-bottom: 4px solid #667eea;
+      padding-bottom: 0.5rem;
+    }
+    
+    section p {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      margin-bottom: 2rem;
+    }
+    
+    .chart-container {
+      background: white;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      margin: 2rem 0;
+    }
+  </style>
+</head>
+<body>
+  
+  <!-- Navigation -->
+  <nav>
+    <ul>
+      <li><a href="../index.html">← Back to Portfolio</a></li>
+      <li><a href="#hero">Home</a></li>
+      <li><a href="#foundation">Foundation</a></li>
+      <li><a href="#cities">Cities</a></li>
+      <li><a href="#behavior">Behavior</a></li>
+      <li><a href="#divide">Divide</a></li>
+      <li><a href="#future">Future</a></li>
+    </ul>
+  </nav>
+  
+  <!-- Hero Section -->
+  <section id="hero">
+    <div style="text-align: center;">
+      <h1>Digital India: From Laggard to Contender</h1>
+      <p>In 2010, only 7.5% of Indians had internet. By 2024, it's over 55%.</p>
+      <p>This is the story of 850 million connections—and 500 million still waiting.</p>
+      <div id="heroChart"></div>
+    </div>
+  </section>
+  
+  <!-- Foundation -->
+  <section id="foundation">
+    <h2>The Foundation: Building Digital Infrastructure</h2>
+    <p>[Coming Day 2: Charts showing growth]</p>
+  </section>
+  
+  <!-- Cities -->
+  <section id="cities">
+    <h2>Smart Cities: The Urban Digital Boom</h2>
+    <p>[Coming Day 2: Smart city dashboard]</p>
+  </section>
+  
+  <!-- Behavior -->
+  <section id="behavior">
+    <h2>The UPI Revolution: How Indians Pay</h2>
+    <p>[Coming Day 3: Transaction patterns]</p>
+  </section>
+  
+  <!-- Divide -->
+  <section id="divide">
+    <h2>The Digital Divide: Who Gets Left Behind?</h2>
+    <p>[Coming Day 4: Maps showing inequality]</p>
+  </section>
+  
+  <!-- Future -->
+  <section id="future">
+    <h2>The Future: Predictions and Possibilities</h2>
+    <p>[Coming Day 6: ML analysis]</p>
+  </section>
+  
+  <!-- Footer -->
+  <footer style="text-align: center; padding: 3rem; background: #f5f5f5;">
+    <p>Digital India Project by Saranya Anand | LSE MPA 2027</p>
+    <p><a href="../index.html">View Full Portfolio</a></p>
+  </footer>
+  
+  <!-- Scripts -->
+  <script>
+    // Hero Chart
+    vegaEmbed('#heroChart', {
+      // YOUR HERO CHART JSON HERE
+    });
+  </script>
+  
+</body>
+</html>
+```
+
+**Save and commit!**
+
+---
+
+### **Step 3: Upload Project Data**
+
+**Create folder: `project/data/`**
+
+**Upload your CSVs there:**
+- `internet_global_comparison.csv`
+- `upi_transactions.csv`
+- `smart_cities_infrastructure.csv`
+- `education_infrastructure.csv`
+
+**Raw URLs will be:**
+```
+https://raw.githubusercontent.com/Saranya-1208/Saranya-1208.github.io/main/project/data/internet_global_comparison.csv
