@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -84,35 +85,37 @@
       color: #1a1a1a;
       border-bottom: 1px solid #1a1a1a;
     }
+    
     /* Dashboard Grid */
-.dashboard-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 2rem;
-  margin: 3rem 0;
-}
+    .dashboard-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      margin: 3rem 0;
+    }
 
-.dashboard-chart {
-  background: white;
-  padding: 1rem;
-  border-radius: 4px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
-}
+    .dashboard-chart {
+      background: white;
+      padding: 1rem;
+      border-radius: 4px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+    }
 
-@media (max-width: 768px) {
-  .dashboard-grid {
-    grid-template-columns: 1fr;
-  }
-}
+    @media (max-width: 768px) {
+      .dashboard-grid {
+        grid-template-columns: 1fr;
+      }
+    }
   </style>
 </head>
 <body>
+  
   <div class="container">
     
     <h1>Digital India: From Laggard to Contender</h1>
     
     <p class="intro">
-      In 2010, only 7.5% of Indians had internet access. By 2024, that number reached 55%, over 850 million people connected. Yet 500 million Indians remain offline. This is the story of the largest digital transformation in human history, and the millions still waiting in the darkness.
+      In 2010, only 7.5% of Indians had internet access. By 2024, that number reached 55%—over 850 million people connected. Yet 500 million Indians remain offline. This is the story of the largest digital transformation in human history, and the millions still waiting in the darkness.
     </p>
     
     <div class="chart-wrapper">
@@ -123,32 +126,32 @@
     <p>
       [Coming Day 2: Charts showing infrastructure growth, smartphone adoption, and the building blocks of India's digital revolution]
     </p>
-      <h2>Smart Cities: The Urban Digital Boom</h2>
-<p>
-  Between 2019 and 2024, India's metropolitan cities transformed their digital infrastructure. Here's how Mumbai, Delhi, and Bengaluru compare across six key metrics.
-</p>
-
-<div class="dashboard-grid">
-  <div class="dashboard-chart">
-    <div id="chart_internet"></div>
-  </div>
-  <div class="dashboard-chart">
-    <div id="chart_broadband"></div>
-  </div>
-  <div class="dashboard-chart">
-    <div id="chart_4g"></div>
-  </div>
-  <div class="dashboard-chart">
-    <div id="chart_transport"></div>
-  </div>
-  <div class="dashboard-chart">
-    <div id="chart_wifi"></div>
-  </div>
-  <div class="dashboard-chart">
-    <div id="chart_egov"></div>
-  </div>
-</div>
+    
+    <h2>Smart Cities: The Urban Digital Boom</h2>
+    <p>
+      Between 2019 and 2024, India's metropolitan cities transformed their digital infrastructure. Here's how Mumbai, Delhi, and Bengaluru compare across six key metrics.
     </p>
+
+    <div class="dashboard-grid">
+      <div class="dashboard-chart">
+        <div id="chart_internet"></div>
+      </div>
+      <div class="dashboard-chart">
+        <div id="chart_broadband"></div>
+      </div>
+      <div class="dashboard-chart">
+        <div id="chart_4g"></div>
+      </div>
+      <div class="dashboard-chart">
+        <div id="chart_transport"></div>
+      </div>
+      <div class="dashboard-chart">
+        <div id="chart_wifi"></div>
+      </div>
+      <div class="dashboard-chart">
+        <div id="chart_egov"></div>
+      </div>
+    </div>
     
     <h2>The UPI Revolution</h2>
     <p>
@@ -156,196 +159,204 @@
     </p>
     
     <h2>The Digital Divide</h2>
-<h2>Digital Villages: Testing Solutions in Rural India</h2>
-<p>
-  In 700 pilot villages across India, the government tested whether digital services could reach the last mile. Over three years (2021-2024), these villages received infrastructure, training, and services that urban India takes for granted. The results show what's possible: 267,532 people received telemedicine consultations, 59,721 enrolled in computer courses, and 76,073 farmers got veterinary support for their livestock. This is proof that the digital divide can be bridged—when resources meet resolve.
-</p>
-<div class="chart-wrapper">
-  <div id="villageChart"></div>
-</div>
-<h2>The Future</h2>
+    <p>
+      [Coming Day 4: Maps showing who gets left behind—geographic, economic, and educational disparities]
     </p>
+    
+    <h2>Digital Villages: Testing Solutions in Rural India</h2>
+    <p>
+      In 700 pilot villages across India, the government tested whether digital services could reach the last mile. Over three years (2021-2024), these villages received infrastructure, training, and services that urban India takes for granted. The results show what's possible: 267,532 people received telemedicine consultations, 59,721 enrolled in computer courses, and 76,073 farmers got veterinary support for their livestock. This is proof that the digital divide can be bridged—when resources meet resolve.
+    </p>
+    
+    <div class="chart-wrapper">
+      <div id="villageChart"></div>
+    </div>
     
     <h2>The Future</h2>
     <p>
       [Coming Day 6: Machine learning predictions and what comes next]
     </p>
+    
     <footer>
       <p>Saranya Anand | LSE MPA 2027</p>
       <p><a href="../index.html">← Back to Portfolio</a></p>
-    </footer> 
+    </footer>
+    
   </div>
-</script>
-  vegaEmbed('#heroChart', {
-    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-    "title": {
-      "text": "India's Digital Catch-Up: 2010-2024",
-      "fontSize": 24,
-      "font": "Garamond",
-      "color": "#1a1a1a"
-    },
-    "width": 800,
-    "height": 450,
-    "data": {
-      "url": "https://raw.githubusercontent.com/Saranya-1208/Saranya-1208.github.io/refs/heads/main/project/net%20users%20%25%20global%202010%20-%202020.csv"
-    },
-    "params": [
-      {
-        "name": "hover",
-        "select": {
-          "type": "point",
-          "fields": ["Country Name"],
-          "on": "mouseover",
-          "clear": "mouseout"
-        }
+  
+  <script>
+    vegaEmbed('#heroChart', {
+      "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+      "title": {
+        "text": "India's Digital Catch-Up: 2010-2024",
+        "fontSize": 24,
+        "font": "Garamond",
+        "color": "#1a1a1a"
       },
-      {
-        "name": "click",
-        "select": {
-          "type": "point",
-          "fields": ["Country Name"]
-        }
-      }
-    ],
-    "mark": {
-      "type": "line",
-      "point": true,
-      "strokeWidth": 3
-    },
-    "encoding": {
-      "x": {
-        "field": "Year",
-        "type": "quantitative",
-        "title": "Year",
-        "scale": {"domain": [2009, 2021]},
-        "axis": {"format": "d", "grid": false, "labelFontSize": 12, "titleFontSize": 13}
+      "width": 800,
+      "height": 450,
+      "data": {
+        "url": "https://raw.githubusercontent.com/Saranya-1208/Saranya-1208.github.io/refs/heads/main/project/net%20users%20%25%20global%202010%20-%202020.csv"
       },
-      "y": {
-        "field": "Net Internet Users",
-        "type": "quantitative",
-        "title": "Internet Users (%)",
-        "scale": {"domain": [0, 100]},
-        "axis": {"grid": true, "gridOpacity": 0.2, "labelFontSize": 12, "titleFontSize": 13}
-      },
-      "color": {
-        "field": "Country Name",
-        "type": "nominal",
-        "scale": {
-          "domain": ["India", "World", "China", "United States", "UAE", "Australia", "Canada", "United Kingdom"],
-          "range": ["#FF85A2", "#74B3CE", "#FFDAB9", "#B4A7D6", "#A8E6CF", "#FFB6B9", "#C7CEEA", "#E8DFF5"]
+      "params": [
+        {
+          "name": "hover",
+          "select": {
+            "type": "point",
+            "fields": ["Country Name"],
+            "on": "mouseover",
+            "clear": "mouseout"
+          }
         },
-        "legend": {
-          "title": null,
-          "orient": "right",
-          "labelFontSize": 12
+        {
+          "name": "click",
+          "select": {
+            "type": "point",
+            "fields": ["Country Name"]
+          }
         }
+      ],
+      "mark": {
+        "type": "line",
+        "point": true,
+        "strokeWidth": 3
       },
-      "opacity": {
-        "condition": [
-          {"param": "click", "value": 1},
-          {"param": "hover", "value": 1}
-        ],
-        "value": 0.2
+      "encoding": {
+        "x": {
+          "field": "Year",
+          "type": "quantitative",
+          "title": "Year",
+          "scale": {"domain": [2009, 2021]},
+          "axis": {"format": "d", "grid": false, "labelFontSize": 12, "titleFontSize": 13}
+        },
+        "y": {
+          "field": "Net Internet Users",
+          "type": "quantitative",
+          "title": "Internet Users (%)",
+          "scale": {"domain": [0, 100]},
+          "axis": {"grid": true, "gridOpacity": 0.2, "labelFontSize": 12, "titleFontSize": 13}
+        },
+        "color": {
+          "field": "Country Name",
+          "type": "nominal",
+          "scale": {
+            "domain": ["India", "World", "China", "United States", "UAE", "Australia", "Canada", "United Kingdom"],
+            "range": ["#FF85A2", "#74B3CE", "#FFDAB9", "#B4A7D6", "#A8E6CF", "#FFB6B9", "#C7CEEA", "#E8DFF5"]
+          },
+          "legend": {
+            "title": null,
+            "orient": "right",
+            "labelFontSize": 12
+          }
+        },
+        "opacity": {
+          "condition": [
+            {"param": "click", "value": 1},
+            {"param": "hover", "value": 1}
+          ],
+          "value": 0.2
+        },
+        "strokeWidth": {
+          "condition": [
+            {"param": "hover", "value": 5},
+            {"param": "click", "value": 5}
+          ],
+          "value": 2
+        },
+        "tooltip": [
+          {"field": "Country Name", "type": "nominal", "title": "Country"},
+          {"field": "Year", "type": "quantitative", "format": "d", "title": "Year"},
+          {"field": "Net Internet Users", "type": "quantitative", "format": ".1f", "title": "Internet Users (%)"}
+        ]
       },
-      "strokeWidth": {
-        "condition": [
-          {"param": "hover", "value": 5},
-          {"param": "click", "value": 5}
-        ],
-        "value": 2
-      },
-      "tooltip": [
-        {"field": "Country Name", "type": "nominal", "title": "Country"},
-        {"field": "Year", "type": "quantitative", "format": "d", "title": "Year"},
-        {"field": "Net Internet Users", "type": "quantitative", "format": ".1f", "title": "Internet Users (%)"}
-      ]
-    },
-    "config": {
-      "view": {"strokeWidth": 0},
-      "font": "Garamond"
-    }
-  });
+      "config": {
+        "view": {"strokeWidth": 0},
+        "font": "Garamond"
+      }
+    });
+    
     vegaEmbed('#villageChart', {
-  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "title": {
-    "text": "Digital Village Services: What 700 Villages Received",
-    "fontSize": 18,
-    "font": "Garamond",
-    "color": "#1a1a1a"
-  },
-  "width": "container",
-  "height": 450,
-  "data": {
-    "url": "https://raw.githubusercontent.com/Saranya-1208/Saranya-1208.github.io/refs/heads/main/project/Implementation%20Status%20of%20Digital%20Village%20Pilot%202021.csv"
-  },
-  "transform": [
-    {
-      "filter": "datum['Achievement (Y1+Y2+Y3)'] > 0"
-    }
-  ],
-  "mark": {
-    "type": "bar",
-    "cornerRadius": 3
-  },
-  "encoding": {
-    "y": {
-      "field": "Services",
-      "type": "nominal",
-      "title": null,
-      "sort": "-x",
-      "axis": {
-        "labelLimit": 350,
-        "labelFontSize": 10.5,
-        "labelPadding": 8
-      }
-    },
-    "x": {
-      "field": "Achievement (Y1+Y2+Y3)",
-      "type": "quantitative",
-      "title": "People/Services Reached",
-      "scale": {
-        "type": "log",
-        "domain": [1000, 500000]
+      "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+      "title": {
+        "text": "Digital Village Services: What 700 Villages Received",
+        "fontSize": 18,
+        "font": "Garamond",
+        "color": "#1a1a1a"
       },
-      "axis": {
-        "format": "~s",
-        "tickCount": 5,
-        "labelFontSize": 11,
-        "titleFontSize": 12,
-        "grid": true,
-        "gridOpacity": 0.15
-      }
-    },
-    "color": {
-      "field": "Service Categories",
-      "type": "nominal",
-      "scale": {
-        "domain": [
-          "Digital Village- Infrastructure and Services",
-          "Education",
-          "Health",
-          "Skill"
-        ],
-        "range": ["#74B3CE", "#FF85A2", "#FFDAB9", "#B4A7D6"]
+      "width": "container",
+      "height": 450,
+      "data": {
+        "url": "https://raw.githubusercontent.com/Saranya-1208/Saranya-1208.github.io/refs/heads/main/project/Implementation%20Status%20of%20Digital%20Village%20Pilot%202021.csv"
       },
-      "legend": {
-        "title": "Category",
-        "orient": "bottom",
-        "labelFontSize": 11,
-        "symbolSize": 100
+      "transform": [
+        {
+          "filter": "datum['Achievement (Y1+Y2+Y3)'] > 0"
+        }
+      ],
+      "mark": {
+        "type": "bar",
+        "cornerRadius": 3
+      },
+      "encoding": {
+        "y": {
+          "field": "Services",
+          "type": "nominal",
+          "title": null,
+          "sort": "-x",
+          "axis": {
+            "labelLimit": 350,
+            "labelFontSize": 10.5,
+            "labelPadding": 8
+          }
+        },
+        "x": {
+          "field": "Achievement (Y1+Y2+Y3)",
+          "type": "quantitative",
+          "title": "People/Services Reached",
+          "scale": {
+            "type": "log",
+            "domain": [1000, 500000]
+          },
+          "axis": {
+            "format": "~s",
+            "tickCount": 5,
+            "labelFontSize": 11,
+            "titleFontSize": 12,
+            "grid": true,
+            "gridOpacity": 0.15
+          }
+        },
+        "color": {
+          "field": "Service Categories",
+          "type": "nominal",
+          "scale": {
+            "domain": [
+              "Digital Village- Infrastructure and Services",
+              "Education",
+              "Health",
+              "Skill"
+            ],
+            "range": ["#74B3CE", "#FF85A2", "#FFDAB9", "#B4A7D6"]
+          },
+          "legend": {
+            "title": "Category",
+            "orient": "bottom",
+            "labelFontSize": 11,
+            "symbolSize": 100
+          }
+        },
+        "tooltip": [
+          {"field": "Service Categories", "type": "nominal", "title": "Category"},
+          {"field": "Services", "type": "nominal", "title": "Service"},
+          {"field": "Achievement (Y1+Y2+Y3)", "type": "quantitative", "format": ",", "title": "People Reached"}
+        ]
+      },
+      "config": {
+        "view": {"strokeWidth": 0},
+        "font": "Garamond"
       }
-    },
-    "tooltip": [
-      {"field": "Service Categories", "type": "nominal", "title": "Category"},
-      {"field": "Services", "type": "nominal", "title": "Service"},
-      {"field": "Achievement (Y1+Y2+Y3)", "type": "quantitative", "format": ",", "title": "People Reached"}
-    ]
-  },
-  "config": {
-    "view": {"strokeWidth": 0},
-    "font": "Garamond"
-  }
     });
   </script>
+  
 </body>
 </html>
