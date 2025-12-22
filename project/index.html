@@ -21,7 +21,7 @@
       font-weight: 500;
       line-height: 1.8;
       color: #2c2c2c;
-      background-color: #f8f8f8;
+      background-color: #fafafa;
     }
     
     .container {
@@ -62,10 +62,7 @@
     
     .chart-wrapper {
       margin: 3rem 0;
-      background: white;
-      padding: 2rem;
-      border-radius: 4px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      padding: 0;
     }
     
     footer {
@@ -93,50 +90,41 @@
   
   <div class="container">
     
-    <!-- Title -->
     <h1>Digital India: From Laggard to Contender</h1>
     
-    <!-- Introduction -->
     <p class="intro">
       In 2010, only 7.5% of Indians had internet access. By 2024, that number reached 55%—over 850 million people connected. Yet 500 million Indians remain offline. This is the story of the largest digital transformation in human history, and the millions still waiting in the darkness.
     </p>
     
-    <!-- Hero Chart -->
     <div class="chart-wrapper">
       <div id="heroChart"></div>
     </div>
     
-    <!-- Section 1 -->
     <h2>The Foundation</h2>
     <p>
       [Coming Day 2: Charts showing infrastructure growth, smartphone adoption, and the building blocks of India's digital revolution]
     </p>
     
-    <!-- Section 2 -->
     <h2>Smart Cities</h2>
     <p>
       [Coming Day 2: Dashboard comparing digital infrastructure across Mumbai, Delhi, and Bengaluru]
     </p>
     
-    <!-- Section 3 -->
     <h2>The UPI Revolution</h2>
     <p>
       [Coming Day 3: How Indians actually use digital payments—time patterns, demographics, and behaviors]
     </p>
     
-    <!-- Section 4 -->
     <h2>The Digital Divide</h2>
     <p>
       [Coming Day 4: Maps showing who gets left behind—geographic, economic, and educational disparities]
     </p>
     
-    <!-- Section 5 -->
     <h2>The Future</h2>
     <p>
       [Coming Day 6: Machine learning predictions and what comes next]
     </p>
     
-    <!-- Footer -->
     <footer>
       <p>Saranya Anand | LSE MPA 2027</p>
       <p><a href="../index.html">← Back to Portfolio</a></p>
@@ -144,49 +132,49 @@
     
   </div>
   
-  <!-- Chart Script -->
   <script>
     vegaEmbed('#heroChart', {
       "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
       "title": {
         "text": "India's Digital Catch-Up: 2010-2024",
-        "fontSize": 20,
+        "fontSize": 22,
         "font": "Garamond",
-        "color": "#1a1a1a"
+        "color": "#1a1a1a",
+        "anchor": "start"
       },
-      "width": 800,
-      "height": 400,
+      "width": "container",
+      "height": 450,
       "data": {
         "url": "https://raw.githubusercontent.com/Saranya-1208/Saranya-1208.github.io/main/project/data/internet_global_comparison.csv"
       },
       "mark": {
         "type": "line",
         "point": true,
-        "strokeWidth": 2.5
+        "strokeWidth": 3
       },
       "encoding": {
         "x": {
           "field": "Year",
           "type": "quantitative",
           "title": "Year",
-          "scale": {"domain": [2010, 2024]},
+          "scale": {"domain": [2009, 2025]},
           "axis": {
             "grid": false,
-            "labelFontSize": 11,
-            "titleFontSize": 12,
+            "labelFontSize": 12,
+            "titleFontSize": 13,
             "format": "d"
           }
         },
         "y": {
           "field": "Internet_Percent",
           "type": "quantitative",
-          "title": "Internet Users (%)",
+          "title": "Internet Users (% of Population)",
           "scale": {"domain": [0, 100]},
           "axis": {
             "grid": true,
-            "gridOpacity": 0.2,
-            "labelFontSize": 11,
-            "titleFontSize": 12
+            "gridOpacity": 0.15,
+            "labelFontSize": 12,
+            "titleFontSize": 13
           }
         },
         "color": {
@@ -194,24 +182,31 @@
           "type": "nominal",
           "scale": {
             "domain": ["India", "World", "China", "United States"],
-            "range": ["#2c2c2c", "#808080", "#5a5a5a", "#b0b0b0"]
+            "range": ["#1a1a1a", "#666666", "#404040", "#999999"]
           },
           "legend": {
             "title": null,
             "orient": "top",
-            "labelFontSize": 12
+            "labelFontSize": 13,
+            "symbolSize": 150
           }
         },
         "tooltip": [
-          {"field": "Country", "type": "nominal"},
-          {"field": "Year", "type": "quantitative", "format": "d"},
+          {"field": "Country", "type": "nominal", "title": "Country"},
+          {"field": "Year", "type": "quantitative", "format": "d", "title": "Year"},
           {"field": "Internet_Percent", "type": "quantitative", "format": ".1f", "title": "Internet Users (%)"}
         ]
       },
       "config": {
-        "view": {"strokeWidth": 0},
-        "font": "Garamond"
+        "view": {
+          "strokeWidth": 0
+        },
+        "font": "Garamond",
+        "background": "#fafafa"
       }
+    }).catch(err => {
+      console.error('Chart error:', err);
+      document.getElementById('heroChart').innerHTML = '<p style="color: red;">Error loading chart. Check console for details.</p>';
     });
   </script>
   
