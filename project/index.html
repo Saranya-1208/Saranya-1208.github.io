@@ -172,87 +172,68 @@
     <footer>
       <p>Saranya Anand | LSE MPA 2027</p>
       <p><a href="../index.html">← Back to Portfolio</a></p>
-    </footer>
-    
+    </footer> 
   </div>
-  
   <script>
-    vegaEmbed('#heroChart', {
-      "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-      "title": {
-        "text": "India's Digital Catch-Up: 2010-2024",
-        "fontSize": 22,
-        "font": "Garamond",
-        "color": "#1a1a1a",
-        "anchor": "start"
+</body>
+</html>
+    vegaEmbed('#heroChart', 
+      {
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "India's Digital Catch-Up: 2010-2024",
+    "fontSize": 24,
+    "font": "Garamond",
+    "color": "#1a1a1a"
+  },
+  "width": 800,
+  "height": 450,
+  "data": {
+    "url": "https://raw.githubusercontent.com/Saranya-1208/Saranya-1208.github.io/refs/heads/main/project/net%20users%20%25%20global%202010%20-%202020.csv"
+  },
+  "mark": {
+    "type": "line",
+    "point": true,
+    "strokeWidth": 3
+  },
+  "encoding": {
+    "x": {
+      "field": "Year",
+      "type": "quantitative",
+      "title": "Year",
+      "scale": {"domain": [2009, 2025]},
+      "axis": {"format": "d", "grid": false}
+    },
+    "y": {
+      "field": "Net Internet Users",
+      "type": "quantitative",
+      "title": "Internet Users (%)",
+      "scale": {"domain": [0, 100]},
+      "axis": {"grid": true, "gridOpacity": 0.2}
+    },
+    "color": {
+      "field": "Country Name",
+      "type": "nominal",
+      "scale": {
+        "domain": ["India", "World", "China", "United States", "UAE", "Australia", "Canada", "United Kingdom"],
+        "range": ["#1a1a1a", "#666666", "#404040", "#999999", "#b0b0b0", "#c0c0c0", "#d0d0d0", "#e0e0e0"]
       },
-      "width": "container",
-      "height": 450,
-      "data": {
-        "url": "https://raw.githubusercontent.com/Saranya-1208/Saranya-1208.github.io/refs/heads/main/project/net%20users%20%25%20global%202010%20-%202020.csv"
-      },
-      "mark": {
-        "type": "line",
-        "point": true,
-        "strokeWidth": 3
-      },
-      "encoding": {
-        "x": {
-          "field": "Year",
-          "type": "quantitative",
-          "title": "Year",
-          "scale": {"domain": [2009, 2025]},
-          "axis": {
-            "grid": false,
-            "labelFontSize": 12,
-            "titleFontSize": 13,
-            "format": "d"
-          }
-        },
-        "y": {
-          "field": "Internet_Percent",
-          "type": "quantitative",
-          "title": "Internet Users (% of Population)",
-          "scale": {"domain": [0, 100]},
-          "axis": {
-            "grid": true,
-            "gridOpacity": 0.15,
-            "labelFontSize": 12,
-            "titleFontSize": 13
-          }
-        },
-        "color": {
-          "field": "Country",
-          "type": "nominal",
-          "scale": {
-            "domain": ["India", "World", "China", "United States"],
-            "range": ["#1a1a1a", "#666666", "#404040", "#999999"]
-          },
-          "legend": {
-            "title": null,
-            "orient": "top",
-            "labelFontSize": 13,
-            "symbolSize": 150
-          }
-        },
-        "tooltip": [
-          {"field": "Country", "type": "nominal", "title": "Country"},
-          {"field": "Year", "type": "quantitative", "format": "d", "title": "Year"},
-          {"field": "Internet_Percent", "type": "quantitative", "format": ".1f", "title": "Internet Users (%)"}
-        ]
-      },
-      "config": {
-        "view": {
-          "strokeWidth": 0
-        },
-        "font": "Garamond",
-        "background": "#fafafa"
+      "legend": {
+        "title": null,
+        "orient": "right",
+        "labelFontSize": 12
       }
-    }).catch(err => {
-      console.error('Chart error:', err);
-      document.getElementById('heroChart').innerHTML = '<p style="color: red;">Error loading chart. Check console for details.</p>';
-    });
-  </script>
-  
+    },
+    "tooltip": [
+      {"field": "Country Name", "type": "nominal", "title": "Country"},
+      {"field": "Year", "type": "quantitative", "format": "d", "title": "Year"},
+      {"field": "Net Internet Users", "type": "quantitative", "format": ".1f", "title": "Internet Users (%)"}
+    ]
+  },
+  "config": {
+    "view": {"strokeWidth": 0},
+    "font": "Garamond"
+  }
+} 
 </body>
 </html>
