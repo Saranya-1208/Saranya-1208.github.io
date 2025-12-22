@@ -1,0 +1,46 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.2.json",
+  "description": "Year-wise Digital Payments Transactions in India",
+  "width": 700,
+  "height": 400,
+  "data": {
+    "values": [
+      {"Year": "2020-21", "Volume": 4370.68, "Value": 1414.58},
+      {"Year": "2021-22", "Volume": 7197.68, "Value": 1744.01},
+      {"Year": "2022-23", "Volume": 11393.82, "Value": 2086.85},
+      {"Year": "2023-24", "Volume": 16443.02, "Value": 2428.24}
+    ]
+  },
+  "layer": [
+    {
+      "mark": {"type": "line", "color": "steelblue", "point": true},
+      "encoding": {
+        "x": {
+          "field": "Year",
+          "type": "ordinal",
+          "title": "Year",
+          "axis": {"labelAngle": 0, "labelFontSize": 14}
+        },
+        "y": {
+          "field": "Volume",
+          "type": "quantitative",
+          "title": "Transaction Volume (in Crore)",
+          "axis": {"labelFontSize": 14, "titleFontSize": 16}
+        }
+      }
+    },
+    {
+      "mark": {"type": "line", "color": "orange", "point": true},
+      "encoding": {
+        "x": {"field": "Year", "type": "ordinal"},
+        "y": {
+          "field": "Value",
+          "type": "quantitative",
+          "title": "Transaction Value (in Lakh Crore)",
+          "axis": {"orient": "right", "labelFontSize": 14, "titleFontSize": 16}
+        }
+      }
+    }
+  ],
+  "config": {}
+}
