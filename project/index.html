@@ -158,9 +158,14 @@
       [Coming Day 3: How Indians actually use digital payments—time patterns, demographics, and behaviors]
     </p>
     
-    <h2>The Digital Divide</h2>
-    <p>
-      [Coming Day 4: Maps showing who gets left behind—geographic, economic, and educational disparities]
+     <h2>The Digital Divide</h2>
+<p>
+  While Delhi residents make 37 UPI payments monthly, Bihar residents make only 5. This seven-fold difference reveals how digital infrastructure and adoption remain concentrated in India's wealthiest states and union territories, leaving hundreds of millions in the country's poorest regions behind.
+</p>
+
+<div class="chart-wrapper">
+  <div id="upiMap"></div>
+</div>
     </p>
     
     <h2>Digital Villages: Testing Solutions in Rural India</h2>
@@ -323,6 +328,70 @@
     ]
   }
 });
+    vegaEmbed('#upiMap', {
+      "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+      "title": {
+        "text": "The UPI Divide: Monthly Transactions Per Person by State",
+        "fontSize": 20,
+        "font": "Garamond",
+        "color": "#1a1a1a",
+        "anchor": "start"
+      },
+      "width": 650,
+      "height": 700,
+      "data": {
+        "url": "https://raw.githubusercontent.com/Subhash9325/GeoJson-Data-of-Indian-States/refs/heads/master/Indian_States",
+        "format": {"type": "json", "property": "features"}
+      },
+      "transform": [
+        {
+          "lookup": "properties.NAME_1",
+          "from": {
+            "data": {
+              "url": "https://raw.githubusercontent.com/Saranya-1208/Saranya-1208.github.io/main/project/data/upi_state_per_capita.csv"
+            },
+            "key": "State",
+            "fields": ["Per_Capita_Monthly", "Volume_Mn", "Population_Mn"]
+          }
+        }
+      ],
+      "projection": {"type": "mercator"},
+      "mark": {
+        "type": "geoshape",
+        "stroke": "white",
+        "strokeWidth": 1.5
+      },
+      "encoding": {
+        "color": {
+          "field": "Per_Capita_Monthly",
+          "type": "quantitative",
+          "scale": {
+            "range": ["#A8E6CF", "#FFD3B6", "#FFAAA5", "#FF8B94"],
+            "domain": [5, 15, 25, 37]
+          },
+          "legend": {
+            "title": "Monthly Transactions Per Person",
+            "orient": "bottom",
+            "direction": "horizontal",
+            "labelFontSize": 11,
+            "titleFontSize": 12,
+            "gradientLength": 400,
+            "gradientThickness": 15
+          }
+        },
+        "tooltip": [
+          {"field": "properties.NAME_1", "type": "nominal", "title": "State"},
+          {"field": "Per_Capita_Monthly", "type": "quantitative", "title": "Txns/Person/Month"},
+          {"field": "Volume_Mn", "type": "quantitative", "format": ",.1f", "title": "Total Volume (Millions)"},
+          {"field": "Population_Mn", "type": "quantitative", "format": ".1f", "title": "Population (Millions)"}
+        ]
+      },
+      "config": {
+        "view": {"strokeWidth": 0},
+        "font": "Garamond"
+      }
+    });
+    
     vegaEmbed('#aadhaarSaturationChart',
     {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
