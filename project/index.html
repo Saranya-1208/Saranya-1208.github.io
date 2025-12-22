@@ -171,6 +171,21 @@
     <div class="chart-wrapper">
       <div id="villageChart"></div>
     </div>
+
+<h2>Digital Division: Aadhaar Saturation Across States</h2>
+<p>
+  Aadhaar, India’s digital identity system, forms the foundational layer of the country’s digital public infrastructure. By 2019, enrolment had reached near-universal levels nationally, but aggregate figures conceal significant variation across states and union territories.
+</p>
+<p>
+  State-level Aadhaar saturation rates—defined as the number of Aadhaar IDs issued relative to projected population—highlight uneven patterns of coverage. Several regions report saturation levels exceeding 100 per cent, reflecting population mobility, enrolment duplication, and uncertainty in population projections. At the same time, a number of states continue to exhibit substantially lower coverage, pointing to persistent gaps in last-mile inclusion.
+</p>
+<p>
+  This variation matters because digital identity is a prerequisite for accessing downstream services such as bank accounts, digital payments, and direct benefit transfers. Uneven Aadhaar saturation therefore translates into unequal access to the broader benefits of India’s digital transformation.
+</p>
+
+<div class="chart-wrapper">
+  <div id="aadhaarSaturationChart"></div>
+</div>
     
     <h2>The Future</h2>
     <p>
@@ -305,6 +320,49 @@
     "tooltip": [
       {"field": "Services"},
       {"field": "Achievement (Y1+Y2+Y3)", "format": ","}
+    ]
+  }
+});
+    vegaEmbed('#aadhaarSaturationChart',
+    {
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Aadhaar saturation across Indian states in 2019.",
+  "data": {
+    "values": [
+      {"state": "Delhi", "saturation": 118},
+      {"state": "Haryana", "saturation": 104.4},
+      {"state": "Kerala", "saturation": 103.1},
+      {"state": "Himachal Pradesh", "saturation": 102.6},
+      {"state": "Punjab", "saturation": 101.8},
+      {"state": "Goa", "saturation": 101.6},
+      {"state": "Telangana", "saturation": 101},
+      {"state": "Uttarakhand", "saturation": 99.7},
+      {"state": "Chandigarh", "saturation": 99.2},
+      {"state": "Lakshadweep", "saturation": 97.7},
+      {"state": "Gujarat", "saturation": 96},
+      {"state": "Tamil Nadu", "saturation": 93.9},
+      {"state": "Maharashtra", "saturation": 93.8},
+      {"state": "Uttar Pradesh", "saturation": 87.6},
+      {"state": "Bihar", "saturation": 84.3},
+      {"state": "Meghalaya", "saturation": 29.9}
+    ]
+  },
+  "mark": "bar",
+  "encoding": {
+    "y": {
+      "field": "state",
+      "type": "nominal",
+      "sort": "-x",
+      "title": "State / Union Territory"
+    },
+    "x": {
+      "field": "saturation",
+      "type": "quantitative",
+      "title": "Aadhaar saturation (%)"
+    },
+    "tooltip": [
+      {"field": "state", "type": "nominal"},
+      {"field": "saturation", "type": "quantitative", "title": "Saturation (%)"}
     ]
   }
 });
