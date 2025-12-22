@@ -271,70 +271,85 @@
     }
   });
     vegaEmbed('#villageChart', {
-      "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-      "title": {
-        "text": "Digital Village Services: What 700 Villages Received (2021-2024)",
-        "fontSize": 20,
-        "font": "Garamond",
-        "color": "#1a1a1a"
-      },
-      "width": 800,
-      "height": 500,
-      "data": {
-        "url": "https://raw.githubusercontent.com/Saranya-1208/Saranya-1208.github.io/refs/heads/main/project/Implementation%20Status%20of%20Digital%20Village%20Pilot%202021.csv"
-      },
-      "mark": {
-        "type": "bar"
-      },
-      "encoding": {
-        "y": {
-          "field": "Services",
-          "type": "nominal",
-          "title": null,
-          "sort": "-x",
-          "axis": {
-            "labelLimit": 400,
-            "labelFontSize": 11
-          }
-        },
-        "x": {
-          "field": "Achievement (Y1+Y2+Y3)",
-          "type": "quantitative",
-          "title": "Number of People/Services Reached",
-          "axis": {
-            "format": ",",
-            "labelFontSize": 11,
-            "titleFontSize": 12
-          }
-        },
-        "color": {
-          "field": "Service Categories",
-          "type": "nominal",
-          "scale": {
-            "domain": [
-              "Digital Village- Infrastructure and Services",
-              "Education",
-              "Health",
-              "Skill"
-            ],
-            "range": ["#74B3CE", "#FF85A2", "#FFDAB9", "#B4A7D6"]
-          },
-          "legend": {
-            "title": "Category",
-            "orient": "bottom",
-            "labelFontSize": 12
-          }
-        },
-        "tooltip": [
-          {"field": "Service Categories", "type": "nominal", "title": "Category"},
-          {"field": "Services", "type": "nominal", "title": "Service"},
-          {"field": "Achievement (Y1+Y2+Y3)", "type": "quantitative", "format": ",", "title": "People Reached"}
-        ]
-      },
-      "config": {
-        "view": {"strokeWidth": 0},
-        "font": "Garamond"
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "Digital Village Services: What 700 Villages Received",
+    "fontSize": 18,
+    "font": "Garamond",
+    "color": "#1a1a1a"
+  },
+  "width": "container",
+  "height": 450,
+  "data": {
+    "url": "https://raw.githubusercontent.com/Saranya-1208/Saranya-1208.github.io/refs/heads/main/project/Implementation%20Status%20of%20Digital%20Village%20Pilot%202021.csv"
+  },
+  "transform": [
+    {
+      "filter": "datum['Achievement (Y1+Y2+Y3)'] > 0"
+    }
+  ],
+  "mark": {
+    "type": "bar",
+    "cornerRadius": 3
+  },
+  "encoding": {
+    "y": {
+      "field": "Services",
+      "type": "nominal",
+      "title": null,
+      "sort": "-x",
+      "axis": {
+        "labelLimit": 350,
+        "labelFontSize": 10.5,
+        "labelPadding": 8
       }
+    },
+    "x": {
+      "field": "Achievement (Y1+Y2+Y3)",
+      "type": "quantitative",
+      "title": "People/Services Reached",
+      "scale": {
+        "type": "log",
+        "domain": [1000, 500000]
+      },
+      "axis": {
+        "format": "~s",
+        "tickCount": 5,
+        "labelFontSize": 11,
+        "titleFontSize": 12,
+        "grid": true,
+        "gridOpacity": 0.15
+      }
+    },
+    "color": {
+      "field": "Service Categories",
+      "type": "nominal",
+      "scale": {
+        "domain": [
+          "Digital Village- Infrastructure and Services",
+          "Education",
+          "Health",
+          "Skill"
+        ],
+        "range": ["#74B3CE", "#FF85A2", "#FFDAB9", "#B4A7D6"]
+      },
+      "legend": {
+        "title": "Category",
+        "orient": "bottom",
+        "labelFontSize": 11,
+        "symbolSize": 100
+      }
+    },
+    "tooltip": [
+      {"field": "Service Categories", "type": "nominal", "title": "Category"},
+      {"field": "Services", "type": "nominal", "title": "Service"},
+      {"field": "Achievement (Y1+Y2+Y3)", "type": "quantitative", "format": ",", "title": "People Reached"}
+    ]
+  },
+  "config": {
+    "view": {"strokeWidth": 0},
+    "font": "Garamond"
+  }
     });
   </script>
 </body>
