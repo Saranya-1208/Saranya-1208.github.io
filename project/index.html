@@ -177,64 +177,97 @@
 <script>
     vegaEmbed('#heroChart', 
       {
-  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "title": {
-    "text": "India's Digital Catch-Up: 2010-2024",
-    "fontSize": 24,
-    "font": "Garamond",
-    "color": "#1a1a1a"
-  },
-  "width": 800,
-  "height": 450,
-  "data": {
-    "url": "https://raw.githubusercontent.com/Saranya-1208/Saranya-1208.github.io/refs/heads/main/project/net%20users%20%25%20global%202010%20-%202020.csv"
-  },
-  "mark": {
-    "type": "line",
-    "point": true,
-    "strokeWidth": 3
-  },
-  "encoding": {
-    "x": {
-      "field": "Year",
-      "type": "quantitative",
-      "title": "Year",
-      "scale": {"domain": [2009, 2025]},
-      "axis": {"format": "d", "grid": false}
+  <script>
+  vegaEmbed('#heroChart', {
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "title": {
+      "text": "India's Digital Catch-Up: 2010-2024",
+      "fontSize": 24,
+      "font": "Garamond",
+      "color": "#1a1a1a"
     },
-    "y": {
-      "field": "Net Internet Users",
-      "type": "quantitative",
-      "title": "Internet Users (%)",
-      "scale": {"domain": [0, 100]},
-      "axis": {"grid": true, "gridOpacity": 0.2}
+    "width": 800,
+    "height": 450,
+    "data": {
+      "url": "https://raw.githubusercontent.com/Saranya-1208/Saranya-1208.github.io/refs/heads/main/project/net%20users%20%25%20global%202010%20-%202020.csv"
     },
-    "color": {
-      "field": "Country Name",
-      "type": "nominal",
-      "scale": {
-        "domain": ["India", "World", "China", "United States", "UAE", "Australia", "Canada", "United Kingdom"],
-        "range": ["#1a1a1a", "#666666", "#404040", "#999999", "#b0b0b0", "#c0c0c0", "#d0d0d0", "#e0e0e0"]
+    "params": [
+      {
+        "name": "hover",
+        "select": {
+          "type": "point",
+          "fields": ["Country Name"],
+          "on": "mouseover",
+          "clear": "mouseout"
+        }
       },
-      "legend": {
-        "title": null,
-        "orient": "right",
-        "labelFontSize": 12
+      {
+        "name": "click",
+        "select": {
+          "type": "point",
+          "fields": ["Country Name"]
+        }
       }
+    ],
+    "mark": {
+      "type": "line",
+      "point": true,
+      "strokeWidth": 3
     },
-    "tooltip": [
-      {"field": "Country Name", "type": "nominal", "title": "Country"},
-      {"field": "Year", "type": "quantitative", "format": "d", "title": "Year"},
-      {"field": "Net Internet Users", "type": "quantitative", "format": ".1f", "title": "Internet Users (%)"}
-    ]
-  },
-  "config": {
-    "view": {"strokeWidth": 0},
-    "font": "Garamond"
-  }
-} 
-              )
-              </script>
-
+    "encoding": {
+      "x": {
+        "field": "Year",
+        "type": "quantitative",
+        "title": "Year",
+        "scale": {"domain": [2009, 2025]},
+        "axis": {"format": "d", "grid": false, "labelFontSize": 12, "titleFontSize": 13}
+      },
+      "y": {
+        "field": "Net Internet Users",
+        "type": "quantitative",
+        "title": "Internet Users (%)",
+        "scale": {"domain": [0, 100]},
+        "axis": {"grid": true, "gridOpacity": 0.2, "labelFontSize": 12, "titleFontSize": 13}
+      },
+      "color": {
+        "field": "Country Name",
+        "type": "nominal",
+        "scale": {
+          "domain": ["India", "World", "China", "United States", "UAE", "Australia", "Canada", "United Kingdom"],
+          "range": ["#FF85A2", "#74B3CE", "#FFDAB9", "#B4A7D6", "#A8E6CF", "#FFB6B9", "#C7CEEA", "#E8DFF5"]
+        },
+        "legend": {
+          "title": null,
+          "orient": "right",
+          "labelFontSize": 12
+        }
+      },
+      "opacity": {
+        "condition": [
+          {"param": "click", "value": 1},
+          {"param": "hover", "value": 1}
+        ],
+        "value": 0.2
+      },
+      "strokeWidth": {
+        "condition": [
+          {"param": "hover", "value": 5},
+          {"param": "click", "value": 5}
+        ],
+        "value": 2
+      },
+      "tooltip": [
+        {"field": "Country Name", "type": "nominal", "title": "Country"},
+        {"field": "Year", "type": "quantitative", "format": "d", "title": "Year"},
+        {"field": "Net Internet Users", "type": "quantitative", "format": ".1f", "title": "Internet Users (%)"}
+      ]
+    },
+    "config": {
+      "view": {"strokeWidth": 0},
+      "font": "Garamond"
+    }
+  });
+</script>
+  </script>
 </body>
 </html>
