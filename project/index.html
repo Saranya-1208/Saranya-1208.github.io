@@ -234,7 +234,28 @@
 
 <h3 style="font-size: 1.5rem; margin-top: 3rem; margin-bottom: 1rem;">What Comes Next</h3>
 <p>
-  [Coming: ML predictions for future adoption, forecasts for when India reaches universal coverage, policy recommendations]
+  <h2>The Future: Predictions and Possibilities</h2>
+
+<h3 style="font-size: 1.8rem; margin-bottom: 1rem;">Machine Learning Forecast: Where UPI is Headed</h3>
+<p>
+  Using 116 months of historical transaction data, an exponential regression model predicts UPI's continued growth through 2026. The model reveals that while growth remains strong, the rate is gradually slowing as the market approaches saturation—a natural phase in technology adoption curves.
+</p>
+
+<div class="chart-wrapper">
+  <div id="forecastChart"></div>
+</div>
+
+<p style="margin-top: 2rem;">
+  The solid pink line shows actual data; the dashed purple line shows machine learning predictions. By late 2026, the model forecasts UPI will process over 20 billion transactions monthly—double today's volume—as the final wave of Indians adopt digital payments and existing users transact more frequently.
+</p>
+
+<div style="background: #f5f5f5; padding: 1.5rem; margin: 2rem 0; border-left: 4px solid #B4A7D6;">
+  <h3 style="font-size: 1.3rem; margin-bottom: 0.5rem;">Machine Learning Methodology</h3>
+  <p style="font-size: 1rem;">
+    Analysis conducted using Python's library. Transaction volumes were log-transformed to model exponential growth, fitted using linear regression, and back-transformed for interpretation. Complete code and methodology: 
+    <a href="YOUR_COLAB_LINK" target="_blank" style="color: #667eea; font-weight: 600;">Google Colab Notebook →</a>
+  </p>
+</div>
 </p>
     </p>
     
@@ -623,6 +644,96 @@
       }
     }
   ],
+  "config": {
+    "font": "Garamond",
+    "view": {"strokeWidth": 0}
+  }
+});
+    vegaEmbed('#forecastChart', {
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "UPI Forecast: Actual Data + ML Predictions (2016-2026)",
+    "fontSize": 20,
+    "font": "Garamond",
+    "color": "#1a1a1a"
+  },
+  "width": 850,
+  "height": 450,
+  "data": {
+    "url": "https://raw.githubusercontent.com/Saranya-1208/Saranya-1208.github.io/main/project/data/upi_forecast.csv"
+  },
+  "mark": {
+    "type": "line",
+    "point": true,
+    "strokeWidth": 3
+  },
+  "encoding": {
+    "x": {
+      "field": "Date",
+      "type": "temporal",
+      "title": "Year",
+      "axis": {
+        "format": "%Y",
+        "labelAngle": 0,
+        "grid": false,
+        "labelFontSize": 12,
+        "titleFontSize": 13
+      }
+    },
+    "y": {
+      "field": "Volume_Mn",
+      "type": "quantitative",
+      "title": "Monthly Transactions (Millions, log scale)",
+      "scale": {
+        "type": "log",
+        "domain": [0.1, 25000]
+      },
+      "axis": {
+        "grid": true,
+        "gridOpacity": 0.15,
+        "format": "~s",
+        "labelFontSize": 12,
+        "titleFontSize": 13
+      }
+    },
+    "color": {
+      "field": "Type",
+      "type": "nominal",
+      "scale": {
+        "domain": ["Actual", "Predicted"],
+        "range": ["#FF85A2", "#B4A7D6"]
+      },
+      "legend": {
+        "title": null,
+        "orient": "top-right",
+        "labelFontSize": 13,
+        "symbolSize": 150
+      }
+    },
+    "strokeDash": {
+      "field": "Type",
+      "type": "nominal",
+      "scale": {
+        "domain": ["Actual", "Predicted"],
+        "range": [[1,0], [8,4]]
+      },
+      "legend": null
+    },
+    "opacity": {
+      "field": "Type",
+      "type": "nominal",
+      "scale": {
+        "domain": ["Actual", "Predicted"],
+        "range": [1, 0.7]
+      },
+      "legend": null
+    },
+    "tooltip": [
+      {"field": "Date", "type": "temporal", "format": "%B %Y", "title": "Month"},
+      {"field": "Volume_Mn", "type": "quantitative", "format": ",.0f", "title": "Volume (Millions)"},
+      {"field": "Type", "type": "nominal", "title": "Data Type"}
+    ]
+  },
   "config": {
     "font": "Garamond",
     "view": {"strokeWidth": 0}
