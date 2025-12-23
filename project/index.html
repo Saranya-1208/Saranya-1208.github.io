@@ -92,12 +92,11 @@
       padding-left: 1.2rem;
     }
     
-    /* Main Content */
     .main-content {
-      margin-left: 250px;
-      padding: 3rem 4rem 3rem 2rem;
-      max-width: 1400px;
-    }
+  margin-left: 250px;
+  padding: 3rem 3rem;
+  max-width: 1100px; /* Narrower for better readability */
+}
     
     /* Sections */
     section {
@@ -129,13 +128,16 @@
       margin-bottom: 2.5rem;
     }
     
-    /* Chart Containers */
     .chart-wrapper {
       background: white;
       padding: 2.5rem;
       margin: 2.5rem 0;
       border-radius: 8px;
       box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+      .chart-wrapper > div {
+  max-width: 100%;
+  overflow-x: auto;
+}
     }
     
     .chart-full {
@@ -403,7 +405,7 @@
         "font": "Garamond",
         "color": "#1a1a1a"
       },
-      "width": 800,
+      "width": container,
       "height": 450,
       "data": {
         "url": "https://raw.githubusercontent.com/Saranya-1208/Saranya-1208.github.io/refs/heads/main/project/net%20users%20%25%20global%202010%20-%202020.csv"
@@ -494,7 +496,7 @@
     "color": "#1a1a1a",
     "subtitle": "India: Second-fastest digital adopter among 17 major economies | Source: McKinsey"
   },
-  "width": 700,
+  "width": container,
   "height": 600,
   "data": {
     "url": "https://raw.githubusercontent.com/Saranya-1208/Saranya-1208.github.io/refs/heads/main/project/mckinsey_digital_adoption.csv"
@@ -608,7 +610,7 @@
     "fontSize": 18,
     "font": "Garamond"
   },
-  "width": 800,
+  "width": container,
   "height": 450,
   "data": {
     "url": "https://raw.githubusercontent.com/Saranya-1208/Saranya-1208.github.io/refs/heads/main/project/Implementation%20Status%20of%20Digital%20Village%20Pilot%202021.csv"
@@ -642,7 +644,7 @@
     "font": "Garamond",
     "color": "#1a1a1a"
   },
-  "width": 650,
+  "width": container,
   "height": 700,
   "params": [
     {
@@ -772,7 +774,7 @@
     "font": "Garamond",
     "color": "#1a1a1a"
   },
-  "width": 850,
+  "width": container,
   "height": 500,
   "data": {
     "url": "https://raw.githubusercontent.com/Saranya-1208/Saranya-1208.github.io/refs/heads/main/project/upi_complete_timeline.csv"
@@ -925,7 +927,7 @@
     "font": "Garamond",
     "color": "#1a1a1a"
   },
-  "width": 750,
+  "width": container,
   "height": 350,
   "data": {
     "url": "https://raw.githubusercontent.com/Saranya-1208/Saranya-1208.github.io/refs/heads/main/project/upi_time_heatmap.csv"
@@ -991,7 +993,7 @@
     "font": "Garamond",
     "color": "#1a1a1a"
   },
-  "width": 850,
+  "width": container,
   "height": 450,
   "data": {
     "url": "https://raw.githubusercontent.com/Saranya-1208/Saranya-1208.github.io/refs/heads/main/project/upi_forecast.csv"
@@ -1073,7 +1075,7 @@
     "font": "Garamond",
     "color": "#1a1a1a"
   },
-  "width": 650,
+  "width": container,
   "height": 700,
   "data": {
     "url": "https://raw.githubusercontent.com/Subhash9325/GeoJson-Data-of-Indian-States/refs/heads/master/Indian_States",
