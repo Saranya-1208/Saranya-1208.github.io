@@ -186,6 +186,24 @@
   This chart uses a logarithmic scale to visualize 116 months of exponential growth. The vertical lines mark two transformative moments: demonetization (November 2016) and the COVID-19 lockdown (March 2020)—both forcing rapid digital adoption. Linear scales cannot capture a 100,000-fold increase; the logarithmic transformation reveals both the flat beginning and the explosive trajectory.
 </p>
     </p>
+
+    <h3 style="font-size: 1.8rem; margin: 2rem 0 1rem;">The Daily Rhythm: When Do 250,000 Transactions Happen?</h3>
+<p>
+  Analyzing the timing of 250,000 UPI transactions reveals the daily rhythm of Digital India. This heatmap shows transaction density across every hour of every day—darker cells indicate peak activity when millions of Indians simultaneously pay for meals, transfer money, shop online, and settle bills. The patterns reveal how deeply digital payments have integrated into daily life.
+</p>
+
+<div class="chart-wrapper">
+  <div id="heatmapChart"></div>
+</div>
+
+<p style="margin-top: 1.5rem;">
+  The heatmap reveals behavioral patterns: weekday lunch hours (12-2pm) show spikes as people pay for meals; evening hours (7-9pm) peak with bill payments and shopping; weekends display different temporal distributions as leisure spending increases. This granular behavioral analysis demonstrates UPI's transformation from occasional tool to constant companion in Indian daily life.
+</p>
+
+<p style="font-size: 1rem; color: #666; margin-top: 1rem;">
+  <strong>Data processing:</strong> 250,000 transaction records aggregated by time patterns. 
+  <a href="https://colab.research.google.com/drive/1Q44vOtYM3mhGSNu7MAh7m4ABtdJ38EKI?usp=sharing" target="_blank" style="color: #667eea;">View analysis workflow →</a>
+</p>
     
      <h2>The Digital Divide</h2>
 <p>
@@ -798,6 +816,73 @@
     "view": {"strokeWidth": 0}
   }
 });
+
+    vegaEmbed('#heatmapChart', {
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "UPI Transaction Patterns: Hour × Day Heatmap (250K Transactions)",
+    "fontSize": 20,
+    "font": "Garamond",
+    "color": "#1a1a1a"
+  },
+  "width": 750,
+  "height": 350,
+  "data": {
+    "url": "https://raw.githubusercontent.com/Saranya-1208/Saranya-1208.github.io/refs/heads/main/project/upi_time_heatmap.csv"
+  },
+  "mark": {
+    "type": "rect",
+    "strokeWidth": 1.5,
+    "stroke": "white"
+  },
+  "encoding": {
+    "x": {
+      "field": "hour_of_day",
+      "type": "ordinal",
+      "title": "Hour of Day (24-hour)",
+      "axis": {
+        "labelAngle": 0,
+        "labelFontSize": 11,
+        "titleFontSize": 13
+      }
+    },
+    "y": {
+      "field": "day_of_week",
+      "type": "ordinal",
+      "title": null,
+      "sort": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+      "axis": {
+        "labelFontSize": 12
+      }
+    },
+    "color": {
+      "field": "Transaction_Count",
+      "type": "quantitative",
+      "scale": {
+        "scheme": "redpurple",
+        "reverse": false
+      },
+      "legend": {
+        "title": "Transactions",
+        "orient": "right",
+        "format": ",",
+        "labelFontSize": 11,
+        "titleFontSize": 12,
+        "gradientLength": 250
+      }
+    },
+    "tooltip": [
+      {"field": "day_of_week", "type": "nominal", "title": "Day"},
+      {"field": "hour_of_day", "type": "quantitative", "title": "Hour"},
+      {"field": "Transaction_Count", "type": "quantitative", "format": ",", "title": "Transactions"}
+    ]
+  },
+  "config": {
+    "font": "Garamond",
+    "view": {"strokeWidth": 0}
+  }
+});
+    
    vegaEmbed('#forecastChart', {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "title": {
