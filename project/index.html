@@ -370,54 +370,75 @@
     vegaEmbed('#mckinseyChart', {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "title": {
-    "text": "Digital Adoption: Where Countries Stand vs How Fast They're Growing",
-    "fontSize": 20,
+    "text": "Fastest-Growing Digital Economies (2014-2017)",
+    "fontSize": 22,
     "font": "Garamond",
     "color": "#1a1a1a",
-    "subtitle": "McKinsey Digital India Report (2017 data)"
+    "subtitle": "India: Second-fastest digital adopter among 17 major economies | Source: McKinsey"
   },
-  "width": 800,
-  "height": 550,
+  "width": 700,
+  "height": 600,
   "data": {
     "url": "https://raw.githubusercontent.com/Saranya-1208/Saranya-1208.github.io/refs/heads/main/project/mckinsey_digital_adoption.csv"
   },
+  "transform": [
+    {
+      "window": [{"op": "rank", "as": "rank"}],
+      "sort": [{"field": "Growth_2014_2017_%", "order": "descending"}]
+    }
+  ],
   "layer": [
+    {
+      "mark": {
+        "type": "rule",
+        "size": 3
+      },
+      "encoding": {
+        "y": {
+          "field": "Country",
+          "type": "nominal",
+          "sort": "-x",
+          "title": null,
+          "axis": {
+            "labelFontSize": 13,
+            "labelLimit": 150
+          }
+        },
+        "x": {
+          "field": "Growth_2014_2017_%",
+          "type": "quantitative",
+          "title": "Digital Adoption Growth Rate (%)",
+          "scale": {"domain": [0, 105]},
+          "axis": {
+            "grid": true,
+            "gridOpacity": 0.15,
+            "labelFontSize": 13,
+            "titleFontSize": 14
+          }
+        },
+        "color": {
+          "condition": {
+            "test": "datum.Country == 'India'",
+            "value": "#FF85A2"
+          },
+          "value": "#D0D0D0"
+        }
+      }
+    },
     {
       "mark": {
         "type": "point",
         "filled": true
       },
       "encoding": {
-        "x": {
-          "field": "Digital_Adoption_Index_2017",
-          "type": "quantitative",
-          "title": "Digital Adoption Index (2017)",
-          "scale": {"domain": [25, 80]},
-          "axis": {
-            "grid": true,
-            "gridOpacity": 0.15,
-            "labelFontSize": 13,
-            "titleFontSize": 14
-          }
-        },
-        "y": {
-          "field": "Growth_2014_2017_%",
-          "type": "quantitative",
-          "title": "Growth Rate 2014-2017 (%)",
-          "scale": {"domain": [20, 105]},
-          "axis": {
-            "grid": true,
-            "gridOpacity": 0.15,
-            "labelFontSize": 13,
-            "titleFontSize": 14
-          }
-        },
+        "y": {"field": "Country", "type": "nominal", "sort": "-x"},
+        "x": {"field": "Growth_2014_2017_%", "type": "quantitative"},
         "size": {
           "condition": {
             "test": "datum.Country == 'India'",
-            "value": 600
+            "value": 400
           },
-          "value": 250
+          "value": 200
         },
         "color": {
           "condition": {
@@ -426,33 +447,26 @@
           },
           "value": "#B4A7D6"
         },
-        "opacity": {
-          "condition": {
-            "test": "datum.Country == 'India' || datum.Country == 'Indonesia' || datum.Country == 'South Korea' || datum.Country == 'China'",
-            "value": 1
-          },
-          "value": 0.4
-        }
+        "tooltip": [
+          {"field": "Country"},
+          {"field": "Growth_2014_2017_%", "title": "Growth Rate (%)"},
+          {"field": "Digital_Adoption_Index_2017", "title": "2017 Adoption Index"}
+        ]
       }
     },
     {
       "mark": {
         "type": "text",
-        "dy": -12,
-        "fontSize": 12,
+        "align": "left",
+        "dx": 10,
+        "fontSize": 13,
         "font": "Garamond",
         "fontWeight": "bold"
       },
       "encoding": {
-        "x": {"field": "Digital_Adoption_Index_2017", "type": "quantitative"},
-        "y": {"field": "Growth_2014_2017_%", "type": "quantitative"},
-        "text": {
-          "condition": {
-            "test": "datum.Country == 'India' || datum.Country == 'Indonesia' || datum.Country == 'South Korea' || datum.Country == 'China'",
-            "field": "Country"
-          },
-          "value": ""
-        },
+        "y": {"field": "Country", "type": "nominal", "sort": "-x"},
+        "x": {"field": "Growth_2014_2017_%", "type": "quantitative"},
+        "text": {"field": "Growth_2014_2017_%", "format": ".0f"},
         "color": {
           "condition": {
             "test": "datum.Country == 'India'",
