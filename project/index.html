@@ -192,9 +192,31 @@
   <div id="aadhaarSaturationChart"></div>
 </div>
     
-    <h2>The Future</h2>
-    <p>
-      [Coming Day 6: Machine learning predictions and what comes next]
+     <h2>The Future: The 5G Frontier</h2>
+<p>
+  India's digital transformation isn't finished—it's accelerating. As of February 2025, 5G networks have reached over 40,000 villages across 28 states, laying the infrastructure for the next wave of digital services. This map shows where 5G has arrived and where millions still wait for the fastest connectivity.
+</p>
+
+<div class="chart-wrapper">
+  <div id="map5g"></div>
+</div>
+
+<p>
+  The states leading 5G deployment—Maharashtra, Uttar Pradesh, Gujarat—mirror the patterns we've seen throughout this analysis: infrastructure follows existing development corridors. The challenge ahead is ensuring 5G reaches the villages and states that need it most, not just those that can afford it first.
+</p>
+
+<div style="background: #f5f5f5; padding: 1.5rem; margin: 2rem 0; border-left: 4px solid #B4A7D6;">
+  <h3 style="font-size: 1.3rem; margin-bottom: 0.5rem;">Data Collection via Government API</h3>
+  <p style="font-size: 1rem;">
+    This data was accessed through India's Open Data Portal using authenticated API access. View the complete data collection workflow in this 
+    <a href="YOUR_COLAB_LINK" target="_blank" style="color: #667eea; font-weight: 600;">Google Colab notebook</a>.
+  </p>
+</div>
+
+<h3 style="font-size: 1.5rem; margin-top: 3rem; margin-bottom: 1rem;">What Comes Next</h3>
+<p>
+  [Coming: ML predictions for future adoption, forecasts for when India reaches universal coverage, policy recommendations]
+</p>
     </p>
     
     <footer>
@@ -433,6 +455,69 @@
       {"field": "state", "type": "nominal"},
       {"field": "saturation", "type": "quantitative", "title": "Saturation (%)"}
     ]
+  }
+});
+    vegaEmbed('#map5g', {
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "5G Infrastructure: Villages with Coverage by State (Feb 2025)",
+    "fontSize": 20,
+    "font": "Garamond",
+    "color": "#1a1a1a"
+  },
+  "width": 650,
+  "height": 700,
+  "data": {
+    "url": "https://raw.githubusercontent.com/Subhash9325/GeoJson-Data-of-Indian-States/refs/heads/master/Indian_States",
+    "format": {"type": "json", "property": "features"}
+  },
+  "transform": [
+    {
+      "lookup": "properties.NAME_1",
+      "from": {
+        "data": {
+          "url": "https://raw.githubusercontent.com/Saranya-1208/Saranya-1208.github.io/refs/heads/main/project/5g_coverage_india.csv"
+        },
+        "key": "State",
+        "fields": ["Villages_5G", "Districts_5G"]
+      }
+    }
+  ],
+  "projection": {"type": "mercator"},
+  "mark": {
+    "type": "geoshape",
+    "stroke": "white",
+    "strokeWidth": 1.5
+  },
+  "encoding": {
+    "color": {
+      "field": "Villages_5G",
+      "type": "quantitative",
+      "scale": {
+        "scheme": "purples",
+        "type": "log",
+        "domain": [100, 9000]
+      },
+      "legend": {
+        "title": "Villages with 5G Towers",
+        "orient": "bottom",
+        "direction": "horizontal",
+        "format": ",",
+        "labelFontSize": 11,
+        "titleFontSize": 12,
+        "gradientLength": 400,
+        "gradientThickness": 15
+      }
+    },
+    "tooltip": [
+      {"field": "properties.NAME_1", "type": "nominal", "title": "State"},
+      {"field": "Districts_5G", "type": "quantitative", "title": "Districts with 5G"},
+      {"field": "Villages_5G", "type": "quantitative", "format": ",", "title": "Villages with 5G Towers"}
+    ]
+  },
+  "config": {
+    "font": "Garamond",
+    "view": {"strokeWidth": 0}
   }
 });
     </script>
