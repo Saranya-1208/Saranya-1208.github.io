@@ -132,9 +132,19 @@
       <div id="heroChart"></div>
     </div>
     
-    <h2>The Foundation</h2>
-    <p>
-      [Coming Day 2: Charts showing infrastructure growth, smartphone adoption, and the building blocks of India's digital revolution]
+      <h2>India in Global Context: The Fastest-Growing Digital Economy</h2>
+<p>
+  A 2019 McKinsey analysis of 17 major economies ranked India's digital adoption at just 32 out of 100—below Brazil (50), China (47), and far behind leaders like South Korea (75). But India's growth rate told a different story: 90% growth between 2014-2017, second only to Indonesia. India was catching up fast. This chart, with data extracted from the McKinsey report PDF, shows where India stood then—and explains why the transformation documented in this project was both necessary and inevitable.
+</p>
+
+<div class="chart-wrapper">
+  <div id="mckinseyChart"></div>
+</div>
+
+<p style="font-size: 1rem; color: #666; margin-top: 1rem;">
+  <strong>Data extraction:</strong> McKinsey & Company PDF report, page 13. Extracted via 
+  <a href="https://colab.research.google.com/drive/1gATdy9GXodFZ3frY4EcZPblWWhY8wjjd?usp=sharing" target="_blank" style="color: #667eea;">PDF scraping workflow</a>.
+</p>
     </p>
     
     <h2>Smart Cities: The Urban Digital Boom</h2>
@@ -356,6 +366,79 @@
         "font": "Garamond"
       }
     });
+    
+    vegaEmbed('#mckinseyChart', {
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "Digital Adoption: Low Base, High Growth (2017)",
+    "fontSize": 20,
+    "font": "Garamond",
+    "color": "#1a1a1a"
+  },
+  "width": 700,
+  "height": 500,
+  "data": {
+    "url": "https://raw.githubusercontent.com/Saranya-1208/Saranya-1208.github.io/refs/heads/main/project/mckinsey_digital_adoption.csv"
+  },
+  "mark": {
+    "type": "point",
+    "filled": true
+  },
+  "encoding": {
+    "x": {
+      "field": "Digital_Adoption_Index_2017",
+      "type": "quantitative",
+      "title": "Digital Adoption Index (2017)",
+      "scale": {"domain": [25, 80]},
+      "axis": {
+        "grid": true,
+        "gridOpacity": 0.15,
+        "labelFontSize": 12
+      }
+    },
+    "y": {
+      "field": "Growth_2014_2017_%",
+      "type": "quantitative",
+      "title": "Growth Rate 2014-2017 (%)",
+      "scale": {"domain": [20, 105]},
+      "axis": {
+        "grid": true,
+        "gridOpacity": 0.15,
+        "labelFontSize": 12
+      }
+    },
+    "size": {
+      "condition": {
+        "test": "datum.Country == 'India'",
+        "value": 500
+      },
+      "value": 200
+    },
+    "color": {
+      "condition": {
+        "test": "datum.Country == 'India'",
+        "value": "#FF85A2"
+      },
+      "value": "#CCCCCC"
+    },
+    "opacity": {
+      "condition": {
+        "test": "datum.Country == 'India'",
+        "value": 1
+      },
+      "value": 0.6
+    },
+    "tooltip": [
+      {"field": "Country", "type": "nominal", "title": "Country"},
+      {"field": "Digital_Adoption_Index_2017", "type": "quantitative", "title": "Adoption Index (2017)"},
+      {"field": "Growth_2014_2017_%", "type": "quantitative", "title": "Growth Rate (%)"}
+    ]
+  },
+  "config": {
+    "font": "Garamond",
+    "view": {"strokeWidth": 0}
+  }
+});
     
     vegaEmbed('#villageChart', {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
