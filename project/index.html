@@ -370,70 +370,99 @@
     vegaEmbed('#mckinseyChart', {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "title": {
-    "text": "Digital Adoption: Low Base, High Growth (2017)",
+    "text": "Digital Adoption: Where Countries Stand vs How Fast They're Growing",
     "fontSize": 20,
     "font": "Garamond",
-    "color": "#1a1a1a"
+    "color": "#1a1a1a",
+    "subtitle": "McKinsey Digital India Report (2017 data)"
   },
-  "width": 700,
-  "height": 500,
+  "width": 800,
+  "height": 550,
   "data": {
     "url": "https://raw.githubusercontent.com/Saranya-1208/Saranya-1208.github.io/refs/heads/main/project/mckinsey_digital_adoption.csv"
   },
-  "mark": {
-    "type": "point",
-    "filled": true
-  },
-  "encoding": {
-    "x": {
-      "field": "Digital_Adoption_Index_2017",
-      "type": "quantitative",
-      "title": "Digital Adoption Index (2017)",
-      "scale": {"domain": [25, 80]},
-      "axis": {
-        "grid": true,
-        "gridOpacity": 0.15,
-        "labelFontSize": 12
+  "layer": [
+    {
+      "mark": {
+        "type": "point",
+        "filled": true
+      },
+      "encoding": {
+        "x": {
+          "field": "Digital_Adoption_Index_2017",
+          "type": "quantitative",
+          "title": "Digital Adoption Index (2017)",
+          "scale": {"domain": [25, 80]},
+          "axis": {
+            "grid": true,
+            "gridOpacity": 0.15,
+            "labelFontSize": 13,
+            "titleFontSize": 14
+          }
+        },
+        "y": {
+          "field": "Growth_2014_2017_%",
+          "type": "quantitative",
+          "title": "Growth Rate 2014-2017 (%)",
+          "scale": {"domain": [20, 105]},
+          "axis": {
+            "grid": true,
+            "gridOpacity": 0.15,
+            "labelFontSize": 13,
+            "titleFontSize": 14
+          }
+        },
+        "size": {
+          "condition": {
+            "test": "datum.Country == 'India'",
+            "value": 600
+          },
+          "value": 250
+        },
+        "color": {
+          "condition": {
+            "test": "datum.Country == 'India'",
+            "value": "#FF85A2"
+          },
+          "value": "#B4A7D6"
+        },
+        "opacity": {
+          "condition": {
+            "test": "datum.Country == 'India' || datum.Country == 'Indonesia' || datum.Country == 'South Korea' || datum.Country == 'China'",
+            "value": 1
+          },
+          "value": 0.4
+        }
       }
     },
-    "y": {
-      "field": "Growth_2014_2017_%",
-      "type": "quantitative",
-      "title": "Growth Rate 2014-2017 (%)",
-      "scale": {"domain": [20, 105]},
-      "axis": {
-        "grid": true,
-        "gridOpacity": 0.15,
-        "labelFontSize": 12
+    {
+      "mark": {
+        "type": "text",
+        "dy": -12,
+        "fontSize": 12,
+        "font": "Garamond",
+        "fontWeight": "bold"
+      },
+      "encoding": {
+        "x": {"field": "Digital_Adoption_Index_2017", "type": "quantitative"},
+        "y": {"field": "Growth_2014_2017_%", "type": "quantitative"},
+        "text": {
+          "condition": {
+            "test": "datum.Country == 'India' || datum.Country == 'Indonesia' || datum.Country == 'South Korea' || datum.Country == 'China'",
+            "field": "Country"
+          },
+          "value": ""
+        },
+        "color": {
+          "condition": {
+            "test": "datum.Country == 'India'",
+            "value": "#FF85A2"
+          },
+          "value": "#666666"
+        }
       }
-    },
-    "size": {
-      "condition": {
-        "test": "datum.Country == 'India'",
-        "value": 500
-      },
-      "value": 200
-    },
-    "color": {
-      "condition": {
-        "test": "datum.Country == 'India'",
-        "value": "#FF85A2"
-      },
-      "value": "#CCCCCC"
-    },
-    "opacity": {
-      "condition": {
-        "test": "datum.Country == 'India'",
-        "value": 1
-      },
-      "value": 0.6
-    },
-    "tooltip": [
-      {"field": "Country", "type": "nominal", "title": "Country"},
-      {"field": "Digital_Adoption_Index_2017", "type": "quantitative", "title": "Adoption Index (2017)"},
-      {"field": "Growth_2014_2017_%", "type": "quantitative", "title": "Growth Rate (%)"}
-    ]
-  },
+    }
+  ],
   "config": {
     "font": "Garamond",
     "view": {"strokeWidth": 0}
