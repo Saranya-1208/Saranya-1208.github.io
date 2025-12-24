@@ -6,7 +6,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Digital India | Saranya Anand</title>
   
-  <!-- Vega-Lite -->
   <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
   <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
   <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
@@ -214,11 +213,14 @@
       margin: 0 1rem;
     }
     
-    /* Mobile Responsive */
-    @media (max-width: 968px) {
-      .sidebar {
-        display: none;
-      }
+   @media (max-width: 768px) {
+  body {
+    padding: 10px;
+  }
+  h1 {
+    font-size: 2rem;
+  }
+}
       
       .main-content {
         margin-left: 0;
