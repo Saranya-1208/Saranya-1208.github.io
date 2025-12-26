@@ -154,6 +154,23 @@ section > p, .narrative {
   display: inline-block;
   overflow: visible;
 }
+    
+    .chart-wrapper-wide {
+  background: white;
+  padding: 2.5rem;
+  margin: 2.5rem auto;
+  border-radius: 8px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+  text-align: center;
+  max-width: 1000px;
+  overflow: visible;
+}
+
+.chart-wrapper-wide > div {
+  max-width: 100%;
+  display: inline-block;
+  overflow: visible;
+}
 
 .info-box {
   background: #f8f9fa;
@@ -325,9 +342,10 @@ section > p, .narrative {
       In 700 pilot villages across India, the government tested whether digital services could reach the last mile. Over three years (2021-2024), these villages received infrastructure, training, and services that urban India takes for granted. The results show what's possible: 267,532 people received telemedicine consultations, 59,721 enrolled in computer courses, and 76,073 farmers got veterinary support for their livestock. This is proof that the digital divide can be bridged—when resources meet resolve.
     </p>
     
-    <div class="chart-wrapper">
-      <div id="villageChart"></div>
-    </div>
+   <div class="chart-wrapper-wide">
+  <div id="villageChart"></div>
+</div>
+      
 <section id="future">
 <h2>Digital Division: Aadhaar Saturation Across States</h2>
 </section>
@@ -615,7 +633,7 @@ section > p, .narrative {
     "fontSize": 20,
     "font": "Garamond"
   },
-  "width": 600,
+  "width": 700,
   "height": 500,
   "data": {
     "url": "https://raw.githubusercontent.com/Saranya-1208/Saranya-1208.github.io/refs/heads/main/project/Implementation%20Status%20of%20Digital%20Village%20Pilot%202021.csv"
