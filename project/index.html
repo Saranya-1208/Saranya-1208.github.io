@@ -615,11 +615,17 @@ section > p, .narrative {
     "fontSize": 20,
     "font": "Garamond"
   },
-  "width": 500,
+  "width": 600,
   "height": 500,
   "data": {
     "url": "https://raw.githubusercontent.com/Saranya-1208/Saranya-1208.github.io/refs/heads/main/project/Implementation%20Status%20of%20Digital%20Village%20Pilot%202021.csv"
   },
+  "transform": [
+    {
+      "calculate": "length(datum.Services) > 50 ? substring(datum.Services, 0, 47) + '...' : datum.Services",
+      "as": "ShortServices"
+    }
+  ],
   "mark": {
     "type": "circle",
     "size": 250,
@@ -627,12 +633,15 @@ section > p, .narrative {
   },
   "encoding": {
     "y": {
-      "field": "Services",
+      "field": "ShortServices",
       "type": "nominal",
-      "sort": "-x",
+      "sort": {
+        "field": "Achievement (Y1+Y2+Y3)",
+        "order": "descending"
+      },
       "axis": {
-        "labelFontSize": 11,
-        "labelLimit": 280,
+        "labelFontSize": 10,
+        "labelLimit": 220,
         "title": null,
         "grid": false
       }
