@@ -25,7 +25,7 @@
       background-color: #fafafa;
     }
     
-    .hero {
+   .hero {
   background: linear-gradient(135deg, #667eea22 0%, #764ba222 100%);
   min-height: 60vh;
   display: flex;
@@ -33,8 +33,8 @@
   justify-content: center;
   padding: 4rem 2rem;
   text-align: center;
-  margin-left: -3rem; 
-  margin-right: -3rem;
+  margin-left: -4rem; 
+  margin-right: -50px; 
   margin-top: -3rem;
 }
     
@@ -95,31 +95,33 @@
   border-radius: 4px;
 }
     
-  .main-content {
+ .main-content {
   margin-left: 280px;
-  margin-right: auto;
+  margin-right: 50px; 
   padding: 3rem 4rem;
-  max-width: calc(1200px + 250px); 
-  width: 100%;
+  max-width: 1300px; 
+  width: auto; 
 }
 
 section {
   margin-bottom: 6rem;
   scroll-margin-top: 2rem;
-  max-width: 900px; 
+  max-width: 850px; 
   margin-left: auto;
   margin-right: auto;
 }
 
-section h2 {
-  font-size: 2.5rem;
-  font-weight: 500;
-  color: #1a1a1a;
-  margin-bottom: 2rem;
-  padding-bottom: 0.75rem;
-  border-bottom: 3px solid #667eea;
+section > p, .narrative {
+  max-width: 850px; 
+  font-size: 1.2rem;
+  line-height: 1.9;
+  color: #3a3a3a;
+  margin-bottom: 2.5rem;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: justify; 
 }
-
+    
 section h3 {
   font-size: 1.8rem;
   font-weight: 500;
@@ -139,21 +141,21 @@ section h3 {
 
 .chart-wrapper {
   background: white;
-  padding: 2rem;  
+  padding: 2rem;
   margin: 2.5rem auto;
   border-radius: 8px;
   box-shadow: 0 2px 12px rgba(0,0,0,0.08);
   text-align: center;
-  max-width: 800px; 
-  overflow: hidden; 
+  max-width: 850px; /* Slightly wider to accommodate legends */
+  overflow: visible; /* CHANGED from hidden - allows legends to show */
 }
 
 .chart-wrapper > div {
   max-width: 100%;
-  overflow-x: visible; /* Remove this line if it exists */
   display: inline-block;
+  overflow: visible; /* Ensure inner div also doesn't clip */
 }
-    
+
     .chart-full {
       max-width: 100%;
     }
