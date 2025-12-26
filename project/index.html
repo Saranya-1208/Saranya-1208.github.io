@@ -613,7 +613,8 @@ section > p, .narrative {
   "title": {
     "text": "Digital Village Services: 700 Villages, 3 Years",
     "fontSize": 20,
-    "font": "Garamond"
+    "font": "Garamond",
+    "subtitle": "Note: Logarithmic scale to show all services"
   },
   "width": 650,
   "height": 500,
@@ -638,11 +639,17 @@ section > p, .narrative {
     "x": {
       "field": "Achievement (Y1+Y2+Y3)",
       "type": "quantitative",
-      "title": "People Reached",
+      "title": "People Reached (log scale)",
+      "scale": {
+        "type": "log",
+        "domain": [100, 600000]
+      },
       "axis": {
-        "format": ",",
+        "format": "~s",
         "labelFontSize": 11,
-        "titleFontSize": 13
+        "titleFontSize": 13,
+        "grid": true,
+        "gridOpacity": 0.2
       }
     },
     "color": {
