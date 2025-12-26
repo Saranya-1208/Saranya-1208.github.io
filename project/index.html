@@ -25,18 +25,18 @@
       background-color: #fafafa;
     }
     
-   .hero {
-  background: linear-gradient(135deg, #667eea22 0%, #764ba222 100%);
-  min-height: 60vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 4rem 2rem;
-  text-align: center;
-  margin-left: -4rem; 
-  margin-right: -50px; 
-  margin-top: -3rem;
-}
+    .hero {
+      background: linear-gradient(135deg, #667eea22 0%, #764ba222 100%);
+      min-height: 60vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 4rem 2rem;
+      text-align: center;
+      margin-left: -4rem; 
+      margin-right: -50px; 
+      margin-top: -3rem;
+    }
     
     .hero h1 {
       font-size: 3.5rem;
@@ -56,125 +56,111 @@
     }
     
     .sidebar {
-  position: fixed;
-  left: 0;
-  top: 20%;
-  width: 220px;
-  padding: 2rem 1.5rem;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); 
-  box-shadow: 2px 0 10px rgba(0,0,0,0.1);
-  z-index: 100;
-  border-radius: 0 8px 8px 0; 
-}
+      position: fixed;
+      left: 0;
+      top: 20%;
+      width: 220px;
+      padding: 2rem 1.5rem;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); 
+      box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+      z-index: 100;
+      border-radius: 0 8px 8px 0; 
+    }
 
-.sidebar h3 {
-  font-size: 1rem;
-  color: rgba(255,255,255,0.8); 
-  margin-bottom: 1rem;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-}
+    .sidebar h3 {
+      font-size: 1rem;
+      color: rgba(255,255,255,0.8); 
+      margin-bottom: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
 
-.sidebar nav a {
-  display: block;
-  color: rgba(255,255,255,0.9); 
-  text-decoration: none;
-  padding: 0.5rem 0;
-  font-size: 1.05rem;
-  transition: all 0.3s;
-  border-left: 3px solid transparent;
-  padding-left: 1rem;
-}
+    .sidebar nav a {
+      display: block;
+      color: rgba(255,255,255,0.9); 
+      text-decoration: none;
+      padding: 0.5rem 0;
+      font-size: 1.05rem;
+      transition: all 0.3s;
+      border-left: 3px solid transparent;
+      padding-left: 1rem;
+    }
 
-.sidebar nav a:hover,
-.sidebar nav a.active {
-  color: #ffffff;
-  border-left-color: #ffffff;
-  padding-left: 1.2rem;
-  background: rgba(255,255,255,0.1); 
-  border-radius: 4px;
-}
-    
- .main-content {
-  margin-left: 280px;
-  margin-right: 50px; 
-  padding: 3rem 4rem;
-  max-width: 1300px; 
-  width: auto; 
-}
-
-section {
-  margin-bottom: 6rem;
-  scroll-margin-top: 2rem;
-  max-width: 850px; 
-  margin-left: auto;
-  margin-right: auto;
-}
-
-section > p, .narrative {
-  max-width: 850px; 
-  font-size: 1.2rem;
-  line-height: 1.9;
-  color: #3a3a3a;
-  margin-bottom: 2.5rem;
-  margin-left: auto;
-  margin-right: auto;
-  text-align: justify; 
-}
-    
-section h3 {
-  font-size: 1.8rem;
-  font-weight: 500;
-  color: #333;
-  margin: 3rem 0 1rem 0;
-}
-
-.narrative, section > p {
-  max-width: 900px;
-  font-size: 1.2rem;
-  line-height: 1.9;
-  color: #3a3a3a;
-  margin-bottom: 2.5rem;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.chart-wrapper {
-  background: white;
-  padding: 2rem;
-  margin: 2.5rem auto;
-  border-radius: 8px;
-  box-shadow: 0 2px 12px rgba(0,0,0,0.08);
-  text-align: center;
-  max-width: 850px; /* Slightly wider to accommodate legends */
-  overflow: visible; /* CHANGED from hidden - allows legends to show */
-}
-
-.chart-wrapper > div {
-  max-width: 100%;
-  display: inline-block;
-  overflow: visible; /* Ensure inner div also doesn't clip */
-}
-
-    .chart-full {
-      max-width: 100%;
+    .sidebar nav a:hover,
+    .sidebar nav a.active {
+      color: #ffffff;
+      border-left-color: #ffffff;
+      padding-left: 1.2rem;
+      background: rgba(255,255,255,0.1); 
+      border-radius: 4px;
     }
     
-    .chart-large {
-      max-width: 900px;
+    .main-content {
+      margin-left: 280px;
+      margin-right: 50px; 
+      padding: 3rem 4rem;
+      max-width: 1300px; 
+      width: auto; 
+    }
+
+    section {
+      margin-bottom: 6rem;
+      scroll-margin-top: 2rem;
+      max-width: 850px; 
       margin-left: auto;
       margin-right: auto;
     }
-    
-    .chart-medium {
-      max-width: 800px;
+
+    section h2 {
+      font-size: 2.5rem;
+      font-weight: 500;
+      color: #1a1a1a;
+      margin-bottom: 2rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 3px solid #667eea;
+    }
+
+    section h3 {
+      font-size: 1.8rem;
+      font-weight: 500;
+      color: #333;
+      margin: 3rem 0 1rem 0;
+    }
+
+    section > p, .narrative {
+      max-width: 850px; 
+      font-size: 1.2rem;
+      line-height: 1.9;
+      color: #3a3a3a;
+      margin-bottom: 2.5rem;
+      margin-left: auto;
+      margin-right: auto;
+      text-align: justify; 
+    }
+
+    .chart-wrapper {
+      background: white;
+      padding: 2rem;
+      margin: 2.5rem auto;
+      border-radius: 8px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+      text-align: center;
+      max-width: 850px;
+      overflow: visible;
+    }
+
+    .chart-wrapper > div {
+      max-width: 100%;
+      display: inline-block;
+      overflow: visible;
     }
     
     .info-box {
       background: #f8f9fa;
       border-left: 4px solid #667eea;
       padding: 1.5rem 2rem;
-      margin: 2rem 0;
+      margin: 2rem auto;
+      max-width: 850px;
       border-radius: 4px;
     }
     
@@ -188,14 +174,6 @@ section h3 {
       font-size: 1.05rem;
       line-height: 1.7;
       margin-bottom: 0.5rem;
-    }
-    
-    .info-box code {
-      background: white;
-      padding: 0.2rem 0.5rem;
-      border-radius: 3px;
-      font-family: 'Courier New', monospace;
-      font-size: 0.9rem;
     }
     
     .info-box a {
@@ -225,17 +203,14 @@ section h3 {
       margin: 0 1rem;
     }
     
-   @media (max-width: 768px) {
-  body {
-    padding: 5px;
-  }
-  h1 {
-    font-size: 2rem;
-  }
-}
+    @media (max-width: 768px) {
+      .sidebar {
+        display: none;
+      }
       
       .main-content {
         margin-left: 0;
+        margin-right: 0;
         padding: 2rem 1.5rem;
       }
       
@@ -247,7 +222,7 @@ section h3 {
         font-size: 1.2rem;
       }
     }
-  </style>
+</style>
 </head>
 <body>
   
