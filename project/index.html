@@ -620,31 +620,30 @@ section > p, .narrative {
   "data": {
     "url": "https://raw.githubusercontent.com/Saranya-1208/Saranya-1208.github.io/refs/heads/main/project/Implementation%20Status%20of%20Digital%20Village%20Pilot%202021.csv"
   },
-  "transform": [
-    {
-      "window": [{"op": "sum", "field": "Achievement (Y1+Y2+Y3)", "as": "total"}]
-    },
-    {
-      "calculate": "datum['Achievement (Y1+Y2+Y3)'] / datum.total",
-      "as": "percentage"
-    }
-  ],
   "mark": {
-    "type": "rect",
-    "stroke": "white",
-    "strokeWidth": 2
+    "type": "bar",
+    "cornerRadiusEnd": 4
   },
   "encoding": {
-    "x": {
+    "y": {
       "field": "Services",
       "type": "nominal",
-      "axis": null
+      "sort": "-x",
+      "axis": {
+        "labelFontSize": 11,
+        "labelLimit": 250,
+        "title": null
+      }
     },
-    "y": {
-      "field": "percentage",
+    "x": {
+      "field": "Achievement (Y1+Y2+Y3)",
       "type": "quantitative",
-      "stack": true,
-      "axis": null
+      "title": "People Reached",
+      "axis": {
+        "format": ",",
+        "labelFontSize": 11,
+        "titleFontSize": 13
+      }
     },
     "color": {
       "field": "Service Categories",
@@ -655,15 +654,9 @@ section > p, .narrative {
       },
       "legend": {
         "title": "Category",
-        "orient": "right",
-        "labelFontSize": 12,
-        "titleFontSize": 13
+        "orient": "top-right",
+        "labelFontSize": 11
       }
-    },
-    "size": {
-      "field": "Achievement (Y1+Y2+Y3)",
-      "type": "quantitative",
-      "legend": null
     },
     "tooltip": [
       {"field": "Services", "type": "nominal", "title": "Service"},
