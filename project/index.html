@@ -608,13 +608,12 @@ section > p, .narrative {
   }
 });
     
-    vegaEmbed('#villageChart', {
+   vegaEmbed('#villageChart', {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "title": {
     "text": "Digital Village Services: 700 Villages, 3 Years",
     "fontSize": 20,
-    "font": "Garamond",
-    "subtitle": "Note: Logarithmic scale to show all services"
+    "font": "Garamond"
   },
   "width": 650,
   "height": 500,
@@ -622,8 +621,8 @@ section > p, .narrative {
     "url": "https://raw.githubusercontent.com/Saranya-1208/Saranya-1208.github.io/refs/heads/main/project/Implementation%20Status%20of%20Digital%20Village%20Pilot%202021.csv"
   },
   "mark": {
-    "type": "bar",
-    "cornerRadiusEnd": 4
+    "type": "circle",
+    "size": 200
   },
   "encoding": {
     "y": {
@@ -639,13 +638,12 @@ section > p, .narrative {
     "x": {
       "field": "Achievement (Y1+Y2+Y3)",
       "type": "quantitative",
-      "title": "People Reached (log scale)",
+      "title": "People Reached",
       "scale": {
-        "type": "log",
-        "domain": [100, 600000]
+        "type": "log"
       },
       "axis": {
-        "format": "~s",
+        "format": ",",
         "labelFontSize": 11,
         "titleFontSize": 13,
         "grid": true,
