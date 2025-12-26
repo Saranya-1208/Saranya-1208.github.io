@@ -615,14 +615,15 @@ section > p, .narrative {
     "fontSize": 20,
     "font": "Garamond"
   },
-  "width": 650,
+  "width": 600,
   "height": 500,
   "data": {
     "url": "https://raw.githubusercontent.com/Saranya-1208/Saranya-1208.github.io/refs/heads/main/project/Implementation%20Status%20of%20Digital%20Village%20Pilot%202021.csv"
   },
   "mark": {
     "type": "circle",
-    "size": 200
+    "size": 250,
+    "opacity": 0.8
   },
   "encoding": {
     "y": {
@@ -631,8 +632,9 @@ section > p, .narrative {
       "sort": "-x",
       "axis": {
         "labelFontSize": 11,
-        "labelLimit": 250,
-        "title": null
+        "labelLimit": 280,
+        "title": null,
+        "grid": false
       }
     },
     "x": {
@@ -640,14 +642,15 @@ section > p, .narrative {
       "type": "quantitative",
       "title": "People Reached",
       "scale": {
-        "type": "log"
+        "type": "log",
+        "domain": [500, 600000]
       },
       "axis": {
-        "format": ",",
+        "values": [1000, 10000, 100000, 500000],
+        "format": "~s",
         "labelFontSize": 11,
         "titleFontSize": 13,
-        "grid": true,
-        "gridOpacity": 0.2
+        "grid": false
       }
     },
     "color": {
@@ -659,8 +662,11 @@ section > p, .narrative {
       },
       "legend": {
         "title": "Category",
-        "orient": "top-right",
-        "labelFontSize": 11
+        "orient": "bottom",
+        "direction": "horizontal",
+        "labelFontSize": 11,
+        "titleFontSize": 12,
+        "labelLimit": 200
       }
     },
     "tooltip": [
@@ -671,7 +677,14 @@ section > p, .narrative {
   },
   "config": {
     "font": "Garamond",
-    "view": {"strokeWidth": 0}
+    "view": {
+      "strokeWidth": 0,
+      "stroke": null
+    },
+    "axis": {
+      "domainColor": "#ddd",
+      "tickColor": "#ddd"
+    }
   }
 });
     
