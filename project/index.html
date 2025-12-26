@@ -714,6 +714,93 @@ section > p, .narrative {
     }
   }
 });
+
+    vegaEmbed('#upiMap', {
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "The UPI Divide: Select Metric to Explore",
+    "fontSize": 20,
+    "font": "Garamond",
+    "color": "#1a1a1a"
+  },
+  "width": 500,
+  "height": 600,
+  "params": [
+    {
+      "name": "metric",
+      "value": "Per_Capita_Monthly",
+      "bind": {
+        "input": "select",
+        "options": [
+          "Per_Capita_Monthly",
+          "Volume_Mn",
+          "Population_Mn"
+        ],
+        "labels": [
+          "Transactions Per Person (Monthly)",
+          "Total Transaction Volume (Millions)",
+          "Population (Millions)"
+        ],
+        "name": "Select Metric: "
+      }
+    }
+  ],
+  "data": {
+    "url": "https://raw.githubusercontent.com/Subhash9325/GeoJson-Data-of-Indian-States/refs/heads/master/Indian_States",
+    "format": {"type": "json", "property": "features"}
+  },
+  "transform": [
+    {
+      "lookup": "properties.NAME_1",
+      "from": {
+        "data": {
+          "url": "https://raw.githubusercontent.com/Saranya-1208/Saranya-1208.github.io/refs/heads/main/project/Statewise_UPI%20transaction_per%20capita_Map.csv"
+        },
+        "key": "State",
+        "fields": ["Per_Capita_Monthly", "Volume_Mn", "Population_Mn"]
+      }
+    },
+    {
+      "calculate": "metric == 'Per_Capita_Monthly' ? datum.Per_Capita_Monthly : metric == 'Volume_Mn' ? datum.Volume_Mn : datum.Population_Mn",
+      "as": "SelectedValue"
+    }
+  ],
+  "projection": {"type": "mercator"},
+  "mark": {
+    "type": "geoshape",
+    "stroke": "white",
+    "strokeWidth": 1.5
+  },
+  "encoding": {
+    "color": {
+      "field": "SelectedValue",
+      "type": "quantitative",
+      "scale": {
+        "range": ["#A8E6CF", "#FFD3B6", "#FFAAA5", "#FF8B94"]
+      },
+      "legend": {
+        "title": "Value",
+        "orient": "bottom",
+        "direction": "horizontal",
+        "labelFontSize": 11,
+        "titleFontSize": 12,
+        "gradientLength": 400,
+        "gradientThickness": 15,
+        "format": ".1f"
+      }
+    },
+    "tooltip": [
+      {"field": "properties.NAME_1", "type": "nominal", "title": "State"},
+      {"field": "Per_Capita_Monthly", "type": "quantitative", "title": "Txns/Person/Month"},
+      {"field": "Volume_Mn", "type": "quantitative", "format": ",.1f", "title": "Total Volume (M)"},
+      {"field": "Population_Mn", "type": "quantitative", "format": ".1f", "title": "Population (M)"}
+    ]
+  },
+  "config": {
+    "font": "Garamond",
+    "view": {"strokeWidth": 0}
+  }
+});
     
     vegaEmbed('#aadhaarSaturationChart',
     {
