@@ -611,115 +611,64 @@ section > p, .narrative {
     vegaEmbed('#villageChart', {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "title": {
-    "text": "Digital Village Services",
-    "fontSize": 18,
+    "text": "Digital Village Services: 700 Villages, 3 Years",
+    "fontSize": 20,
     "font": "Garamond"
   },
-  "width": 400,
-  "height": 450,
+  "width": 650,
+  "height": 500,
   "data": {
     "url": "https://raw.githubusercontent.com/Saranya-1208/Saranya-1208.github.io/refs/heads/main/project/Implementation%20Status%20of%20Digital%20Village%20Pilot%202021.csv"
   },
-  "mark": "bar",
+  "transform": [
+    {
+      "window": [{"op": "sum", "field": "Achievement (Y1+Y2+Y3)", "as": "total"}]
+    },
+    {
+      "calculate": "datum['Achievement (Y1+Y2+Y3)'] / datum.total",
+      "as": "percentage"
+    }
+  ],
+  "mark": {
+    "type": "rect",
+    "stroke": "white",
+    "strokeWidth": 2
+  },
   "encoding": {
-    "y": {
+    "x": {
       "field": "Services",
       "type": "nominal",
-      "sort": "-x"
+      "axis": null
     },
-    "x": {
-      "field": "Achievement (Y1+Y2+Y3)",
-      "type": "quantitative"
+    "y": {
+      "field": "percentage",
+      "type": "quantitative",
+      "stack": true,
+      "axis": null
     },
     "color": {
       "field": "Service Categories",
-      "type": "nominal"
-    },
-    "tooltip": [
-      {"field": "Services"},
-      {"field": "Achievement (Y1+Y2+Y3)", "format": ","}
-    ]
-  }
-});
-    vegaEmbed('#upiMap', {
-  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "title": {
-    "text": "The UPI Divide: Select Metric to Explore",
-    "fontSize": 20,
-    "font": "Garamond",
-    "color": "#1a1a1a"
-  },
-  "width": 500,
-  "height": 600,
-  "params": [
-    {
-      "name": "metric",
-      "value": "Per_Capita_Monthly",
-      "bind": {
-        "input": "select",
-        "options": [
-          "Per_Capita_Monthly",
-          "Volume_Mn",
-          "Population_Mn"
-        ],
-        "labels": [
-          "Transactions Per Person (Monthly)",
-          "Total Transaction Volume (Millions)",
-          "Population (Millions)"
-        ],
-        "name": "Select Metric: "
-      }
-    }
-  ],
-  "data": {
-    "url": "https://raw.githubusercontent.com/Subhash9325/GeoJson-Data-of-Indian-States/refs/heads/master/Indian_States",
-    "format": {"type": "json", "property": "features"}
-  },
-  "transform": [
-    {
-      "lookup": "properties.NAME_1",
-      "from": {
-        "data": {
-          "url": "https://raw.githubusercontent.com/Saranya-1208/Saranya-1208.github.io/refs/heads/main/project/Statewise_UPI%20transaction_per%20capita_Map.csv"
-        },
-        "key": "State",
-        "fields": ["Per_Capita_Monthly", "Volume_Mn", "Population_Mn"]
-      }
-    },
-    {
-      "calculate": "metric == 'Per_Capita_Monthly' ? datum.Per_Capita_Monthly : metric == 'Volume_Mn' ? datum.Volume_Mn : datum.Population_Mn",
-      "as": "SelectedValue"
-    }
-  ],
-  "projection": {"type": "mercator"},
-  "mark": {
-    "type": "geoshape",
-    "stroke": "white",
-    "strokeWidth": 1.5
-  },
-  "encoding": {
-    "color": {
-      "field": "SelectedValue",
-      "type": "quantitative",
+      "type": "nominal",
       "scale": {
-        "range": ["#A8E6CF", "#FFD3B6", "#FFAAA5", "#FF8B94"]
+        "domain": ["Digital Village- Infrastructure and Services", "Education", "Health", "Skill"],
+        "range": ["#667eea", "#FF85A2", "#74B3CE", "#FFB6B9"]
       },
       "legend": {
-        "title": "Value",
-        "orient": "bottom",
-        "direction": "horizontal",
-        "labelFontSize": 11,
-        "titleFontSize": 12,
-        "gradientLength": 400,
-        "gradientThickness": 15,
-        "format": ".1f"
+        "title": "Category",
+        "orient": "right",
+        "labelFontSize": 12,
+        "titleFontSize": 13
       }
     },
+    "size": {
+      "field": "Achievement (Y1+Y2+Y3)",
+      "type": "quantitative",
+      "legend": null
+    },
     "tooltip": [
-      {"field": "properties.NAME_1", "type": "nominal", "title": "State"},
-      {"field": "Per_Capita_Monthly", "type": "quantitative", "title": "Txns/Person/Month"},
-      {"field": "Volume_Mn", "type": "quantitative", "format": ",.1f", "title": "Total Volume (M)"},
-      {"field": "Population_Mn", "type": "quantitative", "format": ".1f", "title": "Population (M)"}
+      {"field": "Services", "type": "nominal", "title": "Service"},
+      {"field": "Achievement (Y1+Y2+Y3)", "type": "quantitative", "format": ",", "title": "People Reached"},
+      {"field": "Service Categories", "type": "nominal", "title": "Category"}
     ]
   },
   "config": {
@@ -932,7 +881,7 @@ section > p, .narrative {
     "font": "Garamond",
     "color": "#1a1a1a"
   },
-  "width": 600,
+  "width": 550,
   "height": 350,
   "data": {
     "url": "https://raw.githubusercontent.com/Saranya-1208/Saranya-1208.github.io/refs/heads/main/project/upi_time_heatmap.csv"
