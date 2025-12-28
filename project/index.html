@@ -376,23 +376,18 @@ Any evaluation of India’s digital transformation must begin with scale and spe
   <div id="villageChart"></div>
 </div>
       
-<section id="future">
-<h2>Digital Division: Aadhaar Saturation Across States</h2>
+<<section id="gap">
+  <h2>The Identity-Payment Gap</h2>
+  <p>
+    Having digital identity doesn't automatically mean using digital payments. This chart reveals the disconnect: states with high Aadhaar saturation (like Uttar Pradesh at 87.6%) still have low UPI adoption (12 transactions per person). The gap represents millions with the infrastructure to pay digitally—but who don't.
+  </p>
 </section>
-<p>
-  Aadhaar, India’s digital identity system, forms the foundational layer of the country’s digital public infrastructure. By 2019, enrolment had reached near-universal levels nationally, but aggregate figures conceal significant variation across states and union territories.
-</p>
-<p>
-  State-level Aadhaar saturation rates, defined as the number of Aadhaar IDs issued relative to projected population highlight uneven patterns of coverage. Several regions report saturation levels exceeding 100 per cent, reflecting population mobility, enrolment duplication, and uncertainty in population projections. At the same time, a number of states continue to exhibit substantially lower coverage, pointing to persistent gaps in last-mile inclusion.
-</p>
-<p>
-  This variation matters because digital identity is a prerequisite for accessing downstream services such as bank accounts, digital payments, and direct benefit transfers. Uneven Aadhaar saturation therefore translates into unequal access to the broader benefits of India’s digital transformation.
-</p>
 
-<div class="chart-wrapper">
-  <div id="aadhaarSaturationChart"></div>
+<div class="chart-wrapper-wide">
+  <div id="digitalGapChart"></div>
 </div>
-    <section id="future">
+  
+  <section id="future">
      <h2>The Future: The 5G Frontier</h2>
     </section>
 <p>
@@ -832,49 +827,117 @@ Any evaluation of India’s digital transformation must begin with scale and spe
   }
 });
     
-    vegaEmbed('#aadhaarSaturationChart',
-    {
+    vegaEmbed('#digitalGapChart', {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "description": "Aadhaar saturation across Indian states in 2019.",
+  "title": {
+    "text": "The Digital Identity-Payment Gap Across Indian States",
+    "fontSize": 22,
+    "font": "Garamond",
+    "subtitle": "Aadhaar Saturation vs UPI Adoption: Who Has Identity But Isn't Paying Digitally?"
+  },
+  "width": 700,
+  "height": 500,
   "data": {
     "values": [
-      {"state": "Delhi", "saturation": 118},
-      {"state": "Haryana", "saturation": 104.4},
-      {"state": "Kerala", "saturation": 103.1},
-      {"state": "Himachal Pradesh", "saturation": 102.6},
-      {"state": "Punjab", "saturation": 101.8},
-      {"state": "Goa", "saturation": 101.6},
-      {"state": "Telangana", "saturation": 101},
-      {"state": "Uttarakhand", "saturation": 99.7},
-      {"state": "Chandigarh", "saturation": 99.2},
-      {"state": "Lakshadweep", "saturation": 97.7},
-      {"state": "Gujarat", "saturation": 96},
-      {"state": "Tamil Nadu", "saturation": 93.9},
-      {"state": "Maharashtra", "saturation": 93.8},
-      {"state": "Uttar Pradesh", "saturation": 87.6},
-      {"state": "Bihar", "saturation": 84.3},
-      {"state": "Meghalaya", "saturation": 29.9}
+      {"state": "Delhi", "aadhaar": 118, "upi": 37, "population": 16.8},
+      {"state": "Haryana", "aadhaar": 104.4, "upi": 25, "population": 25.4},
+      {"state": "Kerala", "aadhaar": 103.1, "upi": 22, "population": 33.4},
+      {"state": "Punjab", "aadhaar": 101.8, "upi": 20, "population": 27.7},
+      {"state": "Goa", "aadhaar": 101.6, "upi": 28, "population": 1.5},
+      {"state": "Telangana", "aadhaar": 101, "upi": 26, "population": 35.2},
+      {"state": "Gujarat", "aadhaar": 96, "upi": 24, "population": 60.4},
+      {"state": "Tamil Nadu", "aadhaar": 93.9, "upi": 21, "population": 72.1},
+      {"state": "Maharashtra", "aadhaar": 93.8, "upi": 27, "population": 112.4},
+      {"state": "Uttar Pradesh", "aadhaar": 87.6, "upi": 12, "population": 199.8},
+      {"state": "Bihar", "aadhaar": 84.3, "upi": 5, "population": 104.1},
+      {"state": "Meghalaya", "aadhaar": 29.9, "upi": 8, "population": 3.0}
     ]
   },
-  "mark": "bar",
-  "encoding": {
-    "y": {
-      "field": "state",
-      "type": "nominal",
-      "sort": "-x",
-      "title": "State / Union Territory"
+  "layer": [
+    {
+      "mark": {
+        "type": "line",
+        "strokeWidth": 1.5,
+        "opacity": 0.3,
+        "color": "#ccc"
+      },
+      "encoding": {
+        "x": {"field": "aadhaar", "type": "quantitative"},
+        "y": {"field": "upi", "type": "quantitative"},
+        "detail": {"field": "state"}
+      }
     },
-    "x": {
-      "field": "saturation",
-      "type": "quantitative",
-      "title": "Aadhaar saturation (%)"
+    {
+      "mark": {
+        "type": "circle",
+        "opacity": 0.8,
+        "stroke": "white",
+        "strokeWidth": 2
+      },
+      "encoding": {
+        "x": {
+          "field": "aadhaar",
+          "type": "quantitative",
+          "title": "Aadhaar Saturation (%)",
+          "scale": {"domain": [20, 125]},
+          "axis": {"grid": true, "gridOpacity": 0.2}
+        },
+        "y": {
+          "field": "upi",
+          "type": "quantitative",
+          "title": "UPI Transactions Per Person (Monthly)",
+          "scale": {"domain": [0, 40]},
+          "axis": {"grid": true, "gridOpacity": 0.2}
+        },
+        "size": {
+          "field": "population",
+          "type": "quantitative",
+          "scale": {"range": [200, 3000]},
+          "legend": {
+            "title": "Population (Millions)",
+            "orient": "right"
+          }
+        },
+        "color": {
+          "field": "aadhaar",
+          "type": "quantitative",
+          "scale": {
+            "scheme": "purples"
+          },
+          "legend": null
+        },
+        "tooltip": [
+          {"field": "state", "type": "nominal", "title": "State"},
+          {"field": "aadhaar", "type": "quantitative", "title": "Aadhaar Saturation (%)"},
+          {"field": "upi", "type": "quantitative", "title": "UPI Per Capita"},
+          {"field": "population", "type": "quantitative", "title": "Population (M)"}
+        ]
+      }
     },
-    "tooltip": [
-      {"field": "state", "type": "nominal"},
-      {"field": "saturation", "type": "quantitative", "title": "Saturation (%)"}
-    ]
+    {
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "dx": 12,
+        "dy": -8,
+        "fontSize": 11,
+        "font": "Garamond",
+        "fontWeight": "bold"
+      },
+      "encoding": {
+        "x": {"field": "aadhaar", "type": "quantitative"},
+        "y": {"field": "upi", "type": "quantitative"},
+        "text": {"field": "state"},
+        "color": {"value": "#333"}
+      }
+    }
+  ],
+  "config": {
+    "font": "Garamond",
+    "view": {"strokeWidth": 0}
   }
 });
+    
     vegaEmbed('#upiExplosion', {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "title": {
