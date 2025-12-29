@@ -378,18 +378,31 @@ Any evaluation of India’s digital transformation must begin with scale and spe
 </div>
       
 <section id="aadhaar">
-<h2>Digital Identity: Aadhaar's Geographic Reality</h2>
+  <h2>Digital Identity: Aadhaar's Geographic Reality</h2>
+  <p>
+    Aadhaar, India's digital identity system, forms the foundational layer of the country's digital public infrastructure. By 2025, over 1.3 billion Indians had enrolled, making it the world's largest biometric database. But enrollment data reveals profound geographic patterns in how this infrastructure reached the population.
+  </p>
+  <p>
+    This map shows enrollment activity across 5,000 pincodes nationwide during March 2025. Each bubble represents a pincode's enrollment density, sized by total registrations and colored by the dominant age group enrolled. The patterns reveal enrollment concentrated in urban centers and along major corridors, with enrollment intensity varying dramatically between metropolitan clusters and rural peripheries.
+  </p>
 </section>
-<p>
-  Aadhaar, India's digital identity system, forms the foundational layer of the country's digital public infrastructure. By 2025, over 1.3 billion Indians had enrolled, making it the world's largest biometric database. But enrollment data reveals profound geographic patterns in how this infrastructure reached the population.
-</p>
-
-<p>
-  This map shows enrollment activity across 5,000 pincodes nationwide during March 2025. Each bubble represents a pincode's enrollment density, sized by total registrations and colored by the dominant age group enrolled. The patterns reveal enrollment concentrated in urban centers and along major corridors, with enrollment intensity varying dramatically between metropolitan clusters and rural peripheries.
-</p>
 
 <div class="chart-wrapper-wide">
   <div id="aadhaarBubbleMap"></div>
+</div>
+
+<p style="font-size: 1rem; color: #666; margin-top: 1.5rem;">
+  <strong>Data source:</strong> Aadhaar enrollment records, March 2025. Pincode-level aggregation across 37 states and union territories. Complete data processing workflow: 
+  <a href="https://colab.research.google.com/drive/1NGX3234tj8Io1uvPtOEYybf3NSRTeCBl?usp=sharing" target="_blank" style="color: #667eea;">Google Colab notebook →</a>
+</p>
+
+<h3 style="font-size: 1.8rem; margin-top: 3rem;">State-Level Patterns</h3>
+<p>
+  While the pincode map shows geographic density, state-level saturation rates reveal a different dimension of inequality. Several regions report saturation exceeding 100%, reflecting population mobility and enrollment duplication, while others exhibit substantially lower coverage pointing to persistent gaps in last-mile inclusion.
+</p>
+
+<div class="chart-wrapper">
+  <div id="aadhaarSaturationChart"></div>
 </div>
 
 <p style="font-size: 1rem; color: #666; margin-top: 1.5rem;">
