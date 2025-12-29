@@ -377,19 +377,35 @@ Any evaluation of India’s digital transformation must begin with scale and spe
   <div id="villageChart"></div>
 </div>
       
-<section id="aadhaar-map">
-  <h2>Aadhaar's Geographic Reach: Enrollment Hotspots</h2>
-  <p>
-    Beyond state-level statistics lies a more granular reality: pincode-by-pincode enrollment patterns reveal where India's digital identity system has reached—and where gaps persist. Each bubble on this map represents a pincode's enrollment activity, sized by total registrations and colored by the dominant age group enrolled.
-  </p>
-  <p>
-    The map shows enrollment concentrated in major urban centers and along transportation corridors, while rural hinterlands show sparser coverage. The color patterns reveal that adult enrollment (18+) dominates in most pincodes, but certain regions show higher child and adolescent registration, often correlating with government enrollment drives in specific districts.
-  </p>
+<section id="aadhaar">
+<h2>Digital Identity: Aadhaar's Geographic Reality</h2>
 </section>
+<p>
+  Aadhaar, India's digital identity system, forms the foundational layer of the country's digital public infrastructure. By 2025, over 1.3 billion Indians had enrolled, making it the world's largest biometric database. But enrollment data reveals profound geographic patterns in how this infrastructure reached the population.
+</p>
+
+<p>
+  This map shows enrollment activity across 5,000 pincodes nationwide during March 2025. Each bubble represents a pincode's enrollment density, sized by total registrations and colored by the dominant age group enrolled. The patterns reveal enrollment concentrated in urban centers and along major corridors, with enrollment intensity varying dramatically between metropolitan clusters and rural peripheries.
+</p>
 
 <div class="chart-wrapper-wide">
   <div id="aadhaarBubbleMap"></div>
 </div>
+
+<p style="font-size: 1rem; color: #666; margin-top: 1.5rem;">
+  <strong>Data source:</strong> Aadhaar enrollment records, March 2025. Pincode-level aggregation across 37 states and union territories. Complete data processing workflow: 
+  <a href="https://colab.research.google.com/drive/1NGX3234tj8Io1uvPtOEYybf3NSRTeCBl?usp=sharing" target="_blank" style="color: #667eea;">Google Colab notebook →</a>
+</p>
+
+<h3 style="font-size: 1.8rem; margin-top: 3rem;">State-Level Patterns</h3>
+<p>
+  While the pincode map shows geographic density, state-level saturation rates reveal a different dimension of inequality. Several regions report saturation exceeding 100%, reflecting population mobility and enrollment duplication, while others exhibit substantially lower coverage pointing to persistent gaps in last-mile inclusion.
+</p>
+
+<div class="chart-wrapper">
+  <div id="aadhaarSaturationChart"></div>
+</div>
+
   
   <section id="future">
      <h2>The Future: The 5G Frontier</h2>
@@ -831,23 +847,31 @@ Any evaluation of India’s digital transformation must begin with scale and spe
   }
 });
     
-   vegaEmbed('#aadhaarBubbleMap', {
+  vegaEmbed('#aadhaarBubbleMap', {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "title": {
-    "text": "Aadhaar Enrollment Across India: Pincode-Level Coverage",
+    "text": "Aadhaar Enrollment: 5,000 Pincodes Across India",
     "fontSize": 22,
     "font": "Garamond",
-    "subtitle": "Each bubble = one pincode | Size = Total enrollment | Color = Dominant age group"
+    "subtitle": "Bubble size = Enrollment | Color = Dominant age group | March 2025"
   },
-  "width": 700,
-  "height": 600,
+  "width": 800,
+  "height": 700,
   "data": {
-    "url": "https://raw.githubusercontent.com/Saranya-1208/Saranya-1208.github.io/refs/heads/main/project/aadhaar_viz_data.csv"
+    "url": "https://raw.githubusercontent.com/Saranya-1208/Saranya-1208.github.io/refs/heads/main/project/aadhaar_viz_india_full.csv"
   },
+  "transform": [
+    {
+      "calculate": "toNumber(datum.Latitude)",
+      "as": "lat"
+    },
+    {
+      "calculate": "toNumber(datum.Longitude)",
+      "as": "lon"
+    }
+  ],
   "projection": {
-    "type": "mercator",
-    "center": [78, 22],
-    "scale": 850
+    "type": "mercator"
   },
   "layer": [
     {
@@ -857,7 +881,7 @@ Any evaluation of India’s digital transformation must begin with scale and spe
       },
       "mark": {
         "type": "geoshape",
-        "fill": "#f0f0f0",
+        "fill": "#fafafa",
         "stroke": "#cccccc",
         "strokeWidth": 1
       }
@@ -865,17 +889,17 @@ Any evaluation of India’s digital transformation must begin with scale and spe
     {
       "mark": {
         "type": "circle",
-        "opacity": 0.7,
+        "opacity": 0.6,
         "stroke": "white",
-        "strokeWidth": 1
+        "strokeWidth": 0.5
       },
       "encoding": {
         "longitude": {
-          "field": "Longitude",
+          "field": "lon",
           "type": "quantitative"
         },
         "latitude": {
-          "field": "Latitude",
+          "field": "lat",
           "type": "quantitative"
         },
         "size": {
@@ -883,12 +907,14 @@ Any evaluation of India’s digital transformation must begin with scale and spe
           "type": "quantitative",
           "scale": {
             "type": "sqrt",
-            "range": [50, 1000]
+            "range": [10, 800]
           },
           "legend": {
             "title": "Total Enrollment",
-            "orient": "right",
-            "format": ","
+            "orient": "bottom-right",
+            "direction": "vertical",
+            "format": ",",
+            "labelFontSize": 10
           }
         },
         "color": {
@@ -900,8 +926,9 @@ Any evaluation of India’s digital transformation must begin with scale and spe
           },
           "legend": {
             "title": "Dominant Age Group",
-            "orient": "top",
-            "labelExpr": "datum.label == 'age_0_5' ? '0-5 years' : datum.label == 'age_5_17' ? '5-17 years' : '18+ years'"
+            "orient": "top-left",
+            "labelExpr": "datum.label == 'age_0_5' ? '0-5 years' : datum.label == 'age_5_17' ? '5-17 years' : '18+ years'",
+            "labelFontSize": 11
           }
         },
         "tooltip": [
@@ -1070,6 +1097,7 @@ Any evaluation of India’s digital transformation must begin with scale and spe
     "view": {"strokeWidth": 0}
   }
 });
+    
     vegaEmbed('#map5g', {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "title": {
