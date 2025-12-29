@@ -847,16 +847,16 @@ Any evaluation of India’s digital transformation must begin with scale and spe
   }
 });
     
- vegaEmbed('#aadhaarBubbleMap', {
+ vegaEmbed('#aadhaarDistrictMap', {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "title": {
-    "text": "Aadhaar Enrollment Across 5,000 Pincodes",
+    "text": "Aadhaar Enrollment by District",
     "fontSize": 24,
     "font": "Garamond",
-    "subtitle": "March 2025 | Larger bubbles = Higher enrollment"
+    "subtitle": "640+ districts | Bubble size = Total enrollment | Color = Dominant age"
   },
-  "width": 700,
-  "height": 800,
+  "width": 750,
+  "height": 850,
   "data": {
     "url": "https://raw.githubusercontent.com/Saranya-1208/Saranya-1208.github.io/refs/heads/main/project/aadhaar_viz_india_full.csv"
   },
@@ -870,13 +870,23 @@ Any evaluation of India’s digital transformation must begin with scale and spe
       "as": "lat"
     },
     {
-      "filter": "isValid(datum.lat) && isValid(datum.lon)"
+      "filter": "isValid(datum.lat) && isValid(datum.lon) && datum.lat >= 6 && datum.lat <= 37 && datum.lon >= 68 && datum.lon <= 98"
     },
     {
-      "filter": "datum.lat >= 6 && datum.lat <= 37"
+      "aggregate": [
+        {"op": "sum", "field": "Total", "as": "District_Total"},
+        {"op": "sum", "field": "age_0_5", "as": "District_0_5"},
+        {"op": "sum", "field": "age_5_17", "as": "District_5_17"},
+        {"op": "sum", "field": "age_18_greater", "as": "District_18plus"},
+        {"op": "mean", "field": "lat", "as": "District_Lat"},
+        {"op": "mean", "field": "lon", "as": "District_Lon"},
+        {"op": "count", "as": "Pincodes"}
+      ],
+      "groupby": ["state", "district"]
     },
     {
-      "filter": "datum.lon >= 68 && datum.lon <= 98"
+      "calculate": "datum.District_0_5 > datum.District_5_17 && datum.District_0_5 > datum.District_18plus ? '0-5' : datum.District_5_17 > datum.District_18plus ? '5-17' : '18+'",
+      "as": "Dominant_Age"
     }
   ],
   "projection": {
@@ -900,23 +910,22 @@ Any evaluation of India’s digital transformation must begin with scale and spe
     {
       "mark": {
         "type": "circle",
-        "opacity": 0.6,
+        "opacity": 0.7,
         "stroke": "#ffffff",
-        "strokeWidth": 1
+        "strokeWidth": 1.5
       },
       "encoding": {
-        "longitude": {"field": "lon", "type": "quantitative"},
-        "latitude": {"field": "lat", "type": "quantitative"},
+        "longitude": {"field": "District_Lon", "type": "quantitative"},
+        "latitude": {"field": "District_Lat", "type": "quantitative"},
         "size": {
-          "field": "Total",
+          "field": "District_Total",
           "type": "quantitative",
           "scale": {
-            "type": "pow",
-            "exponent": 0.5,
-            "range": [20, 600]
+            "type": "log",
+            "range": [100, 2000]
           },
           "legend": {
-            "title": "Enrollment",
+            "title": "Total Enrollment",
             "orient": "bottom",
             "format": "~s",
             "labelFontSize": 11
@@ -926,24 +935,21 @@ Any evaluation of India’s digital transformation must begin with scale and spe
           "field": "Dominant_Age",
           "type": "nominal",
           "scale": {
-            "domain": ["age_0_5", "age_5_17", "age_18_greater"],
+            "domain": ["0-5", "5-17", "18+"],
             "range": ["#FF85A2", "#74B3CE", "#B4A7D6"]
           },
           "legend": {
             "title": "Primary Age Group",
             "orient": "top",
             "direction": "horizontal",
-            "labelExpr": "datum.label == 'age_0_5' ? '0-5 yrs' : datum.label == 'age_5_17' ? '5-17 yrs' : '18+ yrs'",
             "labelFontSize": 12
           }
         },
         "tooltip": [
           {"field": "state", "type": "nominal", "title": "State"},
           {"field": "district", "type": "nominal", "title": "District"},
-          {"field": "Pincode", "type": "quantitative", "title": "Pincode"},
-          {"field": "Total", "type": "quantitative", "format": ",", "title": "Enrolled"},
-          {"field": "lon", "type": "quantitative", "format": ".2f", "title": "Longitude"},
-          {"field": "lat", "type": "quantitative", "format": ".2f", "title": "Latitude"}
+          {"field": "District_Total", "type": "quantitative", "format": ",", "title": "Total Enrolled"},
+          {"field": "Pincodes", "type": "quantitative", "title": "Pincodes in District"}
         ]
       }
     }
