@@ -853,10 +853,10 @@ vegaEmbed('#aadhaarPincodeMap', {
     "font": "Garamond",
     "subtitle": "March 2025 | Each polygon = one pincode | Darker = Higher enrollment"
   },
-  "width": 700,
+  "width": 650,
   "height": 750,
   "data": {
-    "url": "https://raw.githubusercontent.com/Saranya-1208/Saranya-1208.github.io/main/project/india_pincodes_simplified.geojson",
+    "url": "https://raw.githubusercontent.com/Saranya-1208/Saranya-1208.github.io/main/project/india_pincodes_ultra_simple.geojson",
     "format": {"type": "json", "property": "features"}
   },
   "projection": {
@@ -877,7 +877,7 @@ vegaEmbed('#aadhaarPincodeMap', {
         "domain": [10, 10000]
       },
       "legend": {
-        "title": "Total Enrollment",
+        "title": "Enrollment",
         "orient": "bottom",
         "direction": "horizontal",
         "format": "~s",
@@ -890,11 +890,10 @@ vegaEmbed('#aadhaarPincodeMap', {
     "tooltip": [
       {"field": "properties.Pincode", "type": "quantitative", "title": "Pincode"},
       {"field": "properties.Office_Name", "type": "nominal", "title": "Post Office"},
-      {"field": "properties.Division", "type": "nominal", "title": "Division"},
       {"field": "properties.Total", "type": "quantitative", "format": ",", "title": "Total Enrolled"},
-      {"field": "properties.age_0_5", "type": "quantitative", "format": ",", "title": "Age 0-5"},
-      {"field": "properties.age_5_17", "type": "quantitative", "format": ",", "title": "Age 5-17"},
-      {"field": "properties.age_18_greater", "type": "quantitative", "format": ",", "title": "Age 18+"}
+      {"field": "properties.age_0_5", "type": "quantitative", "format": ",", "title": "0-5 years"},
+      {"field": "properties.age_5_17", "type": "quantitative", "format": ",", "title": "5-17 years"},
+      {"field": "properties.age_18_greater", "type": "quantitative", "format": ",", "title": "18+ years"}
     ]
   },
   "config": {
