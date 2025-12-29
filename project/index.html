@@ -850,13 +850,15 @@ Any evaluation of India’s digital transformation must begin with scale and spe
   vegaEmbed('#aadhaarBubbleMap', {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "title": {
-    "text": "Aadhaar Enrollment: 5,000 Pincodes Across India",
-    "fontSize": 22,
+    "text": "Aadhaar Enrollment Hotspots: 5,000 Pincodes",
+    "fontSize": 24,
     "font": "Garamond",
-    "subtitle": "Bubble size = Enrollment | Color = Dominant age group | March 2025"
+    "subtitle": "March 2025 enrollment patterns across India",
+    "subtitleFontSize": 14,
+    "subtitleColor": "#666"
   },
   "width": 550,
-  "height": 800,
+  "height": 750,
   "data": {
     "url": "https://raw.githubusercontent.com/Saranya-1208/Saranya-1208.github.io/refs/heads/main/project/aadhaar_viz_india_full.csv"
   },
@@ -870,13 +872,13 @@ Any evaluation of India’s digital transformation must begin with scale and spe
       "as": "lon"
     },
     {
-      "filter": "isValid(datum.lat) && isValid(datum.lon)"
+      "filter": "isValid(datum.lat) && isValid(datum.lon) && datum.lat >= 8 && datum.lat <= 35 && datum.lon >= 68 && datum.lon <= 97"
     }
   ],
   "projection": {
-    "type": "equirectangular",
-    "center": [82, 23],
-    "scale": 1000
+    "type": "mercator",
+    "center": [82.5, 23],
+    "scale": 1100
   },
   "layer": [
     {
@@ -886,17 +888,17 @@ Any evaluation of India’s digital transformation must begin with scale and spe
       },
       "mark": {
         "type": "geoshape",
-        "fill": "#f8f8f8",
-        "stroke": "#999999",
-        "strokeWidth": 0.8
+        "fill": "#ffffff",
+        "stroke": "#d0d0d0",
+        "strokeWidth": 1.2
       }
     },
     {
       "mark": {
         "type": "circle",
-        "opacity": 0.65,
+        "opacity": 0.5,
         "stroke": "white",
-        "strokeWidth": 0.5
+        "strokeWidth": 0.8
       },
       "encoding": {
         "longitude": {
@@ -912,13 +914,15 @@ Any evaluation of India’s digital transformation must begin with scale and spe
           "type": "quantitative",
           "scale": {
             "type": "log",
-            "range": [20, 600]
+            "range": [15, 500]
           },
           "legend": {
             "title": "Enrollment",
-            "orient": "bottom-right",
-            "format": ",",
-            "labelFontSize": 10
+            "orient": "bottom",
+            "direction": "horizontal",
+            "format": "~s",
+            "labelFontSize": 11,
+            "gradientLength": 300
           }
         },
         "color": {
@@ -926,30 +930,36 @@ Any evaluation of India’s digital transformation must begin with scale and spe
           "type": "nominal",
           "scale": {
             "domain": ["age_0_5", "age_5_17", "age_18_greater"],
-            "range": ["#FFB6B9", "#74B3CE", "#667eea"]
+            "range": ["#FF85A2", "#74B3CE", "#B4A7D6"]
           },
           "legend": {
             "title": "Dominant Age",
-            "orient": "top-left",
-            "labelExpr": "datum.label == 'age_0_5' ? '0-5 yrs' : datum.label == 'age_5_17' ? '5-17 yrs' : '18+ yrs'",
-            "labelFontSize": 11
+            "orient": "top",
+            "direction": "horizontal",
+            "labelExpr": "datum.label == 'age_0_5' ? '0-5 years' : datum.label == 'age_5_17' ? '5-17 years' : '18+ years'",
+            "labelFontSize": 12,
+            "symbolSize": 150
           }
         },
         "tooltip": [
-          {"field": "Pincode", "type": "quantitative", "title": "Pincode"},
-          {"field": "district", "type": "nominal", "title": "District"},
           {"field": "state", "type": "nominal", "title": "State"},
-          {"field": "Total", "type": "quantitative", "format": ",", "title": "Total Enrollment"}
+          {"field": "district", "type": "nominal", "title": "District"},
+          {"field": "Pincode", "type": "quantitative", "title": "Pincode"},
+          {"field": "Total", "type": "quantitative", "format": ",", "title": "Total Enrolled"},
+          {"field": "age_0_5", "type": "quantitative", "format": ",", "title": "0-5 years"},
+          {"field": "age_5_17", "type": "quantitative", "format": ",", "title": "5-17 years"},
+          {"field": "age_18_greater", "type": "quantitative", "format": ",", "title": "18+ years"}
         ]
       }
     }
   ],
   "config": {
     "font": "Garamond",
-    "view": {"strokeWidth": 0}
+    "view": {"strokeWidth": 0},
+    "background": "#fafafa"
   }
 });
-
+    
     vegaEmbed('#heatmapChart', {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "title": {
