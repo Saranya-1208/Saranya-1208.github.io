@@ -853,35 +853,23 @@ vegaEmbed('#aadhaarPincodeMap', {
     "font": "Garamond",
     "subtitle": "March 2025 | Each polygon = one pincode | Darker = Higher enrollment"
   },
-  "width": 750,
-  "height": 850,
+  "width": 700,
+  "height": 750,
   "data": {
     "url": "https://raw.githubusercontent.com/Saranya-1208/Saranya-1208.github.io/main/project/india_pincodes_simplified.geojson",
     "format": {"type": "json", "property": "features"}
   },
-  "transform": [
-    {
-      "lookup": "properties.pincode",
-      "from": {
-        "data": {
-          "url": "https://raw.githubusercontent.com/Saranya-1208/Saranya-1208.github.io/refs/heads/main/project/aadhaar_viz_india_full.csv"
-        },
-        "key": "Pincode",
-        "fields": ["Total", "age_0_5", "age_5_17", "age_18_greater", "Dominant_Age", "state", "district"]
-      }
-    }
-  ],
   "projection": {
     "type": "mercator"
   },
   "mark": {
     "type": "geoshape",
     "stroke": "white",
-    "strokeWidth": 0.3
+    "strokeWidth": 0.5
   },
   "encoding": {
     "color": {
-      "field": "Total",
+      "field": "properties.Total",
       "type": "quantitative",
       "scale": {
         "type": "log",
@@ -894,18 +882,19 @@ vegaEmbed('#aadhaarPincodeMap', {
         "direction": "horizontal",
         "format": "~s",
         "labelFontSize": 11,
+        "titleFontSize": 12,
         "gradientLength": 400,
         "gradientThickness": 15
       }
     },
     "tooltip": [
-      {"field": "properties.pincode", "type": "nominal", "title": "Pincode"},
-      {"field": "state", "type": "nominal", "title": "State"},
-      {"field": "district", "type": "nominal", "title": "District"},
-      {"field": "Total", "type": "quantitative", "format": ",", "title": "Total Enrolled"},
-      {"field": "age_0_5", "type": "quantitative", "format": ",", "title": "0-5 years"},
-      {"field": "age_5_17", "type": "quantitative", "format": ",", "title": "5-17 years"},
-      {"field": "age_18_greater", "type": "quantitative", "format": ",", "title": "18+ years"}
+      {"field": "properties.Pincode", "type": "quantitative", "title": "Pincode"},
+      {"field": "properties.Office_Name", "type": "nominal", "title": "Post Office"},
+      {"field": "properties.Division", "type": "nominal", "title": "Division"},
+      {"field": "properties.Total", "type": "quantitative", "format": ",", "title": "Total Enrolled"},
+      {"field": "properties.age_0_5", "type": "quantitative", "format": ",", "title": "Age 0-5"},
+      {"field": "properties.age_5_17", "type": "quantitative", "format": ",", "title": "Age 5-17"},
+      {"field": "properties.age_18_greater", "type": "quantitative", "format": ",", "title": "Age 18+"}
     ]
   },
   "config": {
