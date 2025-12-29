@@ -377,15 +377,18 @@ Any evaluation of India’s digital transformation must begin with scale and spe
   <div id="villageChart"></div>
 </div>
       
-<<section id="gap">
-  <h2>The Identity-Payment Gap</h2>
+<section id="aadhaar-map">
+  <h2>Aadhaar's Geographic Reach: Enrollment Hotspots</h2>
   <p>
-    Having digital identity doesn't automatically mean using digital payments. This chart reveals the disconnect: states with high Aadhaar saturation (like Uttar Pradesh at 87.6%) still have low UPI adoption (12 transactions per person). The gap represents millions with the infrastructure to pay digitally—but who don't.
+    Beyond state-level statistics lies a more granular reality: pincode-by-pincode enrollment patterns reveal where India's digital identity system has reached—and where gaps persist. Each bubble on this map represents a pincode's enrollment activity, sized by total registrations and colored by the dominant age group enrolled.
+  </p>
+  <p>
+    The map shows enrollment concentrated in major urban centers and along transportation corridors, while rural hinterlands show sparser coverage. The color patterns reveal that adult enrollment (18+) dominates in most pincodes, but certain regions show higher child and adolescent registration, often correlating with government enrollment drives in specific districts.
   </p>
 </section>
 
 <div class="chart-wrapper-wide">
-  <div id="digitalGapChart"></div>
+  <div id="aadhaarBubbleMap"></div>
 </div>
   
   <section id="future">
@@ -828,261 +831,88 @@ Any evaluation of India’s digital transformation must begin with scale and spe
   }
 });
     
-    vegaEmbed('#digitalGapChart', {
+   vegaEmbed('#aadhaarBubbleMap', {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "title": {
-    "text": "The Digital Identity-Payment Gap Across Indian States",
+    "text": "Aadhaar Enrollment Across India: Pincode-Level Coverage",
     "fontSize": 22,
     "font": "Garamond",
-    "subtitle": "Aadhaar Saturation vs UPI Adoption: Who Has Identity But Isn't Paying Digitally?"
+    "subtitle": "Each bubble = one pincode | Size = Total enrollment | Color = Dominant age group"
   },
   "width": 700,
-  "height": 500,
+  "height": 600,
   "data": {
-    "values": [
-      {"state": "Delhi", "aadhaar": 118, "upi": 37, "population": 16.8},
-      {"state": "Haryana", "aadhaar": 104.4, "upi": 25, "population": 25.4},
-      {"state": "Kerala", "aadhaar": 103.1, "upi": 22, "population": 33.4},
-      {"state": "Punjab", "aadhaar": 101.8, "upi": 20, "population": 27.7},
-      {"state": "Goa", "aadhaar": 101.6, "upi": 28, "population": 1.5},
-      {"state": "Telangana", "aadhaar": 101, "upi": 26, "population": 35.2},
-      {"state": "Gujarat", "aadhaar": 96, "upi": 24, "population": 60.4},
-      {"state": "Tamil Nadu", "aadhaar": 93.9, "upi": 21, "population": 72.1},
-      {"state": "Maharashtra", "aadhaar": 93.8, "upi": 27, "population": 112.4},
-      {"state": "Uttar Pradesh", "aadhaar": 87.6, "upi": 12, "population": 199.8},
-      {"state": "Bihar", "aadhaar": 84.3, "upi": 5, "population": 104.1},
-      {"state": "Meghalaya", "aadhaar": 29.9, "upi": 8, "population": 3.0}
-    ]
+    "url": "https://raw.githubusercontent.com/Saranya-1208/Saranya-1208.github.io/refs/heads/main/project/aadhaar_viz_data.csv"
+  },
+  "projection": {
+    "type": "mercator",
+    "center": [78, 22],
+    "scale": 850
   },
   "layer": [
     {
-      "mark": {
-        "type": "line",
-        "strokeWidth": 1.5,
-        "opacity": 0.3,
-        "color": "#ccc"
+      "data": {
+        "url": "https://raw.githubusercontent.com/Subhash9325/GeoJson-Data-of-Indian-States/refs/heads/master/Indian_States",
+        "format": {"type": "json", "property": "features"}
       },
-      "encoding": {
-        "x": {"field": "aadhaar", "type": "quantitative"},
-        "y": {"field": "upi", "type": "quantitative"},
-        "detail": {"field": "state"}
+      "mark": {
+        "type": "geoshape",
+        "fill": "#f0f0f0",
+        "stroke": "#cccccc",
+        "strokeWidth": 1
       }
     },
     {
       "mark": {
         "type": "circle",
-        "opacity": 0.8,
+        "opacity": 0.7,
         "stroke": "white",
-        "strokeWidth": 2
+        "strokeWidth": 1
       },
       "encoding": {
-        "x": {
-          "field": "aadhaar",
-          "type": "quantitative",
-          "title": "Aadhaar Saturation (%)",
-          "scale": {"domain": [20, 125]},
-          "axis": {"grid": true, "gridOpacity": 0.2}
+        "longitude": {
+          "field": "Longitude",
+          "type": "quantitative"
         },
-        "y": {
-          "field": "upi",
-          "type": "quantitative",
-          "title": "UPI Transactions Per Person (Monthly)",
-          "scale": {"domain": [0, 40]},
-          "axis": {"grid": true, "gridOpacity": 0.2}
+        "latitude": {
+          "field": "Latitude",
+          "type": "quantitative"
         },
         "size": {
-          "field": "population",
+          "field": "Total",
           "type": "quantitative",
-          "scale": {"range": [200, 3000]},
+          "scale": {
+            "type": "sqrt",
+            "range": [50, 1000]
+          },
           "legend": {
-            "title": "Population (Millions)",
-            "orient": "right"
+            "title": "Total Enrollment",
+            "orient": "right",
+            "format": ","
           }
         },
         "color": {
-          "field": "aadhaar",
-          "type": "quantitative",
+          "field": "Dominant_Age",
+          "type": "nominal",
           "scale": {
-            "scheme": "purples"
+            "domain": ["age_0_5", "age_5_17", "age_18_greater"],
+            "range": ["#FFB6B9", "#74B3CE", "#667eea"]
           },
-          "legend": null
+          "legend": {
+            "title": "Dominant Age Group",
+            "orient": "top",
+            "labelExpr": "datum.label == 'age_0_5' ? '0-5 years' : datum.label == 'age_5_17' ? '5-17 years' : '18+ years'"
+          }
         },
         "tooltip": [
+          {"field": "Pincode", "type": "quantitative", "title": "Pincode"},
+          {"field": "district", "type": "nominal", "title": "District"},
           {"field": "state", "type": "nominal", "title": "State"},
-          {"field": "aadhaar", "type": "quantitative", "title": "Aadhaar Saturation (%)"},
-          {"field": "upi", "type": "quantitative", "title": "UPI Per Capita"},
-          {"field": "population", "type": "quantitative", "title": "Population (M)"}
+          {"field": "Total", "type": "quantitative", "format": ",", "title": "Total Enrollment"},
+          {"field": "age_0_5", "type": "quantitative", "format": ",", "title": "Age 0-5"},
+          {"field": "age_5_17", "type": "quantitative", "format": ",", "title": "Age 5-17"},
+          {"field": "age_18_greater", "type": "quantitative", "format": ",", "title": "Age 18+"}
         ]
-      }
-    },
-    {
-      "mark": {
-        "type": "text",
-        "align": "left",
-        "dx": 12,
-        "dy": -8,
-        "fontSize": 11,
-        "font": "Garamond",
-        "fontWeight": "bold"
-      },
-      "encoding": {
-        "x": {"field": "aadhaar", "type": "quantitative"},
-        "y": {"field": "upi", "type": "quantitative"},
-        "text": {"field": "state"},
-        "color": {"value": "#333"}
-      }
-    }
-  ],
-  "config": {
-    "font": "Garamond",
-    "view": {"strokeWidth": 0}
-  }
-});
-    
-    vegaEmbed('#upiExplosion', {
-  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "title": {
-    "text": "The UPI Explosion: 116 Months of Transformation (2016-2025)",
-    "fontSize": 22,
-    "font": "Garamond",
-    "color": "#1a1a1a"
-  },
-  "width": 650,
-  "height": 450,
-  "data": {
-    "url": "https://raw.githubusercontent.com/Saranya-1208/Saranya-1208.github.io/refs/heads/main/project/upi_complete_timeline.csv"
-  },
-  "layer": [
-    {
-      "mark": {
-        "type": "area",
-        "opacity": 0.4,
-        "color": "#FF85A2",
-        "line": {
-          "color": "#FF85A2",
-          "strokeWidth": 3
-        }
-      },
-      "encoding": {
-        "x": {
-          "field": "Date",
-          "type": "temporal",
-          "title": "Year",
-          "axis": {
-            "format": "%Y",
-            "labelAngle": 0,
-            "grid": false,
-            "labelFontSize": 12,
-            "titleFontSize": 13
-          }
-        },
-        "y": {
-          "field": "Volume_Mn",
-          "type": "quantitative",
-          "title": "Monthly Transactions (Millions, log scale)",
-          "scale": {
-            "type": "log",
-            "domain": [0.01, 20000]
-          },
-          "axis": {
-            "grid": true,
-            "gridOpacity": 0.15,
-            "labelFontSize": 12,
-            "titleFontSize": 13,
-            "format": "~s"
-          }
-        },
-        "tooltip": [
-          {"field": "Date", "type": "temporal", "format": "%B %Y", "title": "Month"},
-          {"field": "Banks", "type": "quantitative", "title": "Banks Live"},
-          {"field": "Volume_Mn", "type": "quantitative", "format": ",.1f", "title": "Volume (Millions)"},
-          {"field": "Value_Cr", "type": "quantitative", "format": ",.0f", "title": "Value (₹ Crores)"},
-          {"field": "Avg_Transaction_Rs", "type": "quantitative", "format": ",.0f", "title": "Avg Transaction (₹)"}
-        ]
-      }
-    },
-    {
-      "mark": {
-        "type": "rule",
-        "strokeDash": [5, 5],
-        "color": "#333",
-        "strokeWidth": 2
-      },
-      "encoding": {
-        "x": {"datum": {"year": 2016, "month": 11, "date": 8}}
-      }
-    },
-    {
-      "mark": {
-        "type": "text",
-        "align": "left",
-        "dx": 8,
-        "dy": -180,
-        "fontSize": 12,
-        "font": "Garamond",
-        "fontWeight": "bold",
-        "color": "#333"
-      },
-      "encoding": {
-        "x": {"datum": {"year": 2016, "month": 11, "date": 8}},
-        "text": {"value": "↑ Nov 8, 2016"}
-      }
-    },
-    {
-      "mark": {
-        "type": "text",
-        "align": "left",
-        "dx": 8,
-        "dy": -160,
-        "fontSize": 11,
-        "font": "Garamond",
-        "color": "#666"
-      },
-      "encoding": {
-        "x": {"datum": {"year": 2016, "month": 11, "date": 8}},
-        "text": {"value": "Demonetization"}
-      }
-    },
-    {
-      "mark": {
-        "type": "rule",
-        "strokeDash": [5, 5],
-        "color": "#333",
-        "strokeWidth": 2
-      },
-      "encoding": {
-        "x": {"datum": {"year": 2020, "month": 3, "date": 24}}
-      }
-    },
-    {
-      "mark": {
-        "type": "text",
-        "align": "left",
-        "dx": 8,
-        "dy": -120,
-        "fontSize": 12,
-        "font": "Garamond",
-        "fontWeight": "bold",
-        "color": "#333"
-      },
-      "encoding": {
-        "x": {"datum": {"year": 2020, "month": 3, "date": 24}},
-        "text": {"value": "↑ Mar 2020"}
-      }
-    },
-    {
-      "mark": {
-        "type": "text",
-        "align": "left",
-        "dx": 8,
-        "dy": -100,
-        "fontSize": 11,
-        "font": "Garamond",
-        "color": "#666"
-      },
-      "encoding": {
-        "x": {"datum": {"year": 2020, "month": 3, "date": 24}},
-        "text": {"value": "COVID Lockdown"}
       }
     }
   ],
