@@ -383,12 +383,12 @@ Any evaluation of India’s digital transformation must begin with scale and spe
     Aadhaar, India's digital identity system, forms the foundational layer of the country's digital public infrastructure. By 2025, over 1.3 billion Indians had enrolled, making it the world's largest biometric database. But enrollment data reveals profound geographic patterns in how this infrastructure reached the population.
   </p>
   <p>
-    This map shows enrollment activity across 5,000 pincodes nationwide during March 2025. Each bubble represents a pincode's enrollment density, sized by total registrations and colored by the dominant age group enrolled. The patterns reveal enrollment concentrated in urban centers and along major corridors, with enrollment intensity varying dramatically between metropolitan clusters and rural peripheries.
+    This map shows enrollment activity across 5,000 pincodes nationwide during March 2025. Each pincode polygon is colored by enrollment intensity, revealing patterns of concentration in urban centers and along major corridors, with enrollment varying dramatically between metropolitan clusters and rural peripheries.
   </p>
 </section>
 
 <div class="chart-wrapper-wide">
-  <div id="aadhaarBubbleMap"></div>
+  <div id="aadhaarPincodeMap"></div>
 </div>
 
 <p style="font-size: 1rem; color: #666; margin-top: 1.5rem;">
@@ -396,7 +396,7 @@ Any evaluation of India’s digital transformation must begin with scale and spe
   <a href="https://colab.research.google.com/drive/1NGX3234tj8Io1uvPtOEYybf3NSRTeCBl?usp=sharing" target="_blank" style="color: #667eea;">Google Colab notebook →</a>
 </p>
 
-<h3 style="font-size: 1.8rem; margin-top: 3rem;">State-Level Patterns</h3>
+<h3 style="font-size: 1.8rem; margin-top: 3rem;">State-Level Saturation Patterns</h3>
 <p>
   While the pincode map shows geographic density, state-level saturation rates reveal a different dimension of inequality. Several regions report saturation exceeding 100%, reflecting population mobility and enrollment duplication, while others exhibit substantially lower coverage pointing to persistent gaps in last-mile inclusion.
 </p>
@@ -405,21 +405,6 @@ Any evaluation of India’s digital transformation must begin with scale and spe
   <div id="aadhaarSaturationChart"></div>
 </div>
 
-<p style="font-size: 1rem; color: #666; margin-top: 1.5rem;">
-  <strong>Data source:</strong> Aadhaar enrollment records, March 2025. Pincode-level aggregation across 37 states and union territories. Complete data processing workflow: 
-  <a href="https://colab.research.google.com/drive/1NGX3234tj8Io1uvPtOEYybf3NSRTeCBl?usp=sharing" target="_blank" style="color: #667eea;">Google Colab notebook →</a>
-</p>
-
-<h3 style="font-size: 1.8rem; margin-top: 3rem;">State-Level Patterns</h3>
-<p>
-  While the pincode map shows geographic density, state-level saturation rates reveal a different dimension of inequality. Several regions report saturation exceeding 100%, reflecting population mobility and enrollment duplication, while others exhibit substantially lower coverage pointing to persistent gaps in last-mile inclusion.
-</p>
-
-<div class="chart-wrapper">
-  <div id="aadhaarSaturationChart"></div>
-</div>
-
-  
   <section id="future">
      <h2>The Future: The 5G Frontier</h2>
     </section>
@@ -860,113 +845,69 @@ Any evaluation of India’s digital transformation must begin with scale and spe
   }
 });
     
- vegaEmbed('#aadhaarDistrictMap', {
+vegaEmbed('#aadhaarPincodeMap', {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "title": {
-    "text": "Aadhaar Enrollment by District",
+    "text": "Aadhaar Enrollment: Pincode-Level Coverage",
     "fontSize": 24,
     "font": "Garamond",
-    "subtitle": "640+ districts | Bubble size = Total enrollment | Color = Dominant age"
+    "subtitle": "March 2025 | Each polygon = one pincode | Darker = Higher enrollment"
   },
   "width": 750,
   "height": 850,
   "data": {
-    "url": "https://raw.githubusercontent.com/Saranya-1208/Saranya-1208.github.io/refs/heads/main/project/aadhaar_viz_india_full.csv"
+    "url": "https://raw.githubusercontent.com/Saranya-1208/Saranya-1208.github.io/main/project/india_pincodes_simplified.geojson",
+    "format": {"type": "json", "property": "features"}
   },
   "transform": [
     {
-      "calculate": "toNumber(datum.Longitude)",
-      "as": "lon"
-    },
-    {
-      "calculate": "toNumber(datum.Latitude)",
-      "as": "lat"
-    },
-    {
-      "filter": "isValid(datum.lat) && isValid(datum.lon) && datum.lat >= 6 && datum.lat <= 37 && datum.lon >= 68 && datum.lon <= 98"
-    },
-    {
-      "aggregate": [
-        {"op": "sum", "field": "Total", "as": "District_Total"},
-        {"op": "sum", "field": "age_0_5", "as": "District_0_5"},
-        {"op": "sum", "field": "age_5_17", "as": "District_5_17"},
-        {"op": "sum", "field": "age_18_greater", "as": "District_18plus"},
-        {"op": "mean", "field": "lat", "as": "District_Lat"},
-        {"op": "mean", "field": "lon", "as": "District_Lon"},
-        {"op": "count", "as": "Pincodes"}
-      ],
-      "groupby": ["state", "district"]
-    },
-    {
-      "calculate": "datum.District_0_5 > datum.District_5_17 && datum.District_0_5 > datum.District_18plus ? '0-5' : datum.District_5_17 > datum.District_18plus ? '5-17' : '18+'",
-      "as": "Dominant_Age"
+      "lookup": "properties.pincode",
+      "from": {
+        "data": {
+          "url": "https://raw.githubusercontent.com/Saranya-1208/Saranya-1208.github.io/refs/heads/main/project/aadhaar_viz_india_full.csv"
+        },
+        "key": "Pincode",
+        "fields": ["Total", "age_0_5", "age_5_17", "age_18_greater", "Dominant_Age", "state", "district"]
+      }
     }
   ],
   "projection": {
-    "type": "mercator",
-    "center": [78, 20],
-    "scale": 950
+    "type": "mercator"
   },
-  "layer": [
-    {
-      "data": {
-        "url": "https://raw.githubusercontent.com/Subhash9325/GeoJson-Data-of-Indian-States/refs/heads/master/Indian_States",
-        "format": {"type": "json", "property": "features"}
+  "mark": {
+    "type": "geoshape",
+    "stroke": "white",
+    "strokeWidth": 0.3
+  },
+  "encoding": {
+    "color": {
+      "field": "Total",
+      "type": "quantitative",
+      "scale": {
+        "type": "log",
+        "scheme": "purples",
+        "domain": [10, 10000]
       },
-      "mark": {
-        "type": "geoshape",
-        "fill": "#f8f8f8",
-        "stroke": "#888888",
-        "strokeWidth": 1.2
+      "legend": {
+        "title": "Total Enrollment",
+        "orient": "bottom",
+        "direction": "horizontal",
+        "format": "~s",
+        "labelFontSize": 11,
+        "gradientLength": 400,
+        "gradientThickness": 15
       }
     },
-    {
-      "mark": {
-        "type": "circle",
-        "opacity": 0.7,
-        "stroke": "#ffffff",
-        "strokeWidth": 1.5
-      },
-      "encoding": {
-        "longitude": {"field": "District_Lon", "type": "quantitative"},
-        "latitude": {"field": "District_Lat", "type": "quantitative"},
-        "size": {
-          "field": "District_Total",
-          "type": "quantitative",
-          "scale": {
-            "type": "log",
-            "range": [100, 2000]
-          },
-          "legend": {
-            "title": "Total Enrollment",
-            "orient": "bottom",
-            "format": "~s",
-            "labelFontSize": 11
-          }
-        },
-        "color": {
-          "field": "Dominant_Age",
-          "type": "nominal",
-          "scale": {
-            "domain": ["0-5", "5-17", "18+"],
-            "range": ["#FF85A2", "#74B3CE", "#B4A7D6"]
-          },
-          "legend": {
-            "title": "Primary Age Group",
-            "orient": "top",
-            "direction": "horizontal",
-            "labelFontSize": 12
-          }
-        },
-        "tooltip": [
-          {"field": "state", "type": "nominal", "title": "State"},
-          {"field": "district", "type": "nominal", "title": "District"},
-          {"field": "District_Total", "type": "quantitative", "format": ",", "title": "Total Enrolled"},
-          {"field": "Pincodes", "type": "quantitative", "title": "Pincodes in District"}
-        ]
-      }
-    }
-  ],
+    "tooltip": [
+      {"field": "properties.pincode", "type": "nominal", "title": "Pincode"},
+      {"field": "state", "type": "nominal", "title": "State"},
+      {"field": "district", "type": "nominal", "title": "District"},
+      {"field": "Total", "type": "quantitative", "format": ",", "title": "Total Enrolled"},
+      {"field": "age_0_5", "type": "quantitative", "format": ",", "title": "0-5 years"},
+      {"field": "age_5_17", "type": "quantitative", "format": ",", "title": "5-17 years"},
+      {"field": "age_18_greater", "type": "quantitative", "format": ",", "title": "18+ years"}
+    ]
+  },
   "config": {
     "font": "Garamond",
     "view": {"strokeWidth": 0}
