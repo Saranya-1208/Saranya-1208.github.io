@@ -855,8 +855,8 @@ Any evaluation of India’s digital transformation must begin with scale and spe
     "font": "Garamond",
     "subtitle": "Bubble size = Enrollment | Color = Dominant age group | March 2025"
   },
-  "width": 800,
-  "height": 700,
+  "width": 550,
+  "height": 800,
   "data": {
     "url": "https://raw.githubusercontent.com/Saranya-1208/Saranya-1208.github.io/refs/heads/main/project/aadhaar_viz_india_full.csv"
   },
@@ -868,10 +868,15 @@ Any evaluation of India’s digital transformation must begin with scale and spe
     {
       "calculate": "toNumber(datum.Longitude)",
       "as": "lon"
+    },
+    {
+      "filter": "isValid(datum.lat) && isValid(datum.lon)"
     }
   ],
   "projection": {
-    "type": "mercator"
+    "type": "equirectangular",
+    "center": [82, 23],
+    "scale": 1000
   },
   "layer": [
     {
@@ -881,15 +886,15 @@ Any evaluation of India’s digital transformation must begin with scale and spe
       },
       "mark": {
         "type": "geoshape",
-        "fill": "#fafafa",
-        "stroke": "#cccccc",
-        "strokeWidth": 1
+        "fill": "#f8f8f8",
+        "stroke": "#999999",
+        "strokeWidth": 0.8
       }
     },
     {
       "mark": {
         "type": "circle",
-        "opacity": 0.6,
+        "opacity": 0.65,
         "stroke": "white",
         "strokeWidth": 0.5
       },
@@ -906,13 +911,12 @@ Any evaluation of India’s digital transformation must begin with scale and spe
           "field": "Total",
           "type": "quantitative",
           "scale": {
-            "type": "sqrt",
-            "range": [10, 800]
+            "type": "log",
+            "range": [20, 600]
           },
           "legend": {
-            "title": "Total Enrollment",
+            "title": "Enrollment",
             "orient": "bottom-right",
-            "direction": "vertical",
             "format": ",",
             "labelFontSize": 10
           }
@@ -925,9 +929,9 @@ Any evaluation of India’s digital transformation must begin with scale and spe
             "range": ["#FFB6B9", "#74B3CE", "#667eea"]
           },
           "legend": {
-            "title": "Dominant Age Group",
+            "title": "Dominant Age",
             "orient": "top-left",
-            "labelExpr": "datum.label == 'age_0_5' ? '0-5 years' : datum.label == 'age_5_17' ? '5-17 years' : '18+ years'",
+            "labelExpr": "datum.label == 'age_0_5' ? '0-5 yrs' : datum.label == 'age_5_17' ? '5-17 yrs' : '18+ yrs'",
             "labelFontSize": 11
           }
         },
@@ -935,10 +939,7 @@ Any evaluation of India’s digital transformation must begin with scale and spe
           {"field": "Pincode", "type": "quantitative", "title": "Pincode"},
           {"field": "district", "type": "nominal", "title": "District"},
           {"field": "state", "type": "nominal", "title": "State"},
-          {"field": "Total", "type": "quantitative", "format": ",", "title": "Total Enrollment"},
-          {"field": "age_0_5", "type": "quantitative", "format": ",", "title": "Age 0-5"},
-          {"field": "age_5_17", "type": "quantitative", "format": ",", "title": "Age 5-17"},
-          {"field": "age_18_greater", "type": "quantitative", "format": ",", "title": "Age 18+"}
+          {"field": "Total", "type": "quantitative", "format": ",", "title": "Total Enrollment"}
         ]
       }
     }
