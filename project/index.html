@@ -856,18 +856,18 @@ Any evaluation of India’s digital transformation must begin with scale and spe
     "subtitle": "March 2025 | Larger bubbles = Higher enrollment"
   },
   "width": 700,
-  "height": 750,
+  "height": 800,
   "data": {
     "url": "https://raw.githubusercontent.com/Saranya-1208/Saranya-1208.github.io/refs/heads/main/project/aadhaar_viz_india_full.csv"
   },
   "transform": [
     {
-      "calculate": "toNumber(datum.Latitude)",
-      "as": "lat"
-    },
-    {
       "calculate": "toNumber(datum.Longitude)",
       "as": "lon"
+    },
+    {
+      "calculate": "toNumber(datum.Latitude)",
+      "as": "lat"
     },
     {
       "filter": "isValid(datum.lat) && isValid(datum.lon)"
@@ -877,18 +877,12 @@ Any evaluation of India’s digital transformation must begin with scale and spe
     },
     {
       "filter": "datum.lon >= 68 && datum.lon <= 98"
-    },
-    {
-      "filter": "!(datum.lon < 72 && datum.lat > 35)"
-    },
-    {
-      "filter": "!(datum.lon > 95 && datum.lat < 10)"
     }
   ],
   "projection": {
     "type": "mercator",
-    "center": [82, 22],
-    "scale": 1000
+    "center": [78, 20],
+    "scale": 950
   },
   "layer": [
     {
@@ -898,7 +892,7 @@ Any evaluation of India’s digital transformation must begin with scale and spe
       },
       "mark": {
         "type": "geoshape",
-        "fill": "#f5f5f5",
+        "fill": "#f8f8f8",
         "stroke": "#888888",
         "strokeWidth": 1.2
       }
@@ -919,9 +913,14 @@ Any evaluation of India’s digital transformation must begin with scale and spe
           "scale": {
             "type": "pow",
             "exponent": 0.5,
-            "range": [20, 800]
+            "range": [20, 600]
           },
-          "legend": null
+          "legend": {
+            "title": "Enrollment",
+            "orient": "bottom",
+            "format": "~s",
+            "labelFontSize": 11
+          }
         },
         "color": {
           "field": "Dominant_Age",
@@ -934,24 +933,24 @@ Any evaluation of India’s digital transformation must begin with scale and spe
             "title": "Primary Age Group",
             "orient": "top",
             "direction": "horizontal",
-            "labelExpr": "datum.label == 'age_0_5' ? '0-5 years' : datum.label == 'age_5_17' ? '5-17 years' : '18+ years'",
-            "labelFontSize": 12,
-            "symbolSize": 200
+            "labelExpr": "datum.label == 'age_0_5' ? '0-5 yrs' : datum.label == 'age_5_17' ? '5-17 yrs' : '18+ yrs'",
+            "labelFontSize": 12
           }
         },
         "tooltip": [
           {"field": "state", "type": "nominal", "title": "State"},
           {"field": "district", "type": "nominal", "title": "District"},
           {"field": "Pincode", "type": "quantitative", "title": "Pincode"},
-          {"field": "Total", "type": "quantitative", "format": ",", "title": "Total Enrolled"}
+          {"field": "Total", "type": "quantitative", "format": ",", "title": "Enrolled"},
+          {"field": "lon", "type": "quantitative", "format": ".2f", "title": "Longitude"},
+          {"field": "lat", "type": "quantitative", "format": ".2f", "title": "Latitude"}
         ]
       }
     }
   ],
   "config": {
     "font": "Garamond",
-    "view": {"strokeWidth": 0},
-    "background": "#ffffff"
+    "view": {"strokeWidth": 0}
   }
 });
     
