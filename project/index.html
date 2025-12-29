@@ -847,7 +847,7 @@ Any evaluation of India’s digital transformation must begin with scale and spe
   }
 });
     
-  vegaEmbed('#aadhaarBubbleMap', {
+ vegaEmbed('#aadhaarBubbleMap', {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "title": {
     "text": "Aadhaar Enrollment Across 5,000 Pincodes",
@@ -855,7 +855,7 @@ Any evaluation of India’s digital transformation must begin with scale and spe
     "font": "Garamond",
     "subtitle": "March 2025 | Larger bubbles = Higher enrollment"
   },
-  "width": 650,
+  "width": 700,
   "height": 750,
   "data": {
     "url": "https://raw.githubusercontent.com/Saranya-1208/Saranya-1208.github.io/refs/heads/main/project/aadhaar_viz_india_full.csv"
@@ -870,7 +870,19 @@ Any evaluation of India’s digital transformation must begin with scale and spe
       "as": "lon"
     },
     {
-      "filter": "isValid(datum.lat) && isValid(datum.lon) && datum.lat >= 6 && datum.lat <= 38 && datum.lon >= 68 && datum.lon <= 98"
+      "filter": "isValid(datum.lat) && isValid(datum.lon)"
+    },
+    {
+      "filter": "datum.lat >= 6 && datum.lat <= 37"
+    },
+    {
+      "filter": "datum.lon >= 68 && datum.lon <= 98"
+    },
+    {
+      "filter": "!(datum.lon < 72 && datum.lat > 35)"
+    },
+    {
+      "filter": "!(datum.lon > 95 && datum.lat < 10)"
     }
   ],
   "projection": {
@@ -924,18 +936,14 @@ Any evaluation of India’s digital transformation must begin with scale and spe
             "direction": "horizontal",
             "labelExpr": "datum.label == 'age_0_5' ? '0-5 years' : datum.label == 'age_5_17' ? '5-17 years' : '18+ years'",
             "labelFontSize": 12,
-            "symbolSize": 200,
-            "symbolStrokeWidth": 0
+            "symbolSize": 200
           }
         },
         "tooltip": [
           {"field": "state", "type": "nominal", "title": "State"},
           {"field": "district", "type": "nominal", "title": "District"},
           {"field": "Pincode", "type": "quantitative", "title": "Pincode"},
-          {"field": "Total", "type": "quantitative", "format": ",", "title": "Total Enrolled"},
-          {"field": "age_0_5", "type": "quantitative", "format": ",", "title": "0-5 years"},
-          {"field": "age_5_17", "type": "quantitative", "format": ",", "title": "5-17 years"},
-          {"field": "age_18_greater", "type": "quantitative", "format": ",", "title": "18+ years"}
+          {"field": "Total", "type": "quantitative", "format": ",", "title": "Total Enrolled"}
         ]
       }
     }
