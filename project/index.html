@@ -850,14 +850,12 @@ Any evaluation of India’s digital transformation must begin with scale and spe
   vegaEmbed('#aadhaarBubbleMap', {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "title": {
-    "text": "Aadhaar Enrollment Hotspots: 5,000 Pincodes",
+    "text": "Aadhaar Enrollment Density Across India",
     "fontSize": 24,
     "font": "Garamond",
-    "subtitle": "March 2025 enrollment patterns across India",
-    "subtitleFontSize": 14,
-    "subtitleColor": "#666"
+    "subtitle": "Darker regions = Higher enrollment intensity | 5,000 pincodes, March 2025"
   },
-  "width": 550,
+  "width": 650,
   "height": 750,
   "data": {
     "url": "https://raw.githubusercontent.com/Saranya-1208/Saranya-1208.github.io/refs/heads/main/project/aadhaar_viz_india_full.csv"
@@ -889,74 +887,50 @@ Any evaluation of India’s digital transformation must begin with scale and spe
       "mark": {
         "type": "geoshape",
         "fill": "#ffffff",
-        "stroke": "#d0d0d0",
-        "strokeWidth": 1.2
+        "stroke": "#999",
+        "strokeWidth": 0.8
       }
     },
     {
       "mark": {
         "type": "circle",
-        "opacity": 0.5,
-        "stroke": "white",
-        "strokeWidth": 0.8
+        "opacity": 0.35,
+        "stroke": "none",
+        "size": 50
       },
       "encoding": {
-        "longitude": {
-          "field": "lon",
-          "type": "quantitative"
-        },
-        "latitude": {
-          "field": "lat",
-          "type": "quantitative"
-        },
-        "size": {
+        "longitude": {"field": "lon", "type": "quantitative"},
+        "latitude": {"field": "lat", "type": "quantitative"},
+        "color": {
           "field": "Total",
           "type": "quantitative",
           "scale": {
             "type": "log",
-            "range": [15, 500]
+            "scheme": "purples",
+            "reverse": false
           },
           "legend": {
-            "title": "Enrollment",
+            "title": "Enrollment Intensity",
             "orient": "bottom",
             "direction": "horizontal",
             "format": "~s",
             "labelFontSize": 11,
-            "gradientLength": 300
-          }
-        },
-        "color": {
-          "field": "Dominant_Age",
-          "type": "nominal",
-          "scale": {
-            "domain": ["age_0_5", "age_5_17", "age_18_greater"],
-            "range": ["#FF85A2", "#74B3CE", "#B4A7D6"]
-          },
-          "legend": {
-            "title": "Dominant Age",
-            "orient": "top",
-            "direction": "horizontal",
-            "labelExpr": "datum.label == 'age_0_5' ? '0-5 years' : datum.label == 'age_5_17' ? '5-17 years' : '18+ years'",
-            "labelFontSize": 12,
-            "symbolSize": 150
+            "gradientLength": 400,
+            "gradientThickness": 15
           }
         },
         "tooltip": [
-          {"field": "state", "type": "nominal", "title": "State"},
-          {"field": "district", "type": "nominal", "title": "District"},
-          {"field": "Pincode", "type": "quantitative", "title": "Pincode"},
-          {"field": "Total", "type": "quantitative", "format": ",", "title": "Total Enrolled"},
-          {"field": "age_0_5", "type": "quantitative", "format": ",", "title": "0-5 years"},
-          {"field": "age_5_17", "type": "quantitative", "format": ",", "title": "5-17 years"},
-          {"field": "age_18_greater", "type": "quantitative", "format": ",", "title": "18+ years"}
+          {"field": "state", "title": "State"},
+          {"field": "district", "title": "District"},
+          {"field": "Pincode", "format": ",", "title": "Pincode"},
+          {"field": "Total", "format": ",", "title": "Total Enrolled"}
         ]
       }
     }
   ],
   "config": {
     "font": "Garamond",
-    "view": {"strokeWidth": 0},
-    "background": "#fafafa"
+    "view": {"strokeWidth": 0}
   }
 });
     
