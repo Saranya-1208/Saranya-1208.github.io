@@ -373,37 +373,24 @@ Any evaluation of India’s digital transformation must begin with scale and spe
   </p>
 </section>
 
-<div class="chart-wrapper-wide">
-  <div id="villageChart"></div>
-</div>
-      
 <section id="aadhaar">
-  <h2>Digital Identity: Aadhaar's Geographic Reality</h2>
+  <h2>Aadhaar Enrollment: Geographic Patterns Across 5,000 Pincodes</h2>
   <p>
-    Aadhaar, India's digital identity system, forms the foundational layer of the country's digital public infrastructure. By 2025, over 1.3 billion Indians had enrolled, making it the world's largest biometric database. But enrollment data reveals profound geographic patterns in how this infrastructure reached the population.
+    Aadhaar, India's digital identity system, forms the foundational layer of the country's digital public infrastructure. By 2025, over 1.3 billion Indians had enrolled. But March 2025 enrollment data from 5,000 pincodes across 37 states reveals profound geographic patterns in how this infrastructure continues to reach the population.
   </p>
   <p>
-    This map shows enrollment activity across 5,000 pincodes nationwide during March 2025. Each pincode polygon is colored by enrollment intensity, revealing patterns of concentration in urban centers and along major corridors, with enrollment varying dramatically between metropolitan clusters and rural peripheries.
+    Each bubble on this map represents one pincode's enrollment activity during March 2025. Bubble size indicates total enrollment, while color shows the dominant age group enrolled. The density of bubbles reveals enrollment concentrated in urban corridors—the Indo-Gangetic Plain, southern metropolitan regions, and northeastern clusters—while vast rural areas show sparser activity.
   </p>
 </section>
 
 <div class="chart-wrapper-wide">
-  <div id="aadhaarPincodeMap"></div>
+  <div id="aadhaarEnrollmentMap"></div>
 </div>
 
 <p style="font-size: 1rem; color: #666; margin-top: 1.5rem;">
-  <strong>Data source:</strong> Aadhaar enrollment records, March 2025. Pincode-level aggregation across 37 states and union territories. Complete data processing workflow: 
-  <a href="https://colab.research.google.com/drive/1NGX3234tj8Io1uvPtOEYybf3NSRTeCBl?usp=sharing" target="_blank" style="color: #667eea;">Google Colab notebook →</a>
+  <strong>Data source:</strong> Aadhaar enrollment records across 236,314 individual enrollments, aggregated to 5,000 pincodes in 37 states (March 2025). 
+  <a href="https://colab.research.google.com/drive/1NGX3234tj8Io1uvPtOEYybf3NSRTeCBl?usp=sharing" target="_blank" style="color: #667eea;">View data processing workflow →</a>
 </p>
-
-<h3 style="font-size: 1.8rem; margin-top: 3rem;">State-Level Saturation Patterns</h3>
-<p>
-  While the pincode map shows geographic density, state-level saturation rates reveal a different dimension of inequality. Several regions report saturation exceeding 100%, reflecting population mobility and enrollment duplication, while others exhibit substantially lower coverage pointing to persistent gaps in last-mile inclusion.
-</p>
-
-<div class="chart-wrapper">
-  <div id="aadhaarSaturationChart"></div>
-</div>
 
   <section id="future">
      <h2>The Future: The 5G Frontier</h2>
@@ -845,50 +832,107 @@ Any evaluation of India’s digital transformation must begin with scale and spe
   }
 });
     
-vegaEmbed('#aadhaarPincodeMap', {
+vegaEmbed('#aadhaarEnrollmentMap', {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "title": {
-    "text": "Aadhaar Enrollment: Pincode-Level Coverage",
-    "fontSize": 24,
+    "text": "Aadhaar Enrollment Across India: 5,000 Pincodes",
+    "fontSize": 22,
     "font": "Garamond",
-    "subtitle": "March 2025 | Darker regions = Higher enrollment"
+    "subtitle": "Bubble size = Total enrollment | Color = Dominant age group | March 2025"
   },
   "width": 750,
-  "height": 850,
+  "height": 800,
   "data": {
-    "url": "https://raw.githubusercontent.com/Saranya-1208/Saranya-1208.github.io/main/project/india_pincodes_ultra_simple.geojson",
-    "format": {"type": "json"}
+    "url": "https://raw.githubusercontent.com/Saranya-1208/Saranya-1208.github.io/refs/heads/main/project/aadhaar_viz_india_full.csv"
   },
   "transform": [
-    {"calculate": "datum.properties.Total", "as": "Total"},
-    {"calculate": "datum.properties.Pincode", "as": "Pincode"},
-    {"calculate": "datum.properties.Office_Name", "as": "Office"}
+    {
+      "calculate": "toNumber(datum.Longitude)",
+      "as": "lon"
+    },
+    {
+      "calculate": "toNumber(datum.Latitude)",
+      "as": "lat"
+    },
+    {
+      "filter": "isValid(datum.lat) && isValid(datum.lon)"
+    },
+    {
+      "filter": "datum.lat >= 8 && datum.lat <= 35"
+    },
+    {
+      "filter": "datum.lon >= 68 && datum.lon <= 97"
+    }
   ],
-  "projection": {"type": "mercator"},
-  "mark": {
-    "type": "geoshape",
-    "stroke": "#ffffff",
-    "strokeWidth": 0.3
+  "projection": {
+    "type": "mercator",
+    "center": [78.5, 22],
+    "scale": 1000
   },
-  "encoding": {
-    "color": {
-      "field": "Total",
-      "type": "quantitative",
-      "scale": {
-        "type": "log",
-        "scheme": "purples"
+  "layer": [
+    {
+      "data": {
+        "url": "https://raw.githubusercontent.com/Subhash9325/GeoJson-Data-of-Indian-States/refs/heads/master/Indian_States",
+        "format": {"type": "json", "property": "features"}
       },
-      "legend": {
-        "title": "Enrollment",
-        "orient": "bottom",
-        "format": "~s"
+      "mark": {
+        "type": "geoshape",
+        "fill": "#f5f5f5",
+        "stroke": "#888888",
+        "strokeWidth": 1.2
       }
     },
-    "tooltip": [
-      {"field": "Pincode", "type": "quantitative", "title": "Pincode"},
-      {"field": "Office", "type": "nominal", "title": "Post Office"},
-      {"field": "Total", "type": "quantitative", "format": ",", "title": "Enrolled"}
-    ]
+    {
+      "mark": {
+        "type": "circle",
+        "opacity": 0.6,
+        "stroke": "#ffffff",
+        "strokeWidth": 1
+      },
+      "encoding": {
+        "longitude": {"field": "lon", "type": "quantitative"},
+        "latitude": {"field": "lat", "type": "quantitative"},
+        "size": {
+          "field": "Total",
+          "type": "quantitative",
+          "scale": {
+            "type": "pow",
+            "exponent": 0.5,
+            "range": [20, 600]
+          },
+          "legend": null
+        },
+        "color": {
+          "field": "Dominant_Age",
+          "type": "nominal",
+          "scale": {
+            "domain": ["age_0_5", "age_5_17", "age_18_greater"],
+            "range": ["#FF85A2", "#74B3CE", "#B4A7D6"]
+          },
+          "legend": {
+            "title": "Primary Age Group",
+            "orient": "top",
+            "direction": "horizontal",
+            "labelExpr": "datum.label == 'age_0_5' ? '0-5 years' : datum.label == 'age_5_17' ? '5-17 years' : '18+ years'",
+            "labelFontSize": 12,
+            "symbolSize": 200
+          }
+        },
+        "tooltip": [
+          {"field": "state", "type": "nominal", "title": "State"},
+          {"field": "district", "type": "nominal", "title": "District"},
+          {"field": "Pincode", "type": "quantitative", "title": "Pincode"},
+          {"field": "Total", "type": "quantitative", "format": ",", "title": "Total Enrolled"},
+          {"field": "age_0_5", "type": "quantitative", "format": ",", "title": "0-5 years"},
+          {"field": "age_5_17", "type": "quantitative", "format": ",", "title": "5-17 years"},
+          {"field": "age_18_greater", "type": "quantitative", "format": ",", "title": "18+ years"}
+        ]
+      }
+    }
+  ],
+  "config": {
+    "font": "Garamond",
+    "view": {"strokeWidth": 0}
   }
 });
     
