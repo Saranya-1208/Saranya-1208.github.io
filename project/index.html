@@ -850,10 +850,10 @@ Any evaluation of India’s digital transformation must begin with scale and spe
   vegaEmbed('#aadhaarBubbleMap', {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "title": {
-    "text": "Aadhaar Enrollment Density Across India",
+    "text": "Aadhaar Enrollment Across 5,000 Pincodes",
     "fontSize": 24,
     "font": "Garamond",
-    "subtitle": "Darker regions = Higher enrollment intensity | 5,000 pincodes, March 2025"
+    "subtitle": "March 2025 | Larger bubbles = Higher enrollment"
   },
   "width": 650,
   "height": 750,
@@ -870,13 +870,13 @@ Any evaluation of India’s digital transformation must begin with scale and spe
       "as": "lon"
     },
     {
-      "filter": "isValid(datum.lat) && isValid(datum.lon) && datum.lat >= 8 && datum.lat <= 35 && datum.lon >= 68 && datum.lon <= 97"
+      "filter": "isValid(datum.lat) && isValid(datum.lon) && datum.lat >= 6 && datum.lat <= 38 && datum.lon >= 68 && datum.lon <= 98"
     }
   ],
   "projection": {
     "type": "mercator",
-    "center": [82.5, 23],
-    "scale": 1100
+    "center": [82, 22],
+    "scale": 1000
   },
   "layer": [
     {
@@ -886,51 +886,64 @@ Any evaluation of India’s digital transformation must begin with scale and spe
       },
       "mark": {
         "type": "geoshape",
-        "fill": "#ffffff",
-        "stroke": "#999",
-        "strokeWidth": 0.8
+        "fill": "#f5f5f5",
+        "stroke": "#888888",
+        "strokeWidth": 1.2
       }
     },
     {
       "mark": {
         "type": "circle",
-        "opacity": 0.35,
-        "stroke": "none",
-        "size": 50
+        "opacity": 0.6,
+        "stroke": "#ffffff",
+        "strokeWidth": 1
       },
       "encoding": {
         "longitude": {"field": "lon", "type": "quantitative"},
         "latitude": {"field": "lat", "type": "quantitative"},
-        "color": {
+        "size": {
           "field": "Total",
           "type": "quantitative",
           "scale": {
-            "type": "log",
-            "scheme": "purples",
-            "reverse": false
+            "type": "pow",
+            "exponent": 0.5,
+            "range": [20, 800]
+          },
+          "legend": null
+        },
+        "color": {
+          "field": "Dominant_Age",
+          "type": "nominal",
+          "scale": {
+            "domain": ["age_0_5", "age_5_17", "age_18_greater"],
+            "range": ["#FF85A2", "#74B3CE", "#B4A7D6"]
           },
           "legend": {
-            "title": "Enrollment Intensity",
-            "orient": "bottom",
+            "title": "Primary Age Group",
+            "orient": "top",
             "direction": "horizontal",
-            "format": "~s",
-            "labelFontSize": 11,
-            "gradientLength": 400,
-            "gradientThickness": 15
+            "labelExpr": "datum.label == 'age_0_5' ? '0-5 years' : datum.label == 'age_5_17' ? '5-17 years' : '18+ years'",
+            "labelFontSize": 12,
+            "symbolSize": 200,
+            "symbolStrokeWidth": 0
           }
         },
         "tooltip": [
-          {"field": "state", "title": "State"},
-          {"field": "district", "title": "District"},
-          {"field": "Pincode", "format": ",", "title": "Pincode"},
-          {"field": "Total", "format": ",", "title": "Total Enrolled"}
+          {"field": "state", "type": "nominal", "title": "State"},
+          {"field": "district", "type": "nominal", "title": "District"},
+          {"field": "Pincode", "type": "quantitative", "title": "Pincode"},
+          {"field": "Total", "type": "quantitative", "format": ",", "title": "Total Enrolled"},
+          {"field": "age_0_5", "type": "quantitative", "format": ",", "title": "0-5 years"},
+          {"field": "age_5_17", "type": "quantitative", "format": ",", "title": "5-17 years"},
+          {"field": "age_18_greater", "type": "quantitative", "format": ",", "title": "18+ years"}
         ]
       }
     }
   ],
   "config": {
     "font": "Garamond",
-    "view": {"strokeWidth": 0}
+    "view": {"strokeWidth": 0},
+    "background": "#ffffff"
   }
 });
     
