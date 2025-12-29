@@ -851,54 +851,44 @@ vegaEmbed('#aadhaarPincodeMap', {
     "text": "Aadhaar Enrollment: Pincode-Level Coverage",
     "fontSize": 24,
     "font": "Garamond",
-    "subtitle": "March 2025 | Each polygon = one pincode | Darker = Higher enrollment"
+    "subtitle": "March 2025 | Darker regions = Higher enrollment"
   },
-  "width": 650,
-  "height": 750,
+  "width": 750,
+  "height": 850,
   "data": {
     "url": "https://raw.githubusercontent.com/Saranya-1208/Saranya-1208.github.io/main/project/india_pincodes_ultra_simple.geojson",
-    "format": {"type": "json", "property": "features"}
+    "format": {"type": "json"}
   },
-  "projection": {
-    "type": "mercator"
-  },
+  "transform": [
+    {"calculate": "datum.properties.Total", "as": "Total"},
+    {"calculate": "datum.properties.Pincode", "as": "Pincode"},
+    {"calculate": "datum.properties.Office_Name", "as": "Office"}
+  ],
+  "projection": {"type": "mercator"},
   "mark": {
     "type": "geoshape",
-    "stroke": "white",
-    "strokeWidth": 0.5
+    "stroke": "#ffffff",
+    "strokeWidth": 0.3
   },
   "encoding": {
     "color": {
-      "field": "properties.Total",
+      "field": "Total",
       "type": "quantitative",
       "scale": {
         "type": "log",
-        "scheme": "purples",
-        "domain": [10, 10000]
+        "scheme": "purples"
       },
       "legend": {
         "title": "Enrollment",
         "orient": "bottom",
-        "direction": "horizontal",
-        "format": "~s",
-        "labelFontSize": 11,
-        "titleFontSize": 12,
-        "gradientLength": 400,
-        "gradientThickness": 15
+        "format": "~s"
       }
     },
     "tooltip": [
-      {"field": "properties.Pincode", "type": "quantitative", "title": "Pincode"},
-      {"field": "properties.Office_Name", "type": "nominal", "title": "Post Office"},
-      {"field": "properties.Total", "type": "quantitative", "format": ",", "title": "Total Enrolled"},
-      {"field": "properties.age_0_5", "type": "quantitative", "format": ",", "title": "0-5 years"},
-      {"field": "properties.age_5_17", "type": "quantitative", "format": ",", "title": "5-17 years"},
-      {"field": "properties.age_18_greater", "type": "quantitative", "format": ",", "title": "18+ years"}
+      {"field": "Pincode", "type": "quantitative", "title": "Pincode"},
+      {"field": "Office", "type": "nominal", "title": "Post Office"},
+      {"field": "Total", "type": "quantitative", "format": ",", "title": "Enrolled"}
     ]
-  },
-  "config": {
-    "font": "Garamond",
-    "view": {"strokeWidth": 0}
   }
 });
     
