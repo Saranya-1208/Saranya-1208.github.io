@@ -655,6 +655,159 @@ Any evaluation of India’s digital transformation must begin with scale and spe
     "view": {"strokeWidth": 0}
   }
 });
+
+    vegaEmbed('#upiExplosion', {
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "The UPI Explosion: 116 Months of Transformation (2016-2025)",
+    "fontSize": 22,
+    "font": "Garamond",
+    "color": "#1a1a1a"
+  },
+  "width": 650,
+  "height": 450,
+  "data": {
+    "url": "https://raw.githubusercontent.com/Saranya-1208/Saranya-1208.github.io/refs/heads/main/project/upi_complete_timeline.csv"
+  },
+  "layer": [
+    {
+      "mark": {
+        "type": "area",
+        "opacity": 0.4,
+        "color": "#FF85A2",
+        "line": {
+          "color": "#FF85A2",
+          "strokeWidth": 3
+        }
+      },
+      "encoding": {
+        "x": {
+          "field": "Date",
+          "type": "temporal",
+          "title": "Year",
+          "axis": {
+            "format": "%Y",
+            "labelAngle": 0,
+            "grid": false,
+            "labelFontSize": 12,
+            "titleFontSize": 13
+          }
+        },
+        "y": {
+          "field": "Volume_Mn",
+          "type": "quantitative",
+          "title": "Monthly Transactions (Millions, log scale)",
+          "scale": {
+            "type": "log",
+            "domain": [0.01, 20000]
+          },
+          "axis": {
+            "grid": true,
+            "gridOpacity": 0.15,
+            "labelFontSize": 12,
+            "titleFontSize": 13,
+            "format": "~s"
+          }
+        },
+        "tooltip": [
+          {"field": "Date", "type": "temporal", "format": "%B %Y", "title": "Month"},
+          {"field": "Banks", "type": "quantitative", "title": "Banks Live"},
+          {"field": "Volume_Mn", "type": "quantitative", "format": ",.1f", "title": "Volume (Millions)"},
+          {"field": "Value_Cr", "type": "quantitative", "format": ",.0f", "title": "Value (₹ Crores)"},
+          {"field": "Avg_Transaction_Rs", "type": "quantitative", "format": ",.0f", "title": "Avg Transaction (₹)"}
+        ]
+      }
+    },
+    {
+      "mark": {
+        "type": "rule",
+        "strokeDash": [5, 5],
+        "color": "#333",
+        "strokeWidth": 2
+      },
+      "encoding": {
+        "x": {"datum": {"year": 2016, "month": 11, "date": 8}}
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "dx": 8,
+        "dy": -180,
+        "fontSize": 12,
+        "font": "Garamond",
+        "fontWeight": "bold",
+        "color": "#333"
+      },
+      "encoding": {
+        "x": {"datum": {"year": 2016, "month": 11, "date": 8}},
+        "text": {"value": "↑ Nov 8, 2016"}
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "dx": 8,
+        "dy": -160,
+        "fontSize": 11,
+        "font": "Garamond",
+        "color": "#666"
+      },
+      "encoding": {
+        "x": {"datum": {"year": 2016, "month": 11, "date": 8}},
+        "text": {"value": "Demonetization"}
+      }
+    },
+    {
+      "mark": {
+        "type": "rule",
+        "strokeDash": [5, 5],
+        "color": "#333",
+        "strokeWidth": 2
+      },
+      "encoding": {
+        "x": {"datum": {"year": 2020, "month": 3, "date": 24}}
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "dx": 8,
+        "dy": -120,
+        "fontSize": 12,
+        "font": "Garamond",
+        "fontWeight": "bold",
+        "color": "#333"
+      },
+      "encoding": {
+        "x": {"datum": {"year": 2020, "month": 3, "date": 24}},
+        "text": {"value": "↑ Mar 2020"}
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "dx": 8,
+        "dy": -100,
+        "fontSize": 11,
+        "font": "Garamond",
+        "color": "#666"
+      },
+      "encoding": {
+        "x": {"datum": {"year": 2020, "month": 3, "date": 24}},
+        "text": {"value": "COVID Lockdown"}
+      }
+    }
+  ],
+  "config": {
+    "font": "Garamond",
+    "view": {"strokeWidth": 0}
+  }
+});
     
    vegaEmbed('#villageChart', {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
