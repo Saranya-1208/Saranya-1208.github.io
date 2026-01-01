@@ -206,6 +206,30 @@ section > p, .narrative {
   color: #764ba2;
   border-bottom-color: #764ba2;
 }
+    .data-source {
+  font-size: 1.05rem;
+  color: #666;
+  margin: 1.5rem auto 0;
+  max-width: 900px;
+  text-align: center; /* CENTER IT! */
+  display: block;
+}
+
+.data-source strong {
+  color: #333;
+}
+
+.data-source a {
+  color: #667eea;
+  font-weight: 600;
+  text-decoration: none;
+  border-bottom: 1px solid #667eea;
+}
+
+.data-source a:hover {
+  color: #764ba2;
+  border-bottom-color: #764ba2;
+}
     
     footer {
       margin: 5rem 0 3rem 0;
@@ -324,9 +348,9 @@ section > p, .narrative {
   <div id="mckinseyChart"></div>
 </div>
 
-<p style="font-size: 1rem; color: #666; margin-top: 1rem;">
+<p class="data-source">
   <strong>Data extraction:</strong> McKinsey & Company PDF report, page 13. Extracted via 
-  <a href="https://colab.research.google.com/drive/1gATdy9GXodFZ3frY4EcZPblWWhY8wjjd?usp=sharing" target="_blank" style="color: #667eea;">PDF scraping workflow</a>.
+  <a href="https://colab.research.google.com/drive/1gATdy9GXodFZ3frY4EcZPblWWhY8wjjd?usp=sharing" target="_blank">PDF scraping workflow</a>.
 </p>
     </p>
   <section id="upi">
@@ -399,9 +423,9 @@ section > p, .narrative {
   <div id="aadhaarDivergingChart"></div>
 </div>
 
-<p style="font-size: 1rem; color: #666; margin-top: 1.5rem;">
+<p class="data-source">
   <strong>Data source:</strong> Aadhaar enrollment records across 236,314 enrollments aggregated to 5,000 pincodes in 37 states (September 2025). 
-  <a href="https://colab.research.google.com/drive/1NGX3234tj8Io1uvPtOEYybf3NSRTeCBl?usp=sharing" target="_blank" style="color: #667eea;">View data processing workflow →</a>
+  <a href="https://colab.research.google.com/drive/1NGX3234tj8Io1uvPtOEYybf3NSRTeCBl?usp=sharing" target="_blank">View data processing workflow →</a>
 </p>
       
   <section id="future">
@@ -1034,7 +1058,7 @@ vegaEmbed('#aadhaarDivergingChart', {
     "font": "Garamond",
     "subtitle": "September 2025 | Click to highlight states | 37 states and union territories"
   },
-  "width": 700,
+  "width": 650,
   "height": 800,
   "data": {
     "url": "https://raw.githubusercontent.com/Saranya-1208/Saranya-1208.github.io/refs/heads/main/project/aadhaar_september_2025.csv"
