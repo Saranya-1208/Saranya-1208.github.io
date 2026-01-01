@@ -3,147 +3,320 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Saranya Anand | Data Visualisation</title>
+  <title>Saranya Anand | Portfolio</title>
   <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
   <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
   <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
   <style>
-    body {
-      font-family: "calibri", Arial, sans-serif;
-      margin: 5.0;
+    * {
+      margin: 0;
       padding: 0;
-      line-height: 1.5;
-  background-color: #F2E3E7; /* lavendar blush */
+      box-sizing: border-box;
     }
+    
+    body {
+      font-family: 'Garamond', Georgia, serif;
+      line-height: 1.7;
+      color: #2c2c2c;
+      background: #fafafa;
+    }
+    
     header {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
       text-align: center;
-      padding: 80px 20px 40px;
+      padding: 4rem 2rem;
     }
+    
     header h1 {
-      font-size: 2.5rem;
-      margin-bottom: 0.2em;
-      font-weight: 600;
+      font-size: 3rem;
+      font-weight: 500;
+      margin-bottom: 0.5rem;
       letter-spacing: 1px;
     }
+    
     header p {
+      font-size: 1.3rem;
+      opacity: 0.95;
+      margin-bottom: 1.5rem;
+    }
+    
+    header nav {
+      margin-top: 1.5rem;
+    }
+    
+    header nav a {
+      color: white;
+      margin: 0 1rem;
+      font-size: 1.1rem;
+      text-decoration: none;
+      border-bottom: 2px solid transparent;
+      transition: border-bottom 0.3s;
+    }
+    
+    header nav a:hover {
+      border-bottom: 2px solid white;
+    }
+    
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 3rem 2rem;
+    }
+    
+    .cc-section {
+      background: white;
+      margin-bottom: 4rem;
+      padding: 2.5rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    }
+    
+    .cc-section h2 {
+      font-size: 1.8rem;
+      color: #667eea;
+      margin-bottom: 0.5rem;
+      font-weight: 500;
+    }
+    
+    .cc-section h3 {
+      font-size: 1.4rem;
+      color: #333;
+      margin: 2rem 0 1rem;
+      font-weight: 500;
+    }
+    
+    .cc-section p {
       font-size: 1.1rem;
       color: #555;
+      margin-bottom: 1.5rem;
+      line-height: 1.8;
     }
-    section {
-      max-width: 850px;
-      margin: 0 auto;
-      padding: 40px 20px;
+    
+    .chart-wrapper {
+      margin: 2rem 0;
       text-align: center;
     }
-    h2 {
-      font-weight: 500;
-      font-size: 1.4rem;
-      margin-bottom: 20px;
+    
+    .commentary {
+      background: #f8f9fa;
+      border-left: 4px solid #667eea;
+      padding: 1rem 1.5rem;
+      margin: 1.5rem 0;
+      font-size: 1rem;
+      color: #444;
+      font-style: italic;
     }
-    .chart-container {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 40px;
-      margin-top: 30px;
+    
+    .colab-link {
+      display: inline-block;
+      margin-top: 1rem;
+      color: #667eea;
+      font-weight: 600;
+      text-decoration: none;
+      border-bottom: 2px solid #667eea;
     }
+    
+    .colab-link:hover {
+      color: #764ba2;
+      border-bottom-color: #764ba2;
+    }
+    
     footer {
       text-align: center;
-      padding: 50px 20px;
-      font-size: 0.9rem;
+      padding: 3rem 2rem;
+      background: #f5f5f5;
+      margin-top: 4rem;
+      color: #666;
     }
-    a {
+    
+    footer a {
+      color: #667eea;
       text-decoration: none;
+      border-bottom: 1px solid #667eea;
     }
-    a:hover {
-      text-decoration: underline;
-    }
-    .social-links {
-  margin-top: 15px;
-  font-size: 1rem;
-}
-
-.social-links a {
-  color: #0077b5;
-  font-weight: 500;
-  transition: color 0.3s;
-}
-
-.social-links a:hover {
-  color: #005582;
-  text-decoration: underline;
-}
-
-.social-links span {
-  color: #999;
-  margin: 0 8px;
-}
   </style>
 </head>
 <body>
+  
   <header>
-  <h1>SARANYA ANAND</h1>
-  <p>Data Visualisation Portfolio | LSE MPA</p>
-  <nav>
-    <a href="index.html">Portfolio</a> | 
-    <a href="project/index.html">📊 Digital India Project</a>
-  </nav>
-</header>
-  <section>
-  <div class="chart-section">
-    <h3>Chart 1: UK Unemployment Trends</h3>
-    <p>This chart explains the change in unemployment rates in the UK since 1975, showing how economic cycles and policy changes have affected joblessness over nearly five decades.</p>
-    <div id="chart1"></div>
+    <h1>SARANYA ANAND</h1>
+    <p>Data Visualization Portfolio | LSE MPA 2027</p>
+    <nav>
+      <a href="index.html">Portfolio</a>
+      <a href="project/index.html">📊 Digital India Project</a>
+    </nav>
+  </header>
+  
+  <div class="container">
+    
+    <!-- CC1: HOSTING -->
+    <div class="cc-section" id="cc1">
+      <h2>CC1: Hosting - Display Charts on GitHub Pages</h2>
+      <p>Set up GitHub account and live page. Embed two charts using vegaEmbed function.</p>
+      
+      <h3>Chart 1: UK Unemployment Trends (1975-2024)</h3>
+      <p>Long-term unemployment trends in the UK, showing cyclical patterns corresponding to economic recessions.</p>
+      <div class="chart-wrapper">
+        <div id="chart1"></div>
+      </div>
+      
+      <h3>Chart 2: Export of Trade Goods in India by Region</h3>
+      <p>Distribution of India's trade exports across regions and business sectors.</p>
+      <div class="chart-wrapper">
+        <div id="chart2"></div>
+      </div>
+    </div>
+    
+    <!-- CC2: BUILDING -->
+    <div class="cc-section" id="cc2">
+      <h2>CC2: Building - Create Custom Visualizations</h2>
+      <p>Two charts built using the Economics Observatory data creation tools.</p>
+      
+      <h3>Chart 1: UK Gross Capital Formation</h3>
+      <p>Quarterly percentage changes in UK investment from 2005-2016.</p>
+      <div class="chart-wrapper">
+        <div id="chart3"></div>
+      </div>
+      
+      <h3>Chart 2: US Stock Market P/E Ratio</h3>
+      <p>Monthly P/E ratio trends from 2020-2024, showing market valuation cycles.</p>
+      <div class="chart-wrapper">
+        <div id="chart4"></div>
+      </div>
+    </div>
+    
+    <!-- CC3: DEBATE -->
+    <div class="cc-section" id="cc3">
+      <h2>CC3: Debate - Policy Commentary with Visualization</h2>
+      <p><strong>Policy Topic:</strong> India's 2019 constitutional amendment requiring one-third of parliamentary seats for women has dramatically increased female political representation.</p>
+      
+      <h3>Chart: Women in Parliament, India (2000-2024)</h3>
+      <div class="chart-wrapper">
+        <div id="chart5"></div>
+      </div>
+      
+      <div class="commentary">
+        <strong>Commentary:</strong> The sharp increase post-2019 demonstrates how legislative quotas can rapidly transform political gender balance when backed by constitutional mandate.
+      </div>
+    </div>
+    
+    <!-- CC5: API & SCRAPER -->
+    <div class="cc-section" id="cc5">
+      <h2>CC5: Accessing Data - API & Web Scraper</h2>
+      
+      <h3>API Task: 5G Infrastructure Coverage</h3>
+      <p><strong>API Description:</strong> India's Open Government Data Platform provides authenticated API access to infrastructure datasets. Base URL: <code>https://data.gov.in/api/</code>. Full endpoint used: <code>https://data.gov.in/resource/5g-village-coverage</code> with API key authentication.</p>
+      
+      <div class="chart-wrapper">
+        <div id="map5g"></div>
+      </div>
+      
+      <div class="commentary">
+        <strong>Commentary:</strong> Accessed 5G village coverage data via authenticated government API, requiring token management and JSON parsing across 28 states.
+      </div>
+      
+      <a href="https://colab.research.google.com/drive/1QtUWVis71ktzU9Q0QunUYPdOelLgGbOm?usp=sharing" target="_blank" class="colab-link">View API Workflow Notebook →</a>
+      
+      <h3>Scraper Task: McKinsey PDF Extraction</h3>
+      <p>Scraped data from McKinsey & Company PDF report on digital adoption across 17 major economies.</p>
+      
+      <div class="chart-wrapper">
+        <div id="mckinseyChart"></div>
+      </div>
+      
+      <div class="commentary">
+        <strong>Commentary:</strong> Used Python PDF parsing to extract tabular data from page 13, handling inconsistent formatting and converting growth percentages to structured CSV.
+      </div>
+      
+      <a href="https://colab.research.google.com/drive/1gATdy9GXodFZ3frY4EcZPblWWhY8wjjd?usp=sharing" target="_blank" class="colab-link">View Scraper Workflow Notebook →</a>
+    </div>
+    
+    <!-- CC9: INTERACTIVE -->
+    <div class="cc-section" id="cc9">
+      <h2>CC9: Interactive Charts</h2>
+      <p>Two charts with advanced interactivity beyond simple tooltips.</p>
+      
+      <h3>Interactive 1: Global Internet Comparison (Click & Hover)</h3>
+      <p>Click any country to isolate it; hover to highlight. Interactive legend with opacity control.</p>
+      <div class="chart-wrapper">
+        <div id="heroChart"></div>
+      </div>
+      
+      <h3>Interactive 2: UPI Per Capita Map (Dropdown Selection)</h3>
+      <p>Dropdown menu allows switching between three metrics: per capita transactions, total volume, and population.</p>
+      <div class="chart-wrapper">
+        <div id="upiMap"></div>
+      </div>
+    </div>
+    
+    <!-- CC10: ADVANCED & ML -->
+    <div class="cc-section" id="cc10">
+      <h2>CC10: Advanced Analytics & Machine Learning</h2>
+      
+      <h3>Part 1: Advanced Analytics - Transaction Timing Heatmap</h3>
+      <p><strong>Hypothesis:</strong> UPI transaction patterns reveal concentrated usage during specific hours, indicating integration into daily routines rather than occasional use.</p>
+      
+      <div class="chart-wrapper">
+        <div id="heatmapChart"></div>
+      </div>
+      
+      <div class="commentary">
+        <strong>Findings:</strong> Weekday lunch and evening hours show distinct peaks, confirming UPI has become embedded in daily payment behavior, not just emergency cash substitute.
+      </div>
+      
+      <a href="https://colab.research.google.com/drive/1Q44vOtYM3mhGSNu7MAh7m4ABtdJ38EKI?usp=sharing" target="_blank" class="colab-link">View Analysis Notebook →</a>
+      
+      <h3>Part 2: Machine Learning - UPI Growth Forecasting</h3>
+      <p><strong>Hypothesis:</strong> UPI transaction growth follows exponential trajectory, allowing reliable prediction of 2026 volumes using log-linear regression on historical data.</p>
+      
+      <div class="chart-wrapper">
+        <div id="forecastChart"></div>
+      </div>
+      
+      <div class="commentary">
+        <strong>Findings:</strong> Model predicts 20B+ monthly transactions by 2026. Growth rate slowing indicates market saturation approaching, transition from exponential to linear growth phase.
+      </div>
+      
+      <a href="https://colab.research.google.com/drive/1Xq7Skj4NDEpDbI4DQfJdTikyRcti-Rmo?usp=sharing" target="_blank" class="colab-link">View ML Methodology Notebook →</a>
+    </div>
+    
   </div>
-  <div class="chart-section">
-    <h3>Chart 2: Export of Trade Goods in India</h3>
-    <p>This chart explains the export rates of trade goods in india for the years.</p>
-    <div id="chart2"></div>
-  </div>
-  <div class="chart-section">
-    <h3>Chart 3: UK Gross Capital Formation (% Change)</h3>
-    <p>This chart shows quarterly percentage changes in UK gross capital formation from 2005 to 2016, indicating periods of investment growth and decline in the UK economy.</p>
-    <div id="chart3"></div>
-  </div>
-    <div class="chart-section">
-    <h3>Chart 4: US Stock Market Ratio Over-Time</h3>
-    <p>This chart shows the changes in US stock market ratio from 2021 to 2024.</p>
-    <div id="chart4"></div>
-  </div>
-    <div class="chart-section">
-    <h3>Chart 5: Representation of Women in the Parliament, India from 2000-2024</h3>
-    <p>This chart shows the percentage of parliamentary seats held by women in India from 2000 to 2024, highlighting the significant increase in female political representation, particularly after 2019.</p>
-    <div id="chart5"></div>
-  </div>
-  </section>
-  <section id="about">
-    <h2>About</h2>
-    <p>
-      I'm a Master of Public Administration student at the London School of Economics.
-      This website documents my journey into Data Visualisation.
-    </p>
-  </section>
+  
+  <footer>
+    <p><strong>Saranya Anand</strong> | LSE MPA 2027</p>
+    <p>PP434 Data Visualization | Autumn 2025</p>
+    <p><a href="project/index.html">View Digital India Project →</a></p>
+  </footer>
+  
   <script>
+    // CC1 - Chart 1
     vegaEmbed('#chart1', {
       "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-      "title": "Unemployment Rate (aged over 16)",
-      "width": 500,
-      "height": 300,
+      "title": "UK Unemployment Rate (Aged Over 16)",
+      "width": 700,
+      "height": 350,
       "data": {
         "url": "https://raw.githubusercontent.com/Saranya-1208/Saranya-1208.github.io/refs/heads/main/series-051125.csv"
       },
-      "mark": "line",
+      "mark": {"type": "line", "strokeWidth": 2.5, "color": "#667eea"},
       "encoding": {
         "x": {"field": "Year", "type": "temporal", "title": "Year"},
-        "y": {"field": "Value", "type": "quantitative", "title": "Unemployment Rate (%)"}
-      }
+        "y": {"field": "Value", "type": "quantitative", "title": "Unemployment Rate (%)"},
+        "tooltip": [
+          {"field": "Year", "type": "temporal", "format": "%Y"},
+          {"field": "Value", "type": "quantitative", "format": ".1f", "title": "Rate (%)"}
+        ]
+      },
+      "config": {"font": "Garamond"}
     });
     
+    // CC1 - Chart 2
     vegaEmbed('#chart2', {
       "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-      "title": "Export of Trade Goods in India",
-      "width": 500,
-      "height": 300,
+      "title": "Export of Trade Goods in India by Region",
+      "width": 700,
+      "height": 350,
       "data": {
         "url": "https://raw.githubusercontent.com/Saranya-1208/Saranya-1208.github.io/refs/heads/main/data.csv"
       },
@@ -163,144 +336,325 @@
         "color": {
           "field": "Name",
           "type": "nominal",
-          "title": "Business Sector"
-        }
-      }
+          "title": "Business Sector",
+          "scale": {"range": ["#667eea", "#FF85A2", "#74B3CE", "#FFB6B9"]}
+        },
+        "tooltip": [
+          {"field": "Region"},
+          {"field": "Name", "title": "Sector"},
+          {"field": "Value", "format": ".1f", "title": "Distribution (%)"}
+        ]
+      },
+      "config": {"font": "Garamond"}
     });
+    
+    // CC2 - Chart 1
     vegaEmbed('#chart3', {
       "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
       "title": "UK Gross Capital Formation (% Change)",
-      "width": 500,
-      "height": 300,
+      "width": 700,
+      "height": 350,
       "data": {
         "url": "https://raw.githubusercontent.com/Saranya-1208/Saranya-1208.github.io/refs/heads/main/Gross%20Capital%20Formation.csv"
       },
-      "mark": {"type": "line", "point": true, "strokeWidth": 2},
+      "mark": {"type": "line", "point": true, "strokeWidth": 2.5, "color": "#FF85A2"},
       "encoding": {
         "x": {
           "field": "Date",
           "type": "temporal",
           "title": "Year",
-          "axis": {"labelAngle": -45, "format": "%Y"}
+          "axis": {"format": "%Y"}
         },
         "y": {
           "field": "Value",
           "type": "quantitative",
-          "title": "% Change",
-          "scale": {"zero": false}
+          "title": "% Change"
         },
-        "color": {"value": "#e74c3c"},
         "tooltip": [
-          {"field": "Date", "type": "temporal", "title": "Date", "format": "%Y-%m"},
-          {"field": "Value", "type": "quantitative", "title": "% Change", "format": ".2f"}
+          {"field": "Date", "type": "temporal", "format": "%Y-%m"},
+          {"field": "Value", "type": "quantitative", "format": ".2f", "title": "% Change"}
         ]
-      }
+      },
+      "config": {"font": "Garamond"}
     });
-   vegaEmbed('#chart4', {
-  "config": {"view": {"continuousWidth": 300, "continuousHeight": 300}},
-  "data": {"name": "data-ba3782db477058a189e15ded2b7e095e"},
-  "mark": {"type": "line", "point": true},
-  "encoding": {
-    "tooltip": [
-      {"field": "Date", "type": "temporal"},
-      {"field": "PE_Ratio", "type": "quantitative"}
-    ],
-    "x": {"field": "Date", "type": "temporal"},
-    "y": {"field": "PE_Ratio", "type": "quantitative"}
-  },
-  "height": 300,
-  "title": "US Stock Market P/E Ratio Over Time",
-  "width": 500,
-  "$schema": "https://vega.github.io/schema/vega-lite/v5.20.1.json",
-  "datasets": {
-    "data-ba3782db477058a189e15ded2b7e095e": [
-      {"Date": "2020-01-31T00:00:00", "PE_Ratio": 25.3},
-      {"Date": "2020-02-29T00:00:00", "PE_Ratio": 26.1},
-      {"Date": "2020-03-31T00:00:00", "PE_Ratio": 24.8},
-      {"Date": "2020-04-30T00:00:00", "PE_Ratio": 27.5},
-      {"Date": "2020-05-31T00:00:00", "PE_Ratio": 28.9},
-      {"Date": "2020-06-30T00:00:00", "PE_Ratio": 30.2},
-      {"Date": "2020-07-31T00:00:00", "PE_Ratio": 29.5},
-      {"Date": "2020-08-31T00:00:00", "PE_Ratio": 28.1},
-      {"Date": "2020-09-30T00:00:00", "PE_Ratio": 31.2},
-      {"Date": "2020-10-31T00:00:00", "PE_Ratio": 32.5},
-      {"Date": "2020-11-30T00:00:00", "PE_Ratio": 33.1},
-      {"Date": "2020-12-31T00:00:00", "PE_Ratio": 31.8},
-      {"Date": "2021-01-31T00:00:00", "PE_Ratio": 30.5},
-      {"Date": "2021-02-28T00:00:00", "PE_Ratio": 29.9},
-      {"Date": "2021-03-31T00:00:00", "PE_Ratio": 28.7},
-      {"Date": "2021-04-30T00:00:00", "PE_Ratio": 27.3},
-      {"Date": "2021-05-31T00:00:00", "PE_Ratio": 26.8},
-      {"Date": "2021-06-30T00:00:00", "PE_Ratio": 25.9},
-      {"Date": "2021-07-31T00:00:00", "PE_Ratio": 27.2},
-      {"Date": "2021-08-31T00:00:00", "PE_Ratio": 28.5},
-      {"Date": "2021-09-30T00:00:00", "PE_Ratio": 29.8},
-      {"Date": "2021-10-31T00:00:00", "PE_Ratio": 31.1},
-      {"Date": "2021-11-30T00:00:00", "PE_Ratio": 32.4},
-      {"Date": "2021-12-31T00:00:00", "PE_Ratio": 33.7},
-      {"Date": "2022-01-31T00:00:00", "PE_Ratio": 34.2},
-      {"Date": "2022-02-28T00:00:00", "PE_Ratio": 33.5},
-      {"Date": "2022-03-31T00:00:00", "PE_Ratio": 32.8},
-      {"Date": "2022-04-30T00:00:00", "PE_Ratio": 31.9},
-      {"Date": "2022-05-31T00:00:00", "PE_Ratio": 30.7},
-      {"Date": "2022-06-30T00:00:00", "PE_Ratio": 29.4},
-      {"Date": "2022-07-31T00:00:00", "PE_Ratio": 28.2},
-      {"Date": "2022-08-31T00:00:00", "PE_Ratio": 27.6},
-      {"Date": "2022-09-30T00:00:00", "PE_Ratio": 28.9},
-      {"Date": "2022-10-31T00:00:00", "PE_Ratio": 30.2},
-      {"Date": "2022-11-30T00:00:00", "PE_Ratio": 31.5},
-      {"Date": "2022-12-31T00:00:00", "PE_Ratio": 32.8},
-      {"Date": "2023-01-31T00:00:00", "PE_Ratio": 34.1},
-      {"Date": "2023-02-28T00:00:00", "PE_Ratio": 35.4},
-      {"Date": "2023-03-31T00:00:00", "PE_Ratio": 36.2},
-      {"Date": "2023-04-30T00:00:00", "PE_Ratio": 35.8},
-      {"Date": "2023-05-31T00:00:00", "PE_Ratio": 34.9},
-      {"Date": "2023-06-30T00:00:00", "PE_Ratio": 33.7},
-      {"Date": "2023-07-31T00:00:00", "PE_Ratio": 32.5},
-      {"Date": "2023-08-31T00:00:00", "PE_Ratio": 31.3},
-      {"Date": "2023-09-30T00:00:00", "PE_Ratio": 30.1},
-      {"Date": "2023-10-31T00:00:00", "PE_Ratio": 29.2},
-      {"Date": "2023-11-30T00:00:00", "PE_Ratio": 28.8},
-      {"Date": "2023-12-31T00:00:00", "PE_Ratio": 29.5},
-      {"Date": "2024-01-31T00:00:00", "PE_Ratio": 30.8},
-      {"Date": "2024-02-29T00:00:00", "PE_Ratio": 32.1}
-    ]
-  }
-})
-  vegaEmbed('#chart5', {
-  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "title": "Women in Parliament, India (% change)",
-  "width": 500,
-  "height": 300,
-  "data": {
-    "url": "https://raw.githubusercontent.com/Saranya-1208/Saranya-1208.github.io/refs/heads/main/Women%20in%20Parliament%20India.csv"
-  },
-  "mark": {"type": "line", "point": true, "strokeWidth": 2},
-  "encoding": {
-    "x": {
-      "field": "Year",
-      "type": "temporal",
-      "title": "Year",
-      "axis": {"labelAngle": -45, "format": "%Y"}
-    },
-    "y": {
-      "field": "Value",
-      "type": "quantitative",
-      "title": "% Change",
-      "scale": {"zero": false}
-    },
-    "color": {"value": "#792359"},
-    "tooltip": [
-      {"field": "Date", "type": "temporal", "title": "Date", "format": "%Y-%m"},
-      {
-        "field": "Value",
-        "type": "quantitative",
-        "title": "% Change",
-        "format": ".2f"
-      }
-    ]
-  },
-})
+    
+    // CC2 - Chart 2
+    vegaEmbed('#chart4', {
+      "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+      "title": "US Stock Market P/E Ratio Over Time",
+      "width": 700,
+      "height": 350,
+      "data": {
+        "values": [
+          {"Date": "2020-01-31", "PE_Ratio": 25.3}, {"Date": "2020-04-30", "PE_Ratio": 27.5},
+          {"Date": "2020-07-31", "PE_Ratio": 29.5}, {"Date": "2020-10-31", "PE_Ratio": 32.5},
+          {"Date": "2021-01-31", "PE_Ratio": 30.5}, {"Date": "2021-04-30", "PE_Ratio": 27.3},
+          {"Date": "2021-07-31", "PE_Ratio": 27.2}, {"Date": "2021-10-31", "PE_Ratio": 31.1},
+          {"Date": "2022-01-31", "PE_Ratio": 34.2}, {"Date": "2022-04-30", "PE_Ratio": 31.9},
+          {"Date": "2022-07-31", "PE_Ratio": 28.2}, {"Date": "2022-10-31", "PE_Ratio": 30.2},
+          {"Date": "2023-01-31", "PE_Ratio": 34.1}, {"Date": "2023-04-30", "PE_Ratio": 35.8},
+          {"Date": "2023-07-31", "PE_Ratio": 32.5}, {"Date": "2023-10-31", "PE_Ratio": 29.2},
+          {"Date": "2024-01-31", "PE_Ratio": 30.8}, {"Date": "2024-02-29", "PE_Ratio": 32.1}
+        ]
+      },
+      "mark": {"type": "line", "point": true, "strokeWidth": 2.5, "color": "#74B3CE"},
+      "encoding": {
+        "x": {"field": "Date", "type": "temporal", "title": "Date"},
+        "y": {"field": "PE_Ratio", "type": "quantitative", "title": "P/E Ratio"},
+        "tooltip": [
+          {"field": "Date", "type": "temporal", "format": "%B %Y"},
+          {"field": "PE_Ratio", "type": "quantitative", "title": "P/E Ratio"}
+        ]
+      },
+      "config": {"font": "Garamond"}
+    });
+    
+    // CC3 - Chart
+    vegaEmbed('#chart5', {
+      "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+      "title": "Women in Parliament, India (% of Seats)",
+      "width": 700,
+      "height": 350,
+      "data": {
+        "url": "https://raw.githubusercontent.com/Saranya-1208/Saranya-1208.github.io/refs/heads/main/Women%20in%20Parliament%20India.csv"
+      },
+      "mark": {"type": "line", "point": true, "strokeWidth": 2.5, "color": "#B4A7D6"},
+      "encoding": {
+        "x": {
+          "field": "Year",
+          "type": "temporal",
+          "title": "Year",
+          "axis": {"format": "%Y"}
+        },
+        "y": {
+          "field": "Value",
+          "type": "quantitative",
+          "title": "% of Parliamentary Seats"
+        },
+        "tooltip": [
+          {"field": "Year", "type": "temporal", "format": "%Y"},
+          {"field": "Value", "type": "quantitative", "format": ".1f", "title": "% of Seats"}
+        ]
+      },
+      "config": {"font": "Garamond"}
+    });
+    
+    // CC5 - 5G Map
+    vegaEmbed('#map5g', {
+      "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+      "title": "5G Infrastructure: Villages with Coverage (Feb 2025)",
+      "width": 700,
+      "height": 600,
+      "data": {
+        "url": "https://raw.githubusercontent.com/Subhash9325/GeoJson-Data-of-Indian-States/refs/heads/master/Indian_States",
+        "format": {"type": "json", "property": "features"}
+      },
+      "transform": [{
+        "lookup": "properties.NAME_1",
+        "from": {
+          "data": {"url": "https://raw.githubusercontent.com/Saranya-1208/Saranya-1208.github.io/refs/heads/main/project/5g_coverage_india.csv"},
+          "key": "State",
+          "fields": ["Villages_5G", "Districts_5G"]
+        }
+      }],
+      "projection": {"type": "mercator"},
+      "mark": {"type": "geoshape", "stroke": "white", "strokeWidth": 1.5},
+      "encoding": {
+        "color": {
+          "field": "Villages_5G",
+          "type": "quantitative",
+          "scale": {"scheme": "purples", "type": "log"},
+          "legend": {"title": "Villages with 5G", "format": ","}
+        },
+        "tooltip": [
+          {"field": "properties.NAME_1", "title": "State"},
+          {"field": "Villages_5G", "format": ",", "title": "Villages with 5G"}
+        ]
+      },
+      "config": {"font": "Garamond"}
+    });
+    
+    // CC5 - McKinsey Chart
+    vegaEmbed('#mckinseyChart', {
+      "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+      "title": "Digital Adoption Growth Rate (2014-2017)",
+      "width": 700,
+      "height": 500,
+      "data": {
+        "url": "https://raw.githubusercontent.com/Saranya-1208/Saranya-1208.github.io/refs/heads/main/project/mckinsey_digital_adoption.csv"
+      },
+      "layer": [
+        {
+          "mark": {"type": "rule", "size": 3},
+          "encoding": {
+            "y": {"field": "Country", "type": "nominal", "sort": "-x", "title": null},
+            "x": {"field": "Growth_2014_2017_%", "type": "quantitative", "title": "Growth Rate (%)"},
+            "color": {
+              "condition": {"test": "datum.Country == 'India'", "value": "#FF85A2"},
+              "value": "#D0D0D0"
+            }
+          }
+        },
+        {
+          "mark": {"type": "point", "filled": true},
+          "encoding": {
+            "y": {"field": "Country", "type": "nominal", "sort": "-x"},
+            "x": {"field": "Growth_2014_2017_%", "type": "quantitative"},
+            "size": {"condition": {"test": "datum.Country == 'India'", "value": 400}, "value": 200},
+            "color": {"condition": {"test": "datum.Country == 'India'", "value": "#FF85A2"}, "value": "#B4A7D6"},
+            "tooltip": [
+              {"field": "Country"},
+              {"field": "Growth_2014_2017_%", "title": "Growth Rate (%)"}
+            ]
+          }
+        }
+      ],
+      "config": {"font": "Garamond"}
+    });
+    
+    // CC9 - Hero Chart
+    vegaEmbed('#heroChart', {
+      "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+      "title": "India's Digital Catch-Up: 2010-2024",
+      "width": 700,
+      "height": 400,
+      "data": {
+        "url": "https://raw.githubusercontent.com/Saranya-1208/Saranya-1208.github.io/refs/heads/main/project/net%20users%20%25%20global%202010%20-%202020.csv"
+      },
+      "params": [
+        {"name": "hover", "select": {"type": "point", "fields": ["Country Name"], "on": "mouseover", "clear": "mouseout"}},
+        {"name": "click", "select": {"type": "point", "fields": ["Country Name"]}}
+      ],
+      "mark": {"type": "line", "point": true, "strokeWidth": 3},
+      "encoding": {
+        "x": {"field": "Year", "type": "quantitative", "title": "Year"},
+        "y": {"field": "Net Internet Users", "type": "quantitative", "title": "Internet Users (%)"},
+        "color": {
+          "field": "Country Name",
+          "scale": {"range": ["#FF85A2", "#74B3CE", "#FFDAB9", "#B4A7D6", "#A8E6CF", "#FFB6B9", "#C7CEEA", "#E8DFF5"]},
+          "legend": {"title": null}
+        },
+        "opacity": {"condition": [{"param": "click", "value": 1}, {"param": "hover", "value": 1}], "value": 0.2},
+        "tooltip": [{"field": "Country Name"}, {"field": "Year"}, {"field": "Net Internet Users", "title": "Internet Users (%)"}]
+      },
+      "config": {"font": "Garamond"}
+    });
+    
+    // CC9 - UPI Map
+    vegaEmbed('#upiMap', {
+      "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+      "title": "UPI Divide: Interactive Metric Selection",
+      "width": 600,
+      "height": 550,
+      "params": [{
+        "name": "metric",
+        "value": "Per_Capita_Monthly",
+        "bind": {
+          "input": "select",
+          "options": ["Per_Capita_Monthly", "Volume_Mn", "Population_Mn"],
+          "labels": ["Transactions Per Person", "Total Volume (M)", "Population (M)"],
+          "name": "Select Metric: "
+        }
+      }],
+      "data": {
+        "url": "https://raw.githubusercontent.com/Subhash9325/GeoJson-Data-of-Indian-States/refs/heads/master/Indian_States",
+        "format": {"type": "json", "property": "features"}
+      },
+      "transform": [
+        {
+          "lookup": "properties.NAME_1",
+          "from": {
+            "data": {"url": "https://raw.githubusercontent.com/Saranya-1208/Saranya-1208.github.io/refs/heads/main/project/Statewise_UPI%20transaction_per%20capita_Map.csv"},
+            "key": "State",
+            "fields": ["Per_Capita_Monthly", "Volume_Mn", "Population_Mn"]
+          }
+        },
+        {"calculate": "metric == 'Per_Capita_Monthly' ? datum.Per_Capita_Monthly : metric == 'Volume_Mn' ? datum.Volume_Mn : datum.Population_Mn", "as": "SelectedValue"}
+      ],
+      "projection": {"type": "mercator"},
+      "mark": {"type": "geoshape", "stroke": "white", "strokeWidth": 1.5},
+      "encoding": {
+        "color": {
+          "field": "SelectedValue",
+          "type": "quantitative",
+          "scale": {"range": ["#A8E6CF", "#FFD3B6", "#FFAAA5", "#FF8B94"]},
+          "legend": {"title": "Value", "format": ".1f"}
+        },
+        "tooltip": [
+          {"field": "properties.NAME_1", "title": "State"},
+          {"field": "Per_Capita_Monthly", "title": "Per Capita"},
+          {"field": "Volume_Mn", "format": ".1f", "title": "Volume (M)"}
+        ]
+      },
+      "config": {"font": "Garamond"}
+    });
+    
+    // CC10 - Heatmap
+    vegaEmbed('#heatmapChart', {
+      "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+      "title": "UPI Transaction Patterns: Hour × Day (250K Transactions)",
+      "width": 700,
+      "height": 350,
+      "data": {
+        "url": "https://raw.githubusercontent.com/Saranya-1208/Saranya-1208.github.io/refs/heads/main/project/upi_time_heatmap.csv"
+      },
+      "mark": {"type": "rect", "strokeWidth": 1, "stroke": "white"},
+      "encoding": {
+        "x": {"field": "hour_of_day", "type": "ordinal", "title": "Hour of Day"},
+        "y": {
+          "field": "day_of_week",
+          "type": "ordinal",
+          "sort": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+          "title": null
+        },
+        "color": {
+          "field": "Transaction_Count",
+          "type": "quantitative",
+          "scale": {"scheme": "redpurple"},
+          "legend": {"title": "Transactions", "format": ","}
+        },
+        "tooltip": [
+          {"field": "day_of_week", "title": "Day"},
+          {"field": "hour_of_day", "title": "Hour"},
+          {"field": "Transaction_Count", "format": ",", "title": "Transactions"}
+        ]
+      },
+      "config": {"font": "Garamond"}
+    });
+    
+    // CC10 - ML Forecast
+    vegaEmbed('#forecastChart', {
+      "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+      "title": "UPI Forecast: Actual + ML Predictions (2016-2026)",
+      "width": 700,
+      "height": 400,
+      "data": {
+        "url": "https://raw.githubusercontent.com/Saranya-1208/Saranya-1208.github.io/refs/heads/main/project/upi_forecast.csv"
+      },
+      "transform": [{"calculate": "toDate(datum.Date)", "as": "ParsedDate"}],
+      "mark": {"type": "line", "point": true, "strokeWidth": 3},
+      "encoding": {
+        "x": {"field": "ParsedDate", "type": "temporal", "title": "Year", "axis": {"format": "%Y"}},
+        "y": {
+          "field": "Volume_Mn",
+          "type": "quantitative",
+          "title": "Monthly Transactions (Millions)",
+          "scale": {"type": "log"}
+        },
+        "color": {
+          "field": "Type",
+          "scale": {"domain": ["Actual", "Predicted"], "range": ["#FF85A2", "#B4A7D6"]},
+          "legend": {"title": null}
+        },
+        "strokeDash": {"field": "Type", "scale": {"domain": ["Actual", "Predicted"], "range": [[1,0], [8,4]]}},
+        "tooltip": [
+          {"field": "ParsedDate", "type": "temporal", "format": "%B %Y"},
+          {"field": "Volume_Mn", "format": ",.0f", "title": "Volume (M)"},
+          {"field": "Type"}
+        ]
+      },
+      "config": {"font": "Garamond"}
+    });
   </script>
 </body>
 </html>
