@@ -120,22 +120,58 @@ section h2 {
   border-bottom: 3px solid #667eea;
 }
 
-section h3 {
-  font-size: 2.0rem; 
-  font-weight: 500;
-  color: #333;
-  margin: 3rem 0 1.5rem 0; 
-}
-
-section > p, .narrative {
-  max-width: 900px; 
-  font-size: 1.30rem; 
-  line-height: 2.0; 
-  color: #3a3a3a;
-  margin-bottom: 2.5rem;
+section h3,
+.chart-wrapper + h3,
+.chart-wrapper-wide + h3 {
+  max-width: 900px;
   margin-left: auto;
   margin-right: auto;
+  font-size: 2.0rem;
+  font-weight: 500;
+  color: #333;
+  margin-top: 3rem;
+  margin-bottom: 1.5rem;
+}
+
+section > p, 
+.narrative,
+.chart-wrapper + p,
+.chart-wrapper-wide + p,
+.info-box + p,
+div + p {
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 1.25rem;
+  line-height: 2.0;
+  color: #3a3a3a;
+  margin-bottom: 2.5rem;
   text-align: justify;
+}
+
+    .chart-wrapper + p,
+.chart-wrapper-wide + p,
+.info-box + p {
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 1.25rem;
+  line-height: 2.0;
+  color: #3a3a3a;
+  margin-bottom: 2.5rem;
+  text-align: justify;
+}
+
+.chart-wrapper + h3,
+.chart-wrapper-wide + h3 {
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 2.0rem;
+  font-weight: 500;
+  color: #333;
+  margin-top: 3rem;
+  margin-bottom: 1.5rem;
 }
 
 .chart-wrapper {
@@ -371,7 +407,7 @@ section > p, .narrative {
 
   <h3>The Daily Rhythm: When Do 250,000 Transactions Happen?</h3>
   <p>
-    Analyzing the timing of 250,000 UPI transactions reveals the daily rhythm of Digital India. This heatmap shows transaction density across every hour of every day—darker cells indicate peak activity when millions of Indians simultaneously pay for meals, transfer money, shop online, and settle bills.
+    Analyzing the timing of 250,000 UPI transactions reveals the daily rhythm of Digital India. This heatmap shows transaction density across every hour of every day, darker cells indicate peak activity when millions of Indians simultaneously pay for meals, transfer money, shop online, and settle bills.
   </p>
 
   <div class="chart-wrapper">
@@ -440,7 +476,7 @@ section > p, .narrative {
   </div>
 
   <p>
-    The states leading 5G deployment—Maharashtra, Uttar Pradesh, Gujarat—mirror the patterns we've seen throughout this analysis: infrastructure follows existing development corridors. The challenge ahead is ensuring 5G reaches the villages and states that need it most, not just those that can afford it first.
+    The states leading 5G deployment - Maharashtra, Uttar Pradesh, Gujarat - mirror the patterns we've seen throughout this analysis: infrastructure follows existing development corridors. The challenge ahead is ensuring 5G reaches the villages and states that need it most, not just those that can afford it first.
   </p>
 
   <div class="info-box">
@@ -456,7 +492,7 @@ section > p, .narrative {
     
     <h3>Machine Learning Forecast: Where UPI is Headed</h3>
     <p>
-      Using 116 months of historical transaction data, an exponential regression model predicts UPI's continued growth through 2026. The model reveals that while growth remains strong, the rate is gradually slowing as the market approaches saturation—a natural phase in technology adoption curves.
+      Using 116 months of historical transaction data, an exponential regression model predicts UPI's continued growth through 2026. The model reveals that while growth remains strong, the rate is gradually slowing as the market approaches saturation, a natural phase in technology adoption curves.
     </p>
   </section>
 
