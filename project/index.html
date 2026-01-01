@@ -455,19 +455,31 @@ section > p, .narrative {
   </p>
 </div>    
 </p>
-      <section id="methodology">
+     <section id="methodology">
   <h2>Data Sources & Methodology</h2>
+  
+  <h3>Data Collection</h3>
   <p>
-    The project integrates government open data, web-harvested reports, transaction-level data, and machine learning forecasts. Data processing, aggregation, and modeling were performed entirely in Python using pandas for data manipulation and scikit-learn for predictive analytics. All transformations—such as logarithmic scaling and exponential regression—have been explicitly documented. Assumptions, limitations, and complete workflows have been captured in linked Colab notebooks to ensure reproducibility.
+    This analysis draws on multiple datasets spanning 2010-2025. Internet penetration data comes from the World Bank's World Development Indicators, covering eight countries over fifteen years. UPI transaction data was manually reconstructed from 116 monthly reports published by the National Payments Corporation of India, requiring extensive cleaning and validation. State-level UPI per capita figures were calculated by combining NPCI state totals with Census population projections, necessitating manual matching of inconsistent state name spellings across datasets.
   </p>
-</section>
-<section id="conclusions">
-  <h2>Conclusions</h2>
+  
   <p>
-    This project reveals three key findings. First, India built its digital public infrastructure at unprecedented scale in record time. Second, the success visible in aggregate figures hides very deep inequality in geographic distribution. Usage intensity, access, and quality are dominated by wealthier areas. Third, the gaps outlined can be filled by targeted interventions, as demonstrated by the Digital Villages initiative.
+    The McKinsey digital adoption data was extracted from a 2019 PDF report using Python-based web scraping (<a href="https://colab.research.google.com/drive/1gATdy9GXodFZ3frY4EcZPblWWhY8wjjd?usp=sharing" target="_blank" style="color: #667eea;">view methodology</a>). 5G infrastructure data was accessed through India's Open Government Data Platform API with authenticated access (<a href="https://colab.research.google.com/drive/1QtUWVis71ktzU9Q0QunUYPdOelLgGbOm?usp=sharing" target="_blank" style="color: #667eea;">view API workflow</a>). The behavioral analysis of UPI transaction patterns draws on a dataset of 250,000 individual transactions, aggregated by hour and day of week to protect privacy while revealing temporal usage patterns (<a href="https://colab.research.google.com/drive/1Q44vOtYM3mhGSNu7MAh7m4ABtdJ38EKI?usp=sharing" target="_blank" style="color: #667eea;">view analysis</a>). Digital village pilot data comes from Ministry of Electronics reports covering 700 villages across three implementation years. Aadhaar enrollment data represents 236,314 individual enrollments across 5,000 pincodes in 37 states during September 2025 (<a href="https://colab.research.google.com/drive/1NGX3234tj8Io1uvPtOEYybf3NSRTeCBl?usp=sharing" target="_blank" style="color: #667eea;">view processing</a>).
   </p>
+
+  <h3>Technical Implementation</h3>
   <p>
-    The message is clear: it is not enough to merely build digital infrastructure. It requires thoughtful application of resources and presence in geographies most vulnerable to being left behind. India went digital at unprecedented speed. Whether it goes digital equitably is the question that remains.
+    Data cleaning and preparation was conducted in Python using pandas for data manipulation and datetime parsing. Vega-Lite was selected as the visualization framework for its declarative syntax and interactive capabilities. Key technical challenges included reconciling inconsistent state name spellings across government datasets, parsing UPI dates across multiple format conventions, and handling missing data in time series. The machine learning forecast employs exponential regression on log-transformed UPI transaction volumes (<a href="https://colab.research.google.com/drive/1Xq7Skj4NDEpDbI4DQfJdTikyRcti-Rmo?usp=sharing" target="_blank" style="color: #667eea;">view complete methodology</a>). Transaction counts were log-transformed to linearize exponential growth, fitted using scikit-learn's linear regression, and back-transformed for interpretation.
+  </p>
+
+  <h3>Use of AI Tools</h3>
+  <p>
+    This project was developed with assistance from Claude (Anthropic). I used Claude for code syntax generation, debugging technical issues, structuring my analysis approach, and iterating on visual design choices. All analytical decisions including which research questions to pursue, which datasets to use, how to interpret findings, and what policy conclusions to draw were my own. I personally collected all data, executed all code in Google Colab, verified all results, and made all substantive decisions about the project's direction and conclusions. The AI served as a technical assistant, not an analytical collaborator.
+  </p>
+
+  <h3>Limitations</h3>
+  <p>
+    State-level UPI data required manual population-based estimates as NPCI does not publish official per capita figures. The 250,000 transaction dataset, while large, represents a sample rather than comprehensive coverage. Geographic visualizations use publicly available GeoJSON boundaries which may not reflect recent administrative reorganizations, notably the 2019 division of Jammu and Kashmir into separate union territories. Pincode-level coordinate data showed inconsistencies requiring filtering, particularly for boundary regions. Aadhaar enrollment data represents September 2025 activity.
   </p>
 </section>
       
