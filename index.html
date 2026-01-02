@@ -268,6 +268,29 @@
         <div id="upiMap"></div>
       </div>
     </div>
+
+    <div class="cc-section" id="cc4">
+  <h2>CC4: Replication - Recreate & Improve Chart</h2>
+  
+  <h3>Original Chart (Financial Times)</h3>
+  <img src="ft_ipo_original.png" alt="FT IPO Chart" style="max-width: 100%; border: 1px solid #ddd; border-radius: 4px; margin: 1rem 0;">
+  <p><em>Source: Financial Times, "Oh, to IPO" - Global IPO fundraising trends</em></p>
+  
+  <h3>My Replication</h3>
+  <p>Replicated FT's stacked bar chart showing IPO funds raised across major markets. Matched their color scheme and styling.</p>
+  <div class="chart-wrapper">
+    <div id="replicationChart"></div>
+  </div>
+  
+  <h3>My Improvement</h3>
+  <div class="chart-wrapper">
+    <div id="improvedChart"></div>
+  </div>
+  
+  <div class="commentary">
+    <strong>Improvements made:</strong> Added interactive legend (click to isolate regions), used playful pastels instead of FT pink, added rounded corners, clearer axis labels, Garamond font for elegance.
+  </div>
+</div>
     
     <!-- CC10: ADVANCED & ML -->
     <div class="cc-section" id="cc10">
@@ -586,8 +609,115 @@ countries.forEach(country => {
     }
   }, {actions: false});
 });
+
+vegaEmbed('#improvedChart', {
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "Global IPO Fundraising by Region (2018-2025)",
+    "subtitle": "Initial Public Offerings raised, $bn | Interactive: Click regions to isolate",
+    "fontSize": 20,
+    "font": "Garamond"
+  },
+  "width": 600,
+  "height": 400,
+  "data": {
+    "values": [
+      {"year": "2018", "region": "New York", "value": 95},
+      {"year": "2018", "region": "India", "value": 55},
+      {"year": "2018", "region": "Hong Kong", "value": 35},
+      {"year": "2018", "region": "China", "value": 12},
+      {"year": "2018", "region": "Rest of World", "value": 103},
+      
+      {"year": "2019", "region": "New York", "value": 85},
+      {"year": "2019", "region": "India", "value": 48},
+      {"year": "2019", "region": "Hong Kong", "value": 30},
+      {"year": "2019", "region": "China", "value": 15},
+      {"year": "2019", "region": "Rest of World", "value": 97},
+      
+      {"year": "2020", "region": "New York", "value": 115},
+      {"year": "2020", "region": "India", "value": 52},
+      {"year": "2020", "region": "Hong Kong", "value": 25},
+      {"year": "2020", "region": "China", "value": 55},
+      {"year": "2020", "region": "Rest of World", "value": 123},
+      
+      {"year": "2021", "region": "New York", "value": 145},
+      {"year": "2021", "region": "India", "value": 48},
+      {"year": "2021", "region": "Hong Kong", "value": 22},
+      {"year": "2021", "region": "China", "value": 75},
+      {"year": "2021", "region": "Rest of World", "value": 190},
+      
+      {"year": "2022", "region": "New York", "value": 28},
+      {"year": "2022", "region": "India", "value": 18},
+      {"year": "2022", "region": "Hong Kong", "value": 8},
+      {"year": "2022", "region": "China", "value": 75},
+      {"year": "2022", "region": "Rest of World", "value": 48},
+      
+      {"year": "2023", "region": "New York", "value": 38},
+      {"year": "2023", "region": "India", "value": 12},
+      {"year": "2023", "region": "Hong Kong", "value": 8},
+      {"year": "2023", "region": "China", "value": 52},
+      {"year": "2023", "region": "Rest of World", "value": 55},
+      
+      {"year": "2024", "region": "New York", "value": 42},
+      {"year": "2024", "region": "India", "value": 18},
+      {"year": "2024", "region": "Hong Kong", "value": 10},
+      {"year": "2024", "region": "China", "value": 28},
+      {"year": "2024", "region": "Rest of World", "value": 72},
+      
+      {"year": "2025", "region": "New York", "value": 38},
+      {"year": "2025", "region": "India", "value": 15},
+      {"year": "2025", "region": "Hong Kong", "value": 8},
+      {"year": "2025", "region": "China", "value": 25},
+      {"year": "2025", "region": "Rest of World", "value": 68}
+    ]
+  },
+  "params": [
+    {
+      "name": "regionSelect",
+      "select": {"type": "point", "fields": ["region"]},
+      "bind": "legend"
+    }
+  ],
+  "mark": {"type": "bar", "cornerRadiusTopLeft": 3, "cornerRadiusTopRight": 3},
+  "encoding": {
+    "x": {
+      "field": "year",
+      "type": "ordinal",
+      "title": "Year",
+      "axis": {"labelAngle": 0, "labelFontSize": 12}
+    },
+    "y": {
+      "field": "value",
+      "type": "quantitative",
+      "title": "IPO Funds Raised ($bn)",
+      "stack": "zero",
+      "axis": {"labelFontSize": 11}
+    },
+    "color": {
+      "field": "region",
+      "type": "nominal",
+      "scale": {
+        "domain": ["New York", "India", "Hong Kong", "China", "Rest of World"],
+        "range": ["#667eea", "#FF85A2", "#74B3CE", "#B4A7D6", "#FFDAB9"]
+      },
+      "legend": {"title": "Region", "orient": "top", "labelFontSize": 12}
+    },
+    "opacity": {
+      "condition": {"param": "regionSelect", "value": 1},
+      "value": 0.2
+    },
+    "tooltip": [
+      {"field": "year", "title": "Year"},
+      {"field": "region", "title": "Region"},
+      {"field": "value", "title": "Funds Raised ($bn)"}
+    ]
+  },
+  "config": {
+    "font": "Garamond",
+    "view": {"strokeWidth": 0}
+  }
+});
     
-    // CC9 - Hero Chart
     vegaEmbed('#heroChart', {
       "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
       "title": "India's Digital Catch-Up: 2010-2024",
