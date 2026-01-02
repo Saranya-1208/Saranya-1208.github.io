@@ -917,12 +917,22 @@
       "config": {"font": "Garamond", "view": {"strokeWidth": 0}}
     });
     
-   vegaEmbed('#forecastChart', {
+  // CC10 - ML Forecast
+vegaEmbed('#forecastChart', {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "title": {"text": "UPI Forecast: Actual + ML Predictions (2016-2026)", "fontSize": 20, "font": "Garamond"},
+  "title": {
+    "text": "UPI Forecast: Actual + ML Predictions (2016-2026)", 
+    "fontSize": 20, 
+    "font": "Garamond"
+  },
   "width": 750,
   "height": 450,
-  "data": {"url": "https://raw.githubusercontent.com/Saranya-1208/Saranya-1208.github.io/refs/heads/main/upi_forecast%20(1).csv"},
+  "data": {
+    "url": "https://raw.githubusercontent.com/Saranya-1208/Saranya-1208.github.io/refs/heads/main/upi_forecast%20(1).csv"
+  },
+  "transform": [
+    {"filter": "datum.Volume_Mn > 0"}  // Remove zeros for better visualization
+  ],
   "mark": {"type": "line", "point": true, "strokeWidth": 3},
   "encoding": {
     "x": {
@@ -935,16 +945,23 @@
       "field": "Volume_Mn",
       "type": "quantitative",
       "title": "Monthly Transactions (Millions)",
+      "scale": {"type": "log"},
       "axis": {"labelFontSize": 12}
     },
     "color": {
       "field": "Type",
-      "scale": {"domain": ["Actual", "Predicted"], "range": ["#FF85A2", "#B4A7D6"]},
+      "scale": {
+        "domain": ["Actual", "Predicted"], 
+        "range": ["#FF85A2", "#B4A7D6"]
+      },
       "legend": {"title": null, "labelFontSize": 13}
     },
     "strokeDash": {
       "field": "Type", 
-      "scale": {"domain": ["Actual", "Predicted"], "range": [[1,0], [8,4]]}
+      "scale": {
+        "domain": ["Actual", "Predicted"], 
+        "range": [[1,0], [8,4]]
+      }
     },
     "tooltip": [
       {"field": "Date", "type": "temporal", "format": "%B %Y"},
