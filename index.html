@@ -371,7 +371,7 @@
       </div>
       
       <div class="commentary">
-        <strong>Findings :</strong> Weekday lunch and evening hours show distinct transaction peaks. Pattern confirms UPI embedded in daily payment routines, not just emergency usage.
+        <strong>Findings:</strong> Weekday lunch and evening hours show distinct transaction peaks. Pattern confirms UPI embedded in daily payment routines, not just emergency usage.
       </div>
       
       <a href="https://colab.research.google.com/drive/1Q44vOtYM3mhGSNu7MAh7m4ABtdJ38EKI?usp=sharing" target="_blank" class="colab-link">View Heatmap Analysis Notebook →</a>
@@ -758,39 +758,86 @@
     });
     
     // CC8 - Chart 1: Bread Trends
-    vegaEmbed('#cc8Chart1', {
-      "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-      "title": {"text": "UK White Bread Prices (1988-2025)", "subtitle": "Aggregated from millions of observations", "fontSize": 20, "font": "Garamond"},
-      "width": 700,
-      "height": 400,
-      "data": {"url": "https://raw.githubusercontent.com/Saranya-1208/Saranya-1208.github.io/refs/heads/main/cc8_bread_trends.csv"},
-      "mark": {"type": "line", "strokeWidth": 3, "point": {"size": 60}, "color": "#667eea"},
-      "encoding": {
-        "x": {"field": "date", "type": "temporal", "title": "Year", "axis": {"format": "%Y", "labelFontSize": 12}},
-        "y": {"field": "price", "type": "quantitative", "title": "Median Price (£)", "axis": {"labelFontSize": 12}},
-        "tooltip": [
-          {"field": "date", "type": "temporal", "format": "%B %Y"},
-          {"field": "price", "format": "£.2f", "title": "Price"}
-        ]
-      },
-      "config": {"font": "Garamond", "view": {"strokeWidth": 0}}
-    });
-    
-    // CC8 - Chart 2: Regional Comparison
-    vegaEmbed('#cc8Chart2', {
-      "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-      "title": {"text": "UK Bread Rolls: Regional Prices (2015-2025)", "subtitle": "Median prices by region", "fontSize": 20, "font": "Garamond"},
-      "width": 700,
-      "height": 400,
-      "data": {"url": "https://raw.githubusercontent.com/Saranya-1208/Saranya-1208.github.io/refs/heads/main/cc8_bread_regional.csv"},
-      "mark": {"type": "bar", "color": "#FF85A2", "cornerRadiusEnd": 4},
-      "encoding": {
-        "y": {"field": "region_name", "type": "nominal", "sort": "x", "title": null, "axis": {"labelFontSize": 12}},
-        "x": {"field": "price", "type": "quantitative", "title": "Median Price (£)", "axis": {"format": ".2f", "labelFontSize": 12}},
-        "tooltip": [{"field": "region_name", "title": "Region"}, {"field": "price", "format": "£.2f"}]
-      },
-      "config": {"font": "Garamond", "view": {"strokeWidth": 0}}
-    });
+vegaEmbed('#cc8Chart1', {
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "UK White Bread Prices (1988-2025)", 
+    "subtitle": "Aggregated from millions of observations", 
+    "fontSize": 20, 
+    "font": "Garamond"
+  },
+  "width": 800,
+  "height": 400,
+  "data": {
+    "url": "https://raw.githubusercontent.com/Saranya-1208/Saranya-1208.github.io/refs/heads/main/cc8_bread_trends.csv"
+  },
+  "mark": {
+    "type": "line", 
+    "strokeWidth": 3, 
+    "point": {"size": 60}, 
+    "color": "#667eea"
+  },
+  "encoding": {
+    "x": {
+      "field": "date", 
+      "type": "temporal", 
+      "title": "Year", 
+      "axis": {"format": "%Y", "labelFontSize": 12}
+    },
+    "y": {
+      "field": "price", 
+      "type": "quantitative", 
+      "title": "Median Price (£)", 
+      "axis": {"labelFontSize": 12}
+    },
+    "tooltip": [
+      {"field": "date", "type": "temporal", "format": "%B %Y", "title": "Date"},
+      {"field": "price", "format": ".2f", "title": "Price (£)"}
+    ]
+  },
+  "config": {"font": "Garamond", "view": {"strokeWidth": 0}}
+});
+
+// CC8 - Chart 2: Regional Comparison
+vegaEmbed('#cc8Chart2', {
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "UK Bread Rolls: Regional Prices (2015-2025)", 
+    "subtitle": "Median prices by region", 
+    "fontSize": 20, 
+    "font": "Garamond"
+  },
+  "width": 800,
+  "height": 400,
+  "data": {
+    "url": "https://raw.githubusercontent.com/Saranya-1208/Saranya-1208.github.io/refs/heads/main/cc8_bread_regional.csv"
+  },
+  "mark": {
+    "type": "bar", 
+    "color": "#FF85A2", 
+    "cornerRadiusEnd": 4
+  },
+  "encoding": {
+    "y": {
+      "field": "region_name", 
+      "type": "nominal", 
+      "sort": "-x", 
+      "title": null, 
+      "axis": {"labelFontSize": 12}
+    },
+    "x": {
+      "field": "price", 
+      "type": "quantitative", 
+      "title": "Median Price (£)", 
+      "axis": {"format": ".2f", "labelFontSize": 12}
+    },
+    "tooltip": [
+      {"field": "region_name", "title": "Region"}, 
+      {"field": "price", "format": ".2f", "title": "Price (£)"}
+    ]
+  },
+  "config": {"font": "Garamond", "view": {"strokeWidth": 0}}
+});
     
     // CC9 - Interactive 1: Hover Highlighting
     vegaEmbed('#interactive1', {
