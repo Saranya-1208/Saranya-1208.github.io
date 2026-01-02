@@ -175,9 +175,9 @@
   <div class="container">
     
     <!-- Chart 01 -->
-    <div class="cc-section" id="chart1">
-      <h2>CC1: Hosting - Display Charts on GitHub Pages</h2>
-      <p>Set up GitHub account and live page. Embed two charts using the vegaEmbed function.</p>
+    <div class="cc-section" id="cc1">
+      <h2>CC1: Hosting Display Charts on GitHub</h2>
+      <p>Embed two charts using the vegaEmbed function.</p>
       
       <h3>Chart 1: UK Unemployment Rate (1975-2024)</h3>
       <p>Long-term unemployment trends showing cyclical patterns corresponding to UK economic recessions over five decades.</p>
@@ -194,7 +194,7 @@
     
     <!-- Chart 02 -->
     <div class="cc-section" id="cc2">
-      <h2>CC2: Building - Create Custom Visualizations</h2>
+      <h2>CC2: Building Visualizations</h2>
       <p>Two charts built using the Economics Observatory data creation tools and custom specifications.</p>
       
       <h3>Chart 1: UK Gross Capital Formation (% Change)</h3>
@@ -212,7 +212,7 @@
     
     <!-- Chart 03 -->
     <div class="cc-section" id="cc3">
-      <h2>CC3: Debate - Policy Commentary with Visualization</h2>
+      <h2>CC3: Policy Commentary with Visualization</h2>
       <p><strong>Policy Topic (25 words):</strong> India's 2019 constitutional amendment requiring one-third of parliamentary seats for women dramatically increased female political representation, demonstrating quota effectiveness.</p>
       
       <h3>Women in Parliament, India (2000-2024)</h3>
@@ -221,17 +221,17 @@
       </div>
       
       <div class="commentary">
-        <strong>Commentary (25 words):</strong> Sharp post-2019 increase proves legislative quotas rapidly transform political gender balance when backed by constitutional mandate and enforcement mechanisms.
+        <strong>Analysis:</strong> Sharp post-2019 increase proves legislative quotas rapidly transform political gender balance when backed by constitutional mandate and enforcement mechanisms.
       </div>
     </div>
     
     <!-- CC4 -->
     <div class="cc-section" id="cc4">
-      <h2>CC4: Replication - Recreate & Improve Chart</h2>
+      <h2>CC4: Recreate & Improve Chart</h2>
       
       <h3>Original Chart (Financial Times)</h3>
       <img src="ft_ipo_original.png" alt="FT IPO Chart" style="max-width: 100%; border: 1px solid #ddd; border-radius: 8px; margin: 1.5rem 0;">
-      <p><em>Source: Financial Times - "Oh, to IPO" global fundraising trends</em></p>
+      <p><em>Source: Financial Times - global fundraising trends</em></p>
       
       <h3>My Replication</h3>
       <p>Matched FT's visual style including their specific color palette and stacked bar chart format.</p>
@@ -245,7 +245,7 @@
       </div>
       
       <div class="commentary">
-        <strong>Improvements (25 words):</strong> Added interactive clickable legend to isolate regions, cohesive color palette matching portfolio theme, clearer subtitle explaining interactivity, elegant Garamond typography.
+        <strong>Improvements:</strong> Added interactive clickable legend to isolate regions, cohesive color palette matching portfolio theme, clearer subtitle explaining interactivity, elegant Garamond typography.
       </div>
     </div>
     
@@ -261,7 +261,7 @@
       </div>
       
       <div class="commentary">
-        <strong>Commentary (25 words):</strong> Accessed World Bank API using Python requests, parsed nested JSON structure, extracted GDP growth values, handled null entries for incomplete years.
+        <strong>Analysis:</strong> Accessed World Bank API using Python requests, parsed nested JSON structure, extracted GDP growth values, handled null entries for incomplete years.
       </div>
       
       <a href="YOUR_API_COLAB_URL" target="_blank" class="colab-link">View API Download Notebook →</a>
@@ -274,15 +274,15 @@
       </div>
       
       <div class="commentary">
-        <strong>Commentary (25 words):</strong> Used BeautifulSoup to parse HTML tables, cleaned population strings removing commas, handled inconsistent formatting, sorted by population size descending.
+        <strong>Analysis:</strong> Used BeautifulSoup to parse HTML tables, cleaned population strings removing commas, handled inconsistent formatting, sorted by population size descending.
       </div>
       
-      <a href="YOUR_SCRAPER_COLAB_URL" target="_blank" class="colab-link">View Scraper Workflow Notebook →</a>
+      <a href="https://colab.research.google.com/drive/1n4jCerBvAuUxpIMBJcYoMOuKNO_RKDjp?usp=sharing" target="_blank" class="colab-link">View Scraper Workflow Notebook →</a>
     </div>
     
     <!-- CC6 -->
     <div class="cc-section" id="cc6">
-      <h2>CC6: Loops - Build a Dashboard</h2>
+      <h2>CC6: Loops</h2>
       <p>Used Python loop to batch download 6 countries' internet data from World Bank API. Displayed as grid using JavaScript loop to embed charts.</p>
       
       <h3>Global Internet Penetration Dashboard (2010-2024)</h3>
@@ -296,7 +296,7 @@
         <div id="dash_South_Africa"></div>
       </div>
       
-      <a href="YOUR_DASHBOARD_COLAB_URL" target="_blank" class="colab-link">View Batch Download Notebook →</a>
+      <a href="https://colab.research.google.com/drive/13PjXGgk2bv2u-ziZh_pZjWhRcfhLv0g9?usp=sharing" target="_blank" class="colab-link">View Batch Download Notebook →</a>
     </div>
     
     <!-- CC7 -->
@@ -335,7 +335,7 @@
       </div>
       
       <div class="commentary">
-        <strong>Commentary (50 words):</strong> Processed 48.4 million price observations from LRPD database. Filtered to bread products, aggregated by time and region. Charts reveal steady inflation in bread prices over decades and persistent regional price differences, with higher prices in certain UK regions.
+        <strong>Analysis:</strong> Processed 48.4 million price observations from LRPD database. Filtered to bread products, aggregated by time and region. Charts reveal steady inflation in bread prices over decades and persistent regional price differences, with higher prices in certain UK regions.
       </div>
       
       <a href="https://colab.research.google.com/drive/1lWK4IRn_GYHQYDwXK-BEmUkKD7yqTf8j?usp=sharing" target="_blank" class="colab-link">View Data Processing Notebook →</a>
@@ -658,7 +658,7 @@
       vegaEmbed(`#dash_${country.name}`, {
         "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
         "title": {"text": country.name.replace("_", " "), "fontSize": 16, "font": "Garamond"},
-        "width": 300,
+        "width": 250,
         "height": 220,
         "data": {"url": `https://raw.githubusercontent.com/Saranya-1208/Saranya-1208.github.io/refs/heads/main/${country.name}_internet.json`},
         "mark": {"type": "line", "strokeWidth": 2.5, "point": {"size": 50}, "color": country.color},
@@ -794,41 +794,63 @@
     
     // CC9 - Interactive 1: Hover Highlighting
     vegaEmbed('#interactive1', {
-      "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-      "title": {"text": "UK Unemployment (Interactive Hover)", "subtitle": "Hover to highlight periods", "fontSize": 20, "font": "Garamond"},
-      "width": 700,
-      "height": 400,
-      "data": {"url": "https://raw.githubusercontent.com/Saranya-1208/Saranya-1208.github.io/refs/heads/main/series-051125.csv"},
-      "params": [{"name": "hover", "select": {"type": "point", "on": "mouseover", "nearest": true}}],
-      "layer": [
-        {
-          "mark": {"type": "line", "strokeWidth": 3, "color": "#667eea"},
-          "encoding": {
-            "x": {"field": "Year", "type": "temporal", "title": "Year", "axis": {"labelFontSize": 12}},
-            "y": {"field": "Value", "type": "quantitative", "title": "Unemployment (%)", "axis": {"labelFontSize": 12}}
-          }
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "UK Unemployment (Interactive Hover)", 
+    "subtitle": "Hover to highlight periods", 
+    "fontSize": 20, 
+    "font": "Garamond"
+  },
+  "width": 700,
+  "height": 400,
+  "data": {"url": "https://raw.githubusercontent.com/Saranya-1208/Saranya-1208.github.io/refs/heads/main/series-051125.csv"},
+  "params": [{
+    "name": "hover",
+    "select": {
+      "type": "point",
+      "fields": ["Year"],
+      "nearest": true,
+      "on": "mouseover",
+      "clear": "mouseout"
+    }
+  }],
+  "layer": [
+    {
+      "mark": {"type": "line", "strokeWidth": 3, "color": "#667eea"},
+      "encoding": {
+        "x": {"field": "Year", "type": "temporal", "title": "Year", "axis": {"labelFontSize": 12}},
+        "y": {"field": "Value", "type": "quantitative", "title": "Unemployment (%)", "axis": {"labelFontSize": 12}}
+      }
+    },
+    {
+      "mark": {"type": "point", "filled": true},
+      "encoding": {
+        "x": {"field": "Year", "type": "temporal"},
+        "y": {"field": "Value", "type": "quantitative"},
+        "size": {
+          "condition": {"param": "hover", "empty": false, "value": 300},
+          "value": 100
         },
-        {
-          "mark": {"type": "point", "filled": true, "size": 100},
-          "encoding": {
-            "x": {"field": "Year", "type": "temporal"},
-            "y": {"field": "Value", "type": "quantitative"},
-            "color": {"condition": {"param": "hover", "value": "#FF85A2"}, "value": "#667eea"},
-            "size": {"condition": {"param": "hover", "value": 300}, "value": 100},
-            "tooltip": [
-              {"field": "Year", "type": "temporal", "format": "%Y"},
-              {"field": "Value", "format": ".1f", "title": "Rate (%)"}
-            ]
-          }
+        "color": {
+          "condition": {"param": "hover", "empty": false, "value": "#FF85A2"},
+          "value": "#667eea"
         },
-        {
-          "mark": {"type": "rule", "strokeWidth": 2, "color": "#FF85A2", "opacity": 0.5},
-          "encoding": {"x": {"field": "Year", "type": "temporal"}},
-          "transform": [{"filter": {"param": "hover"}}]
-        }
-      ],
-      "config": {"font": "Garamond", "view": {"strokeWidth": 0}}
-    });
+        "tooltip": [
+          {"field": "Year", "type": "temporal", "format": "%Y"},
+          {"field": "Value", "format": ".1f", "title": "Rate (%)"}
+        ]
+      }
+    },
+    {
+      "transform": [{"filter": {"param": "hover", "empty": false}}],
+      "mark": {"type": "rule", "strokeWidth": 2, "color": "#FF85A2", "opacity": 0.5},
+      "encoding": {
+        "x": {"field": "Year", "type": "temporal"}
+      }
+    }
+  ],
+  "config": {"font": "Garamond", "view": {"strokeWidth": 0}}
+});
     
     // CC9 - Interactive 2: Dropdown Selector
     vegaEmbed('#interactive2', {
