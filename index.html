@@ -184,7 +184,6 @@
       </div>
     </div>
     
-    <!-- CC3: DEBATE -->
     <div class="cc-section" id="cc3">
       <h2>CC3: Debate - Policy Commentary with Visualization</h2>
       <p><strong>Policy Topic:</strong> India's 2019 constitutional amendment requiring one-third of parliamentary seats for women has dramatically increased female political representation.</p>
@@ -245,6 +244,23 @@
   </div>
   
   <a href="https://colab.research.google.com/drive/13PjXGgk2bv2u-ziZh_pZjWhRcfhLv0g9?usp=sharing" target="_blank" class="colab-link">View Batch Download Notebook →</a>
+</div>
+
+    <div class="cc-section" id="cc7">
+  <h2>CC7: Maps - Base Maps and Choropleths</h2>
+  <p>Two maps: Scotland (coordinate map) and Wales (choropleth).</p>
+  
+  <h3>Map 1: Scotland - Universal Credit Claimants (Coordinate Map)</h3>
+  <p>Bubble map showing UC claimant percentages across Scottish constituencies. Bubble size indicates claimant percentage; color shows deviation from national average.</p>
+  <div class="chart-wrapper">
+    <div id="scotlandMap"></div>
+  </div>
+  
+  <h3>Map 2: Wales - Population by Local Authority (Choropleth)</h3>
+  <p>Choropleth map showing population distribution across Welsh local authorities. Darker purple indicates higher population density.</p>
+  <div class="chart-wrapper">
+    <div id="walesMap"></div>
+  </div>
 </div>
     
    <div class="cc-section" id="cc9">
@@ -684,6 +700,152 @@
     },
     "tooltip": [
       {"field": "city", "title": "City"},
+      {"field": "population", "format": ",", "title": "Population"}
+    ]
+  },
+  "config": {
+    "font": "Garamond",
+    "view": {"strokeWidth": 0}
+  }
+});
+
+vegaEmbed('#scotlandMap', {
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "Scotland: Universal Credit Claimants by Constituency",
+    "subtitle": "National Average: 9.05%",
+    "fontSize": 18,
+    "font": "Garamond"
+  },
+  "width": 450,
+  "height": 500,
+  "layer": [
+    {
+      "data": {
+        "url": "https://raw.githubusercontent.com/jhellingsdata/RADataHub/refs/heads/main/MappingWorkshop/geo_data/LAD_SCT_2025_05.topojson",
+        "format": {"type": "topojson", "feature": "object_name"}
+      },
+      "mark": {
+        "type": "geoshape",
+        "fill": "#f0f0f0",
+        "stroke": "#999",
+        "strokeWidth": 0.5
+      },
+      "projection": {"type": "mercator"}
+    },
+    {
+      "data": {
+        "url": "https://raw.githubusercontent.com/vkumarilse/vkumarilse.github.io/refs/heads/main/portfolio/scotland_uc_data.csv"
+      },
+      "mark": {
+        "type": "circle",
+        "opacity": 0.8,
+        "stroke": "white",
+        "strokeWidth": 1.5
+      },
+      "encoding": {
+        "longitude": {"field": "lon", "type": "quantitative"},
+        "latitude": {"field": "lat", "type": "quantitative"},
+        "size": {
+          "field": "uc_percentage",
+          "type": "quantitative",
+          "scale": {"range": [100, 800]},
+          "legend": {"title": "UC Claimants (%)"}
+        },
+        "color": {
+          "field": "vs_national",
+          "type": "quantitative",
+          "scale": {
+            "domain": [-4, 0, 4],
+            "range": ["#74B3CE", "#f7f7f7", "#FF85A2"]
+          },
+          "legend": {"title": "vs National Avg", "orient": "bottom"}
+        },
+        "tooltip": [
+          {"field": "constituency_name", "title": "Constituency"},
+          {"field": "uc_percentage", "format": ".1f", "title": "UC Claimants (%)"},
+          {"field": "uc_claimants", "format": ",", "title": "Total Claimants"},
+          {"field": "vs_national", "format": "+.1f", "title": "vs National"}
+        ]
+      }
+    }
+  ],
+  "config": {
+    "font": "Garamond",
+    "view": {"strokeWidth": 0}
+  }
+});
+
+    vegaEmbed('#walesMap', {
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "Wales: Population by Local Authority",
+    "fontSize": 18,
+    "font": "Garamond"
+  },
+  "width": 400,
+  "height": 550,
+  "data": {
+    "url": "https://raw.githubusercontent.com/jhellingsdata/RADataHub/refs/heads/main/MappingWorkshop/geo_data/LAD_WLS_2025_05.topojson",
+    "format": {"type": "topojson", "feature": "object_name"}
+  },
+  "transform": [
+    {
+      "lookup": "properties.LAD25NM",
+      "from": {
+        "data": {
+          "values": [
+            {"name": "Cardiff", "population": 364248},
+            {"name": "Swansea", "population": 246466},
+            {"name": "Newport", "population": 159588},
+            {"name": "Wrexham", "population": 135132},
+            {"name": "Rhondda Cynon Taf", "population": 241873},
+            {"name": "Carmarthenshire", "population": 188771},
+            {"name": "Caerphilly", "population": 176995},
+            {"name": "Flintshire", "population": 155593},
+            {"name": "Bridgend", "population": 147049},
+            {"name": "Neath Port Talbot", "population": 144386},
+            {"name": "Vale of Glamorgan", "population": 135295},
+            {"name": "Powys", "population": 133030},
+            {"name": "Pembrokeshire", "population": 126751},
+            {"name": "Gwynedd", "population": 124178},
+            {"name": "Denbighshire", "population": 95696},
+            {"name": "Conwy", "population": 118184},
+            {"name": "Torfaen", "population": 92300},
+            {"name": "Monmouthshire", "population": 95164},
+            {"name": "Ceredigion", "population": 72992},
+            {"name": "Isle of Anglesey", "population": 70440},
+            {"name": "Blaenau Gwent", "population": 69862},
+            {"name": "Merthyr Tydfil", "population": 60424}
+          ]
+        },
+        "key": "name",
+        "fields": ["population"]
+      }
+    }
+  ],
+  "projection": {"type": "mercator"},
+  "mark": {
+    "type": "geoshape",
+    "stroke": "white",
+    "strokeWidth": 1
+  },
+  "encoding": {
+    "color": {
+      "field": "population",
+      "type": "quantitative",
+      "scale": {
+        "scheme": "purples",
+        "type": "log"
+      },
+      "legend": {
+        "title": "Population",
+        "format": "~s",
+        "orient": "bottom"
+      }
+    },
+    "tooltip": [
+      {"field": "properties.LAD25NM", "title": "Local Authority"},
       {"field": "population", "format": ",", "title": "Population"}
     ]
   },
