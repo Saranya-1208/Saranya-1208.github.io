@@ -852,39 +852,58 @@
   "config": {"font": "Garamond", "view": {"strokeWidth": 0}}
 });
     
-    // CC9 - Interactive 2: Dropdown Selector
-    vegaEmbed('#interactive2', {
-      "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-      "title": {"text": "Women in Parliament: Country Comparison", "subtitle": "Select country from dropdown", "fontSize": 20, "font": "Garamond"},
-      "width": 700,
-      "height": 400,
-      "data": {
-        "values": [
-          {"year": "2000", "country": "India", "value": 9.0}, {"year": "2005", "country": "India", "value": 8.3},
-          {"year": "2010", "country": "India", "value": 11.0}, {"year": "2015", "country": "India", "value": 12.0},
-          {"year": "2020", "country": "India", "value": 14.4}, {"year": "2024", "country": "India", "value": 13.6},
-          {"year": "2000", "country": "UK", "value": 18.0}, {"year": "2005", "country": "UK", "value": 20.0},
-          {"year": "2010", "country": "UK", "value": 22.0}, {"year": "2015", "country": "UK", "value": 29.0},
-          {"year": "2020", "country": "UK", "value": 34.0}, {"year": "2024", "country": "UK", "value": 35.0},
-          {"year": "2000", "country": "USA", "value": 13.0}, {"year": "2005", "country": "USA", "value": 15.0},
-          {"year": "2010", "country": "USA", "value": 17.0}, {"year": "2015", "country": "USA", "value": 19.0},
-          {"year": "2020", "country": "USA", "value": 24.0}, {"year": "2024", "country": "USA", "value": 28.0}
-        ]
-      },
-      "params": [{
-        "name": "countrySelect",
-        "value": "India",
-        "bind": {"input": "select", "options": ["India", "UK", "USA"], "name": "Select Country: "}
-      }],
-      "transform": [{"filter": "datum.country == countrySelect"}],
-      "mark": {"type": "line", "point": {"size": 100}, "strokeWidth": 3, "color": "#B4A7D6"},
-      "encoding": {
-        "x": {"field": "year", "type": "ordinal", "title": "Year", "axis": {"labelFontSize": 12}},
-        "y": {"field": "value", "type": "quantitative", "title": "% of Seats", "scale": {"domain": [0, 40]}, "axis": {"labelFontSize": 12}},
-        "tooltip": [{"field": "country"}, {"field": "year"}, {"field": "value", "format": ".1f"}]
-      },
-      "config": {"font": "Garamond", "view": {"strokeWidth": 0}}
-    });
+    // CC9 - Interactive 1: Hover Highlighting
+vegaEmbed('#interactive1', {
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "UK Unemployment (Interactive Hover)", 
+    "subtitle": "Hover over points to see details", 
+    "fontSize": 20, 
+    "font": "Garamond"
+  },
+  "width": 700,
+  "height": 400,
+  "data": {
+    "url": "https://raw.githubusercontent.com/Saranya-1208/Saranya-1208.github.io/refs/heads/main/series-051125.csv"
+  },
+  "params": [{
+    "name": "hover",
+    "select": {"type": "point", "on": "mouseover", "clear": "mouseout", "nearest": true}
+  }],
+  "mark": {
+    "type": "line", 
+    "point": true, 
+    "strokeWidth": 3, 
+    "color": "#667eea"
+  },
+  "encoding": {
+    "x": {
+      "field": "Year", 
+      "type": "temporal", 
+      "title": "Year", 
+      "axis": {"labelFontSize": 12}
+    },
+    "y": {
+      "field": "Value", 
+      "type": "quantitative", 
+      "title": "Unemployment (%)", 
+      "axis": {"labelFontSize": 12}
+    },
+    "size": {
+      "condition": {"param": "hover", "value": 200},
+      "value": 60
+    },
+    "opacity": {
+      "condition": {"param": "hover", "value": 1},
+      "value": 0.8
+    },
+    "tooltip": [
+      {"field": "Year", "type": "temporal", "format": "%Y", "title": "Year"},
+      {"field": "Value", "format": ".1f", "title": "Unemployment Rate (%)"}
+    ]
+  },
+  "config": {"font": "Garamond", "view": {"strokeWidth": 0}}
+});
     
     // CC10 - Heatmap
     vegaEmbed('#heatmapChart', {
