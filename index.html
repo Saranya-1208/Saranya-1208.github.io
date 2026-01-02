@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Saranya Anand | Portfolio</title>
+  <title>Saranya Anand | Data Visualization Portfolio</title>
   <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
   <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
   <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
@@ -16,42 +16,40 @@
     
     body {
       font-family: 'Garamond', Georgia, serif;
-      line-height: 1.7;
+      line-height: 1.8;
       color: #2c2c2c;
-      background: #fafafa;
+      background: #f5f5f5;
     }
     
     header {
       background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
       color: white;
       text-align: center;
-      padding: 4rem 2rem;
+      padding: 4.5rem 2rem;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
     }
     
     header h1 {
-      font-size: 3rem;
+      font-size: 3.2rem;
       font-weight: 500;
       margin-bottom: 0.5rem;
-      letter-spacing: 1px;
+      letter-spacing: 2px;
     }
     
     header p {
-      font-size: 1.3rem;
+      font-size: 1.4rem;
       opacity: 0.95;
-      margin-bottom: 1.5rem;
-    }
-    
-    header nav {
-      margin-top: 1.5rem;
+      margin-bottom: 2rem;
     }
     
     header nav a {
       color: white;
-      margin: 0 1rem;
-      font-size: 1.1rem;
+      margin: 0 1.5rem;
+      font-size: 1.2rem;
       text-decoration: none;
       border-bottom: 2px solid transparent;
-      transition: border-bottom 0.3s;
+      transition: all 0.3s;
+      padding-bottom: 4px;
     }
     
     header nav a:hover {
@@ -59,62 +57,73 @@
     }
     
     .container {
-      max-width: 1100px;
+      max-width: 1200px;
       margin: 0 auto;
-      padding: 3rem 2rem;
+      padding: 4rem 2rem;
     }
     
     .cc-section {
       background: white;
-      margin-bottom: 4rem;
-      padding: 2.5rem;
-      border-radius: 8px;
-      box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+      margin-bottom: 5rem;
+      padding: 3rem;
+      border-radius: 12px;
+      box-shadow: 0 2px 16px rgba(0,0,0,0.1);
     }
     
     .cc-section h2 {
-      font-size: 1.8rem;
+      font-size: 2.2rem;
       color: #667eea;
-      margin-bottom: 0.5rem;
+      margin-bottom: 1rem;
       font-weight: 500;
+      padding-bottom: 0.5rem;
+      border-bottom: 3px solid #667eea;
     }
     
     .cc-section h3 {
-      font-size: 1.4rem;
+      font-size: 1.6rem;
       color: #333;
-      margin: 2rem 0 1rem;
+      margin: 2.5rem 0 1rem;
       font-weight: 500;
     }
     
     .cc-section p {
-      font-size: 1.1rem;
+      font-size: 1.2rem;
       color: #555;
       margin-bottom: 1.5rem;
-      line-height: 1.8;
+      line-height: 1.9;
     }
     
     .chart-wrapper {
-      margin: 2rem 0;
+      margin: 2.5rem 0;
       text-align: center;
+    }
+    
+    .dashboard-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      margin: 2.5rem 0;
     }
     
     .commentary {
       background: #f8f9fa;
       border-left: 4px solid #667eea;
-      padding: 1rem 1.5rem;
-      margin: 1.5rem 0;
-      font-size: 1rem;
+      padding: 1.5rem 2rem;
+      margin: 2rem 0;
+      font-size: 1.15rem;
       color: #444;
-      font-style: italic;
+      line-height: 1.8;
     }
     
     .colab-link {
       display: inline-block;
-      margin-top: 1rem;
+      margin-top: 1.5rem;
       color: #667eea;
       font-weight: 600;
+      font-size: 1.1rem;
       text-decoration: none;
       border-bottom: 2px solid #667eea;
+      padding-bottom: 2px;
     }
     
     .colab-link:hover {
@@ -122,18 +131,33 @@
       border-bottom-color: #764ba2;
     }
     
+    code {
+      background: #f0f0f0;
+      padding: 2px 6px;
+      border-radius: 3px;
+      font-family: 'Courier New', monospace;
+      font-size: 0.95rem;
+    }
+    
     footer {
       text-align: center;
-      padding: 3rem 2rem;
-      background: #f5f5f5;
-      margin-top: 4rem;
+      padding: 4rem 2rem;
+      background: #e8e8e8;
+      margin-top: 5rem;
       color: #666;
+      font-size: 1.1rem;
     }
     
     footer a {
       color: #667eea;
       text-decoration: none;
-      border-bottom: 1px solid #667eea;
+      border-bottom: 2px solid #667eea;
+      font-weight: 600;
+    }
+    
+    footer a:hover {
+      color: #764ba2;
+      border-bottom-color: #764ba2;
     }
   </style>
 </head>
@@ -150,207 +174,217 @@
   
   <div class="container">
     
+CC1
     <div class="cc-section" id="cc1">
       <h2>CC1: Hosting - Display Charts on GitHub Pages</h2>
-      <p>Set up GitHub account and live page. Embed two charts using vegaEmbed function.</p>
+      <p>Set up GitHub account and live page. Embed two charts using the vegaEmbed function.</p>
       
-      <h3>Chart 1: UK Unemployment Trends (1975-2024)</h3>
-      <p>Long-term unemployment trends in the UK, showing cyclical patterns corresponding to economic recessions.</p>
+      <h3>Chart 1: UK Unemployment Rate (1975-2024)</h3>
+      <p>Long-term unemployment trends showing cyclical patterns corresponding to UK economic recessions over five decades.</p>
       <div class="chart-wrapper">
         <div id="chart1"></div>
       </div>
       
       <h3>Chart 2: Export of Trade Goods in India by Region</h3>
-      <p>Distribution of India's trade exports across regions and business sectors.</p>
+      <p>Distribution of India's trade exports across geographical regions and business sectors.</p>
       <div class="chart-wrapper">
         <div id="chart2"></div>
       </div>
     </div>
     
+    CC2
     <div class="cc-section" id="cc2">
       <h2>CC2: Building - Create Custom Visualizations</h2>
-      <p>Two charts built using the Economics Observatory data creation tools.</p>
+      <p>Two charts built using the Economics Observatory data creation tools and custom specifications.</p>
       
-      <h3>Chart 1: UK Gross Capital Formation</h3>
-      <p>Quarterly percentage changes in UK investment from 2005-2016.</p>
+      <h3>Chart 1: UK Gross Capital Formation (% Change)</h3>
+      <p>Quarterly percentage changes in UK investment levels from 2005-2016, showing volatility in capital spending.</p>
       <div class="chart-wrapper">
         <div id="chart3"></div>
       </div>
       
-      <h3>Chart 2: US Stock Market P/E Ratio</h3>
-      <p>Monthly P/E ratio trends from 2020-2024, showing market valuation cycles.</p>
+      <h3>Chart 2: US Stock Market P/E Ratio Over Time</h3>
+      <p>Monthly price-to-earnings ratio trends from 2020-2024, revealing market valuation cycles and investor sentiment.</p>
       <div class="chart-wrapper">
         <div id="chart4"></div>
       </div>
     </div>
     
+    
     <div class="cc-section" id="cc3">
       <h2>CC3: Debate - Policy Commentary with Visualization</h2>
-      <p><strong>Policy Topic:</strong> India's 2019 constitutional amendment requiring one-third of parliamentary seats for women has dramatically increased female political representation.</p>
+      <p><strong>Policy Topic (25 words):</strong> India's 2019 constitutional amendment requiring one-third of parliamentary seats for women dramatically increased female political representation, demonstrating quota effectiveness.</p>
       
-      <h3>Chart: Women in Parliament, India (2000-2024)</h3>
+      <h3>Women in Parliament, India (2000-2024)</h3>
       <div class="chart-wrapper">
         <div id="chart5"></div>
       </div>
       
       <div class="commentary">
-        <strong>Commentary:</strong> The sharp increase post-2019 demonstrates how legislative quotas can rapidly transform political gender balance when backed by constitutional mandate.
+        <strong>Commentary (25 words):</strong> Sharp post-2019 increase proves legislative quotas rapidly transform political gender balance when backed by constitutional mandate and enforcement mechanisms.
       </div>
     </div>
     
-<div class="cc-section" id="cc5">
-  <h2>CC5: Accessing Data - API & Web Scraper</h2>
-  
-  <h3>API Task: World Bank GDP Data</h3>
-  <p><strong>API Description:</strong> World Bank provides open API access to global development indicators. Base URL: <code>https://api.worldbank.org/v2/</code>. Full endpoint used: <code>https://api.worldbank.org/v2/country/IND/indicator/NY.GDP.MKTP.KD.ZG?format=json&date=2000:2024</code> to retrieve India's GDP growth rate from 2000-2024.</p>
-  
-  <div class="chart-wrapper">
-    <div id="apiChart"></div>
-  </div>
-  
-  <div class="commentary">
-    <strong>Commentary:</strong> Accessed World Bank API using Python requests library, parsed nested JSON response structure, extracted annual GDP growth values, handled null entries for incomplete years.
-  </div>
-  
-  <a href="https://colab.research.google.com/drive/13PjXGgk2bv2u-ziZh_pZjWhRcfhLv0g9?usp=sharing" target="_blank" class="colab-link">View API Download Notebook →</a>
-  
-  <h3>Scraper Task: Wikipedia City Population Data</h3>
-  <p>Scraped India's most populous cities from Wikipedia using BeautifulSoup to parse HTML tables and extract population data.</p>
-  
-  <div class="chart-wrapper">
-    <div id="scraperChart"></div>
-  </div>
-  
-  <div class="commentary">
-    <strong>Commentary:</strong> Used BeautifulSoup to parse HTML tables, cleaned population strings by removing commas and formatting, handled inconsistent table structures, sorted by population size.
-  </div>
-  
-  <a href="https://colab.research.google.com/drive/13PjXGgk2bv2u-ziZh_pZjWhRcfhLv0g9?usp=sharing" target="_blank" class="colab-link">View Scraper Workflow Notebook →</a>
-</div>
-
-<div class="cc-section" id="cc6">
-  <h2>CC6: Dashboard - Batch Download Using Loops</h2>
-  <p>Used Python loop to batch download 6 countries' internet penetration data from World Bank API. Charts display as a grid, embedded using JavaScript loop.</p>
-  
-  <h3>Global Internet Penetration Dashboard (2010-2024)</h3>
-  
-  <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; margin-top: 2rem;">
-    <div id="dash_India"></div>
-    <div id="dash_China"></div>
-    <div id="dash_USA"></div>
-    <div id="dash_Brazil"></div>
-    <div id="dash_Indonesia"></div>
-    <div id="dash_South_Africa"></div>
-  </div>
-  
-  <a href="https://colab.research.google.com/drive/13PjXGgk2bv2u-ziZh_pZjWhRcfhLv0g9?usp=sharing" target="_blank" class="colab-link">View Batch Download Notebook →</a>
-</div>
-
-    <div class="cc-section" id="cc7">
-  <h2>CC7: Maps - Base Maps and Choropleths</h2>
-  <p>Two maps: Scotland (coordinate map) and Wales (choropleth).</p>
-  
-  <h3>Map 1: Scotland - Universal Credit Claimants (Coordinate Map)</h3>
-  <p>Bubble map showing UC claimant percentages across Scottish constituencies. Bubble size indicates claimant percentage; color shows deviation from national average.</p>
-  <div class="chart-wrapper">
-    <div id="scotlandMap"></div>
-  </div>
-  
-  <h3>Map 2: Wales - Population by Local Authority (Choropleth)</h3>
-  <p>Choropleth map showing population distribution across Welsh local authorities. Darker purple indicates higher population density.</p>
-  <div class="chart-wrapper">
-    <div id="walesMap"></div>
-  </div>
-</div>
-    
-   <div class="cc-section" id="cc9">
-  <h2>CC9: Interactive Charts</h2>
-  <p>Two charts with advanced interactivity beyond basic tooltips.</p>
-  
-  <h3>Interactive Chart 1: UK Unemployment with Click & Hover</h3>
-  <p>Click any data point to highlight it; hover over points to see details. Non-selected points fade to show focus.</p>
-  <div class="chart-wrapper">
-    <div id="interactive1"></div>
-  </div>
-  
-  <h3>Interactive Chart 2: Women in Parliament - Country Comparison</h3>
-  <p>Dropdown menu allows switching between countries to compare female parliamentary representation trends.</p>
-  <div class="chart-wrapper">
-    <div id="interactive2"></div>
-  </div>
-</div>
-
+    CC4
     <div class="cc-section" id="cc4">
-  <h2>CC4: Replication - Recreate & Improve Chart</h2>
-  
-  <h3>Original Chart (Financial Times)</h3>
-  <img src="ft_ipo_original.png" alt="FT IPO Chart" style="max-width: 100%; border: 1px solid #ddd; border-radius: 4px; margin: 1rem 0;">
-  <p><em>Source: Financial Times, "Oh, to IPO" - Global IPO fundraising trends</em></p>
-  
-  <h3>My Replication</h3>
-  <p>Replicated FT's stacked bar chart showing IPO funds raised across major markets. Matched their color scheme and styling.</p>
-  <div class="chart-wrapper">
-    <div id="replicationChart"></div>
-  </div>
-  
-  <h3>My Improvement</h3>
-  <div class="chart-wrapper">
-    <div id="improvedChart"></div>
-  </div>
-  
-  <div class="commentary">
-    <strong>Improvements made:</strong> Added interactive legend (click to isolate regions), used playful pastels instead of FT pink, added rounded corners, clearer axis labels, Garamond font for elegance.
-  </div>
-</div>
-
-    <div class="cc-section" id="cc8">
-  <h2>CC8: Big Data - UK Prices Dataset</h2>
-  <p>Two charts analyzing the UK Long Run Prices Database (LRPD) containing 48+ million price observations from 1988-2025.</p>
-  
-  <h3>Chart 1: White Bread Price Trends Over 37 Years</h3>
-  <p>Monthly median prices for white sliced bread (800g), aggregated from thousands of supermarket observations.</p>
-  <div class="chart-wrapper">
-    <div id="cc8Chart1"></div>
-  </div>
-  
-  <h3>Chart 2: Regional Price Variation for Bread Rolls</h3>
-  <p>Comparison of median bread roll prices across 13 UK regions (2015-2025 data).</p>
-  <div class="chart-wrapper">
-    <div id="cc8Chart2"></div>
-  </div>
-  
-  <div class="commentary">
-    <strong>Commentary:</strong> Processed 48.4 million price observations, filtered to bread products (items 210101 and 210106), aggregated by time and region to reveal long-term inflation trends and geographic price disparities.
-  </div>
-  
-  <a href="https://colab.research.google.com/drive/1lWK4IRn_GYHQYDwXK-BEmUkKD7yqTf8j?usp=sharing" target="_blank" class="colab-link">View Data Processing Notebook →</a>
-</div>
+      <h2>CC4: Replication - Recreate & Improve Chart</h2>
+      
+      <h3>Original Chart (Financial Times)</h3>
+      <img src="ft_ipo_original.png" alt="FT IPO Chart" style="max-width: 100%; border: 1px solid #ddd; border-radius: 8px; margin: 1.5rem 0;">
+      <p><em>Source: Financial Times - "Oh, to IPO" global fundraising trends</em></p>
+      
+      <h3>My Replication</h3>
+      <p>Matched FT's visual style including their specific color palette and stacked bar chart format.</p>
+      <div class="chart-wrapper">
+        <div id="replicationChart"></div>
+      </div>
+      
+      <h3>My Improvement</h3>
+      <div class="chart-wrapper">
+        <div id="improvedChart"></div>
+      </div>
+      
+      <div class="commentary">
+        <strong>Improvements (25 words):</strong> Added interactive clickable legend to isolate regions, cohesive color palette matching portfolio theme, clearer subtitle explaining interactivity, elegant Garamond typography.
+      </div>
+    </div>
     
+    CC5
+    <div class="cc-section" id="cc5">
+      <h2>CC5: Accessing Data - API & Web Scraper</h2>
+      
+      <h3>API Task: World Bank GDP Growth Data</h3>
+      <p><strong>API Description:</strong> World Bank provides open API access to development indicators. Base URL: <code>https://api.worldbank.org/v2/</code>. Full endpoint: <code>https://api.worldbank.org/v2/country/IND/indicator/NY.GDP.MKTP.KD.ZG?format=json&date=2000:2024</code></p>
+      
+      <div class="chart-wrapper">
+        <div id="apiChart"></div>
+      </div>
+      
+      <div class="commentary">
+        <strong>Commentary (25 words):</strong> Accessed World Bank API using Python requests, parsed nested JSON structure, extracted GDP growth values, handled null entries for incomplete years.
+      </div>
+      
+      <a href="YOUR_API_COLAB_URL" target="_blank" class="colab-link">View API Download Notebook →</a>
+      
+      <h3>Scraper Task: Wikipedia City Population Data</h3>
+      <p>Scraped India's most populous cities from Wikipedia using BeautifulSoup for HTML parsing.</p>
+      
+      <div class="chart-wrapper">
+        <div id="scraperChart"></div>
+      </div>
+      
+      <div class="commentary">
+        <strong>Commentary (25 words):</strong> Used BeautifulSoup to parse HTML tables, cleaned population strings removing commas, handled inconsistent formatting, sorted by population size descending.
+      </div>
+      
+      <a href="YOUR_SCRAPER_COLAB_URL" target="_blank" class="colab-link">View Scraper Workflow Notebook →</a>
+    </div>
+    
+     CC6
+    <div class="cc-section" id="cc6">
+      <h2>CC6: Loops - Build a Dashboard</h2>
+      <p>Used Python loop to batch download 6 countries' internet data from World Bank API. Displayed as grid using JavaScript loop to embed charts.</p>
+      
+      <h3>Global Internet Penetration Dashboard (2010-2024)</h3>
+      
+      <div class="dashboard-grid">
+        <div id="dash_India"></div>
+        <div id="dash_China"></div>
+        <div id="dash_USA"></div>
+        <div id="dash_Brazil"></div>
+        <div id="dash_Indonesia"></div>
+        <div id="dash_South_Africa"></div>
+      </div>
+      
+      <a href="YOUR_DASHBOARD_COLAB_URL" target="_blank" class="colab-link">View Batch Download Notebook →</a>
+    </div>
+    
+    CC7
+    <div class="cc-section" id="cc7">
+      <h2>CC7: Maps - Base Maps and Choropleths</h2>
+      <p>Two maps: Scotland coordinate map with bubbles, and Wales choropleth showing regional data.</p>
+      
+      <h3>Map 1: Scotland - Universal Credit Claimants (Coordinate Map)</h3>
+      <p>Bubble map showing UC claimant percentages across Scottish constituencies. Bubble size = claimant rate; color = deviation from 9.05% national average.</p>
+      <div class="chart-wrapper">
+        <div id="scotlandMap"></div>
+      </div>
+      
+      <h3>Map 2: Wales - Population by Local Authority (Choropleth)</h3>
+      <p>Choropleth map showing population distribution across Welsh local authorities using color intensity.</p>
+      <div class="chart-wrapper">
+        <div id="walesMap"></div>
+      </div>
+    </div>
+    
+    CC8
+    <div class="cc-section" id="cc8">
+      <h2>CC8: Big Data - UK Prices Dataset</h2>
+      <p>Two charts analyzing the UK Long Run Prices Database (LRPD) containing 48+ million price observations spanning 1988-2025.</p>
+      
+      <h3>Chart 1: White Bread Price Trends Over 37 Years</h3>
+      <p>Monthly median prices for white sliced bread, aggregated from millions of supermarket observations to reveal long-term inflation patterns.</p>
+      <div class="chart-wrapper">
+        <div id="cc8Chart1"></div>
+      </div>
+      
+      <h3>Chart 2: Regional Price Variation for Bread Rolls</h3>
+      <p>Comparison of median bread roll prices across 13 UK regions (2015-2025), showing geographic price disparities.</p>
+      <div class="chart-wrapper">
+        <div id="cc8Chart2"></div>
+      </div>
+      
+      <div class="commentary">
+        <strong>Commentary (50 words):</strong> Processed 48.4 million price observations from LRPD database. Filtered to bread products, aggregated by time and region. Charts reveal steady inflation in bread prices over decades and persistent regional price differences, with higher prices in certain UK regions.
+      </div>
+      
+      <a href="https://colab.research.google.com/drive/1lWK4IRn_GYHQYDwXK-BEmUkKD7yqTf8j?usp=sharing" target="_blank" class="colab-link">View Data Processing Notebook →</a>
+    </div>
+    
+    CC9
+    <div class="cc-section" id="cc9">
+      <h2>CC9: Interactive Charts</h2>
+      <p>Two charts with advanced interactivity beyond simple tooltips, including click/hover and dropdown controls.</p>
+      
+      <h3>Interactive Chart 1: UK Unemployment with Hover Highlighting</h3>
+      <p>Hover over the line to highlight specific time periods with an interactive vertical rule and enlarged point markers.</p>
+      <div class="chart-wrapper">
+        <div id="interactive1"></div>
+      </div>
+      
+      <h3>Interactive Chart 2: Women in Parliament - Country Comparison</h3>
+      <p>Dropdown menu allows switching between countries to compare trends in female parliamentary representation over time.</p>
+      <div class="chart-wrapper">
+        <div id="interactive2"></div>
+      </div>
+    </div>
+    
+    CC10
     <div class="cc-section" id="cc10">
       <h2>CC10: Advanced Analytics & Machine Learning</h2>
       
-      <h3>Part 1: Advanced Analytics - Transaction Timing Heatmap</h3>
-      <p><strong>Hypothesis:</strong> UPI transaction patterns reveal concentrated usage during specific hours, indicating integration into daily routines rather than occasional use.</p>
+      <h3>Part 1: Advanced Analytics - UPI Transaction Timing Heatmap</h3>
+      <p><strong>Hypothesis (25 words):</strong> UPI transaction patterns reveal concentrated usage during specific daily hours, indicating integration into routine behavior rather than occasional emergency cash substitute.</p>
       
       <div class="chart-wrapper">
         <div id="heatmapChart"></div>
       </div>
       
       <div class="commentary">
-        <strong>Findings:</strong> Weekday lunch and evening hours show distinct peaks, confirming UPI has become embedded in daily payment behavior, not just emergency cash substitute.
+        <strong>Findings (25 words):</strong> Weekday lunch and evening hours show distinct transaction peaks. Pattern confirms UPI embedded in daily payment routines, not just emergency usage.
       </div>
       
-      <a href="https://colab.research.google.com/drive/1Q44vOtYM3mhGSNu7MAh7m4ABtdJ38EKI?usp=sharing" target="_blank" class="colab-link">View Analysis Notebook →</a>
+      <a href="https://colab.research.google.com/drive/1Q44vOtYM3mhGSNu7MAh7m4ABtdJ38EKI?usp=sharing" target="_blank" class="colab-link">View Heatmap Analysis Notebook →</a>
       
       <h3>Part 2: Machine Learning - UPI Growth Forecasting</h3>
-      <p><strong>Hypothesis:</strong> UPI transaction growth follows exponential trajectory, allowing reliable prediction of 2026 volumes using log-linear regression on historical data.</p>
+      <p><strong>Hypothesis (25 words):</strong> UPI transaction growth follows exponential trajectory, allowing reliable 2026 volume prediction using log-linear regression on 116 months of historical transaction data.</p>
       
       <div class="chart-wrapper">
         <div id="forecastChart"></div>
       </div>
       
       <div class="commentary">
-        <strong>Findings:</strong> Model predicts 20B+ monthly transactions by 2026. Growth rate slowing indicates market saturation approaching, transition from exponential to linear growth phase.
+        <strong>Findings (25 words):</strong> Model predicts 20+ billion monthly transactions by late 2026. Growth rate slowing indicates approaching market saturation, transitioning from exponential growth phase.
       </div>
       
       <a href="https://colab.research.google.com/drive/1Xq7Skj4NDEpDbI4DQfJdTikyRcti-Rmo?usp=sharing" target="_blank" class="colab-link">View ML Methodology Notebook →</a>
@@ -361,155 +395,76 @@
   <footer>
     <p><strong>Saranya Anand</strong> | LSE MPA 2027</p>
     <p>PP434 Data Visualization | Autumn 2025</p>
-    <p><a href="project/index.html">View Digital India Project →</a></p>
+    <p style="margin-top: 1rem;"><a href="project/index.html">View Digital India Project →</a></p>
   </footer>
   
   <script>
- vegaEmbed('#interactive1', {
-  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "title": {
-    "text": "UK Unemployment Rate (Interactive)",
-    "subtitle": "Hover to highlight periods | Click to isolate years",
-    "fontSize": 18,
-    "font": "Garamond"
-  },
-  "width": 600,
-  "height": 350,
-  "data": {
-    "url": "https://raw.githubusercontent.com/Saranya-1208/Saranya-1208.github.io/refs/heads/main/series-051125.csv"
-  },
-  "params": [
-    {
-      "name": "hover",
-      "select": {"type": "point", "on": "mouseover", "nearest": true}
-    }
-  ],
-  "layer": [
-    {
-      "mark": {
-        "type": "line",
-        "strokeWidth": 3,
-        "color": "#667eea"
-      },
+    // CC1 - Chart 1: UK Unemployment
+    vegaEmbed('#chart1', {
+      "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+      "title": {"text": "UK Unemployment Rate (Aged Over 16)", "fontSize": 20, "font": "Garamond"},
+      "width": 800,
+      "height": 400,
+      "data": {"url": "https://raw.githubusercontent.com/Saranya-1208/Saranya-1208.github.io/refs/heads/main/series-051125.csv"},
+      "mark": {"type": "line", "strokeWidth": 3, "color": "#667eea", "point": {"size": 60}},
       "encoding": {
-        "x": {"field": "Year", "type": "temporal", "title": "Year"},
-        "y": {"field": "Value", "type": "quantitative", "title": "Unemployment Rate (%)"}
-      }
-    },
-    {
-      "mark": {
-        "type": "point",
-        "filled": true,
-        "size": 100
-      },
-      "encoding": {
-        "x": {"field": "Year", "type": "temporal"},
-        "y": {"field": "Value", "type": "quantitative"},
-        "color": {
-          "condition": {"param": "hover", "value": "#FF85A2"},
-          "value": "#667eea"
-        },
-        "size": {
-          "condition": {"param": "hover", "value": 300},
-          "value": 100
-        },
+        "x": {"field": "Year", "type": "temporal", "title": "Year", "axis": {"labelFontSize": 12}},
+        "y": {"field": "Value", "type": "quantitative", "title": "Unemployment Rate (%)", "axis": {"labelFontSize": 12}},
         "tooltip": [
-          {"field": "Year", "type": "temporal", "format": "%Y", "title": "Year"},
-          {"field": "Value", "type": "quantitative", "format": ".1f", "title": "Unemployment (%)"}
+          {"field": "Year", "type": "temporal", "format": "%Y"},
+          {"field": "Value", "format": ".1f", "title": "Rate (%)"}
         ]
-      }
-    },
-    {
-      "mark": {
-        "type": "rule",
-        "strokeWidth": 2,
-        "color": "#FF85A2",
-        "opacity": 0.5
       },
-      "encoding": {
-        "x": {"field": "Year", "type": "temporal"}
-      },
-      "transform": [{"filter": {"param": "hover"}}]
-    }
-  ],
-  "config": {
-    "font": "Garamond",
-    "view": {"strokeWidth": 0}
-  }
-});
+      "config": {"font": "Garamond", "view": {"strokeWidth": 0}}
+    });
     
+    // CC1 - Chart 2: India Exports
     vegaEmbed('#chart2', {
       "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-      "title": "Export of Trade Goods in India by Region",
-      "width": 700,
-      "height": 350,
-      "data": {
-        "url": "https://raw.githubusercontent.com/Saranya-1208/Saranya-1208.github.io/refs/heads/main/data.csv"
-      },
+      "title": {"text": "Export of Trade Goods in India by Region", "fontSize": 20, "font": "Garamond"},
+      "width": 800,
+      "height": 400,
+      "data": {"url": "https://raw.githubusercontent.com/Saranya-1208/Saranya-1208.github.io/refs/heads/main/data.csv"},
       "mark": "bar",
       "encoding": {
-        "x": {
-          "field": "Region",
-          "type": "nominal",
-          "title": "Region",
-          "axis": {"labelAngle": -45}
-        },
-        "y": {
-          "field": "Value",
-          "type": "quantitative",
-          "title": "Distribution (%)"
-        },
+        "x": {"field": "Region", "type": "nominal", "title": "Region", "axis": {"labelAngle": -45, "labelFontSize": 12}},
+        "y": {"field": "Value", "type": "quantitative", "title": "Distribution (%)", "axis": {"labelFontSize": 12}},
         "color": {
           "field": "Name",
           "type": "nominal",
           "title": "Business Sector",
           "scale": {"range": ["#667eea", "#FF85A2", "#74B3CE", "#FFB6B9"]}
         },
-        "tooltip": [
-          {"field": "Region"},
-          {"field": "Name", "title": "Sector"},
-          {"field": "Value", "format": ".1f", "title": "Distribution (%)"}
-        ]
+        "tooltip": [{"field": "Region"}, {"field": "Name", "title": "Sector"}, {"field": "Value", "format": ".1f"}]
       },
-      "config": {"font": "Garamond"}
+      "config": {"font": "Garamond", "view": {"strokeWidth": 0}}
     });
     
-    // CC2 - Chart 1
+    // CC2 - Chart 1: UK Capital Formation
     vegaEmbed('#chart3', {
       "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-      "title": "UK Gross Capital Formation (% Change)",
-      "width": 700,
-      "height": 350,
-      "data": {
-        "url": "https://raw.githubusercontent.com/Saranya-1208/Saranya-1208.github.io/refs/heads/main/Gross%20Capital%20Formation.csv"
-      },
-      "mark": {"type": "line", "point": true, "strokeWidth": 2.5, "color": "#FF85A2"},
+      "title": {"text": "UK Gross Capital Formation (% Change)", "fontSize": 20, "font": "Garamond"},
+      "width": 800,
+      "height": 400,
+      "data": {"url": "https://raw.githubusercontent.com/Saranya-1208/Saranya-1208.github.io/refs/heads/main/Gross%20Capital%20Formation.csv"},
+      "mark": {"type": "line", "point": {"size": 80}, "strokeWidth": 3, "color": "#FF85A2"},
       "encoding": {
-        "x": {
-          "field": "Date",
-          "type": "temporal",
-          "title": "Year",
-          "axis": {"format": "%Y"}
-        },
-        "y": {
-          "field": "Value",
-          "type": "quantitative",
-          "title": "% Change"
-        },
+        "x": {"field": "Date", "type": "temporal", "title": "Year", "axis": {"format": "%Y", "labelFontSize": 12}},
+        "y": {"field": "Value", "type": "quantitative", "title": "% Change", "axis": {"labelFontSize": 12}},
         "tooltip": [
           {"field": "Date", "type": "temporal", "format": "%Y-%m"},
-          {"field": "Value", "type": "quantitative", "format": ".2f", "title": "% Change"}
+          {"field": "Value", "format": ".2f", "title": "% Change"}
         ]
       },
-      "config": {"font": "Garamond"}
+      "config": {"font": "Garamond", "view": {"strokeWidth": 0}}
     });
     
-    // CC2 - Chart 2
+    // CC2 - Chart 2: US Stock Market P/E
     vegaEmbed('#chart4', {
       "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-      "title": "US Stock Market P/E Ratio Over Time",
-      "width": 700,
-      "height": 350,
+      "title": {"text": "US Stock Market P/E Ratio Over Time", "fontSize": 20, "font": "Garamond"},
+      "width": 800,
+      "height": 400,
       "data": {
         "values": [
           {"Date": "2020-01-31", "PE_Ratio": 25.3}, {"Date": "2020-04-30", "PE_Ratio": 27.5},
@@ -523,702 +478,408 @@
           {"Date": "2024-01-31", "PE_Ratio": 30.8}, {"Date": "2024-02-29", "PE_Ratio": 32.1}
         ]
       },
-      "mark": {"type": "line", "point": true, "strokeWidth": 2.5, "color": "#74B3CE"},
+      "mark": {"type": "line", "point": {"size": 80}, "strokeWidth": 3, "color": "#74B3CE"},
       "encoding": {
-        "x": {"field": "Date", "type": "temporal", "title": "Date"},
-        "y": {"field": "PE_Ratio", "type": "quantitative", "title": "P/E Ratio"},
+        "x": {"field": "Date", "type": "temporal", "title": "Date", "axis": {"labelFontSize": 12}},
+        "y": {"field": "PE_Ratio", "type": "quantitative", "title": "P/E Ratio", "axis": {"labelFontSize": 12}},
         "tooltip": [
           {"field": "Date", "type": "temporal", "format": "%B %Y"},
-          {"field": "PE_Ratio", "type": "quantitative", "title": "P/E Ratio"}
+          {"field": "PE_Ratio", "title": "P/E Ratio"}
         ]
       },
-      "config": {"font": "Garamond"}
+      "config": {"font": "Garamond", "view": {"strokeWidth": 0}}
     });
     
-    vegaEmbed('#interactive2', {
-  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "title": {
-    "text": "Women in Parliament: Multi-Country Comparison",
-    "subtitle": "Select country from dropdown to compare",
-    "fontSize": 18,
-    "font": "Garamond"
-  },
-  "width": 650,
-  "height": 350,
-  "data": {
-    "values": [
-      {"year": "2000", "country": "India", "value": 9.0},
-      {"year": "2005", "country": "India", "value": 8.3},
-      {"year": "2010", "country": "India", "value": 11.0},
-      {"year": "2015", "country": "India", "value": 12.0},
-      {"year": "2020", "country": "India", "value": 14.4},
-      {"year": "2024", "country": "India", "value": 13.6},
-      
-      {"year": "2000", "country": "UK", "value": 18.0},
-      {"year": "2005", "country": "UK", "value": 20.0},
-      {"year": "2010", "country": "UK", "value": 22.0},
-      {"year": "2015", "country": "UK", "value": 29.0},
-      {"year": "2020", "country": "UK", "value": 34.0},
-      {"year": "2024", "country": "UK", "value": 35.0},
-      
-      {"year": "2000", "country": "USA", "value": 13.0},
-      {"year": "2005", "country": "USA", "value": 15.0},
-      {"year": "2010", "country": "USA", "value": 17.0},
-      {"year": "2015", "country": "USA", "value": 19.0},
-      {"year": "2020", "country": "USA", "value": 24.0},
-      {"year": "2024", "country": "USA", "value": 28.0}
-    ]
-  },
-  "params": [
-    {
-      "name": "countrySelect",
-      "value": "India",
-      "bind": {
-        "input": "select",
-        "options": ["India", "UK", "USA"],
-        "name": "Select Country: "
-      }
-    }
-  ],
-  "transform": [
-    {"filter": "datum.country == countrySelect"}
-  ],
-  "mark": {
-    "type": "line",
-    "point": true,
-    "strokeWidth": 2.5,
-    "color": "#B4A7D6"
-  },
-  "encoding": {
-    "x": {
-      "field": "year",
-      "type": "ordinal",
-      "title": "Year"
-    },
-    "y": {
-      "field": "value",
-      "type": "quantitative",
-      "title": "% of Parliamentary Seats",
-      "scale": {"domain": [0, 40]}
-    },
-    "tooltip": [
-      {"field": "country", "title": "Country"},
-      {"field": "year", "title": "Year"},
-      {"field": "value", "format": ".1f", "title": "% of Seats"}
-    ]
-  },
-  "config": {
-    "font": "Garamond",
-    "view": {"strokeWidth": 0}
-  }
-});
-    
-    vegaEmbed('#map5g', {
+    // CC3 - Women in Parliament
+    vegaEmbed('#chart5', {
       "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-      "title": "5G Infrastructure: Villages with Coverage (Feb 2025)",
-      "width": 700,
-      "height": 600,
-      "data": {
-        "url": "https://raw.githubusercontent.com/Subhash9325/GeoJson-Data-of-Indian-States/refs/heads/master/Indian_States",
-        "format": {"type": "json", "property": "features"}
-      },
-      "transform": [{
-        "lookup": "properties.NAME_1",
-        "from": {
-          "data": {"url": "https://raw.githubusercontent.com/Saranya-1208/Saranya-1208.github.io/refs/heads/main/project/5g_coverage_india.csv"},
-          "key": "State",
-          "fields": ["Villages_5G", "Districts_5G"]
-        }
-      }],
-      "projection": {"type": "mercator"},
-      "mark": {"type": "geoshape", "stroke": "white", "strokeWidth": 1.5},
+      "title": {"text": "Women in Parliament, India (% of Seats)", "fontSize": 20, "font": "Garamond"},
+      "width": 800,
+      "height": 400,
+      "data": {"url": "https://raw.githubusercontent.com/Saranya-1208/Saranya-1208.github.io/refs/heads/main/Women%20in%20Parliament%20India.csv"},
+      "mark": {"type": "line", "point": {"size": 80}, "strokeWidth": 3, "color": "#B4A7D6"},
       "encoding": {
-        "color": {
-          "field": "Villages_5G",
-          "type": "quantitative",
-          "scale": {"scheme": "purples", "type": "log"},
-          "legend": {"title": "Villages with 5G", "format": ","}
-        },
+        "x": {"field": "Year", "type": "temporal", "title": "Year", "axis": {"format": "%Y", "labelFontSize": 12}},
+        "y": {"field": "Value", "type": "quantitative", "title": "% of Parliamentary Seats", "axis": {"labelFontSize": 12}},
         "tooltip": [
-          {"field": "properties.NAME_1", "title": "State"},
-          {"field": "Villages_5G", "format": ",", "title": "Villages with 5G"}
+          {"field": "Year", "type": "temporal", "format": "%Y"},
+          {"field": "Value", "format": ".1f", "title": "% of Seats"}
         ]
       },
-      "config": {"font": "Garamond"}
+      "config": {"font": "Garamond", "view": {"strokeWidth": 0}}
     });
     
-   vegaEmbed('#apiChart', {
-  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "title": {
-    "text": "India's GDP Growth Rate (2000-2024)",
-    "fontSize": 18,
-    "font": "Garamond"
-  },
-  "width": 700,
-  "height": 350,
-  "data": {
-    "url": "https://raw.githubusercontent.com/Saranya-1208/Saranya-1208.github.io/refs/heads/main/india_gdp_growth_wb.json"
-  },
-  "mark": {
-    "type": "line",
-    "point": true,
-    "strokeWidth": 2.5,
-    "color": "#667eea"
-  },
-  "encoding": {
-    "x": {
-      "field": "year",
-      "type": "ordinal",
-      "title": "Year",
-      "axis": {"labelAngle": -45}
-    },
-    "y": {
-      "field": "gdp_growth",
-      "type": "quantitative",
-      "title": "GDP Growth Rate (%)"
-    },
-    "tooltip": [
-      {"field": "year", "title": "Year"},
-      {"field": "gdp_growth", "title": "GDP Growth (%)", "format": ".2f"}
-    ]
-  },
-  "config": {
-    "font": "Garamond",
-    "view": {"strokeWidth": 0}
-  }
-});
-
-    vegaEmbed('#scraperChart', {
-  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "title": {
-    "text": "India's Most Populous Cities",
-    "subtitle": "Data scraped from Wikipedia",
-    "fontSize": 18,
-    "font": "Garamond"
-  },
-  "width": 700,
-  "height": 400,
-  "data": {
-    "url": "https://raw.githubusercontent.com/Saranya-1208/Saranya-1208.github.io/refs/heads/main/india_cities_population_scraped.csv"
-  },
-  "mark": {
-    "type": "bar",
-    "color": "#FF85A2",
-    "cornerRadiusEnd": 4
-  },
-  "encoding": {
-    "y": {
-      "field": "city",
-      "type": "nominal",
-      "sort": "-x",
-      "title": null,
-      "axis": {"labelFontSize": 12}
-    },
-    "x": {
-      "field": "population",
-      "type": "quantitative",
-      "title": "Population",
-      "axis": {"format": "~s", "labelFontSize": 11}
-    },
-    "tooltip": [
-      {"field": "city", "title": "City"},
-      {"field": "population", "format": ",", "title": "Population"}
-    ]
-  },
-  "config": {
-    "font": "Garamond",
-    "view": {"strokeWidth": 0}
-  }
-});
-
-vegaEmbed('#scotlandMap', {
-  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "title": {
-    "text": "Scotland: Universal Credit Claimants by Constituency",
-    "subtitle": "National Average: 9.05%",
-    "fontSize": 18,
-    "font": "Garamond"
-  },
-  "width": 450,
-  "height": 500,
-  "layer": [
-    {
-      "data": {
-        "url": "https://raw.githubusercontent.com/jhellingsdata/RADataHub/refs/heads/main/MappingWorkshop/geo_data/LAD_SCT_2025_05.topojson",
-        "format": {"type": "topojson", "feature": "object_name"}
-      },
-      "mark": {
-        "type": "geoshape",
-        "fill": "#f0f0f0",
-        "stroke": "#999",
-        "strokeWidth": 0.5
-      },
-      "projection": {"type": "mercator"}
-    },
-    {
-      "data": {
-        "url": "https://raw.githubusercontent.com/vkumarilse/vkumarilse.github.io/refs/heads/main/portfolio/scotland_uc_data.csv"
-      },
-      "mark": {
-        "type": "circle",
-        "opacity": 0.8,
-        "stroke": "white",
-        "strokeWidth": 1.5
-      },
-      "encoding": {
-        "longitude": {"field": "lon", "type": "quantitative"},
-        "latitude": {"field": "lat", "type": "quantitative"},
-        "size": {
-          "field": "uc_percentage",
-          "type": "quantitative",
-          "scale": {"range": [100, 800]},
-          "legend": {"title": "UC Claimants (%)"}
-        },
-        "color": {
-          "field": "vs_national",
-          "type": "quantitative",
-          "scale": {
-            "domain": [-4, 0, 4],
-            "range": ["#74B3CE", "#f7f7f7", "#FF85A2"]
-          },
-          "legend": {"title": "vs National Avg", "orient": "bottom"}
-        },
-        "tooltip": [
-          {"field": "constituency_name", "title": "Constituency"},
-          {"field": "uc_percentage", "format": ".1f", "title": "UC Claimants (%)"},
-          {"field": "uc_claimants", "format": ",", "title": "Total Claimants"},
-          {"field": "vs_national", "format": "+.1f", "title": "vs National"}
-        ]
-      }
-    }
-  ],
-  "config": {
-    "font": "Garamond",
-    "view": {"strokeWidth": 0}
-  }
-});
-
-    vegaEmbed('#walesMap', {
-  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "title": {
-    "text": "Wales: Population by Local Authority",
-    "fontSize": 18,
-    "font": "Garamond"
-  },
-  "width": 400,
-  "height": 550,
-  "data": {
-    "url": "https://raw.githubusercontent.com/jhellingsdata/RADataHub/refs/heads/main/MappingWorkshop/geo_data/LAD_WLS_2025_05.topojson",
-    "format": {"type": "topojson", "feature": "object_name"}
-  },
-  "transform": [
-    {
-      "lookup": "properties.LAD25NM",
-      "from": {
-        "data": {
-          "values": [
-            {"name": "Cardiff", "population": 364248},
-            {"name": "Swansea", "population": 246466},
-            {"name": "Newport", "population": 159588},
-            {"name": "Wrexham", "population": 135132},
-            {"name": "Rhondda Cynon Taf", "population": 241873},
-            {"name": "Carmarthenshire", "population": 188771},
-            {"name": "Caerphilly", "population": 176995},
-            {"name": "Flintshire", "population": 155593},
-            {"name": "Bridgend", "population": 147049},
-            {"name": "Neath Port Talbot", "population": 144386},
-            {"name": "Vale of Glamorgan", "population": 135295},
-            {"name": "Powys", "population": 133030},
-            {"name": "Pembrokeshire", "population": 126751},
-            {"name": "Gwynedd", "population": 124178},
-            {"name": "Denbighshire", "population": 95696},
-            {"name": "Conwy", "population": 118184},
-            {"name": "Torfaen", "population": 92300},
-            {"name": "Monmouthshire", "population": 95164},
-            {"name": "Ceredigion", "population": 72992},
-            {"name": "Isle of Anglesey", "population": 70440},
-            {"name": "Blaenau Gwent", "population": 69862},
-            {"name": "Merthyr Tydfil", "population": 60424}
-          ]
-        },
-        "key": "name",
-        "fields": ["population"]
-      }
-    }
-  ],
-  "projection": {"type": "mercator"},
-  "mark": {
-    "type": "geoshape",
-    "stroke": "white",
-    "strokeWidth": 1
-  },
-  "encoding": {
-    "color": {
-      "field": "population",
-      "type": "quantitative",
-      "scale": {
-        "scheme": "purples",
-        "type": "log"
-      },
-      "legend": {
-        "title": "Population",
-        "format": "~s",
-        "orient": "bottom"
-      }
-    },
-    "tooltip": [
-      {"field": "properties.LAD25NM", "title": "Local Authority"},
-      {"field": "population", "format": ",", "title": "Population"}
-    ]
-  },
-  "config": {
-    "font": "Garamond",
-    "view": {"strokeWidth": 0}
-  }
-});
-
-    // CC8 - Chart 1: Bread Price Trends
-vegaEmbed('#cc8Chart1', {
-  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "title": {
-    "text": "UK White Bread Prices (1988-2025)",
-    "subtitle": "Median monthly price from millions of observations",
-    "fontSize": 18,
-    "font": "Garamond"
-  },
-  "width": 700,
-  "height": 350,
-  "data": {
-    "url": "https://raw.githubusercontent.com/Saranya-1208/Saranya-1208.github.io/refs/heads/main/cc8_bread_trends.csv"
-  },
-  "mark": {
-    "type": "line",
-    "strokeWidth": 2.5,
-    "point": true,
-    "color": "#667eea"
-  },
-  "encoding": {
-    "x": {
-      "field": "date",
-      "type": "temporal",
-      "title": "Year",
-      "axis": {"format": "%Y"}
-    },
-    "y": {
-      "field": "price",
-      "type": "quantitative",
-      "title": "Median Price (£)",
-      "scale": {"zero": false}
-    },
-    "tooltip": [
-      {"field": "date", "type": "temporal", "format": "%B %Y", "title": "Month"},
-      {"field": "price", "type": "quantitative", "format": "£.2f", "title": "Price"}
-    ]
-  },
-  "config": {
-    "font": "Garamond",
-    "view": {"strokeWidth": 0}
-  }
-});
-
-vegaEmbed('#cc8Chart2', {
-  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "title": {
-    "text": "UK Bread Rolls: Regional Price Differences (2015-2025)",
-    "subtitle": "Median prices aggregated from thousands of observations per region",
-    "fontSize": 18,
-    "font": "Garamond"
-  },
-  "width": 650,
-  "height": 350,
-  "data": {
-    "url": "https://raw.githubusercontent.com/Saranya-1208/Saranya-1208.github.io/refs/heads/main/cc8_bread_regional.csv"
-  },
-  "mark": {
-    "type": "bar",
-    "color": "#FF85A2",
-    "cornerRadiusEnd": 4
-  },
-  "encoding": {
-    "y": {
-      "field": "region_name",
-      "type": "nominal",
-      "sort": "x",
-      "title": null,
-      "axis": {"labelFontSize": 12}
-    },
-    "x": {
-      "field": "price",
-      "type": "quantitative",
-      "title": "Median Price (£)",
-      "axis": {"format": ".2f"}
-    },
-    "tooltip": [
-      {"field": "region_name", "title": "Region"},
-      {"field": "price", "format": "£.2f", "title": "Median Price"}
-    ]
-  },
-  "config": {
-    "font": "Garamond",
-    "view": {"strokeWidth": 0}
-  }
-});
-    
-const countries = [
-  {name: "India", color: "#FF85A2"},
-  {name: "China", color: "#74B3CE"},
-  {name: "USA", color: "#B4A7D6"},
-  {name: "Brazil", color: "#FFAAA5"},
-  {name: "Indonesia", color: "#A8E6CF"},
-  {name: "South_Africa", color: "#FFB6B9"}
-];
-
-countries.forEach(country => {
-  vegaEmbed(`#dash_${country.name}`, {
-    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-    "title": {
-      "text": country.name.replace("_", " "),
-      "fontSize": 16,
-      "font": "Garamond"
-    },
-    "width": 250,
-    "height": 200,
-    "data": {
-      "url": `https://raw.githubusercontent.com/Saranya-1208/Saranya-1208.github.io/refs/heads/main/${country.name}_internet.json`
-    },
-    "mark": {
-      "type": "line",
-      "strokeWidth": 2.5,
-      "point": true,
-      "color": country.color
-    },
-    "encoding": {
-      "x": {
-        "field": "year",
-        "type": "ordinal",
-        "title": "Year",
-        "axis": {"labelAngle": -45, "labelFontSize": 10}
-      },
-      "y": {
-        "field": "value",
-        "type": "quantitative",
-        "title": "Internet Users (%)",
-        "scale": {"domain": [0, 100]},
-        "axis": {"labelFontSize": 10}
-      },
-      "tooltip": [
-        {"field": "year", "title": "Year"},
-        {"field": "value", "format": ".1f", "title": "Internet Users (%)"}
-      ]
-    },
-    "config": {
-      "font": "Garamond",
-      "view": {"strokeWidth": 0}
-    }
-  }, {actions: false});
-});
-
-vegaEmbed('#improvedChart', {
-  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "title": {
-    "text": "Global IPO Fundraising by Region (2018-2025)",
-    "subtitle": "Initial Public Offerings raised, $bn | Interactive: Click regions to isolate",
-    "fontSize": 20,
-    "font": "Garamond"
-  },
-  "width": 600,
-  "height": 400,
-  "data": {
-    "values": [
-      {"year": "2018", "region": "New York", "value": 95},
-      {"year": "2018", "region": "India", "value": 55},
-      {"year": "2018", "region": "Hong Kong", "value": 35},
-      {"year": "2018", "region": "China", "value": 12},
-      {"year": "2018", "region": "Rest of World", "value": 103},
-      
-      {"year": "2019", "region": "New York", "value": 85},
-      {"year": "2019", "region": "India", "value": 48},
-      {"year": "2019", "region": "Hong Kong", "value": 30},
-      {"year": "2019", "region": "China", "value": 15},
-      {"year": "2019", "region": "Rest of World", "value": 97},
-      
-      {"year": "2020", "region": "New York", "value": 115},
-      {"year": "2020", "region": "India", "value": 52},
-      {"year": "2020", "region": "Hong Kong", "value": 25},
-      {"year": "2020", "region": "China", "value": 55},
-      {"year": "2020", "region": "Rest of World", "value": 123},
-      
-      {"year": "2021", "region": "New York", "value": 145},
-      {"year": "2021", "region": "India", "value": 48},
-      {"year": "2021", "region": "Hong Kong", "value": 22},
-      {"year": "2021", "region": "China", "value": 75},
-      {"year": "2021", "region": "Rest of World", "value": 190},
-      
-      {"year": "2022", "region": "New York", "value": 28},
-      {"year": "2022", "region": "India", "value": 18},
-      {"year": "2022", "region": "Hong Kong", "value": 8},
-      {"year": "2022", "region": "China", "value": 75},
-      {"year": "2022", "region": "Rest of World", "value": 48},
-      
-      {"year": "2023", "region": "New York", "value": 38},
-      {"year": "2023", "region": "India", "value": 12},
-      {"year": "2023", "region": "Hong Kong", "value": 8},
-      {"year": "2023", "region": "China", "value": 52},
-      {"year": "2023", "region": "Rest of World", "value": 55},
-      
-      {"year": "2024", "region": "New York", "value": 42},
-      {"year": "2024", "region": "India", "value": 18},
-      {"year": "2024", "region": "Hong Kong", "value": 10},
-      {"year": "2024", "region": "China", "value": 28},
-      {"year": "2024", "region": "Rest of World", "value": 72},
-      
-      {"year": "2025", "region": "New York", "value": 38},
-      {"year": "2025", "region": "India", "value": 15},
-      {"year": "2025", "region": "Hong Kong", "value": 8},
-      {"year": "2025", "region": "China", "value": 25},
-      {"year": "2025", "region": "Rest of World", "value": 68}
-    ]
-  },
-  "params": [
-    {
-      "name": "regionSelect",
-      "select": {"type": "point", "fields": ["region"]},
-      "bind": "legend"
-    }
-  ],
-  "mark": {"type": "bar", "cornerRadiusTopLeft": 3, "cornerRadiusTopRight": 3},
-  "encoding": {
-    "x": {
-      "field": "year",
-      "type": "ordinal",
-      "title": "Year",
-      "axis": {"labelAngle": 0, "labelFontSize": 12}
-    },
-    "y": {
-      "field": "value",
-      "type": "quantitative",
-      "title": "IPO Funds Raised ($bn)",
-      "stack": "zero",
-      "axis": {"labelFontSize": 11}
-    },
-    "color": {
-      "field": "region",
-      "type": "nominal",
-      "scale": {
-        "domain": ["New York", "India", "Hong Kong", "China", "Rest of World"],
-        "range": ["#667eea", "#FF85A2", "#74B3CE", "#B4A7D6", "#FFDAB9"]
-      },
-      "legend": {"title": "Region", "orient": "top", "labelFontSize": 12}
-    },
-    "opacity": {
-      "condition": {"param": "regionSelect", "value": 1},
-      "value": 0.2
-    },
-    "tooltip": [
-      {"field": "year", "title": "Year"},
-      {"field": "region", "title": "Region"},
-      {"field": "value", "title": "Funds Raised ($bn)"}
-    ]
-  },
-  "config": {
-    "font": "Garamond",
-    "view": {"strokeWidth": 0}
-  }
-});
-    
-    vegaEmbed('#heroChart', {
+    // CC4 - Replication (FT style with their colors)
+    vegaEmbed('#replicationChart', {
       "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-      "title": "India's Digital Catch-Up: 2010-2024",
+      "title": {"text": "Oh, to IPO", "subtitle": "Funds raised through initial public offerings, $bn", "fontSize": 18},
       "width": 700,
       "height": 400,
       "data": {
-        "url": "https://raw.githubusercontent.com/Saranya-1208/Saranya-1208.github.io/refs/heads/main/project/net%20users%20%25%20global%202010%20-%202020.csv"
-      },
-      "params": [
-        {"name": "hover", "select": {"type": "point", "fields": ["Country Name"], "on": "mouseover", "clear": "mouseout"}},
-        {"name": "click", "select": {"type": "point", "fields": ["Country Name"]}}
-      ],
-      "mark": {"type": "line", "point": true, "strokeWidth": 3},
-      "encoding": {
-        "x": {"field": "Year", "type": "quantitative", "title": "Year"},
-        "y": {"field": "Net Internet Users", "type": "quantitative", "title": "Internet Users (%)"},
-        "color": {
-          "field": "Country Name",
-          "scale": {"range": ["#FF85A2", "#74B3CE", "#FFDAB9", "#B4A7D6", "#A8E6CF", "#FFB6B9", "#C7CEEA", "#E8DFF5"]},
-          "legend": {"title": null}
-        },
-        "opacity": {"condition": [{"param": "click", "value": 1}, {"param": "hover", "value": 1}], "value": 0.2},
-        "tooltip": [{"field": "Country Name"}, {"field": "Year"}, {"field": "Net Internet Users", "title": "Internet Users (%)"}]
-      },
-      "config": {"font": "Garamond"}
-    });
-    
-    // CC9 - UPI Map
-    vegaEmbed('#upiMap', {
-      "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-      "title": "UPI Divide: Interactive Metric Selection",
-      "width": 600,
-      "height": 550,
-      "params": [{
-        "name": "metric",
-        "value": "Per_Capita_Monthly",
-        "bind": {
-          "input": "select",
-          "options": ["Per_Capita_Monthly", "Volume_Mn", "Population_Mn"],
-          "labels": ["Transactions Per Person", "Total Volume (M)", "Population (M)"],
-          "name": "Select Metric: "
-        }
-      }],
-      "data": {
-        "url": "https://raw.githubusercontent.com/Subhash9325/GeoJson-Data-of-Indian-States/refs/heads/master/Indian_States",
-        "format": {"type": "json", "property": "features"}
-      },
-      "transform": [
-        {
-          "lookup": "properties.NAME_1",
-          "from": {
-            "data": {"url": "https://raw.githubusercontent.com/Saranya-1208/Saranya-1208.github.io/refs/heads/main/project/Statewise_UPI%20transaction_per%20capita_Map.csv"},
-            "key": "State",
-            "fields": ["Per_Capita_Monthly", "Volume_Mn", "Population_Mn"]
-          }
-        },
-        {"calculate": "metric == 'Per_Capita_Monthly' ? datum.Per_Capita_Monthly : metric == 'Volume_Mn' ? datum.Volume_Mn : datum.Population_Mn", "as": "SelectedValue"}
-      ],
-      "projection": {"type": "mercator"},
-      "mark": {"type": "geoshape", "stroke": "white", "strokeWidth": 1.5},
-      "encoding": {
-        "color": {
-          "field": "SelectedValue",
-          "type": "quantitative",
-          "scale": {"range": ["#A8E6CF", "#FFD3B6", "#FFAAA5", "#FF8B94"]},
-          "legend": {"title": "Value", "format": ".1f"}
-        },
-        "tooltip": [
-          {"field": "properties.NAME_1", "title": "State"},
-          {"field": "Per_Capita_Monthly", "title": "Per Capita"},
-          {"field": "Volume_Mn", "format": ".1f", "title": "Volume (M)"}
+        "values": [
+          {"year": "2018", "region": "New York", "value": 95}, {"year": "2018", "region": "India", "value": 55},
+          {"year": "2018", "region": "Hong Kong", "value": 35}, {"year": "2018", "region": "China", "value": 12},
+          {"year": "2018", "region": "Rest of World", "value": 103},
+          {"year": "2019", "region": "New York", "value": 85}, {"year": "2019", "region": "India", "value": 48},
+          {"year": "2019", "region": "Hong Kong", "value": 30}, {"year": "2019", "region": "China", "value": 15},
+          {"year": "2019", "region": "Rest of World", "value": 97},
+          {"year": "2020", "region": "New York", "value": 115}, {"year": "2020", "region": "India", "value": 52},
+          {"year": "2020", "region": "Hong Kong", "value": 25}, {"year": "2020", "region": "China", "value": 55},
+          {"year": "2020", "region": "Rest of World", "value": 123},
+          {"year": "2021", "region": "New York", "value": 145}, {"year": "2021", "region": "India", "value": 48},
+          {"year": "2021", "region": "Hong Kong", "value": 22}, {"year": "2021", "region": "China", "value": 75},
+          {"year": "2021", "region": "Rest of World", "value": 190},
+          {"year": "2022", "region": "New York", "value": 28}, {"year": "2022", "region": "India", "value": 18},
+          {"year": "2022", "region": "Hong Kong", "value": 8}, {"year": "2022", "region": "China", "value": 75},
+          {"year": "2022", "region": "Rest of World", "value": 48},
+          {"year": "2023", "region": "New York", "value": 38}, {"year": "2023", "region": "India", "value": 12},
+          {"year": "2023", "region": "Hong Kong", "value": 8}, {"year": "2023", "region": "China", "value": 52},
+          {"year": "2023", "region": "Rest of World", "value": 55},
+          {"year": "2024", "region": "New York", "value": 42}, {"year": "2024", "region": "India", "value": 18},
+          {"year": "2024", "region": "Hong Kong", "value": 10}, {"year": "2024", "region": "China", "value": 28},
+          {"year": "2024", "region": "Rest of World", "value": 72}
         ]
       },
-      "config": {"font": "Garamond"}
+      "mark": "bar",
+      "encoding": {
+        "x": {"field": "year", "type": "ordinal", "title": null, "axis": {"labelAngle": 0}},
+        "y": {"field": "value", "type": "quantitative", "title": null, "stack": "zero"},
+        "color": {
+          "field": "region",
+          "scale": {
+            "domain": ["New York", "India", "Hong Kong", "China", "Rest of World"],
+            "range": ["#00416a", "#6db1bf", "#0077b6", "#9d174d", "#ffa6c1"]
+          },
+          "legend": {"title": null, "orient": "top"}
+        },
+        "tooltip": [{"field": "year"}, {"field": "region"}, {"field": "value", "title": "Funds ($bn)"}]
+      },
+      "config": {"view": {"stroke": null}, "font": "Arial"}
+    });
+    
+    // CC4 - Improved Version
+    vegaEmbed('#improvedChart', {
+      "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+      "title": {
+        "text": "Global IPO Fundraising by Region (2018-2024)",
+        "subtitle": "Click legend to isolate regions | Enhanced interactivity",
+        "fontSize": 20,
+        "font": "Garamond"
+      },
+      "width": 800,
+      "height": 400,
+      "data": {
+        "values": [
+          {"year": "2018", "region": "New York", "value": 95}, {"year": "2018", "region": "India", "value": 55},
+          {"year": "2018", "region": "Hong Kong", "value": 35}, {"year": "2018", "region": "China", "value": 12},
+          {"year": "2018", "region": "Rest of World", "value": 103},
+          {"year": "2019", "region": "New York", "value": 85}, {"year": "2019", "region": "India", "value": 48},
+          {"year": "2019", "region": "Hong Kong", "value": 30}, {"year": "2019", "region": "China", "value": 15},
+          {"year": "2019", "region": "Rest of World", "value": 97},
+          {"year": "2020", "region": "New York", "value": 115}, {"year": "2020", "region": "India", "value": 52},
+          {"year": "2020", "region": "Hong Kong", "value": 25}, {"year": "2020", "region": "China", "value": 55},
+          {"year": "2020", "region": "Rest of World", "value": 123},
+          {"year": "2021", "region": "New York", "value": 145}, {"year": "2021", "region": "India", "value": 48},
+          {"year": "2021", "region": "Hong Kong", "value": 22}, {"year": "2021", "region": "China", "value": 75},
+          {"year": "2021", "region": "Rest of World", "value": 190},
+          {"year": "2022", "region": "New York", "value": 28}, {"year": "2022", "region": "India", "value": 18},
+          {"year": "2022", "region": "Hong Kong", "value": 8}, {"year": "2022", "region": "China", "value": 75},
+          {"year": "2022", "region": "Rest of World", "value": 48},
+          {"year": "2023", "region": "New York", "value": 38}, {"year": "2023", "region": "India", "value": 12},
+          {"year": "2023", "region": "Hong Kong", "value": 8}, {"year": "2023", "region": "China", "value": 52},
+          {"year": "2023", "region": "Rest of World", "value": 55},
+          {"year": "2024", "region": "New York", "value": 42}, {"year": "2024", "region": "India", "value": 18},
+          {"year": "2024", "region": "Hong Kong", "value": 10}, {"year": "2024", "region": "China", "value": 28},
+          {"year": "2024", "region": "Rest of World", "value": 72}
+        ]
+      },
+      "params": [{"name": "regionSelect", "select": {"type": "point", "fields": ["region"]}, "bind": "legend"}],
+      "mark": {"type": "bar", "cornerRadiusTopLeft": 3, "cornerRadiusTopRight": 3},
+      "encoding": {
+        "x": {"field": "year", "type": "ordinal", "title": "Year", "axis": {"labelAngle": 0, "labelFontSize": 12}},
+        "y": {"field": "value", "type": "quantitative", "title": "IPO Funds Raised ($bn)", "stack": "zero", "axis": {"labelFontSize": 12}},
+        "color": {
+          "field": "region",
+          "scale": {
+            "domain": ["New York", "India", "Hong Kong", "China", "Rest of World"],
+            "range": ["#667eea", "#FF85A2", "#74B3CE", "#B4A7D6", "#FFDAB9"]
+          },
+          "legend": {"title": "Region", "orient": "top", "labelFontSize": 13}
+        },
+        "opacity": {"condition": {"param": "regionSelect", "value": 1}, "value": 0.2},
+        "tooltip": [{"field": "year"}, {"field": "region"}, {"field": "value", "title": "Funds ($bn)"}]
+      },
+      "config": {"font": "Garamond", "view": {"strokeWidth": 0}}
+    });
+    
+    // CC5 - API Chart
+    vegaEmbed('#apiChart', {
+      "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+      "title": {"text": "India's GDP Growth Rate (2000-2024)", "fontSize": 20, "font": "Garamond"},
+      "width": 800,
+      "height": 400,
+      "data": {"url": "https://raw.githubusercontent.com/Saranya-1208/Saranya-1208.github.io/refs/heads/main/india_gdp_growth_wb.json"},
+      "mark": {"type": "line", "point": {"size": 80}, "strokeWidth": 3, "color": "#667eea"},
+      "encoding": {
+        "x": {"field": "year", "type": "ordinal", "title": "Year", "axis": {"labelAngle": -45, "labelFontSize": 12}},
+        "y": {"field": "gdp_growth", "type": "quantitative", "title": "GDP Growth Rate (%)", "axis": {"labelFontSize": 12}},
+        "tooltip": [{"field": "year"}, {"field": "gdp_growth", "format": ".2f", "title": "GDP Growth (%)"}]
+      },
+      "config": {"font": "Garamond", "view": {"strokeWidth": 0}}
+    });
+    
+    // CC5 - Scraper Chart
+    vegaEmbed('#scraperChart', {
+      "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+      "title": {"text": "India's Most Populous Cities", "subtitle": "Data scraped from Wikipedia", "fontSize": 20, "font": "Garamond"},
+      "width": 800,
+      "height": 400,
+      "data": {"url": "https://raw.githubusercontent.com/Saranya-1208/Saranya-1208.github.io/refs/heads/main/india_cities_population_scraped.csv"},
+      "mark": {"type": "bar", "color": "#FF85A2", "cornerRadiusEnd": 4},
+      "encoding": {
+        "y": {"field": "city", "type": "nominal", "sort": "-x", "title": null, "axis": {"labelFontSize": 12}},
+        "x": {"field": "population", "type": "quantitative", "title": "Population", "axis": {"format": "~s", "labelFontSize": 12}},
+        "tooltip": [{"field": "city"}, {"field": "population", "format": ","}]
+      },
+      "config": {"font": "Garamond", "view": {"strokeWidth": 0}}
+    });
+    
+    // CC6 - Dashboard (JavaScript Loop)
+    const countries = [
+      {name: "India", color: "#FF85A2"},
+      {name: "China", color: "#74B3CE"},
+      {name: "USA", color: "#B4A7D6"},
+      {name: "Brazil", color: "#FFAAA5"},
+      {name: "Indonesia", color: "#A8E6CF"},
+      {name: "South_Africa", color: "#FFB6B9"}
+    ];
+    
+    countries.forEach(country => {
+      vegaEmbed(`#dash_${country.name}`, {
+        "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+        "title": {"text": country.name.replace("_", " "), "fontSize": 16, "font": "Garamond"},
+        "width": 300,
+        "height": 220,
+        "data": {"url": `https://raw.githubusercontent.com/Saranya-1208/Saranya-1208.github.io/refs/heads/main/${country.name}_internet.json`},
+        "mark": {"type": "line", "strokeWidth": 2.5, "point": {"size": 50}, "color": country.color},
+        "encoding": {
+          "x": {"field": "year", "type": "ordinal", "title": "Year", "axis": {"labelAngle": -45, "labelFontSize": 10}},
+          "y": {"field": "value", "type": "quantitative", "title": "Internet (%)", "scale": {"domain": [0, 100]}, "axis": {"labelFontSize": 10}},
+          "tooltip": [{"field": "year"}, {"field": "value", "format": ".1f", "title": "Internet (%)"}]
+        },
+        "config": {"font": "Garamond", "view": {"strokeWidth": 0}}
+      }, {actions: false});
+    });
+    
+    // CC7 - Scotland Map
+    vegaEmbed('#scotlandMap', {
+      "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+      "title": {"text": "Scotland: Universal Credit Claimants", "subtitle": "National Average: 9.05%", "fontSize": 20, "font": "Garamond"},
+      "width": 500,
+      "height": 600,
+      "layer": [
+        {
+          "data": {
+            "url": "https://raw.githubusercontent.com/jhellingsdata/RADataHub/refs/heads/main/MappingWorkshop/geo_data/LAD_SCT_2025_05.topojson",
+            "format": {"type": "topojson", "feature": "object_name"}
+          },
+          "mark": {"type": "geoshape", "fill": "#f0f0f0", "stroke": "#999", "strokeWidth": 0.5},
+          "projection": {"type": "mercator"}
+        },
+        {
+          "data": {"url": "https://raw.githubusercontent.com/vkumarilse/vkumarilse.github.io/refs/heads/main/portfolio/scotland_uc_data.csv"},
+          "mark": {"type": "circle", "opacity": 0.8, "stroke": "white", "strokeWidth": 1.5},
+          "encoding": {
+            "longitude": {"field": "lon", "type": "quantitative"},
+            "latitude": {"field": "lat", "type": "quantitative"},
+            "size": {"field": "uc_percentage", "type": "quantitative", "scale": {"range": [100, 800]}, "legend": {"title": "UC (%)"}},
+            "color": {
+              "field": "vs_national",
+              "type": "quantitative",
+              "scale": {"domain": [-4, 0, 4], "range": ["#74B3CE", "#f7f7f7", "#FF85A2"]},
+              "legend": {"title": "vs National Avg"}
+            },
+            "tooltip": [
+              {"field": "constituency_name", "title": "Constituency"},
+              {"field": "uc_percentage", "format": ".1f", "title": "UC (%)"},
+              {"field": "vs_national", "format": "+.1f", "title": "vs National"}
+            ]
+          }
+        }
+      ],
+      "config": {"font": "Garamond", "view": {"strokeWidth": 0}}
+    });
+    
+    // CC7 - Wales Map
+    vegaEmbed('#walesMap', {
+      "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+      "title": {"text": "Wales: Population by Local Authority", "fontSize": 20, "font": "Garamond"},
+      "width": 450,
+      "height": 600,
+      "data": {
+        "url": "https://raw.githubusercontent.com/jhellingsdata/RADataHub/refs/heads/main/MappingWorkshop/geo_data/LAD_WLS_2025_05.topojson",
+        "format": {"type": "topojson", "feature": "object_name"}
+      },
+      "transform": [{
+        "lookup": "properties.LAD25NM",
+        "from": {
+          "data": {
+            "values": [
+              {"name": "Cardiff", "population": 364248}, {"name": "Swansea", "population": 246466},
+              {"name": "Newport", "population": 159588}, {"name": "Rhondda Cynon Taf", "population": 241873},
+              {"name": "Carmarthenshire", "population": 188771}, {"name": "Caerphilly", "population": 176995},
+              {"name": "Flintshire", "population": 155593}, {"name": "Bridgend", "population": 147049},
+              {"name": "Neath Port Talbot", "population": 144386}, {"name": "Vale of Glamorgan", "population": 135295},
+              {"name": "Powys", "population": 133030}, {"name": "Pembrokeshire", "population": 126751},
+              {"name": "Gwynedd", "population": 124178}, {"name": "Conwy", "population": 118184},
+              {"name": "Denbighshire", "population": 95696}, {"name": "Monmouthshire", "population": 95164},
+              {"name": "Torfaen", "population": 92300}, {"name": "Wrexham", "population": 135132}
+            ]
+          },
+          "key": "name",
+          "fields": ["population"]
+        }
+      }],
+      "projection": {"type": "mercator"},
+      "mark": {"type": "geoshape", "stroke": "white", "strokeWidth": 1},
+      "encoding": {
+        "color": {
+          "field": "population",
+          "type": "quantitative",
+          "scale": {"scheme": "purples", "type": "log"},
+          "legend": {"title": "Population", "format": "~s"}
+        },
+        "tooltip": [
+          {"field": "properties.LAD25NM", "title": "Local Authority"},
+          {"field": "population", "format": ",", "title": "Population"}
+        ]
+      },
+      "config": {"font": "Garamond", "view": {"strokeWidth": 0}}
+    });
+    
+    // CC8 - Chart 1: Bread Trends
+    vegaEmbed('#cc8Chart1', {
+      "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+      "title": {"text": "UK White Bread Prices (1988-2025)", "subtitle": "Aggregated from millions of observations", "fontSize": 20, "font": "Garamond"},
+      "width": 800,
+      "height": 400,
+      "data": {"url": "https://raw.githubusercontent.com/Saranya-1208/Saranya-1208.github.io/refs/heads/main/cc8_bread_trends.csv"},
+      "mark": {"type": "line", "strokeWidth": 3, "point": {"size": 60}, "color": "#667eea"},
+      "encoding": {
+        "x": {"field": "date", "type": "temporal", "title": "Year", "axis": {"format": "%Y", "labelFontSize": 12}},
+        "y": {"field": "price", "type": "quantitative", "title": "Median Price (£)", "axis": {"labelFontSize": 12}},
+        "tooltip": [
+          {"field": "date", "type": "temporal", "format": "%B %Y"},
+          {"field": "price", "format": "£.2f", "title": "Price"}
+        ]
+      },
+      "config": {"font": "Garamond", "view": {"strokeWidth": 0}}
+    });
+    
+    // CC8 - Chart 2: Regional Comparison
+    vegaEmbed('#cc8Chart2', {
+      "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+      "title": {"text": "UK Bread Rolls: Regional Prices (2015-2025)", "subtitle": "Median prices by region", "fontSize": 20, "font": "Garamond"},
+      "width": 800,
+      "height": 400,
+      "data": {"url": "https://raw.githubusercontent.com/Saranya-1208/Saranya-1208.github.io/refs/heads/main/cc8_bread_regional.csv"},
+      "mark": {"type": "bar", "color": "#FF85A2", "cornerRadiusEnd": 4},
+      "encoding": {
+        "y": {"field": "region_name", "type": "nominal", "sort": "x", "title": null, "axis": {"labelFontSize": 12}},
+        "x": {"field": "price", "type": "quantitative", "title": "Median Price (£)", "axis": {"format": ".2f", "labelFontSize": 12}},
+        "tooltip": [{"field": "region_name", "title": "Region"}, {"field": "price", "format": "£.2f"}]
+      },
+      "config": {"font": "Garamond", "view": {"strokeWidth": 0}}
+    });
+    
+    // CC9 - Interactive 1: Hover Highlighting
+    vegaEmbed('#interactive1', {
+      "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+      "title": {"text": "UK Unemployment (Interactive Hover)", "subtitle": "Hover to highlight periods", "fontSize": 20, "font": "Garamond"},
+      "width": 800,
+      "height": 400,
+      "data": {"url": "https://raw.githubusercontent.com/Saranya-1208/Saranya-1208.github.io/refs/heads/main/series-051125.csv"},
+      "params": [{"name": "hover", "select": {"type": "point", "on": "mouseover", "nearest": true}}],
+      "layer": [
+        {
+          "mark": {"type": "line", "strokeWidth": 3, "color": "#667eea"},
+          "encoding": {
+            "x": {"field": "Year", "type": "temporal", "title": "Year", "axis": {"labelFontSize": 12}},
+            "y": {"field": "Value", "type": "quantitative", "title": "Unemployment (%)", "axis": {"labelFontSize": 12}}
+          }
+        },
+        {
+          "mark": {"type": "point", "filled": true, "size": 100},
+          "encoding": {
+            "x": {"field": "Year", "type": "temporal"},
+            "y": {"field": "Value", "type": "quantitative"},
+            "color": {"condition": {"param": "hover", "value": "#FF85A2"}, "value": "#667eea"},
+            "size": {"condition": {"param": "hover", "value": 300}, "value": 100},
+            "tooltip": [
+              {"field": "Year", "type": "temporal", "format": "%Y"},
+              {"field": "Value", "format": ".1f", "title": "Rate (%)"}
+            ]
+          }
+        },
+        {
+          "mark": {"type": "rule", "strokeWidth": 2, "color": "#FF85A2", "opacity": 0.5},
+          "encoding": {"x": {"field": "Year", "type": "temporal"}},
+          "transform": [{"filter": {"param": "hover"}}]
+        }
+      ],
+      "config": {"font": "Garamond", "view": {"strokeWidth": 0}}
+    });
+    
+    // CC9 - Interactive 2: Dropdown Selector
+    vegaEmbed('#interactive2', {
+      "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+      "title": {"text": "Women in Parliament: Country Comparison", "subtitle": "Select country from dropdown", "fontSize": 20, "font": "Garamond"},
+      "width": 800,
+      "height": 400,
+      "data": {
+        "values": [
+          {"year": "2000", "country": "India", "value": 9.0}, {"year": "2005", "country": "India", "value": 8.3},
+          {"year": "2010", "country": "India", "value": 11.0}, {"year": "2015", "country": "India", "value": 12.0},
+          {"year": "2020", "country": "India", "value": 14.4}, {"year": "2024", "country": "India", "value": 13.6},
+          {"year": "2000", "country": "UK", "value": 18.0}, {"year": "2005", "country": "UK", "value": 20.0},
+          {"year": "2010", "country": "UK", "value": 22.0}, {"year": "2015", "country": "UK", "value": 29.0},
+          {"year": "2020", "country": "UK", "value": 34.0}, {"year": "2024", "country": "UK", "value": 35.0},
+          {"year": "2000", "country": "USA", "value": 13.0}, {"year": "2005", "country": "USA", "value": 15.0},
+          {"year": "2010", "country": "USA", "value": 17.0}, {"year": "2015", "country": "USA", "value": 19.0},
+          {"year": "2020", "country": "USA", "value": 24.0}, {"year": "2024", "country": "USA", "value": 28.0}
+        ]
+      },
+      "params": [{
+        "name": "countrySelect",
+        "value": "India",
+        "bind": {"input": "select", "options": ["India", "UK", "USA"], "name": "Select Country: "}
+      }],
+      "transform": [{"filter": "datum.country == countrySelect"}],
+      "mark": {"type": "line", "point": {"size": 100}, "strokeWidth": 3, "color": "#B4A7D6"},
+      "encoding": {
+        "x": {"field": "year", "type": "ordinal", "title": "Year", "axis": {"labelFontSize": 12}},
+        "y": {"field": "value", "type": "quantitative", "title": "% of Seats", "scale": {"domain": [0, 40]}, "axis": {"labelFontSize": 12}},
+        "tooltip": [{"field": "country"}, {"field": "year"}, {"field": "value", "format": ".1f"}]
+      },
+      "config": {"font": "Garamond", "view": {"strokeWidth": 0}}
     });
     
     // CC10 - Heatmap
     vegaEmbed('#heatmapChart', {
       "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-      "title": "UPI Transaction Patterns: Hour × Day (250K Transactions)",
-      "width": 700,
-      "height": 350,
-      "data": {
-        "url": "https://raw.githubusercontent.com/Saranya-1208/Saranya-1208.github.io/refs/heads/main/project/upi_time_heatmap.csv"
-      },
+      "title": {"text": "UPI Transaction Patterns: Hour × Day", "subtitle": "250K transactions analyzed", "fontSize": 20, "font": "Garamond"},
+      "width": 800,
+      "height": 400,
+      "data": {"url": "https://raw.githubusercontent.com/Saranya-1208/Saranya-1208.github.io/refs/heads/main/project/upi_time_heatmap.csv"},
       "mark": {"type": "rect", "strokeWidth": 1, "stroke": "white"},
       "encoding": {
-        "x": {"field": "hour_of_day", "type": "ordinal", "title": "Hour of Day"},
+        "x": {"field": "hour_of_day", "type": "ordinal", "title": "Hour of Day", "axis": {"labelFontSize": 11}},
         "y": {
           "field": "day_of_week",
           "type": "ordinal",
           "sort": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
-          "title": null
+          "title": null,
+          "axis": {"labelFontSize": 12}
         },
         "color": {
           "field": "Transaction_Count",
@@ -1227,37 +888,35 @@ vegaEmbed('#improvedChart', {
           "legend": {"title": "Transactions", "format": ","}
         },
         "tooltip": [
-          {"field": "day_of_week", "title": "Day"},
-          {"field": "hour_of_day", "title": "Hour"},
+          {"field": "day_of_week"}, {"field": "hour_of_day"},
           {"field": "Transaction_Count", "format": ",", "title": "Transactions"}
         ]
       },
-      "config": {"font": "Garamond"}
+      "config": {"font": "Garamond", "view": {"strokeWidth": 0}}
     });
     
     // CC10 - ML Forecast
     vegaEmbed('#forecastChart', {
       "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-      "title": "UPI Forecast: Actual + ML Predictions (2016-2026)",
-      "width": 700,
-      "height": 400,
-      "data": {
-        "url": "https://raw.githubusercontent.com/Saranya-1208/Saranya-1208.github.io/refs/heads/main/project/upi_forecast.csv"
-      },
+      "title": {"text": "UPI Forecast: Actual + ML Predictions (2016-2026)", "fontSize": 20, "font": "Garamond"},
+      "width": 800,
+      "height": 450,
+      "data": {"url": "https://raw.githubusercontent.com/Saranya-1208/Saranya-1208.github.io/refs/heads/main/project/upi_forecast.csv"},
       "transform": [{"calculate": "toDate(datum.Date)", "as": "ParsedDate"}],
       "mark": {"type": "line", "point": true, "strokeWidth": 3},
       "encoding": {
-        "x": {"field": "ParsedDate", "type": "temporal", "title": "Year", "axis": {"format": "%Y"}},
+        "x": {"field": "ParsedDate", "type": "temporal", "title": "Year", "axis": {"format": "%Y", "labelFontSize": 12}},
         "y": {
           "field": "Volume_Mn",
           "type": "quantitative",
           "title": "Monthly Transactions (Millions)",
-          "scale": {"type": "log"}
+          "scale": {"type": "log"},
+          "axis": {"labelFontSize": 12}
         },
         "color": {
           "field": "Type",
           "scale": {"domain": ["Actual", "Predicted"], "range": ["#FF85A2", "#B4A7D6"]},
-          "legend": {"title": null}
+          "legend": {"title": null, "labelFontSize": 13}
         },
         "strokeDash": {"field": "Type", "scale": {"domain": ["Actual", "Predicted"], "range": [[1,0], [8,4]]}},
         "tooltip": [
@@ -1266,7 +925,7 @@ vegaEmbed('#improvedChart', {
           {"field": "Type"}
         ]
       },
-      "config": {"font": "Garamond"}
+      "config": {"font": "Garamond", "view": {"strokeWidth": 0}}
     });
   </script>
 </body>
