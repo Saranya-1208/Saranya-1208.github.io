@@ -371,20 +371,20 @@
       </div>
       
       <div class="commentary">
-        <strong>Findings (25 words):</strong> Weekday lunch and evening hours show distinct transaction peaks. Pattern confirms UPI embedded in daily payment routines, not just emergency usage.
+        <strong>Findings :</strong> Weekday lunch and evening hours show distinct transaction peaks. Pattern confirms UPI embedded in daily payment routines, not just emergency usage.
       </div>
       
       <a href="https://colab.research.google.com/drive/1Q44vOtYM3mhGSNu7MAh7m4ABtdJ38EKI?usp=sharing" target="_blank" class="colab-link">View Heatmap Analysis Notebook →</a>
       
       <h3>Part 2: Machine Learning - UPI Growth Forecasting</h3>
-      <p><strong>Hypothesis (25 words):</strong> UPI transaction growth follows exponential trajectory, allowing reliable 2026 volume prediction using log-linear regression on 116 months of historical transaction data.</p>
+      <p><strong>Hypothesis :</strong> UPI transaction growth follows exponential trajectory, allowing reliable 2026 volume prediction using log-linear regression on 116 months of historical transaction data.</p>
       
       <div class="chart-wrapper">
         <div id="forecastChart"></div>
       </div>
       
       <div class="commentary">
-        <strong>Findings (25 words):</strong> Model predicts 20+ billion monthly transactions by late 2026. Growth rate slowing indicates approaching market saturation, transitioning from exponential growth phase.
+        <strong>Findings :</strong> Model predicts 20+ billion monthly transactions by late 2026. Growth rate slowing indicates approaching market saturation, transitioning from exponential growth phase.
       </div>
       
       <a href="https://colab.research.google.com/drive/1Xq7Skj4NDEpDbI4DQfJdTikyRcti-Rmo?usp=sharing" target="_blank" class="colab-link">View ML Methodology Notebook →</a>
@@ -920,9 +920,9 @@
    vegaEmbed('#forecastChart', {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "title": {"text": "UPI Forecast: Actual + ML Predictions (2016-2026)", "fontSize": 20, "font": "Garamond"},
-  "width": 800,
+  "width": 750,
   "height": 450,
-  "data": {"url": "https://raw.githubusercontent.com/Saranya-1208/Saranya-1208.github.io/refs/heads/main/project/upi_forecast.csv"},
+  "data": {"url": "https://raw.githubusercontent.com/Saranya-1208/Saranya-1208.github.io/refs/heads/main/upi_forecast%20(1).csv"},
   "mark": {"type": "line", "point": true, "strokeWidth": 3},
   "encoding": {
     "x": {
