@@ -839,12 +839,12 @@ vegaEmbed('#cc8Chart2', {
   "config": {"font": "Garamond", "view": {"strokeWidth": 0}}
 });
     
-   // CC9 - Interactive 1: Hover Highlighting
+   // CC9 - Interactive 1: Hover Highlighting (CLEAN VERSION)
 vegaEmbed('#interactive1', {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "title": {
     "text": "UK Unemployment (Interactive Hover)", 
-    "subtitle": "Hover over points to see details", 
+    "subtitle": "Hover over the line to highlight points", 
     "fontSize": 20, 
     "font": "Garamond"
   },
@@ -855,40 +855,64 @@ vegaEmbed('#interactive1', {
   },
   "params": [{
     "name": "hover",
-    "select": {"type": "point", "on": "mouseover", "clear": "mouseout", "nearest": true}
+    "select": {
+      "type": "point",
+      "on": "mouseover",
+      "nearest": true
+    }
   }],
-  "mark": {
-    "type": "line", 
-    "point": true, 
-    "strokeWidth": 3, 
-    "color": "#667eea"
-  },
-  "encoding": {
-    "x": {
-      "field": "Year", 
-      "type": "temporal", 
-      "title": "Year", 
-      "axis": {"labelFontSize": 12}
+  "layer": [
+    {
+      "mark": {
+        "type": "line",
+        "strokeWidth": 3,
+        "color": "#667eea"
+      },
+      "encoding": {
+        "x": {
+          "field": "Year",
+          "type": "temporal",
+          "title": "Year",
+          "axis": {"labelFontSize": 12}
+        },
+        "y": {
+          "field": "Value",
+          "type": "quantitative",
+          "title": "Unemployment (%)",
+          "axis": {"labelFontSize": 12}
+        }
+      }
     },
-    "y": {
-      "field": "Value", 
-      "type": "quantitative", 
-      "title": "Unemployment (%)", 
-      "axis": {"labelFontSize": 12}
-    },
-    "size": {
-      "condition": {"param": "hover", "value": 200},
-      "value": 60
-    },
-    "opacity": {
-      "condition": {"param": "hover", "value": 1},
-      "value": 0.8
-    },
-    "tooltip": [
-      {"field": "Year", "type": "temporal", "format": "%Y", "title": "Year"},
-      {"field": "Value", "format": ".1f", "title": "Unemployment Rate (%)"}
-    ]
-  },
+    {
+      "mark": {
+        "type": "point",
+        "filled": true,
+        "size": 80
+      },
+      "encoding": {
+        "x": {"field": "Year", "type": "temporal"},
+        "y": {"field": "Value", "type": "quantitative"},
+        "color": {
+          "condition": {
+            "param": "hover",
+            "value": "#FF85A2"
+          },
+          "value": "#667eea"
+        },
+        "size": {
+          "condition": {
+            "param": "hover",
+            "value": 250
+          },
+          "value": 80
+        },
+        "tooltip": [
+          {"field": "Year", "type": "temporal", "format": "%Y", "title": "Year"},
+          {"field": "Value", "format": ".1f", "title": "Unemployment (%)"}
+        ]
+      }
+    }
+  ],
   "config": {"font": "Garamond", "view": {"strokeWidth": 0}}
 });
     
