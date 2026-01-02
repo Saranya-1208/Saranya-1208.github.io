@@ -231,6 +231,25 @@
       
       <a href="https://colab.research.google.com/drive/1gATdy9GXodFZ3frY4EcZPblWWhY8wjjd?usp=sharing" target="_blank" class="colab-link">View Scraper Workflow Notebook →</a>
     </div>
+
+    <!-- CC6: DASHBOARD -->
+<div class="cc-section" id="cc6">
+  <h2>CC6: Dashboard - Batch Download Using Loops</h2>
+  <p>Used Python loop to batch download 6 countries' internet penetration data from World Bank API. Charts display as a grid, embedded using JavaScript loop.</p>
+  
+  <h3>Global Internet Penetration Dashboard (2010-2024)</h3>
+  
+  <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; margin-top: 2rem;">
+    <div id="dash_India"></div>
+    <div id="dash_China"></div>
+    <div id="dash_USA"></div>
+    <div id="dash_Brazil"></div>
+    <div id="dash_Indonesia"></div>
+    <div id="dash_South_Africa"></div>
+  </div>
+  
+  <a href="https://colab.research.google.com/drive/13PjXGgk2bv2u-ziZh_pZjWhRcfhLv0g9?usp=sharing" target="_blank" class="colab-link">View Batch Download Notebook →</a>
+</div>
     
     <!-- CC9: INTERACTIVE -->
     <div class="cc-section" id="cc9">
@@ -511,6 +530,62 @@
       ],
       "config": {"font": "Garamond"}
     });
+
+    // CC6 - Dashboard with JavaScript Loop
+const countries = [
+  {name: "India", color: "#FF85A2"},
+  {name: "China", color: "#74B3CE"},
+  {name: "USA", color: "#B4A7D6"},
+  {name: "Brazil", color: "#FFAAA5"},
+  {name: "Indonesia", color: "#A8E6CF"},
+  {name: "South_Africa", color: "#FFB6B9"}
+];
+
+// Loop through countries and embed charts
+countries.forEach(country => {
+  vegaEmbed(`#dash_${country.name}`, {
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "title": {
+      "text": country.name.replace("_", " "),
+      "fontSize": 16,
+      "font": "Garamond"
+    },
+    "width": 280,
+    "height": 200,
+    "data": {
+      "url": `https://raw.githubusercontent.com/Saranya-1208/Saranya-1208.github.io/refs/heads/main/${country.name}_internet.json`
+    },
+    "mark": {
+      "type": "line",
+      "strokeWidth": 2.5,
+      "point": true,
+      "color": country.color
+    },
+    "encoding": {
+      "x": {
+        "field": "year",
+        "type": "ordinal",
+        "title": "Year",
+        "axis": {"labelAngle": -45, "labelFontSize": 10}
+      },
+      "y": {
+        "field": "value",
+        "type": "quantitative",
+        "title": "Internet Users (%)",
+        "scale": {"domain": [0, 100]},
+        "axis": {"labelFontSize": 10}
+      },
+      "tooltip": [
+        {"field": "year", "title": "Year"},
+        {"field": "value", "format": ".1f", "title": "Internet Users (%)"}
+      ]
+    },
+    "config": {
+      "font": "Garamond",
+      "view": {"strokeWidth": 0}
+    }
+  }, {actions: false});
+});
     
     // CC9 - Hero Chart
     vegaEmbed('#heroChart', {
