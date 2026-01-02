@@ -210,7 +210,7 @@ CC1
       </div>
     </div>
     
-    
+    CC3
     <div class="cc-section" id="cc3">
       <h2>CC3: Debate - Policy Commentary with Visualization</h2>
       <p><strong>Policy Topic (25 words):</strong> India's 2019 constitutional amendment requiring one-third of parliamentary seats for women dramatically increased female political representation, demonstrating quota effectiveness.</p>
@@ -895,14 +895,17 @@ CC1
       "config": {"font": "Garamond", "view": {"strokeWidth": 0}}
     });
     
-    // CC10 - ML Forecast
+    CC10 - ML Forecast
     vegaEmbed('#forecastChart', {
       "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
       "title": {"text": "UPI Forecast: Actual + ML Predictions (2016-2026)", "fontSize": 20, "font": "Garamond"},
       "width": 800,
       "height": 450,
       "data": {"url": "https://raw.githubusercontent.com/Saranya-1208/Saranya-1208.github.io/refs/heads/main/project/upi_forecast.csv"},
-      "transform": [{"calculate": "toDate(datum.Date)", "as": "ParsedDate"}],
+     "transform": [
+  {"calculate": "toDate(datum.Date)", "as": "ParsedDate"},
+  {"filter": "datum.Volume_Mn > 0"}
+],
       "mark": {"type": "line", "point": true, "strokeWidth": 3},
       "encoding": {
         "x": {"field": "ParsedDate", "type": "temporal", "title": "Year", "axis": {"format": "%Y", "labelFontSize": 12}},
