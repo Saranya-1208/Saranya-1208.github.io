@@ -174,7 +174,7 @@
   
   <div class="container">
     
-CC1
+    <!-- CC1 -->
     <div class="cc-section" id="cc1">
       <h2>CC1: Hosting - Display Charts on GitHub Pages</h2>
       <p>Set up GitHub account and live page. Embed two charts using the vegaEmbed function.</p>
@@ -192,7 +192,7 @@ CC1
       </div>
     </div>
     
-    CC2
+    <!-- CC2 -->
     <div class="cc-section" id="cc2">
       <h2>CC2: Building - Create Custom Visualizations</h2>
       <p>Two charts built using the Economics Observatory data creation tools and custom specifications.</p>
@@ -210,7 +210,7 @@ CC1
       </div>
     </div>
     
-    CC3
+    <!-- CC3 -->
     <div class="cc-section" id="cc3">
       <h2>CC3: Debate - Policy Commentary with Visualization</h2>
       <p><strong>Policy Topic (25 words):</strong> India's 2019 constitutional amendment requiring one-third of parliamentary seats for women dramatically increased female political representation, demonstrating quota effectiveness.</p>
@@ -225,7 +225,7 @@ CC1
       </div>
     </div>
     
-    CC4
+    <!-- CC4 -->
     <div class="cc-section" id="cc4">
       <h2>CC4: Replication - Recreate & Improve Chart</h2>
       
@@ -249,7 +249,7 @@ CC1
       </div>
     </div>
     
-    CC5
+    <!-- CC5 -->
     <div class="cc-section" id="cc5">
       <h2>CC5: Accessing Data - API & Web Scraper</h2>
       
@@ -280,7 +280,7 @@ CC1
       <a href="YOUR_SCRAPER_COLAB_URL" target="_blank" class="colab-link">View Scraper Workflow Notebook →</a>
     </div>
     
-     CC6
+    <!-- CC6 -->
     <div class="cc-section" id="cc6">
       <h2>CC6: Loops - Build a Dashboard</h2>
       <p>Used Python loop to batch download 6 countries' internet data from World Bank API. Displayed as grid using JavaScript loop to embed charts.</p>
@@ -299,7 +299,7 @@ CC1
       <a href="YOUR_DASHBOARD_COLAB_URL" target="_blank" class="colab-link">View Batch Download Notebook →</a>
     </div>
     
-    CC7
+    <!-- CC7 -->
     <div class="cc-section" id="cc7">
       <h2>CC7: Maps - Base Maps and Choropleths</h2>
       <p>Two maps: Scotland coordinate map with bubbles, and Wales choropleth showing regional data.</p>
@@ -317,7 +317,7 @@ CC1
       </div>
     </div>
     
-    CC8
+    <!-- CC8 -->
     <div class="cc-section" id="cc8">
       <h2>CC8: Big Data - UK Prices Dataset</h2>
       <p>Two charts analyzing the UK Long Run Prices Database (LRPD) containing 48+ million price observations spanning 1988-2025.</p>
@@ -341,7 +341,7 @@ CC1
       <a href="https://colab.research.google.com/drive/1lWK4IRn_GYHQYDwXK-BEmUkKD7yqTf8j?usp=sharing" target="_blank" class="colab-link">View Data Processing Notebook →</a>
     </div>
     
-    CC9
+    <!-- CC9 -->
     <div class="cc-section" id="cc9">
       <h2>CC9: Interactive Charts</h2>
       <p>Two charts with advanced interactivity beyond simple tooltips, including click/hover and dropdown controls.</p>
@@ -359,7 +359,7 @@ CC1
       </div>
     </div>
     
-    CC10
+    <!-- CC10 -->
     <div class="cc-section" id="cc10">
       <h2>CC10: Advanced Analytics & Machine Learning</h2>
       
@@ -403,7 +403,7 @@ CC1
     vegaEmbed('#chart1', {
       "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
       "title": {"text": "UK Unemployment Rate (Aged Over 16)", "fontSize": 20, "font": "Garamond"},
-      "width": 800,
+      "width": 700,
       "height": 400,
       "data": {"url": "https://raw.githubusercontent.com/Saranya-1208/Saranya-1208.github.io/refs/heads/main/series-051125.csv"},
       "mark": {"type": "line", "strokeWidth": 3, "color": "#667eea", "point": {"size": 60}},
@@ -422,7 +422,7 @@ CC1
     vegaEmbed('#chart2', {
       "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
       "title": {"text": "Export of Trade Goods in India by Region", "fontSize": 20, "font": "Garamond"},
-      "width": 800,
+      "width": 700,
       "height": 400,
       "data": {"url": "https://raw.githubusercontent.com/Saranya-1208/Saranya-1208.github.io/refs/heads/main/data.csv"},
       "mark": "bar",
@@ -444,7 +444,7 @@ CC1
     vegaEmbed('#chart3', {
       "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
       "title": {"text": "UK Gross Capital Formation (% Change)", "fontSize": 20, "font": "Garamond"},
-      "width": 800,
+      "width": 700,
       "height": 400,
       "data": {"url": "https://raw.githubusercontent.com/Saranya-1208/Saranya-1208.github.io/refs/heads/main/Gross%20Capital%20Formation.csv"},
       "mark": {"type": "line", "point": {"size": 80}, "strokeWidth": 3, "color": "#FF85A2"},
@@ -463,7 +463,7 @@ CC1
     vegaEmbed('#chart4', {
       "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
       "title": {"text": "US Stock Market P/E Ratio Over Time", "fontSize": 20, "font": "Garamond"},
-      "width": 800,
+      "width": 700,
       "height": 400,
       "data": {
         "values": [
@@ -494,7 +494,7 @@ CC1
     vegaEmbed('#chart5', {
       "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
       "title": {"text": "Women in Parliament, India (% of Seats)", "fontSize": 20, "font": "Garamond"},
-      "width": 800,
+      "width": 700,
       "height": 400,
       "data": {"url": "https://raw.githubusercontent.com/Saranya-1208/Saranya-1208.github.io/refs/heads/main/Women%20in%20Parliament%20India.csv"},
       "mark": {"type": "line", "point": {"size": 80}, "strokeWidth": 3, "color": "#B4A7D6"},
@@ -513,7 +513,7 @@ CC1
     vegaEmbed('#replicationChart', {
       "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
       "title": {"text": "Oh, to IPO", "subtitle": "Funds raised through initial public offerings, $bn", "fontSize": 18},
-      "width": 700,
+      "width": 650,
       "height": 400,
       "data": {
         "values": [
@@ -566,7 +566,7 @@ CC1
         "fontSize": 20,
         "font": "Garamond"
       },
-      "width": 800,
+      "width": 700,
       "height": 400,
       "data": {
         "values": [
@@ -616,7 +616,7 @@ CC1
     vegaEmbed('#apiChart', {
       "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
       "title": {"text": "India's GDP Growth Rate (2000-2024)", "fontSize": 20, "font": "Garamond"},
-      "width": 800,
+      "width": 700,
       "height": 400,
       "data": {"url": "https://raw.githubusercontent.com/Saranya-1208/Saranya-1208.github.io/refs/heads/main/india_gdp_growth_wb.json"},
       "mark": {"type": "line", "point": {"size": 80}, "strokeWidth": 3, "color": "#667eea"},
@@ -632,7 +632,7 @@ CC1
     vegaEmbed('#scraperChart', {
       "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
       "title": {"text": "India's Most Populous Cities", "subtitle": "Data scraped from Wikipedia", "fontSize": 20, "font": "Garamond"},
-      "width": 800,
+      "width": 700,
       "height": 400,
       "data": {"url": "https://raw.githubusercontent.com/Saranya-1208/Saranya-1208.github.io/refs/heads/main/india_cities_population_scraped.csv"},
       "mark": {"type": "bar", "color": "#FF85A2", "cornerRadiusEnd": 4},
@@ -761,7 +761,7 @@ CC1
     vegaEmbed('#cc8Chart1', {
       "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
       "title": {"text": "UK White Bread Prices (1988-2025)", "subtitle": "Aggregated from millions of observations", "fontSize": 20, "font": "Garamond"},
-      "width": 800,
+      "width": 700,
       "height": 400,
       "data": {"url": "https://raw.githubusercontent.com/Saranya-1208/Saranya-1208.github.io/refs/heads/main/cc8_bread_trends.csv"},
       "mark": {"type": "line", "strokeWidth": 3, "point": {"size": 60}, "color": "#667eea"},
@@ -780,7 +780,7 @@ CC1
     vegaEmbed('#cc8Chart2', {
       "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
       "title": {"text": "UK Bread Rolls: Regional Prices (2015-2025)", "subtitle": "Median prices by region", "fontSize": 20, "font": "Garamond"},
-      "width": 800,
+      "width": 700,
       "height": 400,
       "data": {"url": "https://raw.githubusercontent.com/Saranya-1208/Saranya-1208.github.io/refs/heads/main/cc8_bread_regional.csv"},
       "mark": {"type": "bar", "color": "#FF85A2", "cornerRadiusEnd": 4},
@@ -796,7 +796,7 @@ CC1
     vegaEmbed('#interactive1', {
       "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
       "title": {"text": "UK Unemployment (Interactive Hover)", "subtitle": "Hover to highlight periods", "fontSize": 20, "font": "Garamond"},
-      "width": 800,
+      "width": 700,
       "height": 400,
       "data": {"url": "https://raw.githubusercontent.com/Saranya-1208/Saranya-1208.github.io/refs/heads/main/series-051125.csv"},
       "params": [{"name": "hover", "select": {"type": "point", "on": "mouseover", "nearest": true}}],
@@ -834,7 +834,7 @@ CC1
     vegaEmbed('#interactive2', {
       "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
       "title": {"text": "Women in Parliament: Country Comparison", "subtitle": "Select country from dropdown", "fontSize": 20, "font": "Garamond"},
-      "width": 800,
+      "width": 700,
       "height": 400,
       "data": {
         "values": [
@@ -868,7 +868,7 @@ CC1
     vegaEmbed('#heatmapChart', {
       "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
       "title": {"text": "UPI Transaction Patterns: Hour × Day", "subtitle": "250K transactions analyzed", "fontSize": 20, "font": "Garamond"},
-      "width": 800,
+      "width": 700,
       "height": 400,
       "data": {"url": "https://raw.githubusercontent.com/Saranya-1208/Saranya-1208.github.io/refs/heads/main/project/upi_time_heatmap.csv"},
       "mark": {"type": "rect", "strokeWidth": 1, "stroke": "white"},
@@ -895,17 +895,14 @@ CC1
       "config": {"font": "Garamond", "view": {"strokeWidth": 0}}
     });
     
-    CC10 - ML Forecast
+    // CC10 - ML Forecast
     vegaEmbed('#forecastChart', {
       "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
       "title": {"text": "UPI Forecast: Actual + ML Predictions (2016-2026)", "fontSize": 20, "font": "Garamond"},
-      "width": 800,
+      "width": 700,
       "height": 450,
       "data": {"url": "https://raw.githubusercontent.com/Saranya-1208/Saranya-1208.github.io/refs/heads/main/project/upi_forecast.csv"},
-     "transform": [
-  {"calculate": "toDate(datum.Date)", "as": "ParsedDate"},
-  {"filter": "datum.Volume_Mn > 0"}
-],
+      "transform": [{"calculate": "toDate(datum.Date)", "as": "ParsedDate"}],
       "mark": {"type": "line", "point": true, "strokeWidth": 3},
       "encoding": {
         "x": {"field": "ParsedDate", "type": "temporal", "title": "Year", "axis": {"format": "%Y", "labelFontSize": 12}},
