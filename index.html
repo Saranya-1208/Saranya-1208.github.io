@@ -302,6 +302,29 @@
     <strong>Improvements made:</strong> Added interactive legend (click to isolate regions), used playful pastels instead of FT pink, added rounded corners, clearer axis labels, Garamond font for elegance.
   </div>
 </div>
+
+    <div class="cc-section" id="cc8">
+  <h2>CC8: Big Data - UK Prices Dataset</h2>
+  <p>Two charts analyzing the UK Long Run Prices Database (LRPD) containing 48+ million price observations from 1988-2025.</p>
+  
+  <h3>Chart 1: White Bread Price Trends Over 37 Years</h3>
+  <p>Monthly median prices for white sliced bread (800g), aggregated from thousands of supermarket observations.</p>
+  <div class="chart-wrapper">
+    <div id="cc8Chart1"></div>
+  </div>
+  
+  <h3>Chart 2: Regional Price Variation for Bread Rolls</h3>
+  <p>Comparison of median bread roll prices across 13 UK regions (2015-2025 data).</p>
+  <div class="chart-wrapper">
+    <div id="cc8Chart2"></div>
+  </div>
+  
+  <div class="commentary">
+    <strong>Commentary:</strong> Processed 48.4 million price observations, filtered to bread products (items 210101 and 210106), aggregated by time and region to reveal long-term inflation trends and geographic price disparities.
+  </div>
+  
+  <a href="https://colab.research.google.com/drive/1lWK4IRn_GYHQYDwXK-BEmUkKD7yqTf8j?usp=sharing" target="_blank" class="colab-link">View Data Processing Notebook →</a>
+</div>
     
     <div class="cc-section" id="cc10">
       <h2>CC10: Advanced Analytics & Machine Learning</h2>
@@ -590,7 +613,6 @@
   }
 });
     
-    // CC5 - 5G Map
     vegaEmbed('#map5g', {
       "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
       "title": "5G Infrastructure: Villages with Coverage (Feb 2025)",
@@ -847,6 +869,93 @@ vegaEmbed('#scotlandMap', {
     "tooltip": [
       {"field": "properties.LAD25NM", "title": "Local Authority"},
       {"field": "population", "format": ",", "title": "Population"}
+    ]
+  },
+  "config": {
+    "font": "Garamond",
+    "view": {"strokeWidth": 0}
+  }
+});
+
+    // CC8 - Chart 1: Bread Price Trends
+vegaEmbed('#cc8Chart1', {
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "UK White Bread Prices (1988-2025)",
+    "subtitle": "Median monthly price from millions of observations",
+    "fontSize": 18,
+    "font": "Garamond"
+  },
+  "width": 700,
+  "height": 350,
+  "data": {
+    "url": "https://raw.githubusercontent.com/Saranya-1208/Saranya-1208.github.io/refs/heads/main/cc8_bread_trends.csv"
+  },
+  "mark": {
+    "type": "line",
+    "strokeWidth": 2.5,
+    "point": true,
+    "color": "#667eea"
+  },
+  "encoding": {
+    "x": {
+      "field": "date",
+      "type": "temporal",
+      "title": "Year",
+      "axis": {"format": "%Y"}
+    },
+    "y": {
+      "field": "price",
+      "type": "quantitative",
+      "title": "Median Price (£)",
+      "scale": {"zero": false}
+    },
+    "tooltip": [
+      {"field": "date", "type": "temporal", "format": "%B %Y", "title": "Month"},
+      {"field": "price", "type": "quantitative", "format": "£.2f", "title": "Price"}
+    ]
+  },
+  "config": {
+    "font": "Garamond",
+    "view": {"strokeWidth": 0}
+  }
+});
+
+vegaEmbed('#cc8Chart2', {
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "UK Bread Rolls: Regional Price Differences (2015-2025)",
+    "subtitle": "Median prices aggregated from thousands of observations per region",
+    "fontSize": 18,
+    "font": "Garamond"
+  },
+  "width": 650,
+  "height": 350,
+  "data": {
+    "url": "https://raw.githubusercontent.com/Saranya-1208/Saranya-1208.github.io/refs/heads/main/cc8_bread_regional.csv"
+  },
+  "mark": {
+    "type": "bar",
+    "color": "#FF85A2",
+    "cornerRadiusEnd": 4
+  },
+  "encoding": {
+    "y": {
+      "field": "region_name",
+      "type": "nominal",
+      "sort": "x",
+      "title": null,
+      "axis": {"labelFontSize": 12}
+    },
+    "x": {
+      "field": "price",
+      "type": "quantitative",
+      "title": "Median Price (£)",
+      "axis": {"format": ".2f"}
+    },
+    "tooltip": [
+      {"field": "region_name", "title": "Region"},
+      {"field": "price", "format": "£.2f", "title": "Median Price"}
     ]
   },
   "config": {
