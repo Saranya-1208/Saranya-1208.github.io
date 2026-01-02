@@ -201,38 +201,36 @@
       </div>
     </div>
     
-    <!-- CC5: API & SCRAPER -->
-    <div class="cc-section" id="cc5">
-      <h2>CC5: Accessing Data - API & Web Scraper</h2>
-      
-      <h3>API Task: 5G Infrastructure Coverage</h3>
-      <p><strong>API Description:</strong> India's Open Government Data Platform provides authenticated API access to infrastructure datasets. Base URL: <code>https://data.gov.in/api/</code>. Full endpoint used: <code>https://data.gov.in/resource/5g-village-coverage</code> with API key authentication.</p>
-      
-      <div class="chart-wrapper">
-        <div id="map5g"></div>
-      </div>
-      
-      <div class="commentary">
-        <strong>Commentary:</strong> Accessed 5G village coverage data via authenticated government API, requiring token management and JSON parsing across 28 states.
-      </div>
-      
-      <a href="https://colab.research.google.com/drive/1QtUWVis71ktzU9Q0QunUYPdOelLgGbOm?usp=sharing" target="_blank" class="colab-link">View API Workflow Notebook →</a>
-      
-      <h3>Scraper Task: McKinsey PDF Extraction</h3>
-      <p>Scraped data from McKinsey & Company PDF report on digital adoption across 17 major economies.</p>
-      
-      <div class="chart-wrapper">
-        <div id="mckinseyChart"></div>
-      </div>
-      
-      <div class="commentary">
-        <strong>Commentary:</strong> Used Python PDF parsing to extract tabular data from page 13, handling inconsistent formatting and converting growth percentages to structured CSV.
-      </div>
-      
-      <a href="https://colab.research.google.com/drive/1gATdy9GXodFZ3frY4EcZPblWWhY8wjjd?usp=sharing" target="_blank" class="colab-link">View Scraper Workflow Notebook →</a>
-    </div>
+<div class="cc-section" id="cc5">
+  <h2>CC5: Accessing Data - API & Web Scraper</h2>
+  
+  <h3>API Task: World Bank GDP Data</h3>
+  <p><strong>API Description:</strong> World Bank provides open API access to global development indicators. Base URL: <code>https://api.worldbank.org/v2/</code>. Full endpoint used: <code>https://api.worldbank.org/v2/country/IND/indicator/NY.GDP.MKTP.KD.ZG?format=json&date=2000:2024</code> to retrieve India's GDP growth rate from 2000-2024.</p>
+  
+  <div class="chart-wrapper">
+    <div id="apiChart"></div>
+  </div>
+  
+  <div class="commentary">
+    <strong>Commentary:</strong> Accessed World Bank API programmatically using Python requests library, parsed JSON response, extracted annual GDP growth rates, handled missing values for incomplete years.
+  </div>
+  
+  <a href="YOUR_API_COLAB_URL" target="_blank" class="colab-link">View API Workflow Notebook →</a>
+  
+  <h3>Scraper Task: Wikipedia Population Data</h3>
+  <p>Scraped Indian state population data from Wikipedia using BeautifulSoup to extract tabular data.</p>
+  
+  <div class="chart-wrapper">
+    <div id="scraperChart"></div>
+  </div>
+  
+  <div class="commentary">
+    <strong>Commentary:</strong> Used BeautifulSoup to parse HTML tables from Wikipedia, cleaned population strings, removed formatting, handled inconsistent table structures across different rows.
+  </div>
+  
+  <a href="https://colab.research.google.com/drive/13PjXGgk2bv2u-ziZh_pZjWhRcfhLv0g9?usp=sharingL" target="_blank" class="colab-link">View Scraper Workflow Notebook →</a>
+</div>
 
-    <!-- CC6: DASHBOARD -->
 <div class="cc-section" id="cc6">
   <h2>CC6: Dashboard - Batch Download Using Loops</h2>
   <p>Used Python loop to batch download 6 countries' internet penetration data from World Bank API. Charts display as a grid, embedded using JavaScript loop.</p>
@@ -516,44 +514,46 @@
       "config": {"font": "Garamond"}
     });
     
-    // CC5 - McKinsey Chart
-    vegaEmbed('#mckinseyChart', {
-      "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-      "title": "Digital Adoption Growth Rate (2014-2017)",
-      "width": 700,
-      "height": 500,
-      "data": {
-        "url": "https://raw.githubusercontent.com/Saranya-1208/Saranya-1208.github.io/refs/heads/main/project/mckinsey_digital_adoption.csv"
-      },
-      "layer": [
-        {
-          "mark": {"type": "rule", "size": 3},
-          "encoding": {
-            "y": {"field": "Country", "type": "nominal", "sort": "-x", "title": null},
-            "x": {"field": "Growth_2014_2017_%", "type": "quantitative", "title": "Growth Rate (%)"},
-            "color": {
-              "condition": {"test": "datum.Country == 'India'", "value": "#FF85A2"},
-              "value": "#D0D0D0"
-            }
-          }
-        },
-        {
-          "mark": {"type": "point", "filled": true},
-          "encoding": {
-            "y": {"field": "Country", "type": "nominal", "sort": "-x"},
-            "x": {"field": "Growth_2014_2017_%", "type": "quantitative"},
-            "size": {"condition": {"test": "datum.Country == 'India'", "value": 400}, "value": 200},
-            "color": {"condition": {"test": "datum.Country == 'India'", "value": "#FF85A2"}, "value": "#B4A7D6"},
-            "tooltip": [
-              {"field": "Country"},
-              {"field": "Growth_2014_2017_%", "title": "Growth Rate (%)"}
-            ]
-          }
-        }
-      ],
-      "config": {"font": "Garamond"}
-    });
-
+   vegaEmbed('#apiChart', {
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "India's GDP Growth Rate (2000-2024)",
+    "fontSize": 18,
+    "font": "Garamond"
+  },
+  "width": 700,
+  "height": 350,
+  "data": {
+    "url": "https://raw.githubusercontent.com/Saranya-1208/Saranya-1208.github.io/refs/heads/main/india_gdp_growth_wb.json"
+  },
+  "mark": {
+    "type": "line",
+    "point": true,
+    "strokeWidth": 2.5,
+    "color": "#667eea"
+  },
+  "encoding": {
+    "x": {
+      "field": "year",
+      "type": "ordinal",
+      "title": "Year",
+      "axis": {"labelAngle": -45}
+    },
+    "y": {
+      "field": "gdp_growth",
+      "type": "quantitative",
+      "title": "GDP Growth Rate (%)"
+    },
+    "tooltip": [
+      {"field": "year", "title": "Year"},
+      {"field": "gdp_growth", "title": "GDP Growth (%)", "format": ".2f"}
+    ]
+  },
+  "config": {
+    "font": "Garamond",
+    "view": {"strokeWidth": 0}
+  }
+});
     
 const countries = [
   {name: "India", color: "#FF85A2"},
@@ -564,7 +564,6 @@ const countries = [
   {name: "South_Africa", color: "#FFB6B9"}
 ];
 
-// Loop through countries and embed charts
 countries.forEach(country => {
   vegaEmbed(`#dash_${country.name}`, {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
