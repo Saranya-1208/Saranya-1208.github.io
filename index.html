@@ -150,7 +150,6 @@
   
   <div class="container">
     
-    <!-- CC1: HOSTING -->
     <div class="cc-section" id="cc1">
       <h2>CC1: Hosting - Display Charts on GitHub Pages</h2>
       <p>Set up GitHub account and live page. Embed two charts using vegaEmbed function.</p>
@@ -168,7 +167,6 @@
       </div>
     </div>
     
-    <!-- CC2: BUILDING -->
     <div class="cc-section" id="cc2">
       <h2>CC2: Building - Create Custom Visualizations</h2>
       <p>Two charts built using the Economics Observatory data creation tools.</p>
@@ -201,7 +199,6 @@
       </div>
     </div>
     
-<!-- CC5: API & SCRAPER -->
 <div class="cc-section" id="cc5">
   <h2>CC5: Accessing Data - API & Web Scraper</h2>
   
@@ -290,7 +287,6 @@
   </div>
 </div>
     
-    <!-- CC10: ADVANCED & ML -->
     <div class="cc-section" id="cc10">
       <h2>CC10: Advanced Analytics & Machine Learning</h2>
       
@@ -330,15 +326,15 @@
   </footer>
   
   <script>
-   vegaEmbed('#interactive1', {
+ vegaEmbed('#interactive1', {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "title": {
     "text": "UK Unemployment Rate (Interactive)",
-    "subtitle": "Click points to highlight | Hover for details",
+    "subtitle": "Hover to highlight periods | Click to isolate years",
     "fontSize": 18,
     "font": "Garamond"
   },
-  "width": 650,
+  "width": 600,
   "height": 350,
   "data": {
     "url": "https://raw.githubusercontent.com/Saranya-1208/Saranya-1208.github.io/refs/heads/main/series-051125.csv"
@@ -346,49 +342,57 @@
   "params": [
     {
       "name": "hover",
-      "select": {"type": "point", "on": "mouseover", "clear": "mouseout"}
-    },
-    {
-      "name": "click",
-      "select": {"type": "point", "fields": ["Year"]}
+      "select": {"type": "point", "on": "mouseover", "nearest": true}
     }
   ],
-  "mark": {
-    "type": "line",
-    "strokeWidth": 2.5,
-    "point": true,
-    "color": "#667eea"
-  },
-  "encoding": {
-    "x": {
-      "field": "Year",
-      "type": "temporal",
-      "title": "Year"
+  "layer": [
+    {
+      "mark": {
+        "type": "line",
+        "strokeWidth": 3,
+        "color": "#667eea"
+      },
+      "encoding": {
+        "x": {"field": "Year", "type": "temporal", "title": "Year"},
+        "y": {"field": "Value", "type": "quantitative", "title": "Unemployment Rate (%)"}
+      }
     },
-    "y": {
-      "field": "Value",
-      "type": "quantitative",
-      "title": "Unemployment Rate (%)"
+    {
+      "mark": {
+        "type": "point",
+        "filled": true,
+        "size": 100
+      },
+      "encoding": {
+        "x": {"field": "Year", "type": "temporal"},
+        "y": {"field": "Value", "type": "quantitative"},
+        "color": {
+          "condition": {"param": "hover", "value": "#FF85A2"},
+          "value": "#667eea"
+        },
+        "size": {
+          "condition": {"param": "hover", "value": 300},
+          "value": 100
+        },
+        "tooltip": [
+          {"field": "Year", "type": "temporal", "format": "%Y", "title": "Year"},
+          {"field": "Value", "type": "quantitative", "format": ".1f", "title": "Unemployment (%)"}
+        ]
+      }
     },
-    "opacity": {
-      "condition": [
-        {"param": "click", "value": 1},
-        {"param": "hover", "value": 1}
-      ],
-      "value": 0.3
-    },
-    "size": {
-      "condition": [
-        {"param": "hover", "value": 200},
-        {"param": "click", "value": 200}
-      ],
-      "value": 50
-    },
-    "tooltip": [
-      {"field": "Year", "type": "temporal", "format": "%Y", "title": "Year"},
-      {"field": "Value", "type": "quantitative", "format": ".2f", "title": "Unemployment Rate (%)"}
-    ]
-  },
+    {
+      "mark": {
+        "type": "rule",
+        "strokeWidth": 2,
+        "color": "#FF85A2",
+        "opacity": 0.5
+      },
+      "encoding": {
+        "x": {"field": "Year", "type": "temporal"}
+      },
+      "transform": [{"filter": {"param": "hover"}}]
+    }
+  ],
   "config": {
     "font": "Garamond",
     "view": {"strokeWidth": 0}
