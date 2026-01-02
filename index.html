@@ -250,23 +250,22 @@
   <a href="https://colab.research.google.com/drive/13PjXGgk2bv2u-ziZh_pZjWhRcfhLv0g9?usp=sharing" target="_blank" class="colab-link">View Batch Download Notebook →</a>
 </div>
     
-    <!-- CC9: INTERACTIVE -->
-    <div class="cc-section" id="cc9">
-      <h2>CC9: Interactive Charts</h2>
-      <p>Two charts with advanced interactivity beyond simple tooltips.</p>
-      
-      <h3>Interactive 1: Global Internet Comparison (Click & Hover)</h3>
-      <p>Click any country to isolate it; hover to highlight. Interactive legend with opacity control.</p>
-      <div class="chart-wrapper">
-        <div id="heroChart"></div>
-      </div>
-      
-      <h3>Interactive 2: UPI Per Capita Map (Dropdown Selection)</h3>
-      <p>Dropdown menu allows switching between three metrics: per capita transactions, total volume, and population.</p>
-      <div class="chart-wrapper">
-        <div id="upiMap"></div>
-      </div>
-    </div>
+   <div class="cc-section" id="cc9">
+  <h2>CC9: Interactive Charts</h2>
+  <p>Two charts with advanced interactivity beyond basic tooltips.</p>
+  
+  <h3>Interactive Chart 1: UK Unemployment with Click & Hover</h3>
+  <p>Click any data point to highlight it; hover over points to see details. Non-selected points fade to show focus.</p>
+  <div class="chart-wrapper">
+    <div id="interactive1"></div>
+  </div>
+  
+  <h3>Interactive Chart 2: Women in Parliament - Country Comparison</h3>
+  <p>Dropdown menu allows switching between countries to compare female parliamentary representation trends.</p>
+  <div class="chart-wrapper">
+    <div id="interactive2"></div>
+  </div>
+</div>
 
     <div class="cc-section" id="cc4">
   <h2>CC4: Replication - Recreate & Improve Chart</h2>
@@ -331,28 +330,71 @@
   </footer>
   
   <script>
-    // CC1 - Chart 1
-    vegaEmbed('#chart1', {
-      "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-      "title": "UK Unemployment Rate (Aged Over 16)",
-      "width": 700,
-      "height": 350,
-      "data": {
-        "url": "https://raw.githubusercontent.com/Saranya-1208/Saranya-1208.github.io/refs/heads/main/series-051125.csv"
-      },
-      "mark": {"type": "line", "strokeWidth": 2.5, "color": "#667eea"},
-      "encoding": {
-        "x": {"field": "Year", "type": "temporal", "title": "Year"},
-        "y": {"field": "Value", "type": "quantitative", "title": "Unemployment Rate (%)"},
-        "tooltip": [
-          {"field": "Year", "type": "temporal", "format": "%Y"},
-          {"field": "Value", "type": "quantitative", "format": ".1f", "title": "Rate (%)"}
-        ]
-      },
-      "config": {"font": "Garamond"}
-    });
+   vegaEmbed('#interactive1', {
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "UK Unemployment Rate (Interactive)",
+    "subtitle": "Click points to highlight | Hover for details",
+    "fontSize": 18,
+    "font": "Garamond"
+  },
+  "width": 650,
+  "height": 350,
+  "data": {
+    "url": "https://raw.githubusercontent.com/Saranya-1208/Saranya-1208.github.io/refs/heads/main/series-051125.csv"
+  },
+  "params": [
+    {
+      "name": "hover",
+      "select": {"type": "point", "on": "mouseover", "clear": "mouseout"}
+    },
+    {
+      "name": "click",
+      "select": {"type": "point", "fields": ["Year"]}
+    }
+  ],
+  "mark": {
+    "type": "line",
+    "strokeWidth": 2.5,
+    "point": true,
+    "color": "#667eea"
+  },
+  "encoding": {
+    "x": {
+      "field": "Year",
+      "type": "temporal",
+      "title": "Year"
+    },
+    "y": {
+      "field": "Value",
+      "type": "quantitative",
+      "title": "Unemployment Rate (%)"
+    },
+    "opacity": {
+      "condition": [
+        {"param": "click", "value": 1},
+        {"param": "hover", "value": 1}
+      ],
+      "value": 0.3
+    },
+    "size": {
+      "condition": [
+        {"param": "hover", "value": 200},
+        {"param": "click", "value": 200}
+      ],
+      "value": 50
+    },
+    "tooltip": [
+      {"field": "Year", "type": "temporal", "format": "%Y", "title": "Year"},
+      {"field": "Value", "type": "quantitative", "format": ".2f", "title": "Unemployment Rate (%)"}
+    ]
+  },
+  "config": {
+    "font": "Garamond",
+    "view": {"strokeWidth": 0}
+  }
+});
     
-    // CC1 - Chart 2
     vegaEmbed('#chart2', {
       "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
       "title": "Export of Trade Goods in India by Region",
@@ -450,35 +492,83 @@
       "config": {"font": "Garamond"}
     });
     
-    // CC3 - Chart
-    vegaEmbed('#chart5', {
-      "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-      "title": "Women in Parliament, India (% of Seats)",
-      "width": 700,
-      "height": 350,
-      "data": {
-        "url": "https://raw.githubusercontent.com/Saranya-1208/Saranya-1208.github.io/refs/heads/main/Women%20in%20Parliament%20India.csv"
-      },
-      "mark": {"type": "line", "point": true, "strokeWidth": 2.5, "color": "#B4A7D6"},
-      "encoding": {
-        "x": {
-          "field": "Year",
-          "type": "temporal",
-          "title": "Year",
-          "axis": {"format": "%Y"}
-        },
-        "y": {
-          "field": "Value",
-          "type": "quantitative",
-          "title": "% of Parliamentary Seats"
-        },
-        "tooltip": [
-          {"field": "Year", "type": "temporal", "format": "%Y"},
-          {"field": "Value", "type": "quantitative", "format": ".1f", "title": "% of Seats"}
-        ]
-      },
-      "config": {"font": "Garamond"}
-    });
+    vegaEmbed('#interactive2', {
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "Women in Parliament: Multi-Country Comparison",
+    "subtitle": "Select country from dropdown to compare",
+    "fontSize": 18,
+    "font": "Garamond"
+  },
+  "width": 650,
+  "height": 350,
+  "data": {
+    "values": [
+      {"year": "2000", "country": "India", "value": 9.0},
+      {"year": "2005", "country": "India", "value": 8.3},
+      {"year": "2010", "country": "India", "value": 11.0},
+      {"year": "2015", "country": "India", "value": 12.0},
+      {"year": "2020", "country": "India", "value": 14.4},
+      {"year": "2024", "country": "India", "value": 13.6},
+      
+      {"year": "2000", "country": "UK", "value": 18.0},
+      {"year": "2005", "country": "UK", "value": 20.0},
+      {"year": "2010", "country": "UK", "value": 22.0},
+      {"year": "2015", "country": "UK", "value": 29.0},
+      {"year": "2020", "country": "UK", "value": 34.0},
+      {"year": "2024", "country": "UK", "value": 35.0},
+      
+      {"year": "2000", "country": "USA", "value": 13.0},
+      {"year": "2005", "country": "USA", "value": 15.0},
+      {"year": "2010", "country": "USA", "value": 17.0},
+      {"year": "2015", "country": "USA", "value": 19.0},
+      {"year": "2020", "country": "USA", "value": 24.0},
+      {"year": "2024", "country": "USA", "value": 28.0}
+    ]
+  },
+  "params": [
+    {
+      "name": "countrySelect",
+      "value": "India",
+      "bind": {
+        "input": "select",
+        "options": ["India", "UK", "USA"],
+        "name": "Select Country: "
+      }
+    }
+  ],
+  "transform": [
+    {"filter": "datum.country == countrySelect"}
+  ],
+  "mark": {
+    "type": "line",
+    "point": true,
+    "strokeWidth": 2.5,
+    "color": "#B4A7D6"
+  },
+  "encoding": {
+    "x": {
+      "field": "year",
+      "type": "ordinal",
+      "title": "Year"
+    },
+    "y": {
+      "field": "value",
+      "type": "quantitative",
+      "title": "% of Parliamentary Seats",
+      "scale": {"domain": [0, 40]}
+    },
+    "tooltip": [
+      {"field": "country", "title": "Country"},
+      {"field": "year", "title": "Year"},
+      {"field": "value", "format": ".1f", "title": "% of Seats"}
+    ]
+  },
+  "config": {
+    "font": "Garamond",
+    "view": {"strokeWidth": 0}
+  }
+});
     
     // CC5 - 5G Map
     vegaEmbed('#map5g', {
