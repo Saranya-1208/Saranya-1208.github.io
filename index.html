@@ -201,6 +201,7 @@
       </div>
     </div>
     
+<!-- CC5: API & SCRAPER -->
 <div class="cc-section" id="cc5">
   <h2>CC5: Accessing Data - API & Web Scraper</h2>
   
@@ -212,23 +213,23 @@
   </div>
   
   <div class="commentary">
-    <strong>Commentary:</strong> Accessed World Bank API programmatically using Python requests library, parsed JSON response, extracted annual GDP growth rates, handled missing values for incomplete years.
+    <strong>Commentary:</strong> Accessed World Bank API using Python requests library, parsed nested JSON response structure, extracted annual GDP growth values, handled null entries for incomplete years.
   </div>
   
-  <a href="YOUR_API_COLAB_URL" target="_blank" class="colab-link">View API Workflow Notebook →</a>
+  <a href="https://colab.research.google.com/drive/13PjXGgk2bv2u-ziZh_pZjWhRcfhLv0g9?usp=sharing" target="_blank" class="colab-link">View API Download Notebook →</a>
   
-  <h3>Scraper Task: Wikipedia Population Data</h3>
-  <p>Scraped Indian state population data from Wikipedia using BeautifulSoup to extract tabular data.</p>
+  <h3>Scraper Task: Wikipedia City Population Data</h3>
+  <p>Scraped India's most populous cities from Wikipedia using BeautifulSoup to parse HTML tables and extract population data.</p>
   
   <div class="chart-wrapper">
     <div id="scraperChart"></div>
   </div>
   
   <div class="commentary">
-    <strong>Commentary:</strong> Used BeautifulSoup to parse HTML tables from Wikipedia, cleaned population strings, removed formatting, handled inconsistent table structures across different rows.
+    <strong>Commentary:</strong> Used BeautifulSoup to parse HTML tables, cleaned population strings by removing commas and formatting, handled inconsistent table structures, sorted by population size.
   </div>
   
-  <a href="https://colab.research.google.com/drive/13PjXGgk2bv2u-ziZh_pZjWhRcfhLv0g9?usp=sharingL" target="_blank" class="colab-link">View Scraper Workflow Notebook →</a>
+  <a href="https://colab.research.google.com/drive/13PjXGgk2bv2u-ziZh_pZjWhRcfhLv0g9?usp=sharing" target="_blank" class="colab-link">View Scraper Workflow Notebook →</a>
 </div>
 
 <div class="cc-section" id="cc6">
@@ -547,6 +548,49 @@
     "tooltip": [
       {"field": "year", "title": "Year"},
       {"field": "gdp_growth", "title": "GDP Growth (%)", "format": ".2f"}
+    ]
+  },
+  "config": {
+    "font": "Garamond",
+    "view": {"strokeWidth": 0}
+  }
+});
+
+    vegaEmbed('#scraperChart', {
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "India's Most Populous Cities",
+    "subtitle": "Data scraped from Wikipedia",
+    "fontSize": 18,
+    "font": "Garamond"
+  },
+  "width": 700,
+  "height": 400,
+  "data": {
+    "url": "https://raw.githubusercontent.com/Saranya-1208/Saranya-1208.github.io/refs/heads/main/india_cities_population_scraped.csv"
+  },
+  "mark": {
+    "type": "bar",
+    "color": "#FF85A2",
+    "cornerRadiusEnd": 4
+  },
+  "encoding": {
+    "y": {
+      "field": "city",
+      "type": "nominal",
+      "sort": "-x",
+      "title": null,
+      "axis": {"labelFontSize": 12}
+    },
+    "x": {
+      "field": "population",
+      "type": "quantitative",
+      "title": "Population",
+      "axis": {"format": "~s", "labelFontSize": 11}
+    },
+    "tooltip": [
+      {"field": "city", "title": "City"},
+      {"field": "population", "format": ",", "title": "Population"}
     ]
   },
   "config": {
