@@ -839,24 +839,41 @@ vegaEmbed('#cc8Chart2', {
   "config": {"font": "Garamond", "view": {"strokeWidth": 0}}
 });
     
- // CC9 - Interactive 1: Hover Highlighting
+// CC9 - Interactive 1: Brush Selection + Zoom
 vegaEmbed('#interactive1', {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "title": "UK Unemployment (Interactive Hover)",
-  "width": 800,
+  "title": "UK Unemployment (Click and Drag to Zoom)",
+  "width": 750,
   "height": 400,
   "data": {
     "url": "https://raw.githubusercontent.com/Saranya-1208/Saranya-1208.github.io/refs/heads/main/series-051125.csv"
   },
+  "params": [{
+    "name": "brush",
+    "select": {"type": "interval", "encodings": ["x"]}
+  }],
   "mark": {
     "type": "line",
-    "point": {"size": 100},
+    "point": true,
     "strokeWidth": 3,
     "color": "#667eea"
   },
   "encoding": {
-    "x": {"field": "Year", "type": "temporal", "title": "Year"},
-    "y": {"field": "Value", "type": "quantitative", "title": "Unemployment (%)"},
+    "x": {
+      "field": "Year",
+      "type": "temporal",
+      "title": "Year",
+      "scale": {"domain": {"param": "brush"}}
+    },
+    "y": {
+      "field": "Value",
+      "type": "quantitative",
+      "title": "Unemployment (%)"
+    },
+    "opacity": {
+      "condition": {"param": "brush", "value": 1},
+      "value": 0.3
+    },
     "tooltip": [
       {"field": "Year", "type": "temporal", "format": "%Y"},
       {"field": "Value", "format": ".1f", "title": "Rate (%)"}
