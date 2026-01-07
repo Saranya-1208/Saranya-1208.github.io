@@ -16,15 +16,14 @@
       box-sizing: border-box;
     }
     
-    body {
-      font-family: 'Garamond', 'Georgia', serif;
-      font-weight: 400;
-      line-height: 1.8;
-      color: #2c2c2c;
-      background-color: #fafafa;
-    }
-    
-    /* HERO STATEMENT */
+  body {
+  font-family: 'Garamond', 'Georgia', serif;
+  font-weight: 400;
+  line-height: 1.8;
+  color: #2c2c2c;
+  background-color: #FFF8E7; 
+}   
+
     .hero-statement {
       background: linear-gradient(135deg, #FF6B9D 0%, #C7B8EA 50%, #4ECDC4 100%);
       color: white;
@@ -63,7 +62,7 @@
       margin: 0;
     }
     
-    /* SIDEBAR */
+    
     .sidebar {
       position: fixed;
       left: 0;
@@ -104,14 +103,14 @@
       border-radius: 4px;
     }
     
-    /* MAIN CONTENT */
     .main-content {
-      margin-left: 280px;
-      margin-right: 80px;
-      padding: 3rem 2rem;
-      max-width: 1400px;
-      width: auto;
-    }
+  margin-left: 280px;
+  margin-right: 280px; /* CHANGED: Equal margins for centering */
+  padding: 3rem 2rem;
+  max-width: 1200px; /* CHANGED: Narrower for better centering */
+  margin-left: auto;
+  margin-right: auto;
+}
 
     section {
       margin-bottom: 6rem;
@@ -156,7 +155,7 @@
       text-align: justify;
     }
 
-    /* CHART WRAPPERS */
+   
     .chart-wrapper,
     .chart-wrapper-wide {
       background: white;
@@ -191,7 +190,7 @@
       text-align: justify;
     }
 
-    /* INSIGHT BOX */
+   
     .insight-box {
       background: linear-gradient(135deg, #FFF3F3, #F0F8FF);
       border-left: 4px solid #FF6B9D;
@@ -208,7 +207,7 @@
       font-size: 1.3rem;
     }
 
-    /* INFO BOX */
+   
     .info-box {
       background: #f8f8f8;
       border-left: 4px solid #4ECDC4;
@@ -244,7 +243,7 @@
       border-bottom-color: #FF6B9D;
     }
 
-    /* DATA SOURCE */
+    
     .data-source {
       font-size: 1.1rem;
       color: #666;
@@ -270,30 +269,30 @@
       border-bottom-color: #4ECDC4;
     }
 
-    /* SECTION DIVIDERS */
     .section-divider {
-      background: linear-gradient(135deg, #FFF3F3, #F0F8FF);
-      padding: 4rem 2rem;
-      margin: 5rem auto;
-      text-align: center;
-      border-radius: 12px;
-      max-width: 1000px;
-    }
+  background: linear-gradient(135deg, #FFE5EC, #E8F4F8); /* CHANGED: Darker pastels */
+  padding: 4rem 2rem;
+  margin: 5rem auto;
+  text-align: center;
+  border-radius: 12px;
+  max-width: 900px; /* CHANGED: Match other content width */
+  border: 1px solid rgba(255, 107, 157, 0.2); /* ADDED: Subtle border */
+}
 
     .section-divider h2 {
-      font-size: 2.8rem;
-      margin-bottom: 1.5rem;
-    }
+  font-size: 2.8rem;
+  margin-bottom: 1.5rem;
+}
 
-    .section-divider p {
-      font-size: 1.4rem;
-      max-width: 800px;
-      margin: 0 auto;
-      line-height: 1.9;
-      color: #555;
-    }
+.section-divider p {
+  font-size: 1.35rem; 
+  max-width: 800px;
+  margin: 0 auto;
+  line-height: 1.9;
+  color: #444;
+}
 
-    /* STAT HIGHLIGHT */
+   
     .stat-highlight {
       text-align: center;
       padding: 3rem;
@@ -640,35 +639,18 @@
     </p>
   </section>
 
-  <!-- CONCLUSIONS -->
-  <section id="conclusions" style="background: #2c2c2c; color: white; padding: 5rem 3rem; margin: 5rem -3rem 0; border-radius: 12px 12px 0 0;">
-    <h2 style="color: white; border-bottom-color: rgba(255,255,255,0.3);">Three Findings</h2>
-    
-    <div style="margin: 2.5rem 0;">
-      <h3 style="color: #FF6B9D; font-size: 1.8rem;">1. The 7× Divide</h3>
-      <p style="color: rgba(255,255,255,0.9); font-size: 1.3rem;">
-        Digital infrastructure reached everywhere. Digital opportunity did not.
-      </p>
-    </div>
-    
-    <div style="margin: 2.5rem 0;">
-      <h3 style="color: #4ECDC4; font-size: 1.8rem;">2. Foundation Failures</h3>
-      <p style="color: rgba(255,255,255,0.9); font-size: 1.3rem;">
-        Even Aadhaar, meant to be universal, reflects existing inequality.
-      </p>
-    </div>
-    
-    <div style="margin: 2.5rem 0;">
-      <h3 style="color: #C7B8EA; font-size: 1.8rem;">3. Intervention Works</h3>
-      <p style="color: rgba(255,255,255,0.9); font-size: 1.3rem;">
-        The 700-village pilot proves targeted investment changes outcomes.
-      </p>
-    </div>
-    
-    <p style="margin-top: 3rem; font-size: 1.4rem; border-top: 2px solid rgba(255,255,255,0.3); padding-top: 2rem; color: rgba(255,255,255,0.95);">
-      India went digital at unprecedented speed. Whether it goes digital <em>equitably</em> remains an open question.
-    </p>
-  </section>
+<section id="conclusions">
+  <h2>Key Findings</h2>
+  <p>
+    This project identifies three central findings. First, India has built digital public infrastructure at an unprecedented scale and pace, achieving in little over a decade what many countries took generations to accomplish. Second, headline success conceals stark geographic inequality: access, usage intensity, and service quality remain overwhelmingly concentrated in wealthier states and urban regions. Aggregate growth, while impressive, masks who is being left behind.
+  </p>
+  <p>
+    Third, this divide is not inevitable. Evidence from the Digital Villages initiative demonstrates that targeted, state-led interventions—when paired with infrastructure, training, and service delivery—can meaningfully expand digital access in underserved areas.
+  </p>
+  <p>
+    The implication is clear: building digital infrastructure is necessary but insufficient. Equity depends on intentional deployment—directing resources, policy attention, and institutional presence toward geographies most vulnerable to exclusion. India’s digital transformation has been remarkably fast. Whether it becomes genuinely inclusive remains the defining policy challenge ahead.
+  </p>
+</section>
   
   <footer>
     <p>Saranya Anand | LSE MPA 2027</p>
