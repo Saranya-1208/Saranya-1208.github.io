@@ -523,7 +523,6 @@
   <p class="narrative">
     National figures conceal behavioral patterns. This heatmap analyzes 250,000 UPI transactions across every hour of every day. Darker cells show peak activity, millions paying for meals, transferring money, shopping online.
   </p>
-</section>
 
   <div class="chart-wrapper">
     <div id="heatmapChart"></div>
@@ -532,6 +531,7 @@
   <p class="narrative">
     Weekday lunch hours spike as people pay for meals. Evening hours peak with bills and shopping. Weekends show different patterns as leisure spending increases. UPI is no longer occasional - it's invisible infrastructure, used instinctively at scale. Yet national figures conceal deep regional disparities.
   </p>
+  </section>
 
   <p class="data-source">
     <strong>Data processing:</strong> 250,000 transaction records aggregated by temporal patterns. 
@@ -1232,11 +1232,11 @@
       }
     },
     "tooltip": [
-      {"field": "properties.NAME_1", "type": "nominal", "title": "State"},
-      {"field": "Per_Capita_Monthly", "type": "quantitative", "title": "Txns/Person/Month"},
-      {"field": "Volume_Mn", "type": "quantitative", "format": ",.1f", "title": "Total Volume (M)"},
-      {"field": "Population_Mn", "type": "quantitative", "format": ".1f", "title": "Population (M)"}
-    ]
+  {"field": "properties.ST_NM", "type": "nominal", "title": "State"}, 
+  {"field": "Per_Capita_Monthly", "type": "quantitative", "title": "Txns/Person/Month"},
+  {"field": "Volume_Mn", "type": "quantitative", "format": ",.1f", "title": "Total Volume (M)"},
+  {"field": "Population_Mn", "type": "quantitative", "format": ".1f", "title": "Population (M)"}
+]
   },
   "config": {
     "font": "Garamond",
