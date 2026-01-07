@@ -515,7 +515,7 @@
     <div id="upiExplosion"></div>
   </div>
 
-  <p class="narrative">
+ <p class="narrative">
     This logarithmic visualization captures 116 months of exponential growth. Two vertical lines mark transformative moments: demonetization (November 2016) and COVID-19 lockdown (March 2020) - both forcing rapid digital adoption.
   </p>
 
@@ -691,10 +691,10 @@
 <div class="key-findings-box">
   <h2>Key Findings</h2>
   <p>
-    This project identifies three central findings. First, India has built digital public infrastructure at an unprecedented scale and pace, achieving in little over a decade what many countries took generations to accomplish. Second, headline success conceals stark geographic inequality: access, usage intensity, and service quality remain overwhelmingly concentrated in wealthier states and urban regions. Aggregate growth, while impressive, masks who is being left behind.
+    This project identifies three central findings. First, India has built digital public infrastructure at an unprecedented scale and pace, achieving in little over a decade what many countries took generations to accomplish. Second, headline success conceals stark geographic inequality: access, usage intensity, and service quality remain overwhelmingly concentrated in wealthier states and urban regions.
   </p>
   <p>
-    Third, this divide is not inevitable. Evidence from the Digital Villages initiative demonstrates that targeted, state-led interventions—when paired with infrastructure, training, and service delivery, can meaningfully expand digital access in underserved areas.
+    Third, this divide is not inevitable. Evidence from the Digital Villages initiative demonstrates that targeted, state-led interventions, when paired with infrastructure, training, and service delivery, can meaningfully expand digital access in underserved areas.
   </p>
   <p>
     The implication is clear: building digital infrastructure is necessary but insufficient. Equity depends on intentional deployment - directing resources, policy attention, and institutional presence toward geographies most vulnerable to exclusion. India's digital transformation has been remarkably fast. Whether it becomes genuinely inclusive remains the defining policy challenge ahead.
@@ -1529,7 +1529,9 @@ vegaEmbed('#aadhaarDivergingChart', {
     "strokeWidth": 1.5
   },
   "encoding": {
-    "color": {
+  "color": {
+    "condition": {
+      "test": "datum.Villages_5G != null", 
       "field": "Villages_5G",
       "type": "quantitative",
       "scale": {
@@ -1541,19 +1543,21 @@ vegaEmbed('#aadhaarDivergingChart', {
         "title": "Villages with 5G Towers",
         "orient": "bottom",
         "direction": "horizontal",
-        "format": "~s", // CHANGED: Remove scientific notation
+        "format": "~s",
         "labelFontSize": 11,
         "titleFontSize": 12,
         "gradientLength": 400,
         "gradientThickness": 15
       }
     },
-    "tooltip": [
-      {"field": "properties.ST_NM", "type": "nominal", "title": "State"}, // CHANGED from NAME_1
-      {"field": "Districts_5G", "type": "quantitative", "title": "Districts with 5G"},
-      {"field": "Villages_5G", "type": "quantitative", "format": ",", "title": "Villages with 5G Towers"}
-    ]
+    "value": "#e0e0e0" 
   },
+  "tooltip": [
+    {"field": "properties.ST_NM", "type": "nominal", "title": "State"},
+    {"field": "Districts_5G", "type": "quantitative", "title": "Districts with 5G"},
+    {"field": "Villages_5G", "type": "quantitative", "format": ",", "title": "Villages with 5G Towers"}
+  ]
+},
   "config": {
     "font": "Garamond",
     "view": {"strokeWidth": 0}
