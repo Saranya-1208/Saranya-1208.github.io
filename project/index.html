@@ -522,6 +522,7 @@
   <p class="narrative">
     National figures conceal behavioral patterns. This heatmap analyzes 250,000 UPI transactions across every hour of every day. Darker cells show peak activity, millions paying for meals, transferring money, shopping online.
   </p>
+</section>
 
   <div class="chart-wrapper">
     <div id="heatmapChart"></div>
@@ -1345,26 +1346,27 @@ vegaEmbed('#aadhaarDivergingChart', {
     vegaEmbed('#heatmapChart', {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "title": {
-    "text": "UPI Transaction Patterns: Hour × Day Heatmap (250K Transactions)",
+    "text": "UPI Transaction Patterns: Daily Rhythm Revealed",
+    "subtitle": "250,000 transactions analyzed by hour and day of week",
     "fontSize": 20,
     "font": "Garamond",
     "color": "#1a1a1a"
   },
   "width": 550,
-  "height": 350,
+  "height": 400,
   "data": {
     "url": "https://raw.githubusercontent.com/Saranya-1208/Saranya-1208.github.io/refs/heads/main/project/upi_time_heatmap.csv"
   },
   "mark": {
     "type": "rect",
-    "strokeWidth": 1.5,
+    "strokeWidth": 0.5,
     "stroke": "white"
   },
   "encoding": {
     "x": {
       "field": "hour_of_day",
       "type": "ordinal",
-      "title": "Hour of Day (24-hour)",
+      "title": "Hour of Day (24-hour format)",
       "axis": {
         "labelAngle": 0,
         "labelFontSize": 11,
@@ -1388,12 +1390,14 @@ vegaEmbed('#aadhaarDivergingChart', {
         "reverse": false
       },
       "legend": {
-        "title": "Transactions",
-        "orient": "right",
+        "title": "Transaction Volume",
+        "orient": "bottom",
+        "direction": "horizontal",
         "format": ",",
         "labelFontSize": 11,
         "titleFontSize": 12,
-        "gradientLength": 250
+        "gradientLength": 500,
+        "gradientThickness": 12
       }
     },
     "tooltip": [
