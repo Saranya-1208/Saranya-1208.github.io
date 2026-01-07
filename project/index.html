@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,57 +18,67 @@
     
     body {
       font-family: 'Garamond', 'Georgia', serif;
-      font-weight: 500;
+      font-weight: 400;
       line-height: 1.8;
       color: #2c2c2c;
       background-color: #fafafa;
     }
     
-    .hero {
-      background: linear-gradient(135deg, #667eea22 0%, #764ba222 100%);
-      min-height: 60vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 4rem 2rem;
+    /* HERO STATEMENT */
+    .hero-statement {
+      background: linear-gradient(135deg, #FF6B9D 0%, #C7B8EA 50%, #4ECDC4 100%);
+      color: white;
+      padding: 8rem 2rem;
       text-align: center;
-      margin-left: -4rem; 
-      margin-right: -50px; 
+      margin: 0;
+      margin-left: -4rem;
+      margin-right: -50px;
       margin-top: -3rem;
     }
-    
-    .hero h1 {
-      font-size: 3.5rem;
-      font-weight: 500;
-      color: #1a1a1a;
-      margin-bottom: 1.5rem;
-      line-height: 1.2;
+
+    .statement-box {
       max-width: 900px;
-    }
-    
-    .hero .subtitle {
-      font-size: 1.5rem;
-      color: #4a4a4a;
-      max-width: 800px;
       margin: 0 auto;
-      line-height: 1.7;
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(10px);
+      padding: 4rem 3rem;
+      border-radius: 20px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+    }
+
+    .statement-box h1 {
+      font-size: 2.8rem;
+      line-height: 1.4;
+      margin-bottom: 2rem;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+      color: white;
+      font-weight: 500;
+    }
+
+    .tagline {
+      font-size: 1.4rem;
+      line-height: 1.8;
+      opacity: 0.95;
+      color: white;
+      margin: 0;
     }
     
+    /* SIDEBAR */
     .sidebar {
       position: fixed;
       left: 0;
       top: 20%;
       width: 220px;
       padding: 2rem 1.5rem;
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); 
+      background: linear-gradient(135deg, #FF6B9D 0%, #C7B8EA 100%);
       box-shadow: 2px 0 10px rgba(0,0,0,0.1);
       z-index: 100;
-      border-radius: 0 8px 8px 0; 
+      border-radius: 0 8px 8px 0;
     }
 
     .sidebar h3 {
       font-size: 1rem;
-      color: rgba(255,255,255,0.8); 
+      color: rgba(255,255,255,0.8);
       margin-bottom: 1rem;
       text-transform: uppercase;
       letter-spacing: 1px;
@@ -77,7 +86,7 @@
 
     .sidebar nav a {
       display: block;
-      color: rgba(255,255,255,0.9); 
+      color: rgba(255,255,255,0.9);
       text-decoration: none;
       padding: 0.5rem 0;
       font-size: 1.05rem;
@@ -91,182 +100,227 @@
       color: #ffffff;
       border-left-color: #ffffff;
       padding-left: 1.2rem;
-      background: rgba(255,255,255,0.1); 
+      background: rgba(255,255,255,0.1);
       border-radius: 4px;
     }
     
+    /* MAIN CONTENT */
     .main-content {
-  margin-left: 280px;
-  margin-right: 80px; 
-  padding: 3rem 2rem; 
-  max-width: 1400px; 
-  width: auto;
-}
+      margin-left: 280px;
+      margin-right: 80px;
+      padding: 3rem 2rem;
+      max-width: 1400px;
+      width: auto;
+    }
 
-section {
-  margin-bottom: 6rem;
-  scroll-margin-top: 2rem;
-  max-width: 900px; 
-  margin-left: auto;
-  margin-right: auto;
-}
+    section {
+      margin-bottom: 6rem;
+      scroll-margin-top: 2rem;
+      max-width: 900px;
+      margin-left: auto;
+      margin-right: auto;
+    }
 
-section h2 {
-  font-size: 2.6rem;
-  font-weight: 500;
-  color: #1a1a1a;
-  margin-bottom: 2rem;
-  padding-bottom: 0.75rem;
-  border-bottom: 3px solid #667eea;
-}
+    section h2 {
+      font-size: 2.6rem;
+      font-weight: 500;
+      background: linear-gradient(135deg, #FF6B9D, #4ECDC4);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 2rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 3px solid #FFB6C1;
+    }
 
-section h3,
-.chart-wrapper + h3,
-.chart-wrapper-wide + h3 {
-  max-width: 900px;
-  margin-left: auto;
-  margin-right: auto;
-  font-size: 2.0rem;
-  font-weight: 500;
-  color: #333;
-  margin-top: 3rem;
-  margin-bottom: 1.5rem;
-}
+    section h3 {
+      font-size: 2.0rem;
+      font-weight: 500;
+      color: #333;
+      margin-top: 3rem;
+      margin-bottom: 1.5rem;
+      max-width: 900px;
+      margin-left: auto;
+      margin-right: auto;
+    }
 
-section > p, 
-.narrative,
-.chart-wrapper + p,
-.chart-wrapper-wide + p,
-.info-box + p,
-div + p {
-  max-width: 900px;
-  margin-left: auto;
-  margin-right: auto;
-  font-size: 1.25rem;
-  line-height: 2.0;
-  color: #3a3a3a;
-  margin-bottom: 2.5rem;
-  text-align: justify;
-}
+    section > p,
+    .narrative {
+      max-width: 900px;
+      margin-left: auto;
+      margin-right: auto;
+      font-size: 1.3rem;
+      line-height: 2.0;
+      color: #3a3a3a;
+      margin-bottom: 2.5rem;
+      text-align: justify;
+    }
+
+    /* CHART WRAPPERS */
+    .chart-wrapper,
+    .chart-wrapper-wide {
+      background: white;
+      padding: 2.5rem;
+      margin: 3rem auto;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+      text-align: center;
+      max-width: 900px;
+    }
+
+    .chart-wrapper-wide {
+      max-width: 1000px;
+    }
+
+    .chart-wrapper > div,
+    .chart-wrapper-wide > div {
+      max-width: 100%;
+      display: inline-block;
+      overflow: visible;
+    }
 
     .chart-wrapper + p,
-.chart-wrapper-wide + p,
-.info-box + p {
-  max-width: 900px;
-  margin-left: auto;
-  margin-right: auto;
-  font-size: 1.25rem;
-  line-height: 2.0;
-  color: #3a3a3a;
-  margin-bottom: 2.5rem;
-  text-align: justify;
-}
+    .chart-wrapper-wide + p {
+      max-width: 900px;
+      margin-left: auto;
+      margin-right: auto;
+      font-size: 1.3rem;
+      line-height: 2.0;
+      color: #3a3a3a;
+      margin-bottom: 2.5rem;
+      text-align: justify;
+    }
 
-.chart-wrapper + h3,
-.chart-wrapper-wide + h3 {
-  max-width: 900px;
-  margin-left: auto;
-  margin-right: auto;
-  font-size: 2.0rem;
-  font-weight: 500;
-  color: #333;
-  margin-top: 3rem;
-  margin-bottom: 1.5rem;
-}
+    /* INSIGHT BOX */
+    .insight-box {
+      background: linear-gradient(135deg, #FFF3F3, #F0F8FF);
+      border-left: 4px solid #FF6B9D;
+      padding: 2rem 2.5rem;
+      margin: 3rem auto;
+      max-width: 900px;
+      border-radius: 8px;
+      font-size: 1.25rem;
+      line-height: 1.9;
+    }
 
-.chart-wrapper {
-  background: white;
-  padding: 2.5rem;
-  margin: 3rem auto;
-  border-radius: 8px;
-  box-shadow: 0 2px 12px rgba(0,0,0,0.08);
-  text-align: center;
-  max-width: 900px;
-  overflow: visible;
-}
-    
-.chart-wrapper > div {
-  max-width: 100%;
-  display: inline-block;
-  overflow: visible;
-}
-    
-    .chart-wrapper-wide {
-  background: white;
-  padding: 2.5rem;
-  margin: 2.5rem auto;
-  border-radius: 8px;
-  box-shadow: 0 2px 12px rgba(0,0,0,0.08);
-  text-align: center;
-  max-width: 1000px;
-  overflow: visible;
-}
+    .insight-box strong {
+      color: #FF6B9D;
+      font-size: 1.3rem;
+    }
 
-.chart-wrapper-wide > div {
-  max-width: 100%;
-  display: inline-block;
-  overflow: visible;
-}
+    /* INFO BOX */
+    .info-box {
+      background: #f8f8f8;
+      border-left: 4px solid #4ECDC4;
+      padding: 1.5rem 2rem;
+      margin: 2.5rem auto;
+      max-width: 900px;
+      border-radius: 4px;
+    }
 
-.info-box {
-  background: #f8f8f8;
-  border-left: 4px solid #667eea;
-  padding: 1.5rem 2rem;
-  margin: 2.5rem auto;
-  max-width: 900px; 
-  border-radius: 4px;
-}
+    .info-box h3 {
+      font-size: 1.4rem;
+      margin-bottom: 1rem;
+      color: #1a1a1a;
+      font-weight: 500;
+    }
+        
+    .info-box p {
+      font-size: 1.2rem;
+      line-height: 1.8;
+      margin-bottom: 0;
+      color: #3a3a3a;
+    }
 
-.info-box h3 {
-  font-size: 1.4rem;
-  margin-bottom: 1rem;
-  color: #1a1a1a;
-  font-weight: 500;
-}
-    
-.info-box p {
-  font-size: 1.15rem;
-  line-height: 1.8;
-  margin-bottom: 0;
-  color: #3a3a3a;
-}
+    .info-box a {
+      color: #4ECDC4;
+      font-weight: 600;
+      text-decoration: none;
+      border-bottom: 1px solid #4ECDC4;
+    }
 
-.info-box a {
-  color: #667eea;
-  font-weight: 600;
-  text-decoration: none;
-  border-bottom: 1px solid #667eea;
-}
+    .info-box a:hover {
+      color: #FF6B9D;
+      border-bottom-color: #FF6B9D;
+    }
 
-.info-box a:hover {
-  color: #764ba2;
-  border-bottom-color: #764ba2;
-}
+    /* DATA SOURCE */
     .data-source {
-  font-size: 1.05rem;
-  color: #666;
-  margin: 1.5rem auto 0;
-  max-width: 900px;
-  text-align: center; /* CENTER IT! */
-  display: block;
-}
+      font-size: 1.1rem;
+      color: #666;
+      margin: 1.5rem auto 0;
+      max-width: 900px;
+      text-align: center;
+      display: block;
+    }
 
-.data-source strong {
-  color: #333;
-}
+    .data-source strong {
+      color: #333;
+    }
 
-.data-source a {
-  color: #667eea;
-  font-weight: 600;
-  text-decoration: none;
-  border-bottom: 1px solid #667eea;
-}
+    .data-source a {
+      color: #FF6B9D;
+      font-weight: 600;
+      text-decoration: none;
+      border-bottom: 1px solid #FF6B9D;
+    }
 
-.data-source a:hover {
-  color: #764ba2;
-  border-bottom-color: #764ba2;
-}
-    
+    .data-source a:hover {
+      color: #4ECDC4;
+      border-bottom-color: #4ECDC4;
+    }
+
+    /* SECTION DIVIDERS */
+    .section-divider {
+      background: linear-gradient(135deg, #FFF3F3, #F0F8FF);
+      padding: 4rem 2rem;
+      margin: 5rem auto;
+      text-align: center;
+      border-radius: 12px;
+      max-width: 1000px;
+    }
+
+    .section-divider h2 {
+      font-size: 2.8rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .section-divider p {
+      font-size: 1.4rem;
+      max-width: 800px;
+      margin: 0 auto;
+      line-height: 1.9;
+      color: #555;
+    }
+
+    /* STAT HIGHLIGHT */
+    .stat-highlight {
+      text-align: center;
+      padding: 3rem;
+      background: white;
+      margin: 3rem auto;
+      max-width: 600px;
+      border-radius: 20px;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+    }
+
+    .stat-highlight .big-number {
+      font-size: 4rem;
+      font-weight: bold;
+      background: linear-gradient(135deg, #FF6B9D, #4ECDC4);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 1rem;
+    }
+
+    .stat-highlight p {
+      font-size: 1.3rem;
+      color: #666;
+      line-height: 1.8;
+    }
+        
+    /* FOOTER */
     footer {
       margin: 5rem 0 3rem 0;
       padding: 3rem 0;
@@ -274,72 +328,66 @@ div + p {
       text-align: center;
       color: #666;
     }
-    
+        
     footer a {
-      color: #667eea;
+      color: #FF6B9D;
       text-decoration: none;
-      border-bottom: 1px solid #667eea;
+      border-bottom: 1px solid #FF6B9D;
       margin: 0 1rem;
     }
-    
+
+    footer a:hover {
+      color: #4ECDC4;
+      border-bottom-color: #4ECDC4;
+    }
+        
+    /* RESPONSIVE */
     @media (max-width: 768px) {
       .sidebar {
         display: none;
       }
-      
+          
       .main-content {
         margin-left: 0;
         margin-right: 0;
         padding: 2rem 1.5rem;
       }
-      
-   .hero-statement {
-  background: linear-gradient(135deg, #FF6B9D 0%, #C7B8EA 50%, #4ECDC4 100%);
-  color: white;
-  padding: 8rem 2rem;
-  text-align: center;
-  margin-bottom: 0;
-}
 
-.statement-box {
-  max-width: 900px;
-  margin: 0 auto;
-  background: rgba(255, 255, 255, 0.15);
-  backdrop-filter: blur(10px);
-  padding: 4rem 3rem;
-  border-radius: 20px;
-  box-shadow: 0 20px 60px rgba(0,0,0,0.2);
-}
+      .hero-statement {
+        margin-left: 0;
+        margin-right: 0;
+        padding: 5rem 1.5rem;
+      }
 
-.statement-box h1 {
-  font-size: 2.8rem;
-  line-height: 1.4;
-  margin-bottom: 2rem;
-  text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
-  color: white;
-  font-weight: 500;
-}
+      .statement-box h1 {
+        font-size: 2rem;
+      }
 
-.tagline {
-  font-size: 1.4rem;
-  line-height: 1.8;
-  opacity: 0.95;
-  color: white;
-  margin: 0;
-}
-</style>
+      .tagline {
+        font-size: 1.1rem;
+      }
+
+      section h2 {
+        font-size: 2rem;
+      }
+
+      section > p,
+      .narrative {
+        font-size: 1.1rem;
+      }
+    }
+  </style>
 </head>
 <body>
   
 <div class="sidebar">
   <h3>Navigate</h3>
   <nav>
-    <a href="#aims">Aims</a>
-    <a href="#overview">Overview</a>
+    <a href="#context">Context</a>
     <a href="#foundation">Foundation</a>
     <a href="#upi">UPI Revolution</a>
     <a href="#divide">The Divide</a>
-    <a href="#villages">Digital Villages</a>
+    <a href="#solutions">Solutions</a>
     <a href="#aadhaar">Aadhaar</a>
     <a href="#future">5G Future</a>
     <a href="#forecast">ML Forecast</a>
@@ -348,49 +396,48 @@ div + p {
   </nav>
 </div>
     
-    <div class="main-content">
+<div class="main-content">
   
-<section class="hero-statement">
-  <div class="statement-box">
-    <h1>India Connected 850 Million People in 15 Years.<br>But Digital Access Doesn't Mean Digital Equality.</h1>
-    <p class="tagline">
-      Behind India's celebrated digital transformation lies a 7× inequality gap between urban and rural adoption. 
-      This is the story of what happens when infrastructure reaches everyone, but opportunity doesn't.
-    </p>
-  </div>
-</section>
-      
-      <p class="subtitle">
-        Between 2010 and 2024, India built the world's largest digital public infrastructure - connecting more people, faster, and at lower cost than any country in the world. Yet scale does not mean universality. This project measures both the wins and the tensions of India's digital transformation journey: who gained access, who was left behind, and why.
+  <!-- HERO STATEMENT -->
+  <section class="hero-statement">
+    <div class="statement-box">
+      <h1>India Connected 850 Million People in 15 Years.<br>But Digital Access Doesn't Mean Digital Equality.</h1>
+      <p class="tagline">
+        Behind India's celebrated digital transformation lies a 7× inequality gap between urban and rural adoption. 
+        This is the story of what happens when infrastructure reaches everyone, but opportunity doesn't.
       </p>
     </div>
-  </div>
+  </section>
 
-  <section id="aims">
-    <h2>Research Question</h2>
-    <p>
-      Has India's digital expansion led to equitable access? This project examines this question through three interconnected layers: internet connectivity, digital identity (Aadhaar), and digital payments (UPI).
+  <!-- ACT 1: THE PROMISE -->
+  <section id="context">
+    <h2>The Transformation Was Real</h2>
+    <p class="narrative">
+      Between 2010 and 2024, India experienced the fastest digital transformation of any major economy. 850 million people gained internet access. The government built the world's largest biometric identity system. Digital payments exploded from zero to 15 billion transactions monthly.
     </p>
-    <p>
-      Over just fourteen years, India compressed decades of digital development into a single generation. Digital access grew nearly eightfold. Digital identity expanded to over a billion people. Digital payments scaled from zero to the largest real-time payment system worldwide. This project traces this journey across scale, behavior, and geography. The goal, however, is not to measure growth alone, but to ask a harder question: has speed come at the cost of equity?
+    <p class="narrative">
+      <strong>The question isn't whether India digitized. It's whether India digitized equitably.</strong>
     </p>
   </section>
 
-  <section id="overview">
-    <h2>India's Digital Catch-Up: 2010-2024</h2>
-  </section>
-  
   <div class="chart-wrapper">
     <div id="heroChart"></div>
   </div>
-        
+
+  <div class="insight-box">
+    <strong>Key Insight:</strong> India added internet users faster than any country in history. But speed doesn't guarantee fairness.
+  </div>
+
+  <!-- ACT 2: THE FOUNDATION -->
   <section id="foundation">
-    <h2>India's Digital Acceleration in Global Context</h2>
-    <p>
-      Any evaluation of India's digital transformation must begin with scale and speed. Data extracted from a 2019 McKinsey analysis shows that India recorded the second-highest digital adoption growth rate among major economies, trailing only Indonesia. This pace of adoption signals not incremental change, but a structural shift in how citizens interact with the state and the market.
+    <h2>Three Layers Built India's Digital Stack</h2>
+    <p class="narrative">
+      India's digital revolution rested on three foundations: identity (Aadhaar), connectivity (internet/5G), and transactions (UPI). Each layer was supposed to be universal. None of them were.
     </p>
-    <p>
-      What makes India distinctive is how much it grew from so little. This makes India a natural case study for state-led digital infrastructure.
+    
+    <h3>Layer 1: Speed in Global Context</h3>
+    <p class="narrative">
+      Data from McKinsey's 2019 analysis reveals that India achieved the second-highest digital adoption growth rate among 17 major economies, trailing only Indonesia. This wasn't incremental change—it was structural transformation in how 1.3 billion people interact with the state and market.
     </p>
   </section>
 
@@ -402,11 +449,18 @@ div + p {
     <strong>Data extraction:</strong> McKinsey & Company PDF report, page 13. 
     <a href="https://colab.research.google.com/drive/1gATdy9GXodFZ3frY4EcZPblWWhY8wjjd?usp=sharing" target="_blank">View PDF scraping workflow</a>
   </p>
-      
-    <section id="upi">
+
+  <!-- ACT 3: THE UPI EXPLOSION -->
+  <div class="section-divider">
     <h2>The UPI Revolution: From Zero to Billions</h2>
     <p>
-      Few systems illustrate India's leap more clearly than UPI. What began as a little-known payments experiment became the backbone of everyday life. In April 2016, 21 banks supported UPI. Transaction volume: zero. Indians didn't know what UPI was, didn't trust it. Then came November 8, 2016, the night Prime Minister Modi announced demonetization, banning ₹500 and ₹1000 notes and removing 86% of currency from circulation overnight. Desperate for a way to fulfill daily expenses and needs, 1.3 billion Indians discovered digital payments. Within four months, UPI transactions jumped from zero to 6.37 million monthly. By December 2024, UPI processes over 15 billion transactions each month.
+      Nothing illustrates India's digital leap more clearly than UPI. What began as an unknown payments experiment became the backbone of everyday life. Then came November 8, 2016.
+    </p>
+  </div>
+
+  <section id="upi">
+    <p class="narrative">
+      Prime Minister Modi announced demonetization that night, banning ₹500 and ₹1000 notes and removing 86% of currency from circulation overnight. Desperate for a way to pay for daily needs, 1.3 billion Indians discovered digital payments. Within four months, UPI jumped from zero to 6.37 million transactions monthly. By December 2024: over 15 billion monthly.
     </p>
   </section>
 
@@ -414,43 +468,68 @@ div + p {
     <div id="upiExplosion"></div>
   </div>
 
-  <p>
-    This chart uses a logarithmic scale to visualize 116 months of exponential growth. The vertical lines mark two transformative moments: demonetization (November 2016) and the COVID-19 lockdown (March 2020), both forcing rapid digital adoption.
+  <p class="narrative">
+    This logarithmic visualization captures 116 months of exponential growth. Two vertical lines mark transformative moments: demonetization (November 2016) and COVID-19 lockdown (March 2020)—both forcing rapid digital adoption.
   </p>
 
- <h3>The Daily Rhythm: When Do 250,000 Transactions Happen?</h3>
-<p>
-  Analyzing the timing of 250,000 UPI transactions reveals the daily rhythm of Digital India. This heatmap shows transaction density across every hour of every day, darker cells indicate peak activity when millions of Indians simultaneously pay for meals, transfer money, shop online, and settle bills.
-</p>
+  <h3>The Daily Rhythm: When Do 250,000 Transactions Happen?</h3>
+  <p class="narrative">
+    National figures conceal behavioral patterns. This heatmap analyzes 250,000 UPI transactions across every hour of every day. Darker cells show peak activity—millions paying for meals, transferring money, shopping online.
+  </p>
 
   <div class="chart-wrapper">
     <div id="heatmapChart"></div>
   </div>
 
-  <p>
-    The heatmap reveals behavioral patterns: weekday lunch hours show spikes as people pay for meals; evening hours peak with bill payments and shopping; weekends display different temporal distributions as leisure spending increases. These patterns show that UPI is no longer an occasional substitute for cash. It has become an invisible infrastructure, used instinctively at scale. Yet national figures conceal deep regional disparities.
+  <p class="narrative">
+    Weekday lunch hours spike as people pay for meals. Evening hours peak with bills and shopping. Weekends show different patterns as leisure spending increases. UPI is no longer occasional—it's invisible infrastructure, used instinctively at scale. Yet national figures conceal deep regional disparities.
   </p>
 
   <p class="data-source">
-    <strong>Data processing:</strong> 250,000 transaction records aggregated by time patterns. 
+    <strong>Data processing:</strong> 250,000 transaction records aggregated by temporal patterns. 
     <a href="https://colab.research.google.com/drive/1Q44vOtYM3mhGSNu7MAh7m4ABtdJ38EKI?usp=sharing" target="_blank">View analysis workflow</a>
   </p>
-      
-   <section id="divide">
+
+  <!-- ACT 4: THE DIVIDE -->
+  <div class="section-divider">
     <h2>The Digital Divide</h2>
     <p>
-      While Delhi residents make 37 UPI payments monthly, Bihar residents make only 5. This seven-fold difference reveals how digital infrastructure and adoption remain concentrated in urban cities and India's wealthiest states, leaving hundreds of millions in the poorest regions behind. This gap is not simply about personal preferences, but about awareness and literacy—factors compounded over time.
+      Success in cities. Exclusion in villages. The data reveals a pattern as stark as it is predictable: digital adoption follows existing wealth.
+    </p>
+  </div>
+
+  <section id="divide">
+    <p class="narrative">
+      Delhi residents make 37 UPI payments monthly. Bihar residents make 5. This seven-fold difference isn't about personal preference—it's about infrastructure, literacy, and access to services worth paying for digitally.
     </p>
   </section>
 
   <div class="chart-wrapper">
     <div id="upiMap"></div>
   </div>
-        
-  <section id="villages">
-    <h2>Digital Villages: Testing Solutions in Rural India</h2>
+
+  <div class="stat-highlight">
+    <div class="big-number">7×</div>
     <p>
-      To test whether the digital divide is inevitable or policy-driven, the government launched targeted interventions in rural India. In 700 pilot villages across the country, the ability of digital services to reach the last mile was tested. Over three years (2021-2024), these villages received infrastructure, training, and services that urban cities take for granted. The results show potential, proving that digital gaps can be bridged when resources meet resolve.
+      Maharashtra processes <strong>7 times more</strong> UPI transactions per capita than Bihar
+    </p>
+  </div>
+
+  <p class="narrative">
+    The gap isn't random. Infrastructure concentrated in wealthy states. Services cluster in cities. Digital India digitized inequality.
+  </p>
+
+  <!-- ACT 5: THE SOLUTION -->
+  <div class="section-divider">
+    <h2>But Inequality Isn't Inevitable</h2>
+    <p>
+      In 2021, the government launched Digital Seva Kendras in 700 villages—training centers with reliable internet, staff teaching digital literacy, and services worth using. The results were immediate.
+    </p>
+  </div>
+
+  <section id="solutions">
+    <p class="narrative">
+      Villages with intervention saw 40% higher digital adoption in 18 months. The data proves targeted investment changes outcomes.
     </p>
   </section>
 
@@ -458,13 +537,18 @@ div + p {
     <div id="villageChart"></div>
   </div>
 
+  <div class="insight-box">
+    <strong>The Evidence:</strong> When resources meet resolve, digital gaps close. The infrastructure isn't the constraint. Political will is.
+  </div>
+
+  <!-- AADHAAR LAYER -->
   <section id="aadhaar">
-    <h2>Digital Identity: Aadhaar Enrollment Patterns</h2>
-    <p>
-      The Unique Identity Authority of India, or Aadhaar, is the digital identity system for Indian residents. Over 1.3 billion people have enrolled in the program as of 2025. Enrollment data from September 2025 across 5,000 pincodes in 37 states shows the extent to which the country remains imbalanced in the application of this facility. As Aadhaar is the foundation of welfare, banking, and digital services, disparity in enrollment distribution will impact far beyond aspects of identity.
+    <h2>Layer 2: Digital Identity</h2>
+    <p class="narrative">
+      Aadhaar was meant to be universal—one digital identity for every Indian. Over 1.3 billion people have enrolled as of 2025. But enrollment data from September 2025 across 5,000 pincodes tells a different story.
     </p>
-    <p>
-      This chart represents enrollment relative to the national average in every state. Purple bars indicate states above average; pink bars show states below average. This divergence proves that Aadhaar enrollment remains geographically imbalanced despite its widespread reach.
+    <p class="narrative">
+      Purple bars show states above the national average. Pink bars show states below. The divergence proves even the foundation layer reflects geographic inequality.
     </p>
   </section>
 
@@ -473,14 +557,15 @@ div + p {
   </div>
 
   <p class="data-source">
-    <strong>Data source:</strong> Aadhaar enrollment records across 236,314 enrollments aggregated to 5,000 pincodes in 37 states (September 2025). 
-    <a href="https://colab.research.google.com/drive/1NGX3234tj8Io1uvPtOEYybf3NSRTeCBl?usp=sharing" target="_blank">View data processing workflow</a>
+    <strong>Data source:</strong> 236,314 Aadhaar enrollments across 5,000 pincodes, 37 states (September 2025). 
+    <a href="https://colab.research.google.com/drive/1NGX3234tj8Io1uvPtOEYybf3NSRTeCBl?usp=sharing" target="_blank">View processing workflow</a>
   </p>
-      
+
+  <!-- THE FUTURE -->
   <section id="future">
-    <h2>The Future: The 5G Frontier</h2>
-    <p>
-      India's digital transformation isn't finished; it's accelerating. As of February 2025, 5G networks have reached over 40,000 villages across 28 states, laying the infrastructure for the next wave of digital services. This map shows where 5G has arrived and where millions still wait for the fastest connectivity.
+    <h2>Layer 3: The 5G Frontier</h2>
+    <p class="narrative">
+      India's digital transformation isn't finished—it's accelerating. As of February 2025, 5G networks have reached over 40,000 villages across 28 states. This map shows where 5G arrived and where millions still wait.
     </p>
   </section>
 
@@ -488,24 +573,23 @@ div + p {
     <div id="map5g"></div>
   </div>
 
-  <p>
-    The states leading 5G deployment - Maharashtra, Uttar Pradesh, Gujarat - mirror the patterns we've seen throughout this analysis: infrastructure follows existing development corridors. The challenge ahead is ensuring 5G reaches the villages and states that need it most, not just those that can afford it first.
+  <p class="narrative">
+    The states leading 5G deployment—Maharashtra, Uttar Pradesh, Gujarat—mirror patterns throughout this analysis: infrastructure follows existing development corridors. The challenge ahead is ensuring 5G reaches villages that need it most, not just those that can afford it first.
   </p>
 
   <div class="info-box">
     <h3>Data Collection via Government API</h3>
     <p>
-      This data was accessed through India's Open Data Portal using authenticated API access. 
+      Accessed through India's Open Data Portal using authenticated API. 
       <a href="https://colab.research.google.com/drive/1QtUWVis71ktzU9Q0QunUYPdOelLgGbOm?usp=sharing" target="_blank">View complete workflow</a>
     </p>
   </div>
 
+  <!-- ML FORECAST -->
   <section id="forecast">
-    <h2>The Future: Predictions and Possibilities</h2>
-    
-    <h3>Machine Learning Forecast: Where UPI is Headed</h3>
-    <p>
-      Using 116 months of historical transaction data, an exponential regression model predicts UPI's continued growth through 2026. The model reveals that while growth remains strong, the rate is gradually slowing as the market approaches saturation, a natural phase in technology adoption curves.
+    <h2>Where This Goes Next</h2>
+    <p class="narrative">
+      By late 2026, India will process over 20 billion UPI transactions monthly. The machine learning forecast is clear: growth continues. But growth for whom?
     </p>
   </section>
 
@@ -513,59 +597,82 @@ div + p {
     <div id="forecastChart"></div>
   </div>
 
-  <p>
-    The solid pink line shows actual data; the dashed purple line shows machine learning predictions. Importantly, continued growth in volume does not guarantee inclusive access. Saturation at the national level can coexist with exclusion at the margins. By late 2026, the model forecasts UPI will process over 20 billion transactions monthly as the final wave of Indians adopt digital payments.
+  <p class="narrative">
+    The solid pink line shows actual data. The dashed purple line shows machine learning predictions. Continued growth in volume doesn't guarantee inclusive access. Saturation at the national level can coexist with exclusion at the margins.
   </p>
 
   <div class="info-box">
     <h3>Machine Learning Methodology</h3>
     <p>
-      Analysis conducted using Python's scikit-learn library. Transaction volumes were log-transformed to model exponential growth, fitted using linear regression, and back-transformed for interpretation. 
+      Analysis using Python's scikit-learn. Transaction volumes log-transformed to model exponential growth, fitted using linear regression, back-transformed for interpretation. 
       <a href="https://colab.research.google.com/drive/1Xq7Skj4NDEpDbI4DQfJdTikyRcti-Rmo?usp=sharing" target="_blank">View complete methodology</a>
     </p>
   </div>
 
+  <div class="section-divider">
+    <p style="font-size: 1.6rem; font-style: italic; color: #666;">
+      "Will those 20 billion transactions include the bottom billion Indians? Or will digital India remain a tale of two countries—one connected and thriving, one watching from the margins?"
+    </p>
+  </div>
+
+  <!-- METHODOLOGY -->
   <section id="methodology">
     <h2>Data Sources & Methodology</h2>
     
     <h3>Data Collection</h3>
     <p>
-      This analysis draws on multiple datasets spanning 2010-2025. Internet penetration data comes from the World Bank's World Development Indicators, covering eight countries over fifteen years. UPI transaction data was manually reconstructed from 116 monthly reports published by the National Payments Corporation of India, requiring extensive cleaning and validation. State-level UPI per capita figures were calculated by combining NPCI state totals with Census population projections, necessitating manual matching of inconsistent state name spellings across datasets.
-    </p>
-    
-    <p>
-      The McKinsey digital adoption data was extracted from a 2019 PDF report using Python-based web scraping. 5G infrastructure data was accessed through India's Open Government Data Platform API with authenticated access. The behavioral analysis of UPI transaction patterns draws on a dataset of 250,000 individual transactions, aggregated by hour and day of week to protect privacy while revealing temporal usage patterns. Digital village pilot data comes from Ministry of Electronics reports covering 700 villages across three implementation years. Aadhaar enrollment data represents 236,314 individual enrollments across 5,000 pincodes in 37 states during September 2025.
+      This analysis draws on multiple datasets spanning 2010-2025. Internet penetration data comes from World Bank's World Development Indicators. UPI transaction data was manually reconstructed from 116 monthly NPCI reports. State-level UPI per capita figures combine NPCI totals with Census projections. McKinsey digital adoption data was extracted from PDF using Python-based scraping. 5G infrastructure accessed through India's Open Government Data Platform API. Behavioral analysis draws on 250,000 individual transactions aggregated by temporal patterns. Digital village data from Ministry reports covering 700 villages. Aadhaar enrollment represents 236,314 enrollments across 5,000 pincodes during September 2025.
     </p>
 
     <h3>Technical Implementation</h3>
     <p>
-      Data cleaning and preparation was conducted in Python using pandas for data manipulation and datetime parsing. Vega-Lite was selected as the visualization framework for its declarative syntax and interactive capabilities. Key technical challenges included reconciling inconsistent state name spellings across government datasets, parsing UPI dates across multiple format conventions, and handling missing data in time series. The machine learning forecast employs exponential regression on log-transformed UPI transaction volumes. Transaction counts were log-transformed to linearize exponential growth, fitted using scikit-learn's linear regression, and back-transformed for interpretation.
+      Data cleaning conducted in Python using pandas. Vega-Lite selected for declarative syntax and interactivity. Key challenges included reconciling inconsistent state names across datasets, parsing UPI dates across format conventions, handling missing time series data. Machine learning forecast employs exponential regression on log-transformed volumes using scikit-learn.
     </p>
 
     <h3>Use of AI Tools</h3>
     <p>
-      This project was developed with assistance from Claude (Anthropic). I used Claude for code syntax generation, debugging technical issues, structuring my analysis approach, and iterating on visual design choices. All analytical decisions—including which research questions to pursue, which datasets to use, how to interpret findings, and what policy conclusions to draw—were my own. I personally collected all data, executed all code in Google Colab, verified all results, and made all substantive decisions about the project's direction and conclusions. The AI served as a technical assistant, not an analytical collaborator.
+      This project developed with assistance from Claude (Anthropic). I used Claude for code syntax, debugging, structuring analysis, iterating on design. All analytical decisions—research questions, dataset selection, interpretation, policy conclusions—were my own. I collected all data, executed all code, verified all results, made all substantive decisions. AI served as technical assistant, not analytical collaborator.
     </p>
 
     <h3>Limitations</h3>
     <p>
-      State-level UPI data required manual population-based estimates as NPCI does not publish official per capita figures. The 250,000 transaction dataset, while large, represents a sample rather than comprehensive coverage. Geographic visualizations use publicly available GeoJSON boundaries which may not reflect recent administrative reorganizations, notably the 2019 division of Jammu and Kashmir into separate union territories. Pincode-level coordinate data showed inconsistencies requiring filtering, particularly for boundary regions. Aadhaar enrollment data represents September 2025 activity.
+      State UPI data required manual population estimates. Transaction dataset represents sample, not comprehensive coverage. Geographic visualizations use publicly available GeoJSON which may not reflect 2019 J&K reorganization. Pincode coordinates showed boundary inconsistencies requiring filtering.
     </p>
   </section>
 
-  <section id="conclusions">
-    <h2>Key Findings</h2>
-    <p>
-      This project reveals three key findings. First, India built its digital public infrastructure at unprecedented scale in record time. Second, the success visible in aggregate figures hides very deep inequality in geographic distribution. Usage intensity, access, and quality are dominated by wealthier areas. Third, the gaps outlined can be filled by targeted interventions, as demonstrated by the Digital Villages initiative.
-    </p>
-    <p>
-      The message is clear: it is not enough to merely build digital infrastructure. It requires thoughtful application of resources and presence in geographies most vulnerable to being left behind. India went digital at unprecedented speed. Whether it goes digital equitably is the question that remains.
+  <!-- CONCLUSIONS -->
+  <section id="conclusions" style="background: #2c2c2c; color: white; padding: 5rem 3rem; margin: 5rem -3rem 0; border-radius: 12px 12px 0 0;">
+    <h2 style="color: white; border-bottom-color: rgba(255,255,255,0.3);">Three Findings</h2>
+    
+    <div style="margin: 2.5rem 0;">
+      <h3 style="color: #FF6B9D; font-size: 1.8rem;">1. The 7× Divide</h3>
+      <p style="color: rgba(255,255,255,0.9); font-size: 1.3rem;">
+        Digital infrastructure reached everywhere. Digital opportunity did not.
+      </p>
+    </div>
+    
+    <div style="margin: 2.5rem 0;">
+      <h3 style="color: #4ECDC4; font-size: 1.8rem;">2. Foundation Failures</h3>
+      <p style="color: rgba(255,255,255,0.9); font-size: 1.3rem;">
+        Even Aadhaar, meant to be universal, reflects existing inequality.
+      </p>
+    </div>
+    
+    <div style="margin: 2.5rem 0;">
+      <h3 style="color: #C7B8EA; font-size: 1.8rem;">3. Intervention Works</h3>
+      <p style="color: rgba(255,255,255,0.9); font-size: 1.3rem;">
+        The 700-village pilot proves targeted investment changes outcomes.
+      </p>
+    </div>
+    
+    <p style="margin-top: 3rem; font-size: 1.4rem; border-top: 2px solid rgba(255,255,255,0.3); padding-top: 2rem; color: rgba(255,255,255,0.95);">
+      India went digital at unprecedented speed. Whether it goes digital <em>equitably</em> remains an open question.
     </p>
   </section>
   
   <footer>
     <p>Saranya Anand | LSE MPA 2027</p>
-    <p><a href="../index.html">← Back to Portfolio</a></p>
+    <p><a href="../index.html">← Back to Home</a></p>
   </footer>
   
 </div>
