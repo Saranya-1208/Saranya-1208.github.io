@@ -27,28 +27,42 @@
 }
 
 .hero-statement {
-  background: linear-gradient(135deg, #FF6B9D 0%, #C7B8EA 50%, #4ECDC4 100%);
+  background: #8B7355; 
   color: white;
   padding: 4rem 2rem;
   text-align: center;
-  margin: 0 auto; 
-  max-width: 1300px; 
+  margin: 0 auto;
+  max-width: 1300px;
   margin-left: auto;
   margin-right: auto;
-  margin-top: 3rem; 
-  border-radius: 12px; 
+  margin-top: 3rem;
+  border-radius: 12px;
+  border-left: 6px solid #FF6B9D; 
+  box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+  position: relative;
+}
+
+.hero-statement::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #FF6B9D, #4ECDC4); 
+  border-radius: 0 0 12px 12px;
 }
 
 .statement-box {
   max-width: none;
-  padding: 0 3rem; 
+  padding: 0 3rem;
   margin: 0;
 }
 
 .statement-box h1 {
   font-size: 2.7rem;
-  line-height: 1.2; 
-  margin-bottom: 1.5rem; 
+  line-height: 1.2;
+  margin-bottom: 1.5rem;
   text-shadow: 3px 3px 10px rgba(0,0,0,0.5);
   color: #ffffff;
   font-weight: 700;
@@ -56,12 +70,12 @@
 
 .tagline {
   font-size: 1.6rem;
-  line-height: 1.6; 
+  line-height: 1.6;
   color: #ffffff;
   margin: 0;
   text-shadow: 2px 2px 8px rgba(0,0,0,0.4);
   font-weight: 500;
-}    
+}
     .sidebar {
   position: fixed;
   left: 0;
