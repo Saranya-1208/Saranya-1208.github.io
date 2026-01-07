@@ -293,29 +293,43 @@ div + p {
         padding: 2rem 1.5rem;
       }
       
-      .hero h1 {
-        font-size: 2.5rem;
-      }
-      
-      .hero .subtitle {
-        font-size: 1.2rem;
-      }
-    }
-    .hero-stat {
-  font-size: 1.8rem;
-  color: #1a1a1a;
-  margin: 2rem auto 1.5rem;
-  line-height: 1.6;
+   .hero-statement {
+  background: linear-gradient(135deg, #FF6B9D 0%, #C7B8EA 50%, #4ECDC4 100%);
+  color: white;
+  padding: 8rem 2rem;
+  text-align: center;
+  margin-bottom: 0;
+}
+
+.statement-box {
+  max-width: 900px;
+  margin: 0 auto;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  padding: 4rem 3rem;
+  border-radius: 20px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+}
+
+.statement-box h1 {
+  font-size: 2.8rem;
+  line-height: 1.4;
+  margin-bottom: 2rem;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+  color: white;
   font-weight: 500;
 }
 
-.hero-stat strong {
-  color: #667eea;
+.tagline {
+  font-size: 1.4rem;
+  line-height: 1.8;
+  opacity: 0.95;
+  color: white;
+  margin: 0;
 }
 </style>
 </head>
 <body>
-  
   
 <div class="sidebar">
   <h3>Navigate</h3>
@@ -336,16 +350,15 @@ div + p {
     
     <div class="main-content">
   
-  <div class="hero">
-    <div>
-      <section id="hero">
-        <h1>Digital India: Measuring the Digital Transformation of a Billion Citizens</h1>
-      </section>
-      
-      <p class="hero-stat">
-        <strong>850 million Indians are online.</strong><br>
-        <strong>Over 500 million are not.</strong>
-      </p>
+<section class="hero-statement">
+  <div class="statement-box">
+    <h1>India Connected 850 Million People in 15 Years.<br>But Digital Access Doesn't Mean Digital Equality.</h1>
+    <p class="tagline">
+      Behind India's celebrated digital transformation lies a 7× inequality gap between urban and rural adoption. 
+      This is the story of what happens when infrastructure reaches everyone, but opportunity doesn't.
+    </p>
+  </div>
+</section>
       
       <p class="subtitle">
         Between 2010 and 2024, India built the world's largest digital public infrastructure - connecting more people, faster, and at lower cost than any country in the world. Yet scale does not mean universality. This project measures both the wins and the tensions of India's digital transformation journey: who gained access, who was left behind, and why.
