@@ -141,15 +141,18 @@
 }
 
     section h3 {
-      font-size: 2.0rem;
-      font-weight: 500;
-      color: #333;
-      margin-top: 3rem;
-      margin-bottom: 1.5rem;
-      max-width: 900px;
-      margin-left: auto;
-      margin-right: auto;
-    }
+      section h3,
+.chart-wrapper + h3,
+.chart-wrapper-wide + h3 {
+  max-width: 900px; 
+  margin-left: auto; 
+  margin-right: auto; 
+  font-size: 2.0rem;
+  font-weight: 500;
+  color: #333;
+  margin-top: 3rem;
+  margin-bottom: 1.5rem;
+}
 
     section > p,
     .narrative {
@@ -1187,20 +1190,20 @@
     }
   ],
   "data": {
-    "url": "https://raw.githubusercontent.com/Subhash9325/GeoJson-Data-of-Indian-States/refs/heads/master/Indian_States",
+    "url": "https://gist.githubusercontent.com/jbrobst/56c13bbbf9d97d187fea01ca62ea5112/raw/e388c4cae20aa53cb5090210a42ebb9b765c0a36/india_states.geojson",
     "format": {"type": "json", "property": "features"}
   },
-  "transform": [
-    {
-      "lookup": "properties.NAME_1",
-      "from": {
-        "data": {
-          "url": "https://raw.githubusercontent.com/Saranya-1208/Saranya-1208.github.io/refs/heads/main/project/Statewise_UPI%20transaction_per%20capita_Map.csv"
-        },
-        "key": "State",
-        "fields": ["Per_Capita_Monthly", "Volume_Mn", "Population_Mn"]
-      }
-    },
+"transform": [
+  {
+    "lookup": "properties.ST_NM",
+    "from": {
+      "data": {
+        "url": "https://raw.githubusercontent.com/Saranya-1208/Saranya-1208.github.io/refs/heads/main/project/Statewise_UPI%20transaction_per%20capita_Map.csv"
+      },
+      "key": "State",
+      "fields": ["Per_Capita_Monthly", "Volume_Mn", "Population_Mn"]
+    }
+  },
     {
       "calculate": "metric == 'Per_Capita_Monthly' ? datum.Per_Capita_Monthly : metric == 'Volume_Mn' ? datum.Volume_Mn : datum.Population_Mn",
       "as": "SelectedValue"
@@ -1389,11 +1392,11 @@ vegaEmbed('#aadhaarDivergingChart', {
         "scheme": "redpurple",
         "reverse": false
       },
-      "legend": {
+     "legend": {
         "title": "Transaction Volume",
         "orient": "bottom",
         "direction": "horizontal",
-        "format": ",",
+        "format": "~s", 
         "labelFontSize": 11,
         "titleFontSize": 12,
         "gradientLength": 500,
