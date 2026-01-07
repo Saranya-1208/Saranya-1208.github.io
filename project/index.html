@@ -114,11 +114,10 @@
 }
     
 .main-content {
-  margin-left: auto; 
-  margin-right: auto; 
+  margin-left: 280px; 
+  margin-right: 80px;
   padding: 3rem 2rem;
-  max-width: 1200px; 
-  width: 100%;
+  max-width: 1200px;
 }
     section {
       margin-bottom: 6rem;
@@ -140,13 +139,12 @@
   border-bottom: 3px solid #FFB6C1;
 }
 
-    section h3 {
-      section h3,
+   section h3,
 .chart-wrapper + h3,
 .chart-wrapper-wide + h3 {
-  max-width: 900px; 
-  margin-left: auto; 
-  margin-right: auto; 
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
   font-size: 2.0rem;
   font-weight: 500;
   color: #333;
@@ -1498,7 +1496,7 @@ vegaEmbed('#aadhaarDivergingChart', {
   }
 });
     
-    vegaEmbed('#map5g', {
+   vegaEmbed('#map5g', {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "title": {
     "text": "5G Infrastructure: Villages with Coverage by State (Feb 2025)",
@@ -1506,15 +1504,15 @@ vegaEmbed('#aadhaarDivergingChart', {
     "font": "Garamond",
     "color": "#1a1a1a"
   },
-  "width": 600,
+  "width": 550,
   "height": 600,
   "data": {
-    "url": "https://raw.githubusercontent.com/Subhash9325/GeoJson-Data-of-Indian-States/refs/heads/master/Indian_States",
+    "url": "https://gist.githubusercontent.com/jbrobst/56c13bbbf9d97d187fea01ca62ea5112/raw/e388c4cae20aa53cb5090210a42ebb9b765c0a36/india_states.geojson",
     "format": {"type": "json", "property": "features"}
   },
   "transform": [
     {
-      "lookup": "properties.NAME_1",
+      "lookup": "properties.ST_NM", 
       "from": {
         "data": {
           "url": "https://raw.githubusercontent.com/Saranya-1208/Saranya-1208.github.io/refs/heads/main/project/5g_coverage_india.csv"
@@ -1543,7 +1541,7 @@ vegaEmbed('#aadhaarDivergingChart', {
         "title": "Villages with 5G Towers",
         "orient": "bottom",
         "direction": "horizontal",
-        "format": ",",
+        "format": "~s", // CHANGED: Remove scientific notation
         "labelFontSize": 11,
         "titleFontSize": 12,
         "gradientLength": 400,
@@ -1551,7 +1549,7 @@ vegaEmbed('#aadhaarDivergingChart', {
       }
     },
     "tooltip": [
-      {"field": "properties.NAME_1", "type": "nominal", "title": "State"},
+      {"field": "properties.ST_NM", "type": "nominal", "title": "State"}, // CHANGED from NAME_1
       {"field": "Districts_5G", "type": "quantitative", "title": "Districts with 5G"},
       {"field": "Villages_5G", "type": "quantitative", "format": ",", "title": "Villages with 5G Towers"}
     ]
