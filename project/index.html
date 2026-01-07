@@ -1075,8 +1075,8 @@
     "fontSize": 20,
     "font": "Garamond"
   },
-  "width": 550,
-  "height": 500,
+  "width": 500,
+  "height": 450,
   "data": {
     "url": "https://raw.githubusercontent.com/Saranya-1208/Saranya-1208.github.io/refs/heads/main/project/Implementation%20Status%20of%20Digital%20Village%20Pilot%202021.csv"
   },
@@ -1496,7 +1496,7 @@ vegaEmbed('#aadhaarDivergingChart', {
   }
 });
     
-   vegaEmbed('#map5g', {
+  vegaEmbed('#map5g', {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "title": {
     "text": "5G Infrastructure: Villages with Coverage by State (Feb 2025)",
@@ -1504,7 +1504,7 @@ vegaEmbed('#aadhaarDivergingChart', {
     "font": "Garamond",
     "color": "#1a1a1a"
   },
-  "width": 550,
+  "width": 600,
   "height": 600,
   "data": {
     "url": "https://gist.githubusercontent.com/jbrobst/56c13bbbf9d97d187fea01ca62ea5112/raw/e388c4cae20aa53cb5090210a42ebb9b765c0a36/india_states.geojson",
@@ -1512,10 +1512,10 @@ vegaEmbed('#aadhaarDivergingChart', {
   },
   "transform": [
     {
-      "lookup": "properties.ST_NM", 
+      "lookup": "properties.ST_NM",
       "from": {
         "data": {
-          "url": "https://raw.githubusercontent.com/Saranya-1208/Saranya-1208.github.io/refs/heads/main/project/5g_coverage_india.csv"
+          "url": "https://raw.githubusercontent.com/Saranya-1208/Saranya-1208.github.io/refs/heads/main/project/5g_coverage_india%20(1).csv"
         },
         "key": "State",
         "fields": ["Villages_5G", "Districts_5G"]
@@ -1529,35 +1529,35 @@ vegaEmbed('#aadhaarDivergingChart', {
     "strokeWidth": 1.5
   },
   "encoding": {
-  "color": {
-    "condition": {
-      "test": "datum.Villages_5G != null", 
-      "field": "Villages_5G",
-      "type": "quantitative",
-      "scale": {
-        "scheme": "purples",
-        "type": "log",
-        "domain": [100, 9000]
+    "color": {
+      "condition": {
+        "test": "datum.Villages_5G != null && datum.Villages_5G > 0",
+        "field": "Villages_5G",
+        "type": "quantitative",
+        "scale": {
+          "scheme": "purples",
+          "type": "log",
+          "domain": [100, 9000]
+        },
+        "legend": {
+          "title": "Villages with 5G Towers",
+          "orient": "bottom",
+          "direction": "horizontal",
+          "format": "~s",
+          "labelFontSize": 11,
+          "titleFontSize": 12,
+          "gradientLength": 400,
+          "gradientThickness": 15
+        }
       },
-      "legend": {
-        "title": "Villages with 5G Towers",
-        "orient": "bottom",
-        "direction": "horizontal",
-        "format": "~s",
-        "labelFontSize": 11,
-        "titleFontSize": 12,
-        "gradientLength": 400,
-        "gradientThickness": 15
-      }
+      "value": "#e0e0e0"
     },
-    "value": "#e0e0e0" 
+    "tooltip": [
+      {"field": "properties.ST_NM", "type": "nominal", "title": "State"},
+      {"field": "Districts_5G", "type": "quantitative", "title": "Districts with 5G"},
+      {"field": "Villages_5G", "type": "quantitative", "format": ",", "title": "Villages with 5G Towers"}
+    ]
   },
-  "tooltip": [
-    {"field": "properties.ST_NM", "type": "nominal", "title": "State"},
-    {"field": "Districts_5G", "type": "quantitative", "title": "Districts with 5G"},
-    {"field": "Villages_5G", "type": "quantitative", "format": ",", "title": "Villages with 5G Towers"}
-  ]
-},
   "config": {
     "font": "Garamond",
     "view": {"strokeWidth": 0}
