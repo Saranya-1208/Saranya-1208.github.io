@@ -66,44 +66,57 @@
 }
     
     .sidebar {
-      position: fixed;
-      left: 0;
-      top: 20%;
-      width: 220px;
-      padding: 2rem 1.5rem;
-      background: linear-gradient(135deg, #FF6B9D 0%, #C7B8EA 100%);
-      box-shadow: 2px 0 10px rgba(0,0,0,0.1);
-      z-index: 100;
-      border-radius: 0 8px 8px 0;
-    }
+  position: fixed;
+  left: 0;
+  top: 20%;
+  width: 220px;
+  padding: 2rem 1.5rem;
+  background: linear-gradient(135deg, #FF6B9D 0%, #C7B8EA 100%);
+  box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+  z-index: 100;
+  border-radius: 0 8px 8px 0;
+}
 
-    .sidebar h3 {
-      font-size: 1rem;
-      color: rgba(255,255,255,0.8);
-      margin-bottom: 1rem;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-    }
+.sidebar h3 {
+  font-size: 0.85rem; 
+  color: rgba(255,255,255,0.7); 
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 1.5px; 
+  font-weight: 600; 
+}
 
-    .sidebar nav a {
-      display: block;
-      color: rgba(255,255,255,0.9);
-      text-decoration: none;
-      padding: 0.5rem 0;
-      font-size: 1.05rem;
-      transition: all 0.3s;
-      border-left: 3px solid transparent;
-      padding-left: 1rem;
-    }
+.sidebar nav a {
+  display: block;
+  color: rgba(255,255,255,0.85); 
+  text-decoration: none;
+  padding: 0.6rem 0 0.6rem 1rem; 
+  font-size: 1.05rem;
+  transition: all 0.3s;
+  border-left: 3px solid transparent;
+  position: relative;
+}
 
-    .sidebar nav a:hover,
-    .sidebar nav a.active {
-      color: #ffffff;
-      border-left-color: #ffffff;
-      padding-left: 1.2rem;
-      background: rgba(255,255,255,0.1);
-      border-radius: 4px;
-    }
+.sidebar nav a:hover,
+.sidebar nav a.active {
+  color: #ffffff;
+  border-left-color: #ffffff;
+  padding-left: 1.3rem; 
+  background: rgba(255,255,255,0.15); 
+  border-radius: 4px;
+}
+
+.sidebar nav a.active::before {
+  content: '';
+  position: absolute;
+  left: 0.3rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 6px;
+  height: 6px;
+  background: white;
+  border-radius: 50%;
+}
     
     .main-content {
   margin-left: 280px;
@@ -122,17 +135,17 @@
       margin-right: auto;
     }
 
-    section h2 {
-      font-size: 2.6rem;
-      font-weight: 500;
-      background: linear-gradient(135deg, #FF6B9D, #4ECDC4);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      margin-bottom: 2rem;
-      padding-bottom: 0.75rem;
-      border-bottom: 3px solid #FFB6C1;
-    }
+   section h2 {
+  font-size: 2.4rem; 
+  font-weight: 400; 
+  background: linear-gradient(135deg, #FF6B9D, #4ECDC4);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 2rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 3px solid #FFB6C1;
+}
 
     section h3 {
       font-size: 2.0rem;
@@ -192,7 +205,6 @@
       text-align: justify;
     }
 
-   
     .insight-box {
       background: linear-gradient(135deg, #FFF3F3, #F0F8FF);
       border-left: 4px solid #FF6B9D;
@@ -269,29 +281,42 @@
       border-bottom-color: #4ECDC4;
     }
 
-    .section-divider {
-  background: linear-gradient(135deg, #FFE5EC, #E8F4F8); /* CHANGED: Darker pastels */
-  padding: 4rem 2rem;
+   /* SECTION DIVIDERS - LIGHTER EMPHASIS */
+.section-divider {
+  background: linear-gradient(135deg, #FFE5EC, #E8F4F8);
+  padding: 3.5rem 2rem; 
   margin: 5rem auto;
   text-align: center;
   border-radius: 12px;
-  max-width: 900px; /* CHANGED: Match other content width */
-  border: 1px solid rgba(255, 107, 157, 0.2); /* ADDED: Subtle border */
+  max-width: 900px;
+  border: 1px solid rgba(255, 107, 157, 0.2);
 }
 
-    .section-divider h2 {
-  font-size: 2.8rem;
-  margin-bottom: 1.5rem;
+.section-divider h2 {
+  font-size: 2.5rem; 
+  font-weight: 400; 
+  margin-bottom: 1rem; 
 }
 
 .section-divider p {
-  font-size: 1.35rem; 
+  font-size: 1.3rem;
   max-width: 800px;
   margin: 0 auto;
   line-height: 1.9;
-  color: #444;
+  color: #555; 
+  font-style: italic; 
+  opacity: 0.95;
 }
 
+.section-divider h2::after {
+  content: '';
+  display: block;
+  width: 60px;
+  height: 2px;
+  background: linear-gradient(135deg, #FF6B9D, #4ECDC4);
+  margin: 1rem auto 0;
+  opacity: 0.5;
+}
     .stat-highlight {
       text-align: center;
       padding: 3rem;
