@@ -16,6 +16,7 @@
       line-height: 1.6;
       color: #2c2c2c;
       overflow-x: hidden;
+      background: #FFF8E7;
     }
     
     /* Hero Section */
@@ -24,48 +25,75 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      background: linear-gradient(135deg, #FFB6C1 0%, #E6E6FA 50%, #B4E7CE 100%);
       position: relative;
       padding: 2rem;
     }
     
+    /* Floating shapes animation */
     .hero::before {
       content: '';
       position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="2" fill="white" opacity="0.1"/></svg>');
-      animation: float 20s infinite linear;
+      top: 10%;
+      left: 10%;
+      width: 300px;
+      height: 300px;
+      background: rgba(255, 182, 193, 0.3);
+      border-radius: 50%;
+      filter: blur(60px);
+      animation: float1 8s ease-in-out infinite;
     }
     
-    @keyframes float {
-      from { transform: translateY(0); }
-      to { transform: translateY(-100px); }
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: 20%;
+      right: 15%;
+      width: 250px;
+      height: 250px;
+      background: rgba(180, 231, 206, 0.3);
+      border-radius: 50%;
+      filter: blur(60px);
+      animation: float2 6s ease-in-out infinite;
+    }
+    
+    @keyframes float1 {
+      0%, 100% { transform: translate(0, 0); }
+      50% { transform: translate(30px, -30px); }
+    }
+    
+    @keyframes float2 {
+      0%, 100% { transform: translate(0, 0); }
+      50% { transform: translate(-30px, 30px); }
     }
     
     .hero-content {
       max-width: 800px;
       text-align: center;
-      color: white;
+      color: #2c2c2c;
       position: relative;
       z-index: 1;
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(10px);
+      padding: 4rem 3rem;
+      border-radius: 30px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
     }
     
     .profile-photo {
       width: 200px;
       height: 200px;
       border-radius: 50%;
-      border: 5px solid white;
-      box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+      border: 5px solid #FF6B9D;
+      box-shadow: 0 10px 40px rgba(255, 107, 157, 0.3);
       margin: 0 auto 2rem;
       object-fit: cover;
-      transition: transform 0.3s ease;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
     
     .profile-photo:hover {
-      transform: scale(1.05);
+      transform: scale(1.05) rotate(2deg);
+      box-shadow: 0 15px 50px rgba(255, 107, 157, 0.4);
     }
     
     h1 {
@@ -73,20 +101,24 @@
       margin-bottom: 1rem;
       font-weight: 400;
       letter-spacing: 2px;
+      background: linear-gradient(135deg, #FF6B9D, #4ECDC4);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
     }
     
     .subtitle {
       font-size: 1.5rem;
-      opacity: 0.95;
       margin-bottom: 2rem;
       font-weight: 300;
+      color: #666;
     }
     
     .intro-text {
       font-size: 1.2rem;
       line-height: 1.8;
       margin-bottom: 3rem;
-      opacity: 0.9;
+      color: #555;
       max-width: 600px;
       margin-left: auto;
       margin-right: auto;
@@ -110,29 +142,30 @@
       transition: all 0.3s ease;
       font-weight: 500;
       display: inline-block;
+      position: relative;
+      overflow: hidden;
     }
     
     .btn-primary {
-      background: white;
-      color: #667eea;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+      background: linear-gradient(135deg, #FF6B9D, #FF8FB3);
+      color: white;
+      box-shadow: 0 4px 15px rgba(255, 107, 157, 0.3);
     }
     
     .btn-primary:hover {
       transform: translateY(-3px);
-      box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+      box-shadow: 0 8px 25px rgba(255, 107, 157, 0.5);
     }
     
     .btn-secondary {
-      background: transparent;
+      background: linear-gradient(135deg, #4ECDC4, #6EDDD6);
       color: white;
-      border: 2px solid white;
+      box-shadow: 0 4px 15px rgba(78, 205, 196, 0.3);
     }
     
     .btn-secondary:hover {
-      background: white;
-      color: #667eea;
       transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(78, 205, 196, 0.5);
     }
     
     /* Scroll Indicator */
@@ -141,7 +174,7 @@
       bottom: 30px;
       left: 50%;
       transform: translateX(-50%);
-      color: white;
+      color: #FF6B9D;
       font-size: 2rem;
       animation: bounce 2s infinite;
     }
@@ -155,7 +188,7 @@
     /* Preview Section */
     .preview-section {
       padding: 5rem 2rem;
-      background: #f9f9f9;
+      background: #FFF8E7;
     }
     
     .container {
@@ -167,7 +200,10 @@
       font-size: 2.5rem;
       text-align: center;
       margin-bottom: 3rem;
-      color: #667eea;
+      background: linear-gradient(135deg, #FF6B9D, #4ECDC4);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
     }
     
     .work-grid {
@@ -179,22 +215,27 @@
     
     .work-card {
       background: white;
-      border-radius: 12px;
-      padding: 2rem;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+      border-radius: 20px;
+      padding: 2.5rem;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
       transition: transform 0.3s ease, box-shadow 0.3s ease;
       text-decoration: none;
       color: #2c2c2c;
       display: block;
+      border: 2px solid transparent;
     }
     
     .work-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 8px 30px rgba(102, 126, 234, 0.3);
+      transform: translateY(-8px);
+      box-shadow: 0 12px 40px rgba(255, 107, 157, 0.2);
+      border-color: #FFB6C1;
     }
     
     .work-card h3 {
-      color: #667eea;
+      background: linear-gradient(135deg, #FF6B9D, #4ECDC4);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
       font-size: 1.8rem;
       margin-bottom: 1rem;
     }
@@ -207,31 +248,32 @@
     
     .work-card .label {
       display: inline-block;
-      background: #667eea;
-      color: white;
-      padding: 0.3rem 1rem;
+      background: linear-gradient(135deg, #FFB6C1, #FFDAB9);
+      color: #2c2c2c;
+      padding: 0.4rem 1.2rem;
       border-radius: 20px;
       font-size: 0.9rem;
       margin-top: 1rem;
+      font-weight: 600;
     }
     
     footer {
-      background: #2c2c2c;
+      background: linear-gradient(135deg, #2c2c2c, #3a3a3a);
       color: white;
       text-align: center;
       padding: 3rem 2rem;
     }
     
     footer a {
-      color: #667eea;
+      color: #FF6B9D;
       text-decoration: none;
-      border-bottom: 2px solid #667eea;
+      border-bottom: 2px solid #FF6B9D;
       transition: all 0.3s ease;
     }
     
     footer a:hover {
-      color: #FF85A2;
-      border-bottom-color: #FF85A2;
+      color: #4ECDC4;
+      border-bottom-color: #4ECDC4;
     }
     
     /* Responsive */
@@ -240,6 +282,7 @@
       .subtitle { font-size: 1.2rem; }
       .intro-text { font-size: 1rem; }
       .profile-photo { width: 150px; height: 150px; }
+      .hero-content { padding: 3rem 2rem; }
     }
   </style>
 </head>
@@ -283,7 +326,7 @@
         <div class="work-card" style="opacity: 0.7; cursor: default;">
           <h3>More Coming Soon</h3>
           <p>Currently working on new data visualization projects exploring inequality, public policy, and urban development.</p>
-          <span class="label" style="background: #999;">In Progress</span>
+          <span class="label" style="background: linear-gradient(135deg, #ccc, #ddd);">In Progress</span>
         </div>
       </div>
     </div>
