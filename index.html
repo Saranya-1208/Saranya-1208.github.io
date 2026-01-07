@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Saranya Anand | Data Visualization Portfolio</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Garamond', Georgia, serif;
+      line-height: 1.6;
+      color: #2c2c2c;
+      overflow-x: hidden;
+    }
+    
+    /* Hero Section */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      position: relative;
+      padding: 2rem;
+    }
+    
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="2" fill="white" opacity="0.1"/></svg>');
+      animation: float 20s infinite linear;
+    }
+    
+    @keyframes float {
+      from { transform: translateY(0); }
+      to { transform: translateY(-100px); }
+    }
+    
+    .hero-content {
+      max-width: 800px;
+      text-align: center;
+      color: white;
+      position: relative;
+      z-index: 1;
+    }
+    
+    .profile-photo {
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      border: 5px solid white;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+      margin: 0 auto 2rem;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+    
+    .profile-photo:hover {
+      transform: scale(1.05);
+    }
+    
+    h1 {
+      font-size: 3.5rem;
+      margin-bottom: 1rem;
+      font-weight: 400;
+      letter-spacing: 2px;
+    }
+    
+    .subtitle {
+      font-size: 1.5rem;
+      opacity: 0.95;
+      margin-bottom: 2rem;
+      font-weight: 300;
+    }
+    
+    .intro-text {
+      font-size: 1.2rem;
+      line-height: 1.8;
+      margin-bottom: 3rem;
+      opacity: 0.9;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    
+    .cta-buttons {
+      display: flex;
+      gap: 1.5rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    
+    .btn {
+      padding: 1rem 2.5rem;
+      font-size: 1.2rem;
+      font-family: 'Garamond', Georgia, serif;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      font-weight: 500;
+      display: inline-block;
+    }
+    
+    .btn-primary {
+      background: white;
+      color: #667eea;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    }
+    
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+    }
+    
+    .btn-secondary {
+      background: transparent;
+      color: white;
+      border: 2px solid white;
+    }
+    
+    .btn-secondary:hover {
+      background: white;
+      color: #667eea;
+      transform: translateY(-3px);
+    }
+    
+    /* Scroll Indicator */
+    .scroll-indicator {
+      position: absolute;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      color: white;
+      font-size: 2rem;
+      animation: bounce 2s infinite;
+    }
+    
+    @keyframes bounce {
+      0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
+      40% { transform: translateX(-50%) translateY(-10px); }
+      60% { transform: translateX(-50%) translateY(-5px); }
+    }
+    
+    /* Preview Section */
+    .preview-section {
+      padding: 5rem 2rem;
+      background: #f9f9f9;
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    .section-title {
+      font-size: 2.5rem;
+      text-align: center;
+      margin-bottom: 3rem;
+      color: #667eea;
+    }
+    
+    .work-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-bottom: 3rem;
+    }
+    
+    .work-card {
+      background: white;
+      border-radius: 12px;
+      padding: 2rem;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      text-decoration: none;
+      color: #2c2c2c;
+      display: block;
+    }
+    
+    .work-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 30px rgba(102, 126, 234, 0.3);
+    }
+    
+    .work-card h3 {
+      color: #667eea;
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+    }
+    
+    .work-card p {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: #666;
+    }
+    
+    .work-card .label {
+      display: inline-block;
+      background: #667eea;
+      color: white;
+      padding: 0.3rem 1rem;
+      border-radius: 20px;
+      font-size: 0.9rem;
+      margin-top: 1rem;
+    }
+    
+    footer {
+      background: #2c2c2c;
+      color: white;
+      text-align: center;
+      padding: 3rem 2rem;
+    }
+    
+    footer a {
+      color: #667eea;
+      text-decoration: none;
+      border-bottom: 2px solid #667eea;
+      transition: all 0.3s ease;
+    }
+    
+    footer a:hover {
+      color: #FF85A2;
+      border-bottom-color: #FF85A2;
+    }
+    
+    /* Responsive */
+    @media (max-width: 768px) {
+      h1 { font-size: 2.5rem; }
+      .subtitle { font-size: 1.2rem; }
+      .intro-text { font-size: 1rem; }
+      .profile-photo { width: 150px; height: 150px; }
+    }
+  </style>
+</head>
+<body>
+  
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-content">
+      <img src="saranya-photo.jpg" alt="Saranya Anand" class="profile-photo">
+      <h1>Saranya Anand</h1>
+      <p class="subtitle">Data Storyteller | LSE MPA 2027</p>
+      <p class="intro-text">
+        I transform complex data into compelling visual narratives. Currently exploring how technology shapes inequality through the lens of India's digital transformation.
+      </p>
+      <div class="cta-buttons">
+        <a href="project/index.html" class="btn btn-primary">View Digital India Project</a>
+        <a href="portfolio.html" class="btn btn-secondary">Portfolio Challenges</a>
+      </div>
+    </div>
+    <div class="scroll-indicator">↓</div>
+  </section>
+  
+  <!-- Preview Section -->
+  <section class="preview-section">
+    <div class="container">
+      <h2 class="section-title">Featured Work</h2>
+      
+      <div class="work-grid">
+        <a href="project/index.html" class="work-card">
+          <h3>Digital India Project</h3>
+          <p>An interactive exploration of India's digital transformation through 9 visualizations, revealing the 7× inequality gap between urban and rural adoption.</p>
+          <span class="label">Main Project</span>
+        </a>
+        
+        <a href="portfolio.html" class="work-card">
+          <h3>Portfolio Challenges</h3>
+          <p>10 coding challenges demonstrating technical skills: APIs, web scraping, machine learning, interactive visualizations, and big data analysis.</p>
+          <span class="label">Technical Portfolio</span>
+        </a>
+        
+        <div class="work-card" style="opacity: 0.7; cursor: default;">
+          <h3>More Coming Soon</h3>
+          <p>Currently working on new data visualization projects exploring inequality, public policy, and urban development.</p>
+          <span class="label" style="background: #999;">In Progress</span>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Footer -->
+  <footer>
+    <p><strong>Saranya Anand</strong></p>
+    <p>LSE MPA 2027 | Data Visualization Portfolio</p>
+    <p style="margin-top: 1rem;">
+      <a href="mailto:your.email@lse.ac.uk">Contact Me</a> | 
+      <a href="https://github.com/Saranya-1208" target="_blank">GitHub</a>
+    </p>
+  </footer>
+  
+</body>
+</html>
